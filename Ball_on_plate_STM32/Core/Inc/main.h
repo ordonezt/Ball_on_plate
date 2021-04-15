@@ -61,7 +61,7 @@ void Error_Handler(void);
 
 /* Private defines -----------------------------------------------------------*/
 #define LED_ESTADO_Pin GPIO_PIN_13
-#define LED_ESTADO_GPIO_Port GPIOB
+#define LED_ESTADO_GPIO_Port GPIOC
 #define SERVO_A_Pin GPIO_PIN_8
 #define SERVO_A_GPIO_Port GPIOA
 #define SERVO_B_Pin GPIO_PIN_9

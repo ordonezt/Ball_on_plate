@@ -1,0 +1,36 @@
+Usar formato 'snake_case' para funciones y variables
+Defines en mayuscula y separaciones con '_'
+
+Variables:
+ -Usar tipos std, por ej: uint8_t, int8_t, int32_t, float32_t, etc
+ -Usar snake_case como formato para los nombres, por ej: contador_eventos, ancho_imagen
+ -Ejemplos:
+ 	uint8_t contador_eventos = 0;
+ 	int32_t ancho_imagen[2] = {0};
+
+Por favor documentar en formato Doxygen (o al menos hacer el intento xD):
+Para habilitar estos comentarios ir a Window->Preferences->C/C++->Editor: Documentation tool comments->Workspace default: Doxygen
+
+Para abrir un comentario Doxygen:
+/** + 'Enter'
+
+o
+
+///
+
+Formato de comentarios:
+Archivos:
+/**
+ * @file nombre_archivo.extension
+ * @brief ¿Que hay en este archivo?
+ * @author Nombre del autor
+ * @date DD/MM/AAAA
+ */
+ 
+ Funciones (Tanto en la declaracion como en la cabecera):
+ /**
+ * ¿Que hace esta funcion?
+ * @param parametro_1 Que es este parametro?
+ * @param parametro_2 Que es este parametro?
+ * @return Cuales son los retornos de la funcion?.
+ */
