@@ -62,12 +62,14 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define LED_ESTADO_Pin GPIO_PIN_13
 #define LED_ESTADO_GPIO_Port GPIOC
-#define SERVO_A_Pin GPIO_PIN_8
+#define SERVO_A_Pin GPIO_PIN_0
 #define SERVO_A_GPIO_Port GPIOA
-#define SERVO_B_Pin GPIO_PIN_9
+#define SERVO_B_Pin GPIO_PIN_1
 #define SERVO_B_GPIO_Port GPIOA
-#define SERVO_C_Pin GPIO_PIN_10
+#define SERVO_C_Pin GPIO_PIN_2
 #define SERVO_C_GPIO_Port GPIOA
+#define SERVO_D_Pin GPIO_PIN_3
+#define SERVO_D_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
