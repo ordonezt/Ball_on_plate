@@ -69,7 +69,7 @@ void Error_Handler(void);
 #define SERVO_C_Pin GPIO_PIN_10
 #define SERVO_C_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
-
+#define LED_PIN LED_ESTADO_GPIO_Port, LED_ESTADO_Pin
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

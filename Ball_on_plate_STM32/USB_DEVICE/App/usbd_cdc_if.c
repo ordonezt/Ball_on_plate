@@ -23,7 +23,7 @@
 #include "usbd_cdc_if.h"
 
 /* USER CODE BEGIN INCLUDE */
-
+#include "cpu.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -225,7 +225,7 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
 
     case CDC_GET_LINE_CODING:
     	for(uint8_t i = 0; i < 7; i++)	//Retornamos el line coding
-    		buffer_line_coding[i] = pbuf[i];
+    		pbuf[i] = buffer_line_coding[i];
     break;
 
     case CDC_SET_CONTROL_LINE_STATE:
@@ -266,6 +266,9 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
 
   //Llego una trama, la guardo para procesar
+  cpu_recibir(Buf, *Len);
+  //CDC_Transmit_FS(Buf, *Len);
+
   return (USBD_OK);
   /* USER CODE END 6 */
 }

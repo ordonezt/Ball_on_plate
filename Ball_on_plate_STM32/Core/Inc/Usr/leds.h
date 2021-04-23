@@ -10,10 +10,8 @@
 
 #include "stm32f1xx.h"
 
-typedef struct{
-	GPIO_TypeDef * puerto_gpio;
-	uint16_t pin_gpio;
-	bool estado;
-}led_t;
+#define LED_COUNT 	COUNT_300ms
+
+void leds_inicializar(void);
 
 #endif /* INC_USR_LEDS_H_ */
