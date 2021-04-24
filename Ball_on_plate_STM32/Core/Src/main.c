@@ -97,10 +97,6 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  servos_set_posicion(&servo_A, 180000);
-  servos_set_posicion(&servo_B, 90000);
-  servos_set_posicion(&servo_C, 0);
-  servos_set_posicion(&servo_D, 60000);
   while (1)
   {
     /* USER CODE END WHILE */
