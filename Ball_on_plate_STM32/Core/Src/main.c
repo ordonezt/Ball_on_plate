@@ -25,6 +25,8 @@
 /* USER CODE BEGIN Includes */
 #include "servos.h"
 #include "cpu.h"
+#include "leds.h"
+#include "timers.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -93,6 +95,8 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   servos_inicializar();
+  cpu_inicializar();
+  leds_inicializar();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -102,20 +106,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  cpu_transmitir_basico();
+	  cpu_rx();
 
-	  HAL_Delay(2000);
-	  HAL_GPIO_TogglePin(LED_ESTADO_GPIO_Port, LED_ESTADO_Pin);
-//	  servos_set_posicion(&servo_A, 180000);
-//	  htim1.Instance->CCR1=3500;
-	  HAL_Delay(2000);
-	  HAL_GPIO_TogglePin(LED_ESTADO_GPIO_Port, LED_ESTADO_Pin);
-//	  servos_set_posicion(&servo_A, 0);
-//	  htim1.Instance->CCR1=3000;
-	  HAL_Delay(2000);
-	  HAL_GPIO_TogglePin(LED_ESTADO_GPIO_Port, LED_ESTADO_Pin);
-//	  servos_set_posicion(&servo_A, 90000);
-//	  htim1.Instance->CCR1=6000;
+	  timer_tarea();
   }
   /* USER CODE END 3 */
 }
