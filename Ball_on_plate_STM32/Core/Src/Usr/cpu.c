@@ -77,7 +77,7 @@ void cpu_rx(void)
 			{
 				//Validar mensaje
 				num = atoi(mensaje);
-				servos_set_ancho_de_pulso(servo_A, num);
+				servos_set_posicion(&servo_A, num);
 
 				estado = 0;
 			}
