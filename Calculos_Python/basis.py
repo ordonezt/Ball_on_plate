@@ -12,7 +12,7 @@ def rotate_in_y_axis(point,r_y):
     return np.dot(W,point)
 
 def rotate_in_x_axis(point,r_x):
-    W=y_rotation_matrix(r_x)
+    W=x_rotation_matrix(r_x)
     return np.dot(W,point)
 
 ####################################### Funciones de cambio de base ################################################
@@ -35,6 +35,7 @@ def get_m1_basis():
     #Función que retorna la matriz de cambio de base desde la canónica a la base del motor1
     # La base del motor 1 corresponde a la base canónica
     Wm1=np.identity(3)
+    return Wm1
 
 
 def base_change_cannon_to_m1(point):
@@ -58,5 +59,4 @@ def base_change_m2_to_cannon(point):
     return np.dot(Wm2,point)
 
 def base_change_m1_to_cannon(point):
-    Wm1=get_m1_basis()
-    return np.dot(Wm1,point)
+    return point
