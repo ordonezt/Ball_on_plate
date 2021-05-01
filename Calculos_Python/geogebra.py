@@ -1,4 +1,5 @@
 import numpy as np
+import basis
 
 class geogebra_script:
     def __init__(self):
@@ -77,16 +78,14 @@ class geogebra_script:
         #imprimo el brazo l2
         a2=np.array([0,np.cos(platform.ang2),np.sin(platform.ang2)])*platform.l1  #esto es visto desde el plano de referencia del motor
         a2=a2-np.array([0,platform.D,0])#muevo el cero al centro de la plataforma
-        wm2=platform.get_m2_basis()
-        a2=wm2.dot(a2)
+        a2=basis.base_change_m2_to_cannon(a2)
         s1.add_point(a2,"A2")
         s1.define_segment("M2","A2")
         s1.define_segment("A2","C2")
         #imprimo el brazo l3
         a3=np.array([0,np.cos(platform.ang3),np.sin(platform.ang3)])*platform.l1  #esto es visto desde el plano de referencia del motor
         a3=a3-np.array([0,platform.D,0])#muevo el cero al centro de la plataforma
-        wm3=platform.get_m3_basis()
-        a3=wm3.dot(a3)
+        a3=basis.base_change_m3_to_cannon(a3)
         s1.add_point(a3,"A3")
         s1.define_segment("M3","A3")
         s1.define_segment("A3","C3")        
