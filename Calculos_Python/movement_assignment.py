@@ -66,9 +66,6 @@ def calculate_angle(ball_dir,roll_vector,joint,movement):
     angle=np.arctan(np.linalg.norm(ball_dir))
     ##determino el sentido de movimiento para determinar si el ángulo es positivo o negativo
     #Cambio el sistema de referencia al de la junta que debe actuarse
-    print(roll_vector)
-    print(joint)
-    print(movement)
     if joint=="C1":
         roll_vector=basis.base_change_cannon_to_m1(roll_vector)
     if joint=="C2":
