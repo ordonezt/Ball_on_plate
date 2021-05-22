@@ -10,6 +10,11 @@
 
 #include "stm32f1xx.h"
 
+typedef enum{
+	SERVO_A,
+	SERVO_B,
+	SERVO_C
+}servo_num_t;
 
 #define CUENTA_MAXIMA					60000
 
@@ -48,5 +53,18 @@ void servos_inicializar(void);
  * @param miligrados Angulo final al que se quiere llegar
  */
 void servos_set_posicion(servo_t *servo, uint32_t miligrados);
+
+/**
+ * Tarea periodica que controla el movimiento de los servos
+ */
+void servos_tarea(void);
+
+/**
+ * Agrega un angulo a la lista de movimientos de un motor
+ * @param servo Motor que se quiere mover
+ * @param miligrados Angulo al que se quiere posicionar el motor
+ * @return 0 Ok, 1 error
+ */
+uint8_t servos_agregar_angulo(servo_num_t servo, uint32_t miligrados);
 
 #endif /* INC_USR_SERVOS_H_ */

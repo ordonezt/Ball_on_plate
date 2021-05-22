@@ -7,47 +7,52 @@
 
 #include "main.h"
 #include "servos.h"
+#include "my_ring_buffer.h"
 
+#define CANTIDAD_SERVOS				3
+#define LONGITUD_BUFFER_ANGULOS		4
 extern TIM_HandleTypeDef htim2;
 
-servo_t servo_A, servo_B, servo_C, servo_D;
+servo_t servos[CANTIDAD_SERVOS];
+
+RINGBUFF_T 	servo_ring_buffer[CANTIDAD_SERVOS];
+uint32_t 	servo_angulos_buffer[LONGITUD_BUFFER_ANGULOS][CANTIDAD_SERVOS];
 
 /**
  * Inicializa los servos y los enciende a 0 grados.
  */
 void servos_inicializar(void)
 {
-	servo_A.handler = &htim2;
-	servo_A.puerto_gpio = SERVO_A_GPIO_Port;
-	servo_A.pin_gpio = SERVO_A_Pin;
-	servo_A.canal = TIM_CHANNEL_1;
+	for(uint8_t i = 0; i < CANTIDAD_SERVOS; i++)
+		RingBuffer_Init(&servo_ring_buffer[i], servo_angulos_buffer[i], sizeof(servo_angulos_buffer[i][0]), LONGITUD_BUFFER_ANGULOS);
 
-	servo_B.handler = &htim2;
-	servo_B.puerto_gpio = SERVO_B_GPIO_Port;
-	servo_B.pin_gpio = SERVO_B_Pin;
-	servo_B.canal = TIM_CHANNEL_2;
+	servos[SERVO_A].handler = &htim2;
+	servos[SERVO_A].puerto_gpio = SERVO_A_GPIO_Port;
+	servos[SERVO_A].pin_gpio = SERVO_A_Pin;
+	servos[SERVO_A].canal = TIM_CHANNEL_1;
 
-	servo_C.handler = &htim2;
-	servo_C.puerto_gpio = SERVO_C_GPIO_Port;
-	servo_C.pin_gpio = SERVO_C_Pin;
-	servo_C.canal = TIM_CHANNEL_3;
+	servos[SERVO_B].handler = &htim2;
+	servos[SERVO_B].puerto_gpio = SERVO_B_GPIO_Port;
+	servos[SERVO_B].pin_gpio = SERVO_B_Pin;
+	servos[SERVO_B].canal = TIM_CHANNEL_2;
 
-	servo_D.handler = &htim2;
-	servo_D.puerto_gpio = SERVO_D_GPIO_Port;
-	servo_D.pin_gpio = SERVO_D_Pin;
-	servo_D.canal = TIM_CHANNEL_4;
+	servos[SERVO_C].handler = &htim2;
+	servos[SERVO_C].puerto_gpio = SERVO_C_GPIO_Port;
+	servos[SERVO_C].pin_gpio = SERVO_C_Pin;
+	servos[SERVO_C].canal = TIM_CHANNEL_3;
 
-	servos_set_posicion(&servo_A, 0);
-	servos_set_posicion(&servo_B, 45000);
-	servos_set_posicion(&servo_C, 90000);
-	servos_set_posicion(&servo_D, 135000);
-
-	HAL_TIM_PWM_Start(servo_A.handler, servo_A.canal);
-	HAL_TIM_PWM_Start(servo_B.handler, servo_B.canal);
-	HAL_TIM_PWM_Start(servo_C.handler, servo_C.canal);
-	HAL_TIM_PWM_Start(servo_D.handler, servo_D.canal);
+	for(uint8_t i = 0; i < CANTIDAD_SERVOS; i++)
+	{
+		servos_set_posicion(&servos[i], 0);
+		HAL_TIM_PWM_Start(servos[i].handler, servos[i].canal);
+	}
 }
 
+/**
+ * Transforma miligrados en cuentas de PWM
+ * @param miligrados Angulo a transformar
+ * @return cuentas de PWM correspondientes a ese angulo
+ */
 uint32_t servos_miligrados2cuentas(uint32_t miligrados)
 {
 	/*
@@ -75,11 +80,21 @@ uint32_t servos_miligrados2cuentas(uint32_t miligrados)
 	return miligrados / M_SERVOS + B_SERVOS;
 }
 
+/**
+ * Transforma cuentas de PWM en miligrados
+ * @param cuentas Cuentas de PWM
+ * @return Angulo en miligrados correspondientes a esa cantidad de cuentas
+ */
 uint32_t servos_cuentas2miligrados(uint32_t cuentas)
 {
 	return (cuentas - LIMITE_INFERIOR_SEGURO_CUENTAS) * M_SERVOS;
 }
 
+/**
+ * Escribe en el perisferico PWM el ancho de pulso requerido
+ * @param servo Estructura al servo que se quiere mover
+ * @param cuentas a escribir
+ */
 void servos_set_ancho_de_pulso(servo_t servo, uint32_t cuentas)
 {
 	__HAL_TIM_SET_COMPARE(servo.handler, servo.canal, cuentas);
@@ -97,4 +112,29 @@ void servos_set_posicion(servo_t *servo, uint32_t miligrados)
 		servo->miligrados = miligrados;
 		servos_set_ancho_de_pulso(*servo, servos_miligrados2cuentas(miligrados));
 	}
+}
+
+/**
+ * Tarea periodica que controla el movimiento de los servos
+ */
+void servos_tarea(void)
+{
+	uint32_t angulo;
+
+	for(uint8_t i = 0; i < CANTIDAD_SERVOS; i++)
+	{
+		if(RingBuffer_Pop(&servo_ring_buffer[i], &angulo))
+			servos_set_posicion(&servos[i], angulo);
+	}
+}
+
+/**
+ * Agrega un angulo a la lista de movimientos de un motor
+ * @param servo Motor que se quiere mover
+ * @param miligrados Angulo al que se quiere posicionar el motor
+ * @return 0 Ok, 1 error
+ */
+uint8_t servos_agregar_angulo(servo_num_t servo, uint32_t miligrados)
+{
+	return !RingBuffer_Insert(&servo_ring_buffer[servo], &miligrados);
 }

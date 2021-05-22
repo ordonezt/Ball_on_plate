@@ -13,8 +13,14 @@
 #define STATIC	static
 #define INLINE 	inline
 
+#ifndef MAX
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
+#endif
+
+#ifndef MIN
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
+#endif
+
 /** @defgroup Ring_Buffer CHIP: Simple ring buffer implementation
  * @ingroup CHIP_Common
  * @{

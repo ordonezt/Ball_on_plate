@@ -60,7 +60,22 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+/*Esta funcion es un parche para las placas bluepill chinas, que traen una resistencia de pull up USB de valor erroneo
+ * esto hace que luego de un soft reset (Nueva sesion de debug, pulso de reset, etc) el master no reconozca que el dispositivo
+ * se reseteo, para solucionarlo le enviamos un pulso de estado bajo al pin de USB D+ para hacer de cuenta que el dispositivo
+ * se desconecto, haciendo que el Host deseche y reinicie la comunicacion*/
+void USB_DEVICE_MasterHardReset(void)
+{
+    GPIO_InitTypeDef GpioUSBHack;
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    GpioUSBHack.Mode= GPIO_MODE_OUTPUT_PP;
+    GpioUSBHack.Pin = GPIO_PIN_12;
+    GpioUSBHack.Pull = GPIO_PULLUP;
+    GpioUSBHack.Speed = GPIO_SPEED_FREQ_HIGH;
+    HAL_GPIO_Init(GPIOA, &GpioUSBHack);
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, GPIO_PIN_RESET);
+    HAL_Delay(50);
+}
 /* USER CODE END 0 */
 
 /**
@@ -86,7 +101,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  USB_DEVICE_MasterHardReset();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -107,6 +122,8 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	  cpu_rx();
+
+	  servos_tarea();
 
 	  timer_tarea();
   }
