@@ -10,13 +10,27 @@
 
 #include "stm32f1xx.h"
 
+typedef enum{
+	SERVO_A,
+	SERVO_B,
+	SERVO_C
+}servo_num_t;
 
-#define CUENTA_MAXIMA			60000
-#define ANGULO_MAXIMO			180
-#define MILIGRADOS_POR_CUENTA	60
-#define CUENTAS_180		6000
-#define CUENTAS_0		3000
-#define MILIGRADOS_MAXIMO		180000
+#define CUENTA_MAXIMA					60000
+
+#define LIMITE_SUPERIOR_CUENTAS			7800.0
+#define LIMITE_INFERIOR_CUENTAS 		1100.0
+
+#define LIMITE_SUPERIOR_MILIGRADOS		200000.0
+#define LIMITE_INFERIOR_MILIGRADOS		0.0
+
+#define LIMITE_SUPERIOR_SEGURO_CUENTAS	7500
+#define LIMITE_INFERIOR_SEGURO_CUENTAS	1400
+
+#define M_SERVOS						((LIMITE_SUPERIOR_MILIGRADOS - LIMITE_INFERIOR_MILIGRADOS) / (LIMITE_SUPERIOR_CUENTAS - LIMITE_INFERIOR_CUENTAS))
+#define B_SERVOS						LIMITE_INFERIOR_SEGURO_CUENTAS
+
+#define MILIGRADOS_MAXIMO				((LIMITE_SUPERIOR_SEGURO_CUENTAS - LIMITE_INFERIOR_SEGURO_CUENTAS) * M_SERVOS)
 
 typedef struct{
 	GPIO_TypeDef * puerto_gpio;
@@ -39,5 +53,18 @@ void servos_inicializar(void);
  * @param miligrados Angulo final al que se quiere llegar
  */
 void servos_set_posicion(servo_t *servo, uint32_t miligrados);
+
+/**
+ * Tarea periodica que controla el movimiento de los servos
+ */
+void servos_tarea(void);
+
+/**
+ * Agrega un angulo a la lista de movimientos de un motor
+ * @param servo Motor que se quiere mover
+ * @param miligrados Angulo al que se quiere posicionar el motor
+ * @return 0 Ok, 1 error
+ */
+uint8_t servos_agregar_angulo(servo_num_t servo, uint32_t miligrados);
 
 #endif /* INC_USR_SERVOS_H_ */
