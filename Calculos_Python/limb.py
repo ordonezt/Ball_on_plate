@@ -26,7 +26,7 @@ class limb:
                 angle_max=angle
             try_count+=1
         if try_count==tries:
-            #raise ValueError('Point unreachable\nP=({},{})'.format(P[0],P[1]))
-            print('Point unreachable\nP=({},{})'.format(P[0],P[1]))
+            raise ValueError('Point unreachable\nP=({},{})'.format(P[0],P[1]))
+            #print('Point unreachable\nP=({},{})'.format(P[0],P[1]))
         else:
             return angle
