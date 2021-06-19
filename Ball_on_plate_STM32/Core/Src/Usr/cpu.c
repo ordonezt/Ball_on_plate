@@ -43,11 +43,11 @@
 RINGBUFF_T cpu_rx_ring_buffer;
 uint8_t cpu_rx_buffer[LONGITUD_BUFFER_RX];
 
-uint8_t *buffer_tx = "Hola Mundo!\n";
+char *buffer_tx = "Hola Mundo!\n";
 
 void cpu_transmitir_basico(char timer_id[])
 {
-	CDC_Transmit_FS(buffer_tx, strlen(buffer_tx));
+	CDC_Transmit_FS((uint8_t*)buffer_tx, strlen(buffer_tx));
 	timer_configurar(1000, 0, timer_id, cpu_transmitir_basico);
 }
 
@@ -99,7 +99,6 @@ void cpu_rx(void)
 {
 	uint8_t dato;
 	static uint8_t indice, mensaje[LONGITUD_TRAMA_RX], estado=0;
-	uint32_t num;
 	uint32_t angulo_a, angulo_b, angulo_c;
 
 	if(RingBuffer_Pop(&cpu_rx_ring_buffer, &dato))
