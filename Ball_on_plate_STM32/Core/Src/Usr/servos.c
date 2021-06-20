@@ -17,7 +17,7 @@ servo_t servos[CANTIDAD_SERVOS];
 
 RINGBUFF_T 	servo_ring_buffer[CANTIDAD_SERVOS];
 uint32_t 	servo_angulos_buffer[LONGITUD_BUFFER_ANGULOS][CANTIDAD_SERVOS];
-
+uint8_t flag_inicializado[3];
 /**
  * Inicializa los servos y los enciende a 0 grados.
  */
@@ -30,22 +30,25 @@ void servos_inicializar(void)
 	servos[SERVO_A].puerto_gpio = SERVO_A_GPIO_Port;
 	servos[SERVO_A].pin_gpio = SERVO_A_Pin;
 	servos[SERVO_A].canal = TIM_CHANNEL_1;
+	servos[SERVO_A].numero = SERVO_A;
 
 	servos[SERVO_B].handler = &htim2;
 	servos[SERVO_B].puerto_gpio = SERVO_B_GPIO_Port;
 	servos[SERVO_B].pin_gpio = SERVO_B_Pin;
 	servos[SERVO_B].canal = TIM_CHANNEL_2;
+	servos[SERVO_B].numero = SERVO_B;
 
 	servos[SERVO_C].handler = &htim2;
 	servos[SERVO_C].puerto_gpio = SERVO_C_GPIO_Port;
 	servos[SERVO_C].pin_gpio = SERVO_C_Pin;
 	servos[SERVO_C].canal = TIM_CHANNEL_3;
+	servos[SERVO_C].numero = SERVO_C;
 
-	for(uint8_t i = 0; i < CANTIDAD_SERVOS; i++)
-	{
-		servos_set_posicion(&servos[i], 0);
-		HAL_TIM_PWM_Start(servos[i].handler, servos[i].canal);
-	}
+//	for(uint8_t i = 0; i < CANTIDAD_SERVOS; i++)
+//	{
+//		servos_set_posicion(&servos[i], 0);
+//		HAL_TIM_PWM_Start(servos[i].handler, servos[i].canal);
+//	}
 }
 
 /**
@@ -98,6 +101,12 @@ uint32_t servos_cuentas2miligrados(uint32_t cuentas)
 void servos_set_ancho_de_pulso(servo_t servo, uint32_t cuentas)
 {
 	__HAL_TIM_SET_COMPARE(servo.handler, servo.canal, cuentas);
+
+	if(flag_inicializado[servo.numero] == 0)//ToDo hacerlo mas prolijito
+	{
+		flag_inicializado[servo.numero] = 1;
+		HAL_TIM_PWM_Start(servo.handler, servo.canal);
+	}
 }
 
 /**
