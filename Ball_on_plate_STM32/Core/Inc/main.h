@@ -70,8 +70,21 @@ void Error_Handler(void);
 #define SERVO_C_GPIO_Port GPIOA
 #define SERVO_D_Pin GPIO_PIN_3
 #define SERVO_D_GPIO_Port GPIOA
+#define ADXL_SCK_Pin GPIO_PIN_5
+#define ADXL_SCK_GPIO_Port GPIOA
+#define ADXL_MISO_Pin GPIO_PIN_6
+#define ADXL_MISO_GPIO_Port GPIOA
+#define ADXL_MOSI_Pin GPIO_PIN_7
+#define ADXL_MOSI_GPIO_Port GPIOA
+#define ADXL_CS_Pin GPIO_PIN_0
+#define ADXL_CS_GPIO_Port GPIOB
+#define ADXL_INT_Pin GPIO_PIN_1
+#define ADXL_INT_GPIO_Port GPIOB
+#define ADXL_INT_EXTI_IRQn EXTI1_IRQn
 /* USER CODE BEGIN Private defines */
-#define LED_PIN LED_ESTADO_GPIO_Port, LED_ESTADO_Pin
+#define LED_PIN 	LED_ESTADO_GPIO_Port, LED_ESTADO_Pin
+#define ADXL_CS 	ADXL_CS_GPIO_Port, ADXL_CS_Pin
+#define ADXL_INT 	ADXL_INT_GPIO_Port, ADXL_INT_Pin
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
