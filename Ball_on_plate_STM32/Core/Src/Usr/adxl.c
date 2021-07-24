@@ -145,13 +145,7 @@ void adxl_tarea(void)
 		}
 
 		adxl.pitch 	= (uint32_t)(90000 + 1000 * (180 / M_PI) * atan2f(adxl.ejes[EJE_Y].aceleracion, sqrtf(powf(adxl.ejes[EJE_X].aceleracion, 2) + powf(adxl.ejes[EJE_Z].aceleracion, 2))));
-		adxl.roll 	= (uint32_t)(90000 + 1000 * (180 / M_PI) * atan2f(-adxl.ejes[EJE_X].aceleracion, adxl.ejes[EJE_Z].aceleracion));
-
-//		adxl.roll 	= (uint32_t)(1000 * (180 / M_PI) * atan2f(-adxl.ejes[EJE_X].aceleracion, sqrtf(powf(adxl.ejes[EJE_Y].aceleracion, 2) + powf(adxl.ejes[EJE_Z].aceleracion, 2))));
-
-//		adxl.pitch 	= (int32_t)(1000 * (180 / M_PI) * atanf(-adxl.ejes[EJE_X].aceleracion / sqrtf(powf(adxl.ejes[EJE_Y].aceleracion, 2) + powf(adxl.ejes[EJE_Z].aceleracion, 2))));
-//		//adxl.roll 	= (int32_t)(1000 * (180 / M_PI) * atan2f(-adxl.ejes[EJE_X].aceleracion, adxl.ejes[EJE_Z].aceleracion));
-//		adxl.roll 	= (int32_t)(1000 * (180 / M_PI) * atanf(adxl.ejes[EJE_Y].aceleracion / sqrtf(powf(adxl.ejes[EJE_X].aceleracion, 2) + powf(adxl.ejes[EJE_Z].aceleracion, 2))));
+		adxl.roll 	= (uint32_t)(90000 + 1000 * (180 / M_PI) * atan2f(-adxl.ejes[EJE_X].aceleracion, sqrtf(powf(adxl.ejes[EJE_Y].aceleracion, 2) + powf(adxl.ejes[EJE_Z].aceleracion, 2))));
 
 		adxl_transmitir();
 	}
