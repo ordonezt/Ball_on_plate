@@ -13,7 +13,9 @@
 
 #include "main.h"
 #include "adxl.h"
+#include "utiles.h"
 #include <string.h>
+#include <math.h>
 
 extern SPI_HandleTypeDef hspi1;
 
@@ -58,6 +60,19 @@ void adxl_recibir_trama(void)
 //	HAL_GPIO_WritePin(ADXL_CS, GPIO_PIN_SET);
 }
 
+void adxl_alarma_calculo(char timer_id[])
+{
+	adxl.calculo_pendiente = true;
+
+	timer_configurar(PERIODO_CALCULO_ANGULO, false, timer_id, adxl_alarma_calculo);
+}
+
+float cuentas2g(int16_t cuentas)
+{
+	//Configure el dipositivo en +-2g, entonces tenemos 256LSB/g segun la hoja de datos
+	return (float)cuentas / LSB_POR_G;
+}
+
 void adxl_inicializar()
 {
 	uint8_t id;
@@ -85,6 +100,9 @@ void adxl_inicializar()
 	//Si llego una interrupcion antes la tengo que leer
 	if(HAL_GPIO_ReadPin(ADXL_INT) == GPIO_PIN_SET)
 		adxl_recibir_trama();
+
+	timer_agregar(PERIODO_CALCULO_ANGULO, false, "ang", adxl_alarma_calculo);
+
 //	//Controlo lo que configure
 //	bw_rate = adxl_leer_registro(REG_BW_RATE);
 //	data_format = adxl_leer_registro(REG_DATA_FORMAT);
@@ -93,6 +111,27 @@ void adxl_inicializar()
 //	int_enable = adxl_leer_registro(REG_INT_ENABLE);
 }
 
+void adxl_tarea(void)
+{
+	if(adxl.calculo_pendiente == true)
+	{
+		adxl.calculo_pendiente = false;
+
+		for(ejes_t eje = EJE_X; eje <= EJE_Z; eje++)
+		{
+			adxl.ejes[eje].promedio = promedio(adxl.ejes[eje].buffer, CANTIDAD_PROMEDIOS_ACELERACION);
+			adxl.ejes[eje].aceleracion = cuentas2g(adxl.ejes[eje].promedio);
+		}
+
+		adxl.pitch 	= (int32_t)(1000 * (180 / M_PI) * atan2f(adxl.ejes[EJE_Y].aceleracion, sqrtf(powf(adxl.ejes[EJE_X].aceleracion, 2) + powf(adxl.ejes[EJE_Z].aceleracion, 2))));
+		adxl.roll 	= (int32_t)(1000 * (180 / M_PI) * atan2f(-adxl.ejes[EJE_X].aceleracion, adxl.ejes[EJE_Z].aceleracion));
+//		adxl.roll 	= (uint32_t)(1000 * (180 / M_PI) * atan2f(-adxl.ejes[EJE_X].aceleracion, sqrtf(powf(adxl.ejes[EJE_Y].aceleracion, 2) + powf(adxl.ejes[EJE_Z].aceleracion, 2))));
+
+//		adxl.pitch 	= (int32_t)(1000 * (180 / M_PI) * atanf(-adxl.ejes[EJE_X].aceleracion / sqrtf(powf(adxl.ejes[EJE_Y].aceleracion, 2) + powf(adxl.ejes[EJE_Z].aceleracion, 2))));
+//		//adxl.roll 	= (int32_t)(1000 * (180 / M_PI) * atan2f(-adxl.ejes[EJE_X].aceleracion, adxl.ejes[EJE_Z].aceleracion));
+//		adxl.roll 	= (int32_t)(1000 * (180 / M_PI) * atanf(adxl.ejes[EJE_Y].aceleracion / sqrtf(powf(adxl.ejes[EJE_X].aceleracion, 2) + powf(adxl.ejes[EJE_Z].aceleracion, 2))));
+	}
+}
 ///*Aplicacion que lee el acelerometro promedia y calcula los angulos en °*/
 //void lectura_acelerometro()
 //{

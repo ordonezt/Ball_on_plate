@@ -8,6 +8,7 @@
 #ifndef INC_USR_ADXL_H_
 #define INC_USR_ADXL_H_
 
+#include "timers.h"
 #include <stdbool.h>
 
 #define REG_DEVID				0x00
@@ -46,16 +47,24 @@
 #define CANTIDAD_PROMEDIOS_ACELERACION 		10
 #define CANTIDAD_EJES 						3
 
+#define PERIODO_CALCULO_ANGULO	COUNT_100ms
+
+#define LSB_POR_G				256
+
 typedef struct{
 	int16_t buffer[CANTIDAD_PROMEDIOS_ACELERACION];
 	int16_t promedio;
+	float 	aceleracion;
 	int16_t indice;
 }adxl_eje_t;
 
 typedef struct{
 	bool inicializado;
+	bool calculo_pendiente;
 	uint8_t buffer_rx[2 * CANTIDAD_EJES];
 	adxl_eje_t ejes[CANTIDAD_EJES];
+	int32_t roll;
+	int32_t pitch;
 	uint32_t tramas_recibidas;
 }adxl_t;
 
@@ -86,5 +95,6 @@ typedef enum{
 
 void adxl_inicializar();
 void adxl_interrupcion_callback(void);
+void adxl_tarea(void);
 
 #endif /* INC_USR_ADXL_H_ */

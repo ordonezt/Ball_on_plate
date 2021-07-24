@@ -131,6 +131,8 @@ int main(void)
 
 	  servos_tarea();
 
+	  adxl_tarea();
+
 	  timer_tarea();
   }
   /* USER CODE END 3 */
