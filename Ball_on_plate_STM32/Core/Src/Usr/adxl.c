@@ -14,6 +14,7 @@
 #include "main.h"
 #include "adxl.h"
 #include "utiles.h"
+#include "cpu.h"
 #include <string.h>
 #include <math.h>
 
@@ -111,6 +112,26 @@ void adxl_inicializar()
 //	int_enable = adxl_leer_registro(REG_INT_ENABLE);
 }
 
+void adxl_transmitir(void)
+{
+	uint8_t trama[10] = {0x80,'A',0,0,0,0,0,0,0,0x90};
+
+	trama[2] =  adxl.roll 		  & 0x7F;
+	trama[3] = (adxl.roll >> 8)   & 0x7F;
+	trama[4] = (adxl.roll >> 16)  & 0x7F;
+
+	trama[5] =  adxl.pitch 		  & 0x7F;
+	trama[6] = (adxl.pitch >> 8)  & 0x7F;
+	trama[7] = (adxl.pitch >> 16) & 0x7F;
+
+	trama[8] =  (((adxl.roll  >> 7)  & 1) << 0) |
+				(((adxl.roll  >> 15) & 1) << 1) |
+				(((adxl.pitch >> 7)  & 1) << 2) |
+				(((adxl.pitch >> 15) & 1) << 3);
+
+	cpu_transmitir(trama, 10);
+}
+
 void adxl_tarea(void)
 {
 	if(adxl.calculo_pendiente == true)
@@ -123,62 +144,18 @@ void adxl_tarea(void)
 			adxl.ejes[eje].aceleracion = cuentas2g(adxl.ejes[eje].promedio);
 		}
 
-		adxl.pitch 	= (int32_t)(1000 * (180 / M_PI) * atan2f(adxl.ejes[EJE_Y].aceleracion, sqrtf(powf(adxl.ejes[EJE_X].aceleracion, 2) + powf(adxl.ejes[EJE_Z].aceleracion, 2))));
-		adxl.roll 	= (int32_t)(1000 * (180 / M_PI) * atan2f(-adxl.ejes[EJE_X].aceleracion, adxl.ejes[EJE_Z].aceleracion));
+		adxl.pitch 	= (uint32_t)(90000 + 1000 * (180 / M_PI) * atan2f(adxl.ejes[EJE_Y].aceleracion, sqrtf(powf(adxl.ejes[EJE_X].aceleracion, 2) + powf(adxl.ejes[EJE_Z].aceleracion, 2))));
+		adxl.roll 	= (uint32_t)(90000 + 1000 * (180 / M_PI) * atan2f(-adxl.ejes[EJE_X].aceleracion, adxl.ejes[EJE_Z].aceleracion));
+
 //		adxl.roll 	= (uint32_t)(1000 * (180 / M_PI) * atan2f(-adxl.ejes[EJE_X].aceleracion, sqrtf(powf(adxl.ejes[EJE_Y].aceleracion, 2) + powf(adxl.ejes[EJE_Z].aceleracion, 2))));
 
 //		adxl.pitch 	= (int32_t)(1000 * (180 / M_PI) * atanf(-adxl.ejes[EJE_X].aceleracion / sqrtf(powf(adxl.ejes[EJE_Y].aceleracion, 2) + powf(adxl.ejes[EJE_Z].aceleracion, 2))));
 //		//adxl.roll 	= (int32_t)(1000 * (180 / M_PI) * atan2f(-adxl.ejes[EJE_X].aceleracion, adxl.ejes[EJE_Z].aceleracion));
 //		adxl.roll 	= (int32_t)(1000 * (180 / M_PI) * atanf(adxl.ejes[EJE_Y].aceleracion / sqrtf(powf(adxl.ejes[EJE_X].aceleracion, 2) + powf(adxl.ejes[EJE_Z].aceleracion, 2))));
+
+		adxl_transmitir();
 	}
 }
-///*Aplicacion que lee el acelerometro promedia y calcula los angulos en °*/
-//void lectura_acelerometro()
-//{
-//
-//		adxl_read(0x32);
-//		x_new=((data_rec[1]<<8)|data_rec[0]);
-//		y_new=((data_rec[3]<<8)|data_rec[2]);
-//		z_new=((data_rec[5]<<8)|data_rec[4]);
-//
-//		promedio_angulos();
-//
-//
-//		xg=x*0.0078;
-//		yg=y*0.0078;
-//		zg=z*0.0078;
-//
-//		alpha=atan2(xg,zg)*(180/pi);
-//		beta=atan2(yg,zg)*(180/pi);
-//
-//		alpha_entero=truncf(alpha);
-//		beta_entero=truncf(beta);
-//
-//		alpha_decimal=(uint16_t)(100*fabs(alpha)-100*fabs(alpha_entero));
-//		beta_decimal=(uint16_t)(100*fabs(beta)-100*fabs(beta_entero));
-//
-//		itoa(alpha_entero,buff_ae,10);
-//		itoa(alpha_decimal,buff_ad,10);
-//		itoa(beta_entero,buff_be,10);
-//		itoa(beta_decimal,buff_bd,10);
-//
-//
-//		if(beta_decimal<9)
-//		{
-//		 buff_bd[1]=buff_bd[0];
-//		 buff_bd[0]='0';
-//		}
-//
-//		if(alpha_decimal<9)
-//		{
-//		 buff_ad[1]=buff_ad[0];
-//		 buff_ad[0]='0';
-//		}
-//
-//
-//
-//
-//}
 
 void adxl_interrupcion_callback(void)
 {

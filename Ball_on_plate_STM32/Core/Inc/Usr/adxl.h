@@ -63,8 +63,8 @@ typedef struct{
 	bool calculo_pendiente;
 	uint8_t buffer_rx[2 * CANTIDAD_EJES];
 	adxl_eje_t ejes[CANTIDAD_EJES];
-	int32_t roll;
-	int32_t pitch;
+	uint32_t roll;
+	uint32_t pitch;
 	uint32_t tramas_recibidas;
 }adxl_t;
 
