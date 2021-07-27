@@ -24,7 +24,12 @@ args = parser.parse_args()
 
 
 ser = serial.Serial(args.port,baudrate = 9600,timeout=1)
-trama = angulos2protocolo(args.ang_motor_1,args.ang_motor_2,args.ang_motor_3)
+
+args.ang_motor_1+=90
+args.ang_motor_2+=90
+args.ang_motor_3+=90
+
+trama = angulos2protocolo(args.ang_motor_1*1000,args.ang_motor_2*1000,args.ang_motor_3*1000)
 
 
 ser.write(bytes(trama))
