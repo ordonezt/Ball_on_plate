@@ -37,7 +37,7 @@ typedef struct{
 	uint16_t pin_gpio;
 	uint32_t canal;
 	TIM_HandleTypeDef *handler;
-
+	servo_num_t numero;
 	uint32_t miligrados;
 
 }servo_t;
