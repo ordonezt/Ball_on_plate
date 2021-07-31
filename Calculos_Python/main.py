@@ -34,14 +34,18 @@ def main():
 
 def control_loop():
     c=controller.controller_t()
+    ball_pos_test=settings.ball_t()
+    ball_pos_test.pos_x=settings.pos_x
+    ball_pos_test.pos_y=settings.pos_y
     while(True):
         time.sleep(1/30)
-        ball_pos = nicos_magic_opencv_function()
-        angle_x,angle_y=c.control(settings.ball_pos)
+        print(f"posx={ball_pos_test.pos_x}")
+        print(f"posy={ball_pos_test.pos_y}")
+        #angle_x,angle_y=c.control(settings.ball_pos)
+        angle_x,angle_y=c.control(ball_pos_test)
         print(f'angle_x={angle_x}\n')
         print(f'angle_y={angle_y}\n')
-        print("envio de comando a la plataforma comentado!")
-        #send_command_to_platform("/dev/ttyACM0",angle_x,angle_y,14)
+        send_command_to_platform("/dev/ttyACM0",angle_x,angle_y,10)
 
 
 if __name__ == '__main__':

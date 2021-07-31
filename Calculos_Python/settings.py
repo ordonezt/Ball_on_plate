@@ -12,7 +12,11 @@ def init():
     global Ki
     global Kd 
     global ball_pos
+    global pos_y
+    global pos_x
     Kp=0
     Ki=0
     Kd=0
+    pos_x=0
+    pos_y=0
     ball_pos=ball_t()

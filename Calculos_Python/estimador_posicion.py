@@ -145,7 +145,7 @@ def estimar_posicion():
         u_2=cv2.getTrackbarPos("Umbral2", "Umbrales")
         u_gris= cv2.getTrackbarPos("Ugr","Umbrales")
         u_area= cv2.getTrackbarPos("Area","Umbrales")
-
+        u_area=2000
         success, img = cap.read()
         #creo mascara llena de 0 para recortar imagen
         mask = np.zeros(img.shape[:2], dtype="uint8")
@@ -182,12 +182,11 @@ def estimar_posicion():
                 #cv2.drawContours(img,[cnt],-1, (0, 255, 0), 3)
                 cv2.circle(img, (int(x+h/2), int(y+w/2)), 10, (255, 0, 0),-1)
                 coordenadas=np.array([x+h/2-centro_x,y+w/2-centro_y])
-                if area < u_area:
-                    #Aca obtengo las coordenadas
-                    print("Las coordenadas son")
-                    settings.ball_pos.pos_x=coordenadas[0]
-                    settings.ball_pos.pos_x=coordenadas[1]
-                    print(coordenadas)
+                #Aca obtengo las coordenadas
+                print("Las coordenadas son")
+                settings.ball_pos.pos_x=coordenadas[0]
+                settings.ball_pos.pos_y=coordenadas[1]
+                print(coordenadas)
 
         cv2.imshow("Camara", img)
         cv2.imshow("Canny", canny)
@@ -198,4 +197,5 @@ def estimar_posicion():
 
 
 if __name__ == '__main__':
+    settings.init()
     estimar_posicion()

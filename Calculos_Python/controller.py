@@ -1,5 +1,4 @@
 import threading
-import keyboard
 import settings
 import time
 #declaro las variables como globales para que puedan ser accedidas por
@@ -32,9 +31,7 @@ class controller_t:
         Ki=settings.Ki
         Kp=settings.Kp
         Kd=settings.Kd
-        print(Ki)
-        print(Kp)
-        print(Kd)
+        pos=-pos
         #parte integral
         self.Integral=self.Integral + pos * Ki * self.T
         #parte proporcional
