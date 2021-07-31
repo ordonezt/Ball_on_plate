@@ -1,7 +1,6 @@
 import threading
 import keyboard
 import settings
-import test_GUI
 import time
 #declaro las variables como globales para que puedan ser accedidas por
 # el thread de modificación
@@ -33,7 +32,9 @@ class controller_t:
         Ki=settings.Ki
         Kp=settings.Kp
         Kd=settings.Kd
-
+        print(Ki)
+        print(Kp)
+        print(Kd)
         #parte integral
         self.Integral=self.Integral + pos * Ki * self.T
         #parte proporcional
