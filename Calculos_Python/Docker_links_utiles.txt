@@ -1,0 +1,17 @@
+https://github.com/Netflix/security_monkey/issues/1197
+
+https://stackoverflow.com/questions/44852484/access-webcam-using-opencv-python-in-docker/45646442
+
+https://stackoverflow.com/questions/65010313/opencv-videocapture-doesnt-work-ubuntu
+
+https://dev.to/niteshthapliyal/run-gui-application-inside-docker-container-3npg
+
+https://stackoverflow.com/questions/67347511/gstreamer-pipeline-opencv-rtsp-videocapture-does-not-work-in-docker-container
+
+https://stackoverflow.com/questions/36862589/install-opencv-in-a-docker-container
+
+https://forums.docker.com/t/not-able-to-display-video-in-docker/35190/4
+
+
+IMPORTANTE:
+https://forums.docker.com/t/start-a-gui-application-as-root-in-a-ubuntu-container/17069
