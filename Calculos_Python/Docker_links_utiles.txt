@@ -15,3 +15,10 @@ https://forums.docker.com/t/not-able-to-display-video-in-docker/35190/4
 
 IMPORTANTE:
 https://forums.docker.com/t/start-a-gui-application-as-root-in-a-ubuntu-container/17069
+
+
+SUPER REQUETE RECONTRA IMPORTANTE:
+De este link saque el docker que hizo que OpenCV funcione
+En el dockerfile tiene comentarios de que hacer para hacerlo funcionar
+
+https://github.com/oreillymedia/Learning-OpenCV-3_examples

@@ -1,0 +1,12 @@
+Para usar Docker:
+
+Ejecutar:
+make docker_build
+
+Cada vez que hacemos un cambio en el código
+
+Ejecutar:
+make docker_run
+
+para iniciar el docker, esto habre una consola de bash ahí pueden hacer
+python estimar_posicion.py por ejemplo para inciar el proyecto

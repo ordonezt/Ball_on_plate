@@ -63,15 +63,6 @@ RUN apt-get install -y cmake git libgtk2.0-dev pkg-config libavcodec-dev \
 libavformat-dev libswscale-dev python-dev python-numpy libtbb2 libtbb-dev \
 libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev unzip
 
-#instalacion python 3
-# RUN apt-get install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
-# RUN cd /tmp
-# RUN wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tar.xz
-# RUN tar -xf Python-3.8.0.tar.xz
-# RUN cd Python-3.8.0
-# RUN ./configure --enable-optimizations
-# RUN make altinstall
-#fin instalacion python3
 
 
 RUN apt-get install -y wget
@@ -114,6 +105,7 @@ RUN apt-get -y install python-pip
 RUN apt-get -y install libzbar0
 RUN pip install pyzbar tk
 
+#agrego los archivos de python
 ADD *.py . ./
 #ADD estimador_posicion.py .
 #ADD settings.py .

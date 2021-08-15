@@ -13,6 +13,7 @@ def empty(a):
 def calibrar_distancia_en_pixeles(cap):
     #primer while:
     #   hace la calibracion pixeles a cm
+    distancia_pixeles=0
     while (True):
         success,img = cap.read()
 
@@ -70,7 +71,7 @@ def calibrar_distancia_en_pixeles(cap):
     return distancia_pixeles
 
 
-#Función que toma las coordenas de los QRs y las promedia para obtener el centro de la plataforma
+#Funcion que toma las coordenas de los QRs y las promedia para obtener el centro de la plataforma
 #Se interrumpe el calculo y se guarda el centro al apretar 'w'
 # retorna dos valores centro_x y centro_y
 
