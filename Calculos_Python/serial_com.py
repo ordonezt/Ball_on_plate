@@ -6,10 +6,10 @@ import numpy as np
 """
 Created on Fri Jun 19:38 2021
 
-@author: Gastón Meghinasso
+@author: Gaston Meghinasso
 
-Toma como parametros los ángulos y altura deseadas en la plataforma y 
-Envía los comandos necesarios por USB para realizar el movimiento
+Toma como parametros los angulos y altura deseadas en la plataforma y 
+Envia los comandos necesarios por USB para realizar el movimiento
 """
 
 def send_command_to_platform(port,x_ang,y_ang,altura):

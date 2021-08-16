@@ -28,6 +28,10 @@ def main():
     t1.start()
     t2.start()
     GUI.start_GUI()
+    while (True):
+        settings.settings.pos_x=float(input("ingrese pos en x"))
+        settings.settings.pos_y=float(input("ingrese pos en y"))
+        
     #test_GUI.run_gui()
 
 
@@ -35,16 +39,13 @@ def main():
 def control_loop():
     c=controller.controller_t()
     ball_pos_test=settings.ball_t()
-    ball_pos_test.pos_x=settings.pos_x
-    ball_pos_test.pos_y=settings.pos_y
     while(True):
         time.sleep(1/30)
-        # print(f"posx={ball_pos_test.pos_x}")
-        # print(f"posy={ball_pos_test.pos_y}")
-        #angle_x,angle_y=c.control(settings.ball_pos)
-        angle_x,angle_y=c.control(ball_pos_test)
-        # print(f'angle_x={angle_x}\n')
-        # print(f'angle_y={angle_y}\n')
+        print(f"posx={ball_pos_test.pos_x}")
+        print(f"posy={ball_pos_test.pos_y}")
+        angle_x,angle_y=c.control(settings.ball_pos)
+        print('angle_x={0}\n'.format(angle_x))
+        print('angle_x={0}\n'.format(angle_y))
         send_command_to_platform("/dev/ttyACM0",angle_x,angle_y,10)
 
 

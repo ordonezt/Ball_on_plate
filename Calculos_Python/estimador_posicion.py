@@ -31,7 +31,7 @@ def calibrar_distancia_en_pixeles(cap):
 
 
         #busco los contornos de los QRs
-        _,contornos, _= cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        contornos, _= cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
         largo_contornos=len(contornos)
 
         if largo_contornos==2:
@@ -90,7 +90,7 @@ def obtener_centro_en_pixeles(cap):
             cv2.polylines(mask,[pts],True,(255,0,255),5)
 
 
-        _,contornos, _= cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        contornos, _= cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
         largo_contornos=len(contornos)
 
         if largo_contornos==2:
@@ -220,7 +220,7 @@ def estimar_posicion():
 
         #obtengo los contornos
         #podemos probar otros algoritmos de deteccion de contornos
-        _,contornos, _= cv2.findContours(canny, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        contornos, _= cv2.findContours(canny, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
         #detecto circulos en los contornos
         #La idea de este for es detectar los contornos y aproximarlos con poli lineas
