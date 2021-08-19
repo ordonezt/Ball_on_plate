@@ -1,0 +1,83 @@
+\hypertarget{structadxl__t}{}\doxysection{adxl\+\_\+t Struct Reference}
+\label{structadxl__t}\index{adxl\_t@{adxl\_t}}
+
+
+Variable de estado del acelerometro.  
+
+
+
+
+{\ttfamily \#include $<$adxl.\+h$>$}
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{structadxl__t_ac0d2cfd7d89f3cdf01adf14635d46b35}{inicializado}}
+\item 
+bool \mbox{\hyperlink{structadxl__t_aa3ad7dacc862bc0c182f8074b66cb558}{calculo\+\_\+pendiente}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structadxl__t_a8606dea5dd2cc515b374008339227926}{buffer\+\_\+rx}} \mbox{[}2 $\ast$\mbox{\hyperlink{adxl_8h_a1b1437b0bc7595478199a40b6c7bf1b5}{C\+A\+N\+T\+I\+D\+A\+D\+\_\+\+E\+J\+ES}}\mbox{]}
+\item 
+\mbox{\hyperlink{structadxl__eje__t}{adxl\+\_\+eje\+\_\+t}} \mbox{\hyperlink{structadxl__t_ad38935da796978c28419d89626a14d76}{ejes}} \mbox{[}\mbox{\hyperlink{adxl_8h_a1b1437b0bc7595478199a40b6c7bf1b5}{C\+A\+N\+T\+I\+D\+A\+D\+\_\+\+E\+J\+ES}}\mbox{]}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structadxl__t_aa3b5642411adaf40646f5e34947a9d3c}{roll}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structadxl__t_a518d9a551aab89ca75bc538adb275c18}{pitch}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structadxl__t_a3a8ee986e46090df094c561906a09eea}{tramas\+\_\+recibidas}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Variable de estado del acelerometro. 
+
+
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structadxl__t_a8606dea5dd2cc515b374008339227926}\label{structadxl__t_a8606dea5dd2cc515b374008339227926}} 
+\index{adxl\_t@{adxl\_t}!buffer\_rx@{buffer\_rx}}
+\index{buffer\_rx@{buffer\_rx}!adxl\_t@{adxl\_t}}
+\doxysubsubsection{\texorpdfstring{buffer\_rx}{buffer\_rx}}
+{\footnotesize\ttfamily uint8\+\_\+t adxl\+\_\+t\+::buffer\+\_\+rx\mbox{[}2 $\ast$\mbox{\hyperlink{adxl_8h_a1b1437b0bc7595478199a40b6c7bf1b5}{C\+A\+N\+T\+I\+D\+A\+D\+\_\+\+E\+J\+ES}}\mbox{]}}
+
+Buffer de recepcion de tramas \mbox{\Hypertarget{structadxl__t_aa3ad7dacc862bc0c182f8074b66cb558}\label{structadxl__t_aa3ad7dacc862bc0c182f8074b66cb558}} 
+\index{adxl\_t@{adxl\_t}!calculo\_pendiente@{calculo\_pendiente}}
+\index{calculo\_pendiente@{calculo\_pendiente}!adxl\_t@{adxl\_t}}
+\doxysubsubsection{\texorpdfstring{calculo\_pendiente}{calculo\_pendiente}}
+{\footnotesize\ttfamily bool adxl\+\_\+t\+::calculo\+\_\+pendiente}
+
+Flag de calculo de rotaciones pendientes \mbox{\Hypertarget{structadxl__t_ad38935da796978c28419d89626a14d76}\label{structadxl__t_ad38935da796978c28419d89626a14d76}} 
+\index{adxl\_t@{adxl\_t}!ejes@{ejes}}
+\index{ejes@{ejes}!adxl\_t@{adxl\_t}}
+\doxysubsubsection{\texorpdfstring{ejes}{ejes}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structadxl__eje__t}{adxl\+\_\+eje\+\_\+t}} adxl\+\_\+t\+::ejes\mbox{[}\mbox{\hyperlink{adxl_8h_a1b1437b0bc7595478199a40b6c7bf1b5}{C\+A\+N\+T\+I\+D\+A\+D\+\_\+\+E\+J\+ES}}\mbox{]}}
+
+Ejes de aceleracion \mbox{\Hypertarget{structadxl__t_ac0d2cfd7d89f3cdf01adf14635d46b35}\label{structadxl__t_ac0d2cfd7d89f3cdf01adf14635d46b35}} 
+\index{adxl\_t@{adxl\_t}!inicializado@{inicializado}}
+\index{inicializado@{inicializado}!adxl\_t@{adxl\_t}}
+\doxysubsubsection{\texorpdfstring{inicializado}{inicializado}}
+{\footnotesize\ttfamily bool adxl\+\_\+t\+::inicializado}
+
+Flag de dispositivo inicializado \mbox{\Hypertarget{structadxl__t_a518d9a551aab89ca75bc538adb275c18}\label{structadxl__t_a518d9a551aab89ca75bc538adb275c18}} 
+\index{adxl\_t@{adxl\_t}!pitch@{pitch}}
+\index{pitch@{pitch}!adxl\_t@{adxl\_t}}
+\doxysubsubsection{\texorpdfstring{pitch}{pitch}}
+{\footnotesize\ttfamily uint32\+\_\+t adxl\+\_\+t\+::pitch}
+
+Pitch actual \mbox{\Hypertarget{structadxl__t_aa3b5642411adaf40646f5e34947a9d3c}\label{structadxl__t_aa3b5642411adaf40646f5e34947a9d3c}} 
+\index{adxl\_t@{adxl\_t}!roll@{roll}}
+\index{roll@{roll}!adxl\_t@{adxl\_t}}
+\doxysubsubsection{\texorpdfstring{roll}{roll}}
+{\footnotesize\ttfamily uint32\+\_\+t adxl\+\_\+t\+::roll}
+
+Roll actual \mbox{\Hypertarget{structadxl__t_a3a8ee986e46090df094c561906a09eea}\label{structadxl__t_a3a8ee986e46090df094c561906a09eea}} 
+\index{adxl\_t@{adxl\_t}!tramas\_recibidas@{tramas\_recibidas}}
+\index{tramas\_recibidas@{tramas\_recibidas}!adxl\_t@{adxl\_t}}
+\doxysubsubsection{\texorpdfstring{tramas\_recibidas}{tramas\_recibidas}}
+{\footnotesize\ttfamily uint32\+\_\+t adxl\+\_\+t\+::tramas\+\_\+recibidas}
+
+Cantidad actual de tramas recibidas 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/\+Hdd\+Linux/\+Documentos/\+Facultad/\+Tomas/6to/\+Proyecto\+\_\+final/\+Ball\+\_\+on\+\_\+plate/\+Ball\+\_\+on\+\_\+plate\+\_\+\+S\+T\+M32/\+Core/\+Inc/\+Usr/\mbox{\hyperlink{adxl_8h}{adxl.\+h}}\end{DoxyCompactItemize}

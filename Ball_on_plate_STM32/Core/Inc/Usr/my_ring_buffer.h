@@ -1,8 +1,8 @@
-/*
- * my_ring_buffer.h
- *
- *  Created on: 25 ago. 2020
- *      Author: tomas
+/**
+ * @file my_ring_buffer.h
+ * @brief Libreria de buffers circulares genericos.
+ * @author Tomás Bautista Ordóñez
+ * @date 25/08/2020
  */
 
 #ifndef INC_MY_RING_BUFFER_H_

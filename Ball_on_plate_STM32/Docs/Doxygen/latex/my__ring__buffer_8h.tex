@@ -1,0 +1,93 @@
+\hypertarget{my__ring__buffer_8h}{}\doxysection{/mnt/\+Hdd\+Linux/\+Documentos/\+Facultad/\+Tomas/6to/\+Proyecto\+\_\+final/\+Ball\+\_\+on\+\_\+plate/\+Ball\+\_\+on\+\_\+plate\+\_\+\+S\+T\+M32/\+Core/\+Inc/\+Usr/my\+\_\+ring\+\_\+buffer.h File Reference}
+\label{my__ring__buffer_8h}\index{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Inc/Usr/my\_ring\_buffer.h@{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Inc/Usr/my\_ring\_buffer.h}}
+
+
+Libreria de buffers circulares genericos.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}}
+\begin{DoxyCompactList}\small\item\em Ring buffer structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}}~static
+\item 
+\#define \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}}~inline
+\item 
+\#define \mbox{\hyperlink{my__ring__buffer_8h_aacc3ee1a7f283f8ef65cea31f4436a95}{M\+AX}}(x,  y)~(((x) $>$ (y)) ? (x) \+: (y))
+\item 
+\#define \mbox{\hyperlink{my__ring__buffer_8h_a74e75242132eaabbc1c512488a135926}{M\+IN}}(x,  y)~(((x) $<$ (y)) ? (x) \+: (y))
+\item 
+\#define \mbox{\hyperlink{group__Ring__Buffer_gab0e914e769172c3291a9cc36962bc4de}{R\+B\+\_\+\+V\+H\+E\+AD}}(rb)~($\ast$(volatile uint32\+\_\+t $\ast$) \&(rb)-\/$>$head)
+\item 
+\#define \mbox{\hyperlink{group__Ring__Buffer_ga9f7c4d3e3029e8318582a147a5c37674}{R\+B\+\_\+\+V\+T\+A\+IL}}(rb)~($\ast$(volatile uint32\+\_\+t $\ast$) \&(rb)-\/$>$tail)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group__Ring__Buffer_gaaf3bb51f2228ea1bea603e19c7eba5bb}{Ring\+Buffer\+\_\+\+Init}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff, void $\ast$buffer, int item\+Size, int count)
+\begin{DoxyCompactList}\small\item\em Initialize ring buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__Ring__Buffer_ga5f66a5dd980ef03877cf8e0c96ad4ebb}{Ring\+Buffer\+\_\+\+Flush}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff)
+\begin{DoxyCompactList}\small\item\em Resets the ring buffer to empty. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} int \mbox{\hyperlink{group__Ring__Buffer_ga2fc4b40b03afb19c8ea942da3cf3faf1}{Ring\+Buffer\+\_\+\+Get\+Size}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff)
+\begin{DoxyCompactList}\small\item\em Return size the ring buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} int \mbox{\hyperlink{group__Ring__Buffer_ga7b69777c35694637acaf39e6bfcc1822}{Ring\+Buffer\+\_\+\+Get\+Count}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff)
+\begin{DoxyCompactList}\small\item\em Return number of items in the ring buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} int \mbox{\hyperlink{group__Ring__Buffer_ga75424687def8979742338366d39c8559}{Ring\+Buffer\+\_\+\+Get\+Free}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff)
+\begin{DoxyCompactList}\small\item\em Return number of free items in the ring buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} int \mbox{\hyperlink{group__Ring__Buffer_ga760da012435262add1d8d7aa79e873a0}{Ring\+Buffer\+\_\+\+Is\+Full}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff)
+\begin{DoxyCompactList}\small\item\em Return number of items in the ring buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} int \mbox{\hyperlink{group__Ring__Buffer_ga6f03e04a69262864bde4f35fc6f3dfb5}{Ring\+Buffer\+\_\+\+Is\+Empty}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff)
+\begin{DoxyCompactList}\small\item\em Return empty status of ring buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Ring__Buffer_gaafdee54f2525b2c7a983d1a631b42226}{Ring\+Buffer\+\_\+\+Insert}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff, const void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Insert a single item into ring buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Ring__Buffer_gafeafb521d4e03052ab2c893fd0e388d5}{Ring\+Buffer\+\_\+\+Insert\+Mult}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff, const void $\ast$data, int num)
+\begin{DoxyCompactList}\small\item\em Insert an array of items into ring buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Ring__Buffer_gaf3ce7f43677c2b4c6eedb3cc4962b80d}{Ring\+Buffer\+\_\+\+Pop}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Pop an item from the ring buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Ring__Buffer_gae0ef7bb96d1fe84ae1441b7c214b1e56}{Ring\+Buffer\+\_\+\+Pop\+Mult}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff, void $\ast$data, int num)
+\begin{DoxyCompactList}\small\item\em Pop an array of items from the ring buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Ring__Buffer_gaaf44eb32815f84e7c04f07d6736c3f85}{Ring\+Buffer\+\_\+\+Pop\+\_\+no\+\_\+invasivo}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Pop an item from the ring buffer but without incrementing the count. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Libreria de buffers circulares genericos. 
+
+\begin{DoxyAuthor}{Author}
+Tomás Bautista Ordóñez 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+25/08/2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}\label{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}} 
+\index{my\_ring\_buffer.h@{my\_ring\_buffer.h}!INLINE@{INLINE}}
+\index{INLINE@{INLINE}!my\_ring\_buffer.h@{my\_ring\_buffer.h}}
+\doxysubsubsection{\texorpdfstring{INLINE}{INLINE}}
+{\footnotesize\ttfamily \#define I\+N\+L\+I\+NE~inline}
+
+\mbox{\Hypertarget{my__ring__buffer_8h_aacc3ee1a7f283f8ef65cea31f4436a95}\label{my__ring__buffer_8h_aacc3ee1a7f283f8ef65cea31f4436a95}} 
+\index{my\_ring\_buffer.h@{my\_ring\_buffer.h}!MAX@{MAX}}
+\index{MAX@{MAX}!my\_ring\_buffer.h@{my\_ring\_buffer.h}}
+\doxysubsubsection{\texorpdfstring{MAX}{MAX}}
+{\footnotesize\ttfamily \#define M\+AX(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})~(((x) $>$ (y)) ? (x) \+: (y))}
+
+\mbox{\Hypertarget{my__ring__buffer_8h_a74e75242132eaabbc1c512488a135926}\label{my__ring__buffer_8h_a74e75242132eaabbc1c512488a135926}} 
+\index{my\_ring\_buffer.h@{my\_ring\_buffer.h}!MIN@{MIN}}
+\index{MIN@{MIN}!my\_ring\_buffer.h@{my\_ring\_buffer.h}}
+\doxysubsubsection{\texorpdfstring{MIN}{MIN}}
+{\footnotesize\ttfamily \#define M\+IN(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})~(((x) $<$ (y)) ? (x) \+: (y))}
+
+\mbox{\Hypertarget{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}\label{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}} 
+\index{my\_ring\_buffer.h@{my\_ring\_buffer.h}!STATIC@{STATIC}}
+\index{STATIC@{STATIC}!my\_ring\_buffer.h@{my\_ring\_buffer.h}}
+\doxysubsubsection{\texorpdfstring{STATIC}{STATIC}}
+{\footnotesize\ttfamily \#define S\+T\+A\+T\+IC~static}
+

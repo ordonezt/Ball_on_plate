@@ -1,0 +1,103 @@
+\hypertarget{usbd__cdc_8h}{}\doxysection{/mnt/\+Hdd\+Linux/\+Documentos/\+Facultad/\+Tomas/6to/\+Proyecto\+\_\+final/\+Ball\+\_\+on\+\_\+plate/\+Ball\+\_\+on\+\_\+plate\+\_\+\+S\+T\+M32/\+Middlewares/\+S\+T/\+S\+T\+M32\+\_\+\+U\+S\+B\+\_\+\+Device\+\_\+\+Library/\+Class/\+C\+D\+C/\+Inc/usbd\+\_\+cdc.h File Reference}
+\label{usbd__cdc_8h}\index{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Middlewares/ST/STM32\_USB\_Device\_Library/Class/CDC/Inc/usbd\_cdc.h@{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Middlewares/ST/STM32\_USB\_Device\_Library/Class/CDC/Inc/usbd\_cdc.h}}
+
+
+header file for the \mbox{\hyperlink{usbd__cdc_8c}{usbd\+\_\+cdc.\+c}} file.  
+
+
+{\ttfamily \#include \char`\"{}usbd\+\_\+ioreq.\+h\char`\"{}}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structUSBD__CDC__LineCodingTypeDef}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Line\+Coding\+Type\+Def}}
+\item 
+struct \mbox{\hyperlink{struct__USBD__CDC__Itf}{\+\_\+\+U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Itf}}
+\item 
+struct \mbox{\hyperlink{structUSBD__CDC__HandleTypeDef}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Handle\+Type\+Def}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_ga4f4f597c2cc62e7ec1c6ac609b3eb97f}{C\+D\+C\+\_\+\+I\+N\+\_\+\+EP}}~0x81U  /$\ast$ E\+P1 for data IN $\ast$/
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_ga7623890bcaec261a69ba4622909f065c}{C\+D\+C\+\_\+\+O\+U\+T\+\_\+\+EP}}~0x01U  /$\ast$ E\+P1 for data O\+UT $\ast$/
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_gaeca7f5392ff4fc889eeb511d7d09ce75}{C\+D\+C\+\_\+\+C\+M\+D\+\_\+\+EP}}~0x82U  /$\ast$ E\+P2 for C\+DC commands $\ast$/
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_gaf7a06817570b273e0573b561467d079e}{C\+D\+C\+\_\+\+H\+S\+\_\+\+B\+I\+N\+T\+E\+R\+V\+AL}}~0x10U
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_ga541cf34ef82ecf787cbc4871e825c3a3}{C\+D\+C\+\_\+\+F\+S\+\_\+\+B\+I\+N\+T\+E\+R\+V\+AL}}~0x10U
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_gae7db58dbfe2496ddba05ab027238a0c5}{C\+D\+C\+\_\+\+D\+A\+T\+A\+\_\+\+H\+S\+\_\+\+M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+S\+I\+ZE}}~512U  /$\ast$ Endpoint IN \& O\+UT Packet size $\ast$/
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_ga9aeccc7c5ce07c075d2e3da4c49f190c}{C\+D\+C\+\_\+\+D\+A\+T\+A\+\_\+\+F\+S\+\_\+\+M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+S\+I\+ZE}}~64U  /$\ast$ Endpoint IN \& O\+UT Packet size $\ast$/
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_gaf49cf1058cfa7de0867c1fae6de56b89}{C\+D\+C\+\_\+\+C\+M\+D\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+S\+I\+ZE}}~8U  /$\ast$ Control Endpoint Packet size $\ast$/
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_gaeace2e1a379f1cd527d26b7b713ba7d6}{U\+S\+B\+\_\+\+C\+D\+C\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+S\+C\+\_\+\+S\+IZ}}~67U
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_ga95a5ef21d7dd72fccf4aba23876d0e8b}{C\+D\+C\+\_\+\+D\+A\+T\+A\+\_\+\+H\+S\+\_\+\+I\+N\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+S\+I\+ZE}}~\mbox{\hyperlink{group__usbd__cdc__Exported__Defines_gae7db58dbfe2496ddba05ab027238a0c5}{C\+D\+C\+\_\+\+D\+A\+T\+A\+\_\+\+H\+S\+\_\+\+M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+S\+I\+ZE}}
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_gaa9171457c438566f480e14be07ff01a0}{C\+D\+C\+\_\+\+D\+A\+T\+A\+\_\+\+H\+S\+\_\+\+O\+U\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+S\+I\+ZE}}~\mbox{\hyperlink{group__usbd__cdc__Exported__Defines_gae7db58dbfe2496ddba05ab027238a0c5}{C\+D\+C\+\_\+\+D\+A\+T\+A\+\_\+\+H\+S\+\_\+\+M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+S\+I\+ZE}}
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_gaf5b83dd4c901b61bba2bc41c4916c28b}{C\+D\+C\+\_\+\+D\+A\+T\+A\+\_\+\+F\+S\+\_\+\+I\+N\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+S\+I\+ZE}}~\mbox{\hyperlink{group__usbd__cdc__Exported__Defines_ga9aeccc7c5ce07c075d2e3da4c49f190c}{C\+D\+C\+\_\+\+D\+A\+T\+A\+\_\+\+F\+S\+\_\+\+M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+S\+I\+ZE}}
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_gaa15fbc914f64d67118729351b9e46c3c}{C\+D\+C\+\_\+\+D\+A\+T\+A\+\_\+\+F\+S\+\_\+\+O\+U\+T\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+S\+I\+ZE}}~\mbox{\hyperlink{group__usbd__cdc__Exported__Defines_ga9aeccc7c5ce07c075d2e3da4c49f190c}{C\+D\+C\+\_\+\+D\+A\+T\+A\+\_\+\+F\+S\+\_\+\+M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+S\+I\+ZE}}
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_ga7aaa245703a0a2191c27697715f3727c}{C\+D\+C\+\_\+\+S\+E\+N\+D\+\_\+\+E\+N\+C\+A\+P\+S\+U\+L\+A\+T\+E\+D\+\_\+\+C\+O\+M\+M\+A\+ND}}~0x00U
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_ga6170632c774a3163b5a9927cc4e960ec}{C\+D\+C\+\_\+\+G\+E\+T\+\_\+\+E\+N\+C\+A\+P\+S\+U\+L\+A\+T\+E\+D\+\_\+\+R\+E\+S\+P\+O\+N\+SE}}~0x01U
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_ga893b79445f99070657e8d45f6495b174}{C\+D\+C\+\_\+\+S\+E\+T\+\_\+\+C\+O\+M\+M\+\_\+\+F\+E\+A\+T\+U\+RE}}~0x02U
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_gad0912dac888d01142b225b0c6f8a508f}{C\+D\+C\+\_\+\+G\+E\+T\+\_\+\+C\+O\+M\+M\+\_\+\+F\+E\+A\+T\+U\+RE}}~0x03U
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_ga6c79b8666110840333ad3785bf7ce87c}{C\+D\+C\+\_\+\+C\+L\+E\+A\+R\+\_\+\+C\+O\+M\+M\+\_\+\+F\+E\+A\+T\+U\+RE}}~0x04U
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_gad07ce089c8757b8d2ff37ddd83dc9351}{C\+D\+C\+\_\+\+S\+E\+T\+\_\+\+L\+I\+N\+E\+\_\+\+C\+O\+D\+I\+NG}}~0x20U
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_ga1068ab45668e413d964a01bc36fa2d43}{C\+D\+C\+\_\+\+G\+E\+T\+\_\+\+L\+I\+N\+E\+\_\+\+C\+O\+D\+I\+NG}}~0x21U
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_ga11c392243dec4d03970f1eaa1f8053ae}{C\+D\+C\+\_\+\+S\+E\+T\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+L\+I\+N\+E\+\_\+\+S\+T\+A\+TE}}~0x22U
+\item 
+\#define \mbox{\hyperlink{group__usbd__cdc__Exported__Defines_ga868c480caf0abda6b458c82281dda8ad}{C\+D\+C\+\_\+\+S\+E\+N\+D\+\_\+\+B\+R\+E\+AK}}~0x23U
+\item 
+\#define \mbox{\hyperlink{group__USBD__CORE__Exported__Variables_ga9ea5914811159ebdbeac6a7e0596dd9f}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+C\+L\+A\+SS}}~\&\mbox{\hyperlink{group__USBD__CDC__Private__Variables_ga4ea96ee34eb73d0dae16f02a232e9b5c}{U\+S\+B\+D\+\_\+\+C\+DC}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct__USBD__CDC__Itf}{\+\_\+\+U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Itf}} \mbox{\hyperlink{group__usbd__cdc_gabf661e5bb96ce4c5c8c1e241945dfe39}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Itf\+Type\+Def}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USB__CORE__Exported__Functions_ga41e2c9c5138449916310eb508a500752}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Register\+Interface}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, \mbox{\hyperlink{group__usbd__cdc_gabf661e5bb96ce4c5c8c1e241945dfe39}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Itf\+Type\+Def}} $\ast$fops)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Register\+Interface. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USB__CORE__Exported__Functions_gaae40b75b0ccc21281f4aa1e2fbdc0d4f}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Set\+Tx\+Buffer}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t $\ast$pbuff, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Set\+Tx\+Buffer. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USB__CORE__Exported__Functions_gaa8539af2ff78ce9a464def5de05726c3}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Set\+Rx\+Buffer}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t $\ast$pbuff)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Set\+Rx\+Buffer. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USB__CORE__Exported__Functions_ga55dff87863e1c76fd1139016da75903c}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Receive\+Packet}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Receive\+Packet prepare O\+UT Endpoint for reception. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USB__CORE__Exported__Functions_gac6132b25e4ac00c4d918d3d73a3be5c7}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Transmit\+Packet}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Transmit\+Packet Transmit packet on IN endpoint. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_ga2b6d250622c95103c31c8196e749a564}{U\+S\+B\+D\+\_\+\+Class\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Exported__Variables_ga4ea96ee34eb73d0dae16f02a232e9b5c}{U\+S\+B\+D\+\_\+\+C\+DC}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+header file for the \mbox{\hyperlink{usbd__cdc_8c}{usbd\+\_\+cdc.\+c}} file. 
+
+\begin{DoxyAuthor}{Author}
+M\+CD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2015 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under Ultimate Liberty license S\+L\+A0044, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: www.\+st.\+com/\+S\+L\+A0044 

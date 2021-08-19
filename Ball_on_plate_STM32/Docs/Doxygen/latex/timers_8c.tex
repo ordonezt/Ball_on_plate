@@ -1,0 +1,180 @@
+\hypertarget{timers_8c}{}\doxysection{/mnt/\+Hdd\+Linux/\+Documentos/\+Facultad/\+Tomas/6to/\+Proyecto\+\_\+final/\+Ball\+\_\+on\+\_\+plate/\+Ball\+\_\+on\+\_\+plate\+\_\+\+S\+T\+M32/\+Core/\+Src/\+Usr/timers.c File Reference}
+\label{timers_8c}\index{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Src/Usr/timers.c@{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Src/Usr/timers.c}}
+
+
+Maquinaria de timers por software. Timers de 1 ms hasta 49 dias y 17 horas.  
+
+
+{\ttfamily \#include \char`\"{}timers.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{timers_8c_a5d38c81e02aaa990719aff8a54eb092e}{timer\+\_\+get\+\_\+tick}} (void)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{timers_8c_af01cf7c028f822d0317b98572b8ef239}{timer\+\_\+agregar}} (uint32\+\_\+t ms, bool pausado, char id\mbox{[}$\,$\mbox{]}, void($\ast$accion)(char\mbox{[}$\,$\mbox{]}))
+\item 
+uint8\+\_\+t \mbox{\hyperlink{timers_8c_a01fad2396f4066d5c973c6c23a789053}{timer\+\_\+cambiar\+\_\+estado}} (char id\mbox{[}$\,$\mbox{]}, bool pausado)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{timers_8c_a942ab3d600cd3cae682350b425b792be}{timer\+\_\+borrar}} (char id\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{timers_8c_a21afd90d47d9ab910643c265ee475e3c}{timer\+\_\+borrar\+\_\+todos}} (void)
+\item 
+void \mbox{\hyperlink{timers_8c_a37dab7769aa070c48d37d0710837c892}{timer\+\_\+tarea}} (void)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{timers_8c_a78ef18e6a4172e571c554bcbfe242794}{timer\+\_\+configurar}} (uint32\+\_\+t ms, bool pausado, char id\mbox{[}$\,$\mbox{]}, void($\ast$accion)(char\mbox{[}$\,$\mbox{]}))
+\item 
+bool \mbox{\hyperlink{timers_8c_a0c06b7241521e785252bb3b3ea3ffca2}{timer\+\_\+esta\+\_\+corriendo}} (char id\mbox{[}$\,$\mbox{]})
+\item 
+uint32\+\_\+t \mbox{\hyperlink{timers_8c_a2e2da51da923dd912bf20f7d8e733d5a}{timer\+\_\+get\+\_\+cuenta}} (char id\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtimer__soft__t}{timer\+\_\+soft\+\_\+t}} \mbox{\hyperlink{timers_8c_a00eef4ba054407fac5e07280830ba366}{buffer\+\_\+timers}} \mbox{[}\mbox{\hyperlink{timers_8h_ab38e80c94ceb96d10b562f6a316c0e6a}{T\+I\+M\+E\+R\+\_\+\+L\+EN}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Buffer de timers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Maquinaria de timers por software. Timers de 1 ms hasta 49 dias y 17 horas. 
+
+\begin{DoxyAuthor}{Author}
+Tomás Bautista Ordóñez 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+01/09/2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{timers_8c_af01cf7c028f822d0317b98572b8ef239}\label{timers_8c_af01cf7c028f822d0317b98572b8ef239}} 
+\index{timers.c@{timers.c}!timer\_agregar@{timer\_agregar}}
+\index{timer\_agregar@{timer\_agregar}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{timer\_agregar()}{timer\_agregar()}}
+{\footnotesize\ttfamily uint8\+\_\+t timer\+\_\+agregar (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ms,  }\item[{bool}]{pausado,  }\item[{char}]{id\mbox{[}$\,$\mbox{]},  }\item[{void($\ast$)(char\mbox{[}$\,$\mbox{]})}]{accion }\end{DoxyParamCaption})}
+
+Agrega un timer a la lista con la configuracion espeificadada. 
+\begin{DoxyParams}{Parameters}
+{\em ms} & Cantidad de ms de timeout. \\
+\hline
+{\em pausado} & true o false. \\
+\hline
+{\em id} & Identificador del timer. \\
+\hline
+{\em accion} & Accion a ejecutar cuando expire el timer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 error, 0 ok. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timers_8c_a942ab3d600cd3cae682350b425b792be}\label{timers_8c_a942ab3d600cd3cae682350b425b792be}} 
+\index{timers.c@{timers.c}!timer\_borrar@{timer\_borrar}}
+\index{timer\_borrar@{timer\_borrar}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{timer\_borrar()}{timer\_borrar()}}
+{\footnotesize\ttfamily uint8\+\_\+t timer\+\_\+borrar (\begin{DoxyParamCaption}\item[{char}]{id\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Borra el timer. 
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador del timer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 error, 0 ok. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timers_8c_a21afd90d47d9ab910643c265ee475e3c}\label{timers_8c_a21afd90d47d9ab910643c265ee475e3c}} 
+\index{timers.c@{timers.c}!timer\_borrar\_todos@{timer\_borrar\_todos}}
+\index{timer\_borrar\_todos@{timer\_borrar\_todos}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{timer\_borrar\_todos()}{timer\_borrar\_todos()}}
+{\footnotesize\ttfamily void timer\+\_\+borrar\+\_\+todos (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Borra todos los timers. \mbox{\Hypertarget{timers_8c_a01fad2396f4066d5c973c6c23a789053}\label{timers_8c_a01fad2396f4066d5c973c6c23a789053}} 
+\index{timers.c@{timers.c}!timer\_cambiar\_estado@{timer\_cambiar\_estado}}
+\index{timer\_cambiar\_estado@{timer\_cambiar\_estado}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{timer\_cambiar\_estado()}{timer\_cambiar\_estado()}}
+{\footnotesize\ttfamily uint8\+\_\+t timer\+\_\+cambiar\+\_\+estado (\begin{DoxyParamCaption}\item[{char}]{id\mbox{[}$\,$\mbox{]},  }\item[{bool}]{pausado }\end{DoxyParamCaption})}
+
+Cambia el estado del timer (pausdo o no). 
+\begin{DoxyParams}{Parameters}
+{\em pausado} & true o false. \\
+\hline
+{\em id} & Identificador del timer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 error, 0 ok. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timers_8c_a78ef18e6a4172e571c554bcbfe242794}\label{timers_8c_a78ef18e6a4172e571c554bcbfe242794}} 
+\index{timers.c@{timers.c}!timer\_configurar@{timer\_configurar}}
+\index{timer\_configurar@{timer\_configurar}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{timer\_configurar()}{timer\_configurar()}}
+{\footnotesize\ttfamily uint8\+\_\+t timer\+\_\+configurar (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ms,  }\item[{bool}]{pausado,  }\item[{char}]{id\mbox{[}$\,$\mbox{]},  }\item[{void($\ast$)(char\mbox{[}$\,$\mbox{]})}]{accion }\end{DoxyParamCaption})}
+
+Configura o agrega un timer. 
+\begin{DoxyParams}{Parameters}
+{\em ms} & Cantidad de ms de timeout. \\
+\hline
+{\em pausado} & true o false. \\
+\hline
+{\em id} & Identificador del timer. \\
+\hline
+{\em accion} & Accion a ejecutar cuando expire el timer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 error, 0 ok. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timers_8c_a0c06b7241521e785252bb3b3ea3ffca2}\label{timers_8c_a0c06b7241521e785252bb3b3ea3ffca2}} 
+\index{timers.c@{timers.c}!timer\_esta\_corriendo@{timer\_esta\_corriendo}}
+\index{timer\_esta\_corriendo@{timer\_esta\_corriendo}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{timer\_esta\_corriendo()}{timer\_esta\_corriendo()}}
+{\footnotesize\ttfamily bool timer\+\_\+esta\+\_\+corriendo (\begin{DoxyParamCaption}\item[{char}]{id\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Checkea si el timer esta o no corriendo. 
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador del timer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true esta corriendo, false esta pausado. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timers_8c_a2e2da51da923dd912bf20f7d8e733d5a}\label{timers_8c_a2e2da51da923dd912bf20f7d8e733d5a}} 
+\index{timers.c@{timers.c}!timer\_get\_cuenta@{timer\_get\_cuenta}}
+\index{timer\_get\_cuenta@{timer\_get\_cuenta}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{timer\_get\_cuenta()}{timer\_get\_cuenta()}}
+{\footnotesize\ttfamily uint32\+\_\+t timer\+\_\+get\+\_\+cuenta (\begin{DoxyParamCaption}\item[{char}]{id\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Retorna la cuenta restante del timer. 
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador del timer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cuenta restante. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timers_8c_a5d38c81e02aaa990719aff8a54eb092e}\label{timers_8c_a5d38c81e02aaa990719aff8a54eb092e}} 
+\index{timers.c@{timers.c}!timer\_get\_tick@{timer\_get\_tick}}
+\index{timer\_get\_tick@{timer\_get\_tick}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{timer\_get\_tick()}{timer\_get\_tick()}}
+{\footnotesize\ttfamily uint32\+\_\+t timer\+\_\+get\+\_\+tick (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Retorna el valor del tick actual \begin{DoxyReturn}{Returns}
+tick actual. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timers_8c_a37dab7769aa070c48d37d0710837c892}\label{timers_8c_a37dab7769aa070c48d37d0710837c892}} 
+\index{timers.c@{timers.c}!timer\_tarea@{timer\_tarea}}
+\index{timer\_tarea@{timer\_tarea}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{timer\_tarea()}{timer\_tarea()}}
+{\footnotesize\ttfamily void timer\+\_\+tarea (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Configura y transmite la configuracion del canal y los latiguillos del mismo. 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{timers_8c_a00eef4ba054407fac5e07280830ba366}\label{timers_8c_a00eef4ba054407fac5e07280830ba366}} 
+\index{timers.c@{timers.c}!buffer\_timers@{buffer\_timers}}
+\index{buffer\_timers@{buffer\_timers}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{buffer\_timers}{buffer\_timers}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtimer__soft__t}{timer\+\_\+soft\+\_\+t}} buffer\+\_\+timers\mbox{[}\mbox{\hyperlink{timers_8h_ab38e80c94ceb96d10b562f6a316c0e6a}{T\+I\+M\+E\+R\+\_\+\+L\+EN}}\mbox{]}}
+
+
+
+Buffer de timers. 
+

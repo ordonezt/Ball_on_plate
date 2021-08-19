@@ -10,8 +10,13 @@
 
 #include "stm32f1xx.h"
 
+///Periodo de toggleo del led
 #define LED_COUNT 	COUNT_300ms
 
+/**
+ * @brief Inicializa la secuencia del led.
+ *
+ */
 void leds_inicializar(void);
 
 #endif /* INC_USR_LEDS_H_ */

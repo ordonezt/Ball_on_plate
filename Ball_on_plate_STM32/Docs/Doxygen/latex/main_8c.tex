@@ -1,0 +1,241 @@
+\hypertarget{main_8c}{}\doxysection{/mnt/\+Hdd\+Linux/\+Documentos/\+Facultad/\+Tomas/6to/\+Proyecto\+\_\+final/\+Ball\+\_\+on\+\_\+plate/\+Ball\+\_\+on\+\_\+plate\+\_\+\+S\+T\+M32/\+Core/\+Src/main.c File Reference}
+\label{main_8c}\index{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Src/main.c@{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Src/main.c}}
+
+
+\+: Main program body  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usb\+\_\+device.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}servos.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cpu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}leds.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}timers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}adxl.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_a70af21c671abfcc773614a9a4f63d920}{System\+Clock\+\_\+\+Config}} (void)
+\begin{DoxyCompactList}\small\item\em System Clock Configuration. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{main_8c_ae89fdd15729ad41a66911190fcbab23a}{M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em G\+P\+IO Initialization Function. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{main_8c_af952250b2d49718b385e14a76fa7c1b8}{M\+X\+\_\+\+T\+I\+M2\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em T\+I\+M2 Initialization Function. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{main_8c_a28dbf2494083ac5f39daa87bf09e4eb3}{M\+X\+\_\+\+S\+P\+I1\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em S\+P\+I1 Initialization Function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a286e38a65d1de9ac5dd6d29097cbac21}{U\+S\+B\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+Master\+Hard\+Reset}} (void)
+\item 
+int \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\begin{DoxyCompactList}\small\item\em The application entry point. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}{H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback}} (uint16\+\_\+t G\+P\+I\+O\+\_\+\+Pin)
+\begin{DoxyCompactList}\small\item\em E\+X\+TI line detection callbacks. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a1730ffe1e560465665eb47d9264826f9}{Error\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+S\+P\+I\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{main_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1}}
+\begin{DoxyCompactList}\small\item\em Manejador de S\+PI. \end{DoxyCompactList}\item 
+T\+I\+M\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{main_8c_a2c80fd5510e2990a59a5c90d745c716c}{htim2}}
+\begin{DoxyCompactList}\small\item\em Controlador del timer que usan los motores. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structservo__t}{servo\+\_\+t}} \mbox{\hyperlink{main_8c_abc2d4a936bed8cd53c83b70c6c1f6283}{servo\+\_\+A}}
+\item 
+\mbox{\hyperlink{structservo__t}{servo\+\_\+t}} \mbox{\hyperlink{main_8c_a178d079a47e36a5763cf3177afbbbe95}{servo\+\_\+B}}
+\item 
+\mbox{\hyperlink{structservo__t}{servo\+\_\+t}} \mbox{\hyperlink{main_8c_a43ba7233630b954a9a469a1dc1813150}{servo\+\_\+C}}
+\item 
+\mbox{\hyperlink{structservo__t}{servo\+\_\+t}} \mbox{\hyperlink{main_8c_a6fbb760a22b4d8f4c09a27b6d6e4e328}{servo\+\_\+D}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: Main program body 
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2021 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under B\+SD 3-\/Clause license, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: opensource.\+org/licenses/\+B\+S\+D-\/3-\/\+Clause 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_a1730ffe1e560465665eb47d9264826f9}\label{main_8c_a1730ffe1e560465665eb47d9264826f9}} 
+\index{main.c@{main.c}!Error\_Handler@{Error\_Handler}}
+\index{Error\_Handler@{Error\_Handler}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Error\_Handler()}{Error\_Handler()}}
+{\footnotesize\ttfamily void Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}\label{main_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}} 
+\index{main.c@{main.c}!HAL\_GPIO\_EXTI\_Callback@{HAL\_GPIO\_EXTI\_Callback}}
+\index{HAL\_GPIO\_EXTI\_Callback@{HAL\_GPIO\_EXTI\_Callback}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_GPIO\_EXTI\_Callback()}{HAL\_GPIO\_EXTI\_Callback()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+G\+P\+I\+O\+\_\+\+E\+X\+T\+I\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{G\+P\+I\+O\+\_\+\+Pin }\end{DoxyParamCaption})}
+
+
+
+E\+X\+TI line detection callbacks. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em G\+P\+I\+O\+\_\+\+Pin} & Specifies the pins connected E\+X\+TI line \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+The application entry point. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em int} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_ae89fdd15729ad41a66911190fcbab23a}\label{main_8c_ae89fdd15729ad41a66911190fcbab23a}} 
+\index{main.c@{main.c}!MX\_GPIO\_Init@{MX\_GPIO\_Init}}
+\index{MX\_GPIO\_Init@{MX\_GPIO\_Init}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{MX\_GPIO\_Init()}{MX\_GPIO\_Init()}}
+{\footnotesize\ttfamily static void M\+X\+\_\+\+G\+P\+I\+O\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+G\+P\+IO Initialization Function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_a28dbf2494083ac5f39daa87bf09e4eb3}\label{main_8c_a28dbf2494083ac5f39daa87bf09e4eb3}} 
+\index{main.c@{main.c}!MX\_SPI1\_Init@{MX\_SPI1\_Init}}
+\index{MX\_SPI1\_Init@{MX\_SPI1\_Init}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{MX\_SPI1\_Init()}{MX\_SPI1\_Init()}}
+{\footnotesize\ttfamily static void M\+X\+\_\+\+S\+P\+I1\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+S\+P\+I1 Initialization Function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_af952250b2d49718b385e14a76fa7c1b8}\label{main_8c_af952250b2d49718b385e14a76fa7c1b8}} 
+\index{main.c@{main.c}!MX\_TIM2\_Init@{MX\_TIM2\_Init}}
+\index{MX\_TIM2\_Init@{MX\_TIM2\_Init}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{MX\_TIM2\_Init()}{MX\_TIM2\_Init()}}
+{\footnotesize\ttfamily static void M\+X\+\_\+\+T\+I\+M2\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+T\+I\+M2 Initialization Function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_a70af21c671abfcc773614a9a4f63d920}\label{main_8c_a70af21c671abfcc773614a9a4f63d920}} 
+\index{main.c@{main.c}!SystemClock\_Config@{SystemClock\_Config}}
+\index{SystemClock\_Config@{SystemClock\_Config}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{SystemClock\_Config()}{SystemClock\_Config()}}
+{\footnotesize\ttfamily void System\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+System Clock Configuration. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Initializes the R\+CC Oscillators according to the specified parameters in the R\+C\+C\+\_\+\+Osc\+Init\+Type\+Def structure.
+
+Initializes the C\+PU, A\+HB and A\+PB buses clocks\mbox{\Hypertarget{main_8c_a286e38a65d1de9ac5dd6d29097cbac21}\label{main_8c_a286e38a65d1de9ac5dd6d29097cbac21}} 
+\index{main.c@{main.c}!USB\_DEVICE\_MasterHardReset@{USB\_DEVICE\_MasterHardReset}}
+\index{USB\_DEVICE\_MasterHardReset@{USB\_DEVICE\_MasterHardReset}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{USB\_DEVICE\_MasterHardReset()}{USB\_DEVICE\_MasterHardReset()}}
+{\footnotesize\ttfamily void U\+S\+B\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+Master\+Hard\+Reset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main_8c_a9c6222bae4d0328dd843ae099623b40b}\label{main_8c_a9c6222bae4d0328dd843ae099623b40b}} 
+\index{main.c@{main.c}!hspi1@{hspi1}}
+\index{hspi1@{hspi1}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{hspi1}{hspi1}}
+{\footnotesize\ttfamily S\+P\+I\+\_\+\+Handle\+Type\+Def hspi1}
+
+
+
+Manejador de S\+PI. 
+
+\mbox{\Hypertarget{main_8c_a2c80fd5510e2990a59a5c90d745c716c}\label{main_8c_a2c80fd5510e2990a59a5c90d745c716c}} 
+\index{main.c@{main.c}!htim2@{htim2}}
+\index{htim2@{htim2}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{htim2}{htim2}}
+{\footnotesize\ttfamily T\+I\+M\+\_\+\+Handle\+Type\+Def htim2}
+
+
+
+Controlador del timer que usan los motores. 
+
+\mbox{\Hypertarget{main_8c_abc2d4a936bed8cd53c83b70c6c1f6283}\label{main_8c_abc2d4a936bed8cd53c83b70c6c1f6283}} 
+\index{main.c@{main.c}!servo\_A@{servo\_A}}
+\index{servo\_A@{servo\_A}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{servo\_A}{servo\_A}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structservo__t}{servo\+\_\+t}} servo\+\_\+A}
+
+\mbox{\Hypertarget{main_8c_a178d079a47e36a5763cf3177afbbbe95}\label{main_8c_a178d079a47e36a5763cf3177afbbbe95}} 
+\index{main.c@{main.c}!servo\_B@{servo\_B}}
+\index{servo\_B@{servo\_B}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{servo\_B}{servo\_B}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structservo__t}{servo\+\_\+t}} servo\+\_\+B}
+
+\mbox{\Hypertarget{main_8c_a43ba7233630b954a9a469a1dc1813150}\label{main_8c_a43ba7233630b954a9a469a1dc1813150}} 
+\index{main.c@{main.c}!servo\_C@{servo\_C}}
+\index{servo\_C@{servo\_C}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{servo\_C}{servo\_C}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structservo__t}{servo\+\_\+t}} servo\+\_\+C}
+
+\mbox{\Hypertarget{main_8c_a6fbb760a22b4d8f4c09a27b6d6e4e328}\label{main_8c_a6fbb760a22b4d8f4c09a27b6d6e4e328}} 
+\index{main.c@{main.c}!servo\_D@{servo\_D}}
+\index{servo\_D@{servo\_D}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{servo\_D}{servo\_D}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structservo__t}{servo\+\_\+t}} servo\+\_\+D}
+

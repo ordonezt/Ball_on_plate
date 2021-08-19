@@ -1,0 +1,96 @@
+\hypertarget{usbd__cdc_8c}{}\doxysection{/mnt/\+Hdd\+Linux/\+Documentos/\+Facultad/\+Tomas/6to/\+Proyecto\+\_\+final/\+Ball\+\_\+on\+\_\+plate/\+Ball\+\_\+on\+\_\+plate\+\_\+\+S\+T\+M32/\+Middlewares/\+S\+T/\+S\+T\+M32\+\_\+\+U\+S\+B\+\_\+\+Device\+\_\+\+Library/\+Class/\+C\+D\+C/\+Src/usbd\+\_\+cdc.c File Reference}
+\label{usbd__cdc_8c}\index{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Middlewares/ST/STM32\_USB\_Device\_Library/Class/CDC/Src/usbd\_cdc.c@{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Middlewares/ST/STM32\_USB\_Device\_Library/Class/CDC/Src/usbd\_cdc.c}}
+
+
+This file provides the high layer firmware functions to manage the following functionalities of the U\+SB C\+DC Class\+:  
+
+
+{\ttfamily \#include \char`\"{}usbd\+\_\+cdc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usbd\+\_\+ctlreq.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{group__USBD__CDC__Private__Functions_gaf03e6f1387bf387afaf48de8bfbb8d08}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Init}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t cfgidx)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Init Initialize the C\+DC interface. \end{DoxyCompactList}\item 
+static uint8\+\_\+t \mbox{\hyperlink{group__USBD__CDC__Private__Functions_ga87ef1a72c7e1de3c8dce48347fd1e79f}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+De\+Init}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t cfgidx)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Init De\+Initialize the C\+DC layer. \end{DoxyCompactList}\item 
+static uint8\+\_\+t \mbox{\hyperlink{group__USBD__CDC__Private__Functions_gacdb2bfbf0e98617e8b4bcb8d193c1af1}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Setup}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_ga22931555b38fe36c9cd1d40a20c94180}{U\+S\+B\+D\+\_\+\+Setup\+Req\+Typedef}} $\ast$req)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Setup Handle the C\+DC specific requests. \end{DoxyCompactList}\item 
+static uint8\+\_\+t \mbox{\hyperlink{group__USBD__CDC__Private__Functions_ga88230c3726263e25b8c14cd86d1660c8}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Data\+In}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t epnum)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Data\+In Data sent on non-\/control IN endpoint. \end{DoxyCompactList}\item 
+static uint8\+\_\+t \mbox{\hyperlink{group__USBD__CDC__Private__Functions_ga8c9b0f14064c595b65c2e91265c4fa70}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Data\+Out}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t epnum)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Data\+Out Data received on non-\/control Out endpoint. \end{DoxyCompactList}\item 
+static uint8\+\_\+t \mbox{\hyperlink{group__USBD__CDC__Private__Functions_ga919fae383de28cdd39b2b9b76579f1f5}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+E\+P0\+\_\+\+Rx\+Ready}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+E\+P0\+\_\+\+Rx\+Ready Handle E\+P0 Rx Ready event. \end{DoxyCompactList}\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{group__USBD__CDC__Private__Functions_ga0a11f07e8e40a8f018640ed9c077208c}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Get\+F\+S\+Cfg\+Desc}} (uint16\+\_\+t $\ast$length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Get\+F\+S\+Cfg\+Desc Return configuration descriptor. \end{DoxyCompactList}\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{group__USBD__CDC__Private__Functions_gaf0b1b837f4653feed0b18411928295d9}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Get\+H\+S\+Cfg\+Desc}} (uint16\+\_\+t $\ast$length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Get\+H\+S\+Cfg\+Desc Return configuration descriptor. \end{DoxyCompactList}\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{group__USBD__CDC__Private__Functions_gaeafc224769cb91678e2068ebb91173cb}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Get\+Other\+Speed\+Cfg\+Desc}} (uint16\+\_\+t $\ast$length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Get\+Cfg\+Desc Return configuration descriptor. \end{DoxyCompactList}\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{group__USBD__CDC__Private__Functions_gadeffb3571641e96051930f66a43607a8}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Get\+Device\+Qualifier\+Descriptor}} (uint16\+\_\+t $\ast$length)
+\begin{DoxyCompactList}\small\item\em Device\+Qualifier\+Descriptor return Device Qualifier descriptor. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBD__CDC__Private__Functions_ga41e2c9c5138449916310eb508a500752}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Register\+Interface}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, \mbox{\hyperlink{group__usbd__cdc_gabf661e5bb96ce4c5c8c1e241945dfe39}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Itf\+Type\+Def}} $\ast$fops)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Register\+Interface. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBD__CDC__Private__Functions_gaae40b75b0ccc21281f4aa1e2fbdc0d4f}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Set\+Tx\+Buffer}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t $\ast$pbuff, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Set\+Tx\+Buffer. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBD__CDC__Private__Functions_gaa8539af2ff78ce9a464def5de05726c3}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Set\+Rx\+Buffer}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t $\ast$pbuff)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Set\+Rx\+Buffer. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBD__CDC__Private__Functions_gac6132b25e4ac00c4d918d3d73a3be5c7}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Transmit\+Packet}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Transmit\+Packet Transmit packet on IN endpoint. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USBD__CDC__Private__Functions_ga55dff87863e1c76fd1139016da75903c}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Receive\+Packet}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Receive\+Packet prepare O\+UT Endpoint for reception. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \+\_\+\+\_\+\+A\+L\+I\+G\+N\+\_\+\+B\+E\+G\+IN uint8\+\_\+t U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Device\+Qualifier\+Desc\mbox{[}\mbox{\hyperlink{group__USB__DEF__Exported__Defines_ga9cc11c4129f510c86f395c915e81f117}{U\+S\+B\+\_\+\+L\+E\+N\+\_\+\+D\+E\+V\+\_\+\+Q\+U\+A\+L\+I\+F\+I\+E\+R\+\_\+\+D\+E\+SC}}\mbox{]} \mbox{\hyperlink{group__USBD__CDC__Private__FunctionPrototypes_gaa88ef865b03935a16194a5f072a068dd}{\+\_\+\+\_\+\+A\+L\+I\+G\+N\+\_\+\+E\+ND}}
+\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_ga2b6d250622c95103c31c8196e749a564}{U\+S\+B\+D\+\_\+\+Class\+Type\+Def}} \mbox{\hyperlink{group__USBD__CDC__Private__Variables_ga4ea96ee34eb73d0dae16f02a232e9b5c}{U\+S\+B\+D\+\_\+\+C\+DC}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file provides the high layer firmware functions to manage the following functionalities of the U\+SB C\+DC Class\+: 
+
+\begin{DoxyAuthor}{Author}
+M\+CD Application Team
+\begin{DoxyItemize}
+\item Initialization and Configuration of high and low layer
+\item Enumeration as C\+DC Device (and enumeration for each implemented memory interface)
+\item O\+U\+T/\+IN data transfer
+\item Command IN transfer (class requests management)
+\item Error management
+\end{DoxyItemize}
+\end{DoxyAuthor}
+\begin{DoxyVerb}*
+*          ===================================================================
+*                                CDC Class Driver Description
+*          ===================================================================
+*           This driver manages the "Universal Serial Bus Class Definitions for Communications Devices
+*           Revision 1.2 November 16, 2007" and the sub-protocol specification of "Universal Serial Bus
+*           Communications Class Subclass Specification for PSTN Devices Revision 1.2 February 9, 2007"
+*           This driver implements the following aspects of the specification:
+*             - Device descriptor management
+*             - Configuration descriptor management
+*             - Enumeration as CDC device with 2 data endpoints (IN and OUT) and 1 command endpoint (IN)
+*             - Requests management (as described in section 6.2 in specification)
+*             - Abstract Control Model compliant
+*             - Union Functional collection (using 1 IN endpoint for control)
+*             - Data interface class
+*
+*           These aspects may be enriched or modified for a specific user application.
+*
+*            This driver doesn't implement the following aspects of the specification
+*            (but it is possible to manage these features with some modifications on this driver):
+*             - Any class-specific aspect relative to communication classes should be managed by user application.
+*             - All communication classes other than PSTN are not managed
+*
+*  \end{DoxyVerb}
+
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2015 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under Ultimate Liberty license S\+L\+A0044, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: www.\+st.\+com/\+S\+L\+A0044 

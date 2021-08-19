@@ -1,0 +1,247 @@
+\hypertarget{servos_8c}{}\doxysection{/mnt/\+Hdd\+Linux/\+Documentos/\+Facultad/\+Tomas/6to/\+Proyecto\+\_\+final/\+Ball\+\_\+on\+\_\+plate/\+Ball\+\_\+on\+\_\+plate\+\_\+\+S\+T\+M32/\+Core/\+Src/\+Usr/servos.c File Reference}
+\label{servos_8c}\index{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Src/Usr/servos.c@{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Src/Usr/servos.c}}
+
+
+En este archivo se encuentran las funciones de manejo de los servo motores.  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}servos.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}my\+\_\+ring\+\_\+buffer.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{servos_8c_a873f4150ea7aaac5a9bfab3568b23fdc}{C\+A\+N\+T\+I\+D\+A\+D\+\_\+\+S\+E\+R\+V\+OS}}~3
+\begin{DoxyCompactList}\small\item\em Cantidad de motores del sistema. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{servos_8c_a2bcb16b6cb3e479b97201b65fa1ac9d1}{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+A\+N\+G\+U\+L\+OS}}~4
+\begin{DoxyCompactList}\small\item\em Cantidad de movimientos que se acumulan en la cola. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{servos_8c_af2ededa1faf841c8057d51f457711559}{servos\+\_\+inicializar}} (void)
+\begin{DoxyCompactList}\small\item\em Inicializa los servos y los deja en reposo. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{servos_8c_ac5c066dc4f5a5fe790eb8c5f84ccf239}{servos\+\_\+miligrados2cuentas}} (uint32\+\_\+t miligrados)
+\begin{DoxyCompactList}\small\item\em Transforma miligrados en cuentas de P\+WM. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{servos_8c_a8b96118040aba6a85a3745124cdb8cc6}{servos\+\_\+cuentas2miligrados}} (uint32\+\_\+t cuentas)
+\begin{DoxyCompactList}\small\item\em Transforma cuentas de P\+WM en miligrados. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{servos_8c_ab883778d966a1cade823eebc02c90995}{servos\+\_\+set\+\_\+ancho\+\_\+de\+\_\+pulso}} (\mbox{\hyperlink{structservo__t}{servo\+\_\+t}} servo, uint32\+\_\+t cuentas)
+\begin{DoxyCompactList}\small\item\em Escribe en el perisferico P\+WM el ancho de pulso requerido. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{servos_8c_aad329d158fa7d8c49ef1f24560f78125}{servos\+\_\+set\+\_\+posicion}} (\mbox{\hyperlink{structservo__t}{servo\+\_\+t}} $\ast$servo, uint32\+\_\+t miligrados)
+\begin{DoxyCompactList}\small\item\em Mueve el servo a la posicion especificada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{servos_8c_acc76d152d6fc5870a20cdf60046bfec8}{servos\+\_\+tarea}} (void)
+\begin{DoxyCompactList}\small\item\em Tarea periodica que controla el movimiento de los servos. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{servos_8c_a63aaf31812cf06b6d643b9eff100c4dd}{servos\+\_\+agregar\+\_\+angulo}} (\mbox{\hyperlink{servos_8h_a8818e8406ff8c0c6ccb84170d6623e6c}{servo\+\_\+num\+\_\+t}} servo, uint32\+\_\+t miligrados)
+\begin{DoxyCompactList}\small\item\em Agrega un angulo a la lista de movimientos de un motor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+T\+I\+M\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{servos_8c_a2c80fd5510e2990a59a5c90d745c716c}{htim2}}
+\begin{DoxyCompactList}\small\item\em Controlador del timer que usan los motores. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structservo__t}{servo\+\_\+t}} \mbox{\hyperlink{servos_8c_a4165daa404ced24c753919b6b1bd02c8}{servos}} \mbox{[}\mbox{\hyperlink{servos_8c_a873f4150ea7aaac5a9bfab3568b23fdc}{C\+A\+N\+T\+I\+D\+A\+D\+\_\+\+S\+E\+R\+V\+OS}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Motores. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} \mbox{\hyperlink{servos_8c_ad34070cfe78978f098f50a277865d09e}{servo\+\_\+ring\+\_\+buffer}} \mbox{[}\mbox{\hyperlink{servos_8c_a873f4150ea7aaac5a9bfab3568b23fdc}{C\+A\+N\+T\+I\+D\+A\+D\+\_\+\+S\+E\+R\+V\+OS}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Ring buffer para los movimientos de cada motor. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{servos_8c_ab2ffe9121236e2352f8fdaf9cc873867}{servo\+\_\+angulos\+\_\+buffer}} \mbox{[}\mbox{\hyperlink{servos_8c_a2bcb16b6cb3e479b97201b65fa1ac9d1}{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+A\+N\+G\+U\+L\+OS}}\mbox{]}\mbox{[}\mbox{\hyperlink{servos_8c_a873f4150ea7aaac5a9bfab3568b23fdc}{C\+A\+N\+T\+I\+D\+A\+D\+\_\+\+S\+E\+R\+V\+OS}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Buffer de movimientos para cada motor. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{servos_8c_a6626056c74ff99804bc1fd42fbb94ae6}{flag\+\_\+inicializado}} \mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em Flag para saber si el motor ya fue inicializado, hay que reemlazarlo por la version del branch servos \mbox{[}To\+Do Borrar\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+En este archivo se encuentran las funciones de manejo de los servo motores. 
+
+\begin{DoxyAuthor}{Author}
+Tomás Bautista Ordóñez 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+14/04/2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{servos_8c_a873f4150ea7aaac5a9bfab3568b23fdc}\label{servos_8c_a873f4150ea7aaac5a9bfab3568b23fdc}} 
+\index{servos.c@{servos.c}!CANTIDAD\_SERVOS@{CANTIDAD\_SERVOS}}
+\index{CANTIDAD\_SERVOS@{CANTIDAD\_SERVOS}!servos.c@{servos.c}}
+\doxysubsubsection{\texorpdfstring{CANTIDAD\_SERVOS}{CANTIDAD\_SERVOS}}
+{\footnotesize\ttfamily \#define C\+A\+N\+T\+I\+D\+A\+D\+\_\+\+S\+E\+R\+V\+OS~3}
+
+
+
+Cantidad de motores del sistema. 
+
+\mbox{\Hypertarget{servos_8c_a2bcb16b6cb3e479b97201b65fa1ac9d1}\label{servos_8c_a2bcb16b6cb3e479b97201b65fa1ac9d1}} 
+\index{servos.c@{servos.c}!LONGITUD\_BUFFER\_ANGULOS@{LONGITUD\_BUFFER\_ANGULOS}}
+\index{LONGITUD\_BUFFER\_ANGULOS@{LONGITUD\_BUFFER\_ANGULOS}!servos.c@{servos.c}}
+\doxysubsubsection{\texorpdfstring{LONGITUD\_BUFFER\_ANGULOS}{LONGITUD\_BUFFER\_ANGULOS}}
+{\footnotesize\ttfamily \#define L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+A\+N\+G\+U\+L\+OS~4}
+
+
+
+Cantidad de movimientos que se acumulan en la cola. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{servos_8c_a63aaf31812cf06b6d643b9eff100c4dd}\label{servos_8c_a63aaf31812cf06b6d643b9eff100c4dd}} 
+\index{servos.c@{servos.c}!servos\_agregar\_angulo@{servos\_agregar\_angulo}}
+\index{servos\_agregar\_angulo@{servos\_agregar\_angulo}!servos.c@{servos.c}}
+\doxysubsubsection{\texorpdfstring{servos\_agregar\_angulo()}{servos\_agregar\_angulo()}}
+{\footnotesize\ttfamily uint8\+\_\+t servos\+\_\+agregar\+\_\+angulo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{servos_8h_a8818e8406ff8c0c6ccb84170d6623e6c}{servo\+\_\+num\+\_\+t}}}]{servo,  }\item[{uint32\+\_\+t}]{miligrados }\end{DoxyParamCaption})}
+
+
+
+Agrega un angulo a la lista de movimientos de un motor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em servo} & Motor que se quiere mover \\
+\hline
+{\em miligrados} & Angulo al que se quiere posicionar el motor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 Ok, 1 error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{servos_8c_a8b96118040aba6a85a3745124cdb8cc6}\label{servos_8c_a8b96118040aba6a85a3745124cdb8cc6}} 
+\index{servos.c@{servos.c}!servos\_cuentas2miligrados@{servos\_cuentas2miligrados}}
+\index{servos\_cuentas2miligrados@{servos\_cuentas2miligrados}!servos.c@{servos.c}}
+\doxysubsubsection{\texorpdfstring{servos\_cuentas2miligrados()}{servos\_cuentas2miligrados()}}
+{\footnotesize\ttfamily uint32\+\_\+t servos\+\_\+cuentas2miligrados (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{cuentas }\end{DoxyParamCaption})}
+
+
+
+Transforma cuentas de P\+WM en miligrados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cuentas} & Cuentas de P\+WM \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Angulo en miligrados correspondientes a esa cantidad de cuentas 
+\end{DoxyReturn}
+\mbox{\Hypertarget{servos_8c_af2ededa1faf841c8057d51f457711559}\label{servos_8c_af2ededa1faf841c8057d51f457711559}} 
+\index{servos.c@{servos.c}!servos\_inicializar@{servos\_inicializar}}
+\index{servos\_inicializar@{servos\_inicializar}!servos.c@{servos.c}}
+\doxysubsubsection{\texorpdfstring{servos\_inicializar()}{servos\_inicializar()}}
+{\footnotesize\ttfamily void servos\+\_\+inicializar (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Inicializa los servos y los deja en reposo. 
+
+Inicializa los servos y los deja en reposo. \mbox{\Hypertarget{servos_8c_ac5c066dc4f5a5fe790eb8c5f84ccf239}\label{servos_8c_ac5c066dc4f5a5fe790eb8c5f84ccf239}} 
+\index{servos.c@{servos.c}!servos\_miligrados2cuentas@{servos\_miligrados2cuentas}}
+\index{servos\_miligrados2cuentas@{servos\_miligrados2cuentas}!servos.c@{servos.c}}
+\doxysubsubsection{\texorpdfstring{servos\_miligrados2cuentas()}{servos\_miligrados2cuentas()}}
+{\footnotesize\ttfamily uint32\+\_\+t servos\+\_\+miligrados2cuentas (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{miligrados }\end{DoxyParamCaption})}
+
+
+
+Transforma miligrados en cuentas de P\+WM. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em miligrados} & Angulo a transformar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cuentas de P\+WM correspondientes a ese angulo 
+\end{DoxyReturn}
+\mbox{\Hypertarget{servos_8c_ab883778d966a1cade823eebc02c90995}\label{servos_8c_ab883778d966a1cade823eebc02c90995}} 
+\index{servos.c@{servos.c}!servos\_set\_ancho\_de\_pulso@{servos\_set\_ancho\_de\_pulso}}
+\index{servos\_set\_ancho\_de\_pulso@{servos\_set\_ancho\_de\_pulso}!servos.c@{servos.c}}
+\doxysubsubsection{\texorpdfstring{servos\_set\_ancho\_de\_pulso()}{servos\_set\_ancho\_de\_pulso()}}
+{\footnotesize\ttfamily void servos\+\_\+set\+\_\+ancho\+\_\+de\+\_\+pulso (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structservo__t}{servo\+\_\+t}}}]{servo,  }\item[{uint32\+\_\+t}]{cuentas }\end{DoxyParamCaption})}
+
+
+
+Escribe en el perisferico P\+WM el ancho de pulso requerido. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em servo} & Estructura al servo que se quiere mover \\
+\hline
+{\em cuentas} & a escribir \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{servos_8c_aad329d158fa7d8c49ef1f24560f78125}\label{servos_8c_aad329d158fa7d8c49ef1f24560f78125}} 
+\index{servos.c@{servos.c}!servos\_set\_posicion@{servos\_set\_posicion}}
+\index{servos\_set\_posicion@{servos\_set\_posicion}!servos.c@{servos.c}}
+\doxysubsubsection{\texorpdfstring{servos\_set\_posicion()}{servos\_set\_posicion()}}
+{\footnotesize\ttfamily void servos\+\_\+set\+\_\+posicion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structservo__t}{servo\+\_\+t}} $\ast$}]{servo,  }\item[{uint32\+\_\+t}]{miligrados }\end{DoxyParamCaption})}
+
+
+
+Mueve el servo a la posicion especificada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em servo} & Puntero al servo a modificar. \\
+\hline
+{\em miligrados} & Angulo final al que se quiere llegar \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{servos_8c_acc76d152d6fc5870a20cdf60046bfec8}\label{servos_8c_acc76d152d6fc5870a20cdf60046bfec8}} 
+\index{servos.c@{servos.c}!servos\_tarea@{servos\_tarea}}
+\index{servos\_tarea@{servos\_tarea}!servos.c@{servos.c}}
+\doxysubsubsection{\texorpdfstring{servos\_tarea()}{servos\_tarea()}}
+{\footnotesize\ttfamily void servos\+\_\+tarea (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Tarea periodica que controla el movimiento de los servos. 
+
+Tarea periodica que controla el movimiento de los servos 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{servos_8c_a6626056c74ff99804bc1fd42fbb94ae6}\label{servos_8c_a6626056c74ff99804bc1fd42fbb94ae6}} 
+\index{servos.c@{servos.c}!flag\_inicializado@{flag\_inicializado}}
+\index{flag\_inicializado@{flag\_inicializado}!servos.c@{servos.c}}
+\doxysubsubsection{\texorpdfstring{flag\_inicializado}{flag\_inicializado}}
+{\footnotesize\ttfamily uint8\+\_\+t flag\+\_\+inicializado\mbox{[}3\mbox{]}}
+
+
+
+Flag para saber si el motor ya fue inicializado, hay que reemlazarlo por la version del branch servos \mbox{[}To\+Do Borrar\mbox{]}. 
+
+\mbox{\Hypertarget{servos_8c_a2c80fd5510e2990a59a5c90d745c716c}\label{servos_8c_a2c80fd5510e2990a59a5c90d745c716c}} 
+\index{servos.c@{servos.c}!htim2@{htim2}}
+\index{htim2@{htim2}!servos.c@{servos.c}}
+\doxysubsubsection{\texorpdfstring{htim2}{htim2}}
+{\footnotesize\ttfamily T\+I\+M\+\_\+\+Handle\+Type\+Def htim2}
+
+
+
+Controlador del timer que usan los motores. 
+
+\mbox{\Hypertarget{servos_8c_ab2ffe9121236e2352f8fdaf9cc873867}\label{servos_8c_ab2ffe9121236e2352f8fdaf9cc873867}} 
+\index{servos.c@{servos.c}!servo\_angulos\_buffer@{servo\_angulos\_buffer}}
+\index{servo\_angulos\_buffer@{servo\_angulos\_buffer}!servos.c@{servos.c}}
+\doxysubsubsection{\texorpdfstring{servo\_angulos\_buffer}{servo\_angulos\_buffer}}
+{\footnotesize\ttfamily uint32\+\_\+t servo\+\_\+angulos\+\_\+buffer\mbox{[}\mbox{\hyperlink{servos_8c_a2bcb16b6cb3e479b97201b65fa1ac9d1}{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+A\+N\+G\+U\+L\+OS}}\mbox{]}\mbox{[}\mbox{\hyperlink{servos_8c_a873f4150ea7aaac5a9bfab3568b23fdc}{C\+A\+N\+T\+I\+D\+A\+D\+\_\+\+S\+E\+R\+V\+OS}}\mbox{]}}
+
+
+
+Buffer de movimientos para cada motor. 
+
+\mbox{\Hypertarget{servos_8c_ad34070cfe78978f098f50a277865d09e}\label{servos_8c_ad34070cfe78978f098f50a277865d09e}} 
+\index{servos.c@{servos.c}!servo\_ring\_buffer@{servo\_ring\_buffer}}
+\index{servo\_ring\_buffer@{servo\_ring\_buffer}!servos.c@{servos.c}}
+\doxysubsubsection{\texorpdfstring{servo\_ring\_buffer}{servo\_ring\_buffer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} servo\+\_\+ring\+\_\+buffer\mbox{[}\mbox{\hyperlink{servos_8c_a873f4150ea7aaac5a9bfab3568b23fdc}{C\+A\+N\+T\+I\+D\+A\+D\+\_\+\+S\+E\+R\+V\+OS}}\mbox{]}}
+
+
+
+Ring buffer para los movimientos de cada motor. 
+
+\mbox{\Hypertarget{servos_8c_a4165daa404ced24c753919b6b1bd02c8}\label{servos_8c_a4165daa404ced24c753919b6b1bd02c8}} 
+\index{servos.c@{servos.c}!servos@{servos}}
+\index{servos@{servos}!servos.c@{servos.c}}
+\doxysubsubsection{\texorpdfstring{servos}{servos}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structservo__t}{servo\+\_\+t}} servos\mbox{[}\mbox{\hyperlink{servos_8c_a873f4150ea7aaac5a9bfab3568b23fdc}{C\+A\+N\+T\+I\+D\+A\+D\+\_\+\+S\+E\+R\+V\+OS}}\mbox{]}}
+
+
+
+Motores. 
+

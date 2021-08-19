@@ -1,0 +1,218 @@
+\hypertarget{adxl_8c}{}\doxysection{/mnt/\+Hdd\+Linux/\+Documentos/\+Facultad/\+Tomas/6to/\+Proyecto\+\_\+final/\+Ball\+\_\+on\+\_\+plate/\+Ball\+\_\+on\+\_\+plate\+\_\+\+S\+T\+M32/\+Core/\+Src/\+Usr/adxl.c File Reference}
+\label{adxl_8c}\index{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Src/Usr/adxl.c@{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Src/Usr/adxl.c}}
+
+
+En este archivo se encuentran las funciones de manejo del acelerometro. I\+M\+P\+O\+R\+T\+A\+N\+TE No zarparse con la velocidad de S\+PI, el maximo segun la hoja de datos es 4M\+Hz, pero ya si superas 1,6M\+Hz tenes que empezar a poner delays entre datos de la trama los cuales son un quilombo y no es practico. O sea, no pongas una velocidad mayor de 1,6M\+Hz si no queres sufrir como sufri yo.  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}adxl.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utiles.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cpu.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{adxl_8c_a21ac493aec3a29546ca434f1032ce939}{adxl\+\_\+escribir\+\_\+registro}} (uint8\+\_\+t registro, uint8\+\_\+t valor)
+\begin{DoxyCompactList}\small\item\em Escribe un registro del acelerometro. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{adxl_8c_a6c91499a8eff88e7a21e2e776747a08c}{adxl\+\_\+leer\+\_\+registro}} (uint8\+\_\+t registro)
+\begin{DoxyCompactList}\small\item\em Lee un registro del acelerometro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adxl_8c_a9199a8cfbe2eeedfecdc16cfeb10a8f5}{adxl\+\_\+recibir\+\_\+trama}} (void)
+\begin{DoxyCompactList}\small\item\em Dispara una lectura de los 3 ejes de forma no bloqueante. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adxl_8c_ae601f675993a4359458c6edac738bb7b}{adxl\+\_\+alarma\+\_\+calculo}} (char timer\+\_\+id\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Timer periodico que dispara el calculo de rotaciones. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{adxl_8c_a3da5d634675c502a630813edd21ac64c}{cuentas2g}} (int16\+\_\+t cuentas)
+\begin{DoxyCompactList}\small\item\em Transforma las cuentas en gravedad. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adxl_8c_ae0f390656dffb1fd833778f3a41dc28c}{adxl\+\_\+inicializar}} ()
+\begin{DoxyCompactList}\small\item\em Inicializa el acelerometro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adxl_8c_a8c27cd98440929168549686351b001f3}{adxl\+\_\+transmitir}} (void)
+\begin{DoxyCompactList}\small\item\em Transmite a la cpu las rotaciones actuales. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adxl_8c_aa19e60fe9245b43f1d44a6fb3e4d5219}{adxl\+\_\+tarea}} (void)
+\begin{DoxyCompactList}\small\item\em Calcula y envia a la cpu las rotaciones cuando corresponde. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adxl_8c_a63b7540b6369a5e1ed7e2bc0117ecaa8}{adxl\+\_\+interrupcion\+\_\+callback}} (void)
+\begin{DoxyCompactList}\small\item\em Maneja la interrupcion por dato listo del acelerometro. Dispara una lectura de trama. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adxl_8c_a3df7021fe24cf874f8b1eec5bd5f4cb3}{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Rx\+Cplt\+Callback}} (S\+P\+I\+\_\+\+Handle\+Type\+Def $\ast$hspi)
+\begin{DoxyCompactList}\small\item\em Rx Transfer completed callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+S\+P\+I\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{adxl_8c_a9c6222bae4d0328dd843ae099623b40b}{hspi1}}
+\begin{DoxyCompactList}\small\item\em Manejador de S\+PI. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structadxl__t}{adxl\+\_\+t}} \mbox{\hyperlink{adxl_8c_ae8d2f4941f14f8ba5ab35074c44866ce}{adxl}}
+\begin{DoxyCompactList}\small\item\em Acelerometro. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+En este archivo se encuentran las funciones de manejo del acelerometro. I\+M\+P\+O\+R\+T\+A\+N\+TE No zarparse con la velocidad de S\+PI, el maximo segun la hoja de datos es 4M\+Hz, pero ya si superas 1,6M\+Hz tenes que empezar a poner delays entre datos de la trama los cuales son un quilombo y no es practico. O sea, no pongas una velocidad mayor de 1,6M\+Hz si no queres sufrir como sufri yo. 
+
+\begin{DoxyAuthor}{Author}
+Tomás Bautista Ordóñez 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+21/07/2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{adxl_8c_ae601f675993a4359458c6edac738bb7b}\label{adxl_8c_ae601f675993a4359458c6edac738bb7b}} 
+\index{adxl.c@{adxl.c}!adxl\_alarma\_calculo@{adxl\_alarma\_calculo}}
+\index{adxl\_alarma\_calculo@{adxl\_alarma\_calculo}!adxl.c@{adxl.c}}
+\doxysubsubsection{\texorpdfstring{adxl\_alarma\_calculo()}{adxl\_alarma\_calculo()}}
+{\footnotesize\ttfamily void adxl\+\_\+alarma\+\_\+calculo (\begin{DoxyParamCaption}\item[{char}]{timer\+\_\+id\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Timer periodico que dispara el calculo de rotaciones. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timer\+\_\+id} & Identificador del timer. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{adxl_8c_a21ac493aec3a29546ca434f1032ce939}\label{adxl_8c_a21ac493aec3a29546ca434f1032ce939}} 
+\index{adxl.c@{adxl.c}!adxl\_escribir\_registro@{adxl\_escribir\_registro}}
+\index{adxl\_escribir\_registro@{adxl\_escribir\_registro}!adxl.c@{adxl.c}}
+\doxysubsubsection{\texorpdfstring{adxl\_escribir\_registro()}{adxl\_escribir\_registro()}}
+{\footnotesize\ttfamily void adxl\+\_\+escribir\+\_\+registro (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{registro,  }\item[{uint8\+\_\+t}]{valor }\end{DoxyParamCaption})}
+
+
+
+Escribe un registro del acelerometro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em registro} & Registro a escribir. \\
+\hline
+{\em valor} & Valor que se quiere escribir. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{adxl_8c_ae0f390656dffb1fd833778f3a41dc28c}\label{adxl_8c_ae0f390656dffb1fd833778f3a41dc28c}} 
+\index{adxl.c@{adxl.c}!adxl\_inicializar@{adxl\_inicializar}}
+\index{adxl\_inicializar@{adxl\_inicializar}!adxl.c@{adxl.c}}
+\doxysubsubsection{\texorpdfstring{adxl\_inicializar()}{adxl\_inicializar()}}
+{\footnotesize\ttfamily void adxl\+\_\+inicializar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Inicializa el acelerometro. 
+
+\mbox{\Hypertarget{adxl_8c_a63b7540b6369a5e1ed7e2bc0117ecaa8}\label{adxl_8c_a63b7540b6369a5e1ed7e2bc0117ecaa8}} 
+\index{adxl.c@{adxl.c}!adxl\_interrupcion\_callback@{adxl\_interrupcion\_callback}}
+\index{adxl\_interrupcion\_callback@{adxl\_interrupcion\_callback}!adxl.c@{adxl.c}}
+\doxysubsubsection{\texorpdfstring{adxl\_interrupcion\_callback()}{adxl\_interrupcion\_callback()}}
+{\footnotesize\ttfamily void adxl\+\_\+interrupcion\+\_\+callback (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Maneja la interrupcion por dato listo del acelerometro. Dispara una lectura de trama. 
+
+\mbox{\Hypertarget{adxl_8c_a6c91499a8eff88e7a21e2e776747a08c}\label{adxl_8c_a6c91499a8eff88e7a21e2e776747a08c}} 
+\index{adxl.c@{adxl.c}!adxl\_leer\_registro@{adxl\_leer\_registro}}
+\index{adxl\_leer\_registro@{adxl\_leer\_registro}!adxl.c@{adxl.c}}
+\doxysubsubsection{\texorpdfstring{adxl\_leer\_registro()}{adxl\_leer\_registro()}}
+{\footnotesize\ttfamily uint8\+\_\+t adxl\+\_\+leer\+\_\+registro (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{registro }\end{DoxyParamCaption})}
+
+
+
+Lee un registro del acelerometro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em registro} & Registro a leer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Valor del registro leido. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{adxl_8c_a9199a8cfbe2eeedfecdc16cfeb10a8f5}\label{adxl_8c_a9199a8cfbe2eeedfecdc16cfeb10a8f5}} 
+\index{adxl.c@{adxl.c}!adxl\_recibir\_trama@{adxl\_recibir\_trama}}
+\index{adxl\_recibir\_trama@{adxl\_recibir\_trama}!adxl.c@{adxl.c}}
+\doxysubsubsection{\texorpdfstring{adxl\_recibir\_trama()}{adxl\_recibir\_trama()}}
+{\footnotesize\ttfamily void adxl\+\_\+recibir\+\_\+trama (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Dispara una lectura de los 3 ejes de forma no bloqueante. 
+
+\mbox{\Hypertarget{adxl_8c_aa19e60fe9245b43f1d44a6fb3e4d5219}\label{adxl_8c_aa19e60fe9245b43f1d44a6fb3e4d5219}} 
+\index{adxl.c@{adxl.c}!adxl\_tarea@{adxl\_tarea}}
+\index{adxl\_tarea@{adxl\_tarea}!adxl.c@{adxl.c}}
+\doxysubsubsection{\texorpdfstring{adxl\_tarea()}{adxl\_tarea()}}
+{\footnotesize\ttfamily void adxl\+\_\+tarea (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Calcula y envia a la cpu las rotaciones cuando corresponde. 
+
+\mbox{\Hypertarget{adxl_8c_a8c27cd98440929168549686351b001f3}\label{adxl_8c_a8c27cd98440929168549686351b001f3}} 
+\index{adxl.c@{adxl.c}!adxl\_transmitir@{adxl\_transmitir}}
+\index{adxl\_transmitir@{adxl\_transmitir}!adxl.c@{adxl.c}}
+\doxysubsubsection{\texorpdfstring{adxl\_transmitir()}{adxl\_transmitir()}}
+{\footnotesize\ttfamily void adxl\+\_\+transmitir (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Transmite a la cpu las rotaciones actuales. 
+
+Para mas detalle ver \char`\"{}protocolo\+\_\+comunicacion.\+ods\char`\"{}. \mbox{\Hypertarget{adxl_8c_a3da5d634675c502a630813edd21ac64c}\label{adxl_8c_a3da5d634675c502a630813edd21ac64c}} 
+\index{adxl.c@{adxl.c}!cuentas2g@{cuentas2g}}
+\index{cuentas2g@{cuentas2g}!adxl.c@{adxl.c}}
+\doxysubsubsection{\texorpdfstring{cuentas2g()}{cuentas2g()}}
+{\footnotesize\ttfamily float cuentas2g (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{cuentas }\end{DoxyParamCaption})}
+
+
+
+Transforma las cuentas en gravedad. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cuentas} & Cuentas de aceleracion a transformar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gravedad 
+\end{DoxyReturn}
+\mbox{\Hypertarget{adxl_8c_a3df7021fe24cf874f8b1eec5bd5f4cb3}\label{adxl_8c_a3df7021fe24cf874f8b1eec5bd5f4cb3}} 
+\index{adxl.c@{adxl.c}!HAL\_SPI\_RxCpltCallback@{HAL\_SPI\_RxCpltCallback}}
+\index{HAL\_SPI\_RxCpltCallback@{HAL\_SPI\_RxCpltCallback}!adxl.c@{adxl.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_SPI\_RxCpltCallback()}{HAL\_SPI\_RxCpltCallback()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Rx\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{S\+P\+I\+\_\+\+Handle\+Type\+Def $\ast$}]{hspi }\end{DoxyParamCaption})}
+
+
+
+Rx Transfer completed callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hspi} & pointer to a S\+P\+I\+\_\+\+Handle\+Type\+Def structure that contains the configuration information for S\+PI module. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{adxl_8c_ae8d2f4941f14f8ba5ab35074c44866ce}\label{adxl_8c_ae8d2f4941f14f8ba5ab35074c44866ce}} 
+\index{adxl.c@{adxl.c}!adxl@{adxl}}
+\index{adxl@{adxl}!adxl.c@{adxl.c}}
+\doxysubsubsection{\texorpdfstring{adxl}{adxl}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structadxl__t}{adxl\+\_\+t}} adxl}
+
+
+
+Acelerometro. 
+
+\mbox{\Hypertarget{adxl_8c_a9c6222bae4d0328dd843ae099623b40b}\label{adxl_8c_a9c6222bae4d0328dd843ae099623b40b}} 
+\index{adxl.c@{adxl.c}!hspi1@{hspi1}}
+\index{hspi1@{hspi1}!adxl.c@{adxl.c}}
+\doxysubsubsection{\texorpdfstring{hspi1}{hspi1}}
+{\footnotesize\ttfamily S\+P\+I\+\_\+\+Handle\+Type\+Def hspi1}
+
+
+
+Manejador de S\+PI. 
+

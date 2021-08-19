@@ -1,0 +1,368 @@
+\hypertarget{cpu_8c}{}\doxysection{/mnt/\+Hdd\+Linux/\+Documentos/\+Facultad/\+Tomas/6to/\+Proyecto\+\_\+final/\+Ball\+\_\+on\+\_\+plate/\+Ball\+\_\+on\+\_\+plate\+\_\+\+S\+T\+M32/\+Core/\+Src/\+Usr/cpu.c File Reference}
+\label{cpu_8c}\index{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Src/Usr/cpu.c@{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Src/Usr/cpu.c}}
+
+
+En este archivo se encuentran las cabeceras de las funciones de manejo de la comunicacion con la C\+PU.  
+
+
+{\ttfamily \#include \char`\"{}cpu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}usbd\+\_\+cdc\+\_\+if.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}my\+\_\+ring\+\_\+buffer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}timers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}servos.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{cpu_8c_a330a693c94e4cb03f63bc8f6f53139d5}{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+T\+R\+A\+M\+A\+\_\+\+RX}}~12
+\begin{DoxyCompactList}\small\item\em Longitud de las tramas recibidas. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{cpu_8c_a8c8619d98fbcd630bdad43e5488c20c4}{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+RX}}~64
+\begin{DoxyCompactList}\small\item\em Longitud en caracteres del buffer de tramas. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{cpu_8c_a29fc20d15a85b206369874d8323214ff}{I\+N\+I\+C\+I\+O\+\_\+\+T\+R\+A\+M\+A\+\_\+\+C\+PU}}~0x80
+\begin{DoxyCompactList}\small\item\em Caracter de inicio de trama. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{cpu_8c_a2e419607abea0eda6e6b06318a9a4440}{F\+I\+N\+\_\+\+T\+R\+A\+M\+A\+\_\+\+C\+PU}}~0x90
+\begin{DoxyCompactList}\small\item\em Caracter de fin de trama. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{cpu_8c_ab05db800fc9ef75b0c6d6730b2748cb3}{B\+Y\+T\+E\+\_\+\+M\+A\+B0}}~0
+\begin{DoxyCompactList}\small\item\em Motor A byte 0. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{cpu_8c_a2f4e805943c2a297f414d06e3e9d7437}{B\+Y\+T\+E\+\_\+\+M\+A\+B1}}~(\mbox{\hyperlink{cpu_8c_ab05db800fc9ef75b0c6d6730b2748cb3}{B\+Y\+T\+E\+\_\+\+M\+A\+B0}} + 1)
+\begin{DoxyCompactList}\small\item\em Motor A byte 1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{cpu_8c_ae5c094c06fc6affd2cf590ae86f1f27b}{B\+Y\+T\+E\+\_\+\+M\+A\+B2}}~(\mbox{\hyperlink{cpu_8c_a2f4e805943c2a297f414d06e3e9d7437}{B\+Y\+T\+E\+\_\+\+M\+A\+B1}} + 1)
+\begin{DoxyCompactList}\small\item\em Motor A byte 2. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{cpu_8c_ae2966b84d32f15e35d904895eca2df1e}{B\+Y\+T\+E\+\_\+\+M\+B\+B0}}~(\mbox{\hyperlink{cpu_8c_ae5c094c06fc6affd2cf590ae86f1f27b}{B\+Y\+T\+E\+\_\+\+M\+A\+B2}} + 1)
+\begin{DoxyCompactList}\small\item\em Motor B byte 0. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{cpu_8c_a9415ec737027909199d7106d922bde6a}{B\+Y\+T\+E\+\_\+\+M\+B\+B1}}~(\mbox{\hyperlink{cpu_8c_ae2966b84d32f15e35d904895eca2df1e}{B\+Y\+T\+E\+\_\+\+M\+B\+B0}} + 1)
+\begin{DoxyCompactList}\small\item\em Motor B byte 1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{cpu_8c_abc931373e2bb22156869a90acf1f9447}{B\+Y\+T\+E\+\_\+\+M\+B\+B2}}~(\mbox{\hyperlink{cpu_8c_a9415ec737027909199d7106d922bde6a}{B\+Y\+T\+E\+\_\+\+M\+B\+B1}} + 1)
+\begin{DoxyCompactList}\small\item\em Motor B byte 2. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{cpu_8c_a1839bf1ed2599e295d453620cc17713f}{B\+Y\+T\+E\+\_\+\+M\+C\+B0}}~(\mbox{\hyperlink{cpu_8c_abc931373e2bb22156869a90acf1f9447}{B\+Y\+T\+E\+\_\+\+M\+B\+B2}} + 1)
+\begin{DoxyCompactList}\small\item\em Motor C byte 0. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{cpu_8c_a0359ac58ced4ef899fa5f89ddf24243d}{B\+Y\+T\+E\+\_\+\+M\+C\+B1}}~(\mbox{\hyperlink{cpu_8c_a1839bf1ed2599e295d453620cc17713f}{B\+Y\+T\+E\+\_\+\+M\+C\+B0}} + 1)
+\begin{DoxyCompactList}\small\item\em Motor C byte 1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{cpu_8c_ae70fa95a8af78196cb19ab33a487398f}{B\+Y\+T\+E\+\_\+\+M\+C\+B2}}~(\mbox{\hyperlink{cpu_8c_a0359ac58ced4ef899fa5f89ddf24243d}{B\+Y\+T\+E\+\_\+\+M\+C\+B1}} + 1)
+\begin{DoxyCompactList}\small\item\em Motor C byte 2. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{cpu_8c_ac8312ed1b0844e4a7d30c020394db249}{B\+Y\+T\+E\+\_\+\+M\+SB}}~(\mbox{\hyperlink{cpu_8c_ae70fa95a8af78196cb19ab33a487398f}{B\+Y\+T\+E\+\_\+\+M\+C\+B2}} + 1)
+\begin{DoxyCompactList}\small\item\em Byte de bits mas significativos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{cpu_8c_a897bda261b4c458b7328117e5757930d}{cpu\+\_\+transmitir\+\_\+basico}} (char timer\+\_\+id\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Transmite periodicamente un mensaje basico a la C\+PU. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cpu_8c_a48db045378dd9fd0bba57a1718f7b829}{cpu\+\_\+transmitir}} (uint8\+\_\+t mensaje\mbox{[}$\,$\mbox{]}, uint32\+\_\+t longitud)
+\begin{DoxyCompactList}\small\item\em Transmite una trama a la C\+PU. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cpu_8c_a8031ce114e0bd5d6ee9de8421798e15a}{cpu\+\_\+inicializar}} (void)
+\begin{DoxyCompactList}\small\item\em Inicializa la interfaz de comunicacion con la C\+PU. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{cpu_8c_aae573dcefe47a3d81a150372f9de6202}{cpu\+\_\+recibir}} (uint8\+\_\+t mensaje\mbox{[}$\,$\mbox{]}, uint32\+\_\+t longitud)
+\begin{DoxyCompactList}\small\item\em Recibe una trama de comunicacion. Recibe una trama de comunicacion de la C\+PU y la inserta en una cola para ser procesada. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{cpu_8c_a885e407937409483f25e58a5385e0225}{trama2angulos}} (uint8\+\_\+t mensaje\mbox{[}$\,$\mbox{]}, uint32\+\_\+t $\ast$angulo\+\_\+a, uint32\+\_\+t $\ast$angulo\+\_\+b, uint32\+\_\+t $\ast$angulo\+\_\+c)
+\begin{DoxyCompactList}\small\item\em Transforma una trama de comunicacion en angulos para los motores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cpu_8c_a18ef9d527166d22af0f07d3e943c6b9f}{cpu\+\_\+rx}} (void)
+\begin{DoxyCompactList}\small\item\em Procesa los datos recibidos de la C\+PU. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cpu_8c_a0a5237bf3c31d603d015a233c63d2425}{cpu\+\_\+tx\+\_\+rx}} (void)
+\begin{DoxyCompactList}\small\item\em Maneja la recepcion y transmision de datos con la C\+PU. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} \mbox{\hyperlink{cpu_8c_a4dcc2f184e61426dbf34a89861a65e54}{cpu\+\_\+rx\+\_\+ring\+\_\+buffer}}
+\begin{DoxyCompactList}\small\item\em Buffer circular par guardar tramas recibidas. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{cpu_8c_a34858d775003bb6abb02aa88a65cfd57}{cpu\+\_\+rx\+\_\+buffer}} \mbox{[}\mbox{\hyperlink{cpu_8c_a8c8619d98fbcd630bdad43e5488c20c4}{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+RX}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Buffer de recepcion de tramas. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{cpu_8c_a5f32e360737c2104ac2c16719b0dd641}{buffer\+\_\+tx}} = \char`\"{}Hola Mundo!\textbackslash{}n\char`\"{}
+\begin{DoxyCompactList}\small\item\em Buffer para transmision de mensaje basico. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+En este archivo se encuentran las cabeceras de las funciones de manejo de la comunicacion con la C\+PU. 
+
+En este archivo se encuentran las funciones de manejo de la comunicacion con la C\+PU.
+
+\begin{DoxyAuthor}{Author}
+Tomás Bautista Ordóñez 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+16/04/2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{cpu_8c_ab05db800fc9ef75b0c6d6730b2748cb3}\label{cpu_8c_ab05db800fc9ef75b0c6d6730b2748cb3}} 
+\index{cpu.c@{cpu.c}!BYTE\_MAB0@{BYTE\_MAB0}}
+\index{BYTE\_MAB0@{BYTE\_MAB0}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{BYTE\_MAB0}{BYTE\_MAB0}}
+{\footnotesize\ttfamily \#define B\+Y\+T\+E\+\_\+\+M\+A\+B0~0}
+
+
+
+Motor A byte 0. 
+
+\mbox{\Hypertarget{cpu_8c_a2f4e805943c2a297f414d06e3e9d7437}\label{cpu_8c_a2f4e805943c2a297f414d06e3e9d7437}} 
+\index{cpu.c@{cpu.c}!BYTE\_MAB1@{BYTE\_MAB1}}
+\index{BYTE\_MAB1@{BYTE\_MAB1}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{BYTE\_MAB1}{BYTE\_MAB1}}
+{\footnotesize\ttfamily \#define B\+Y\+T\+E\+\_\+\+M\+A\+B1~(\mbox{\hyperlink{cpu_8c_ab05db800fc9ef75b0c6d6730b2748cb3}{B\+Y\+T\+E\+\_\+\+M\+A\+B0}} + 1)}
+
+
+
+Motor A byte 1. 
+
+\mbox{\Hypertarget{cpu_8c_ae5c094c06fc6affd2cf590ae86f1f27b}\label{cpu_8c_ae5c094c06fc6affd2cf590ae86f1f27b}} 
+\index{cpu.c@{cpu.c}!BYTE\_MAB2@{BYTE\_MAB2}}
+\index{BYTE\_MAB2@{BYTE\_MAB2}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{BYTE\_MAB2}{BYTE\_MAB2}}
+{\footnotesize\ttfamily \#define B\+Y\+T\+E\+\_\+\+M\+A\+B2~(\mbox{\hyperlink{cpu_8c_a2f4e805943c2a297f414d06e3e9d7437}{B\+Y\+T\+E\+\_\+\+M\+A\+B1}} + 1)}
+
+
+
+Motor A byte 2. 
+
+\mbox{\Hypertarget{cpu_8c_ae2966b84d32f15e35d904895eca2df1e}\label{cpu_8c_ae2966b84d32f15e35d904895eca2df1e}} 
+\index{cpu.c@{cpu.c}!BYTE\_MBB0@{BYTE\_MBB0}}
+\index{BYTE\_MBB0@{BYTE\_MBB0}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{BYTE\_MBB0}{BYTE\_MBB0}}
+{\footnotesize\ttfamily \#define B\+Y\+T\+E\+\_\+\+M\+B\+B0~(\mbox{\hyperlink{cpu_8c_ae5c094c06fc6affd2cf590ae86f1f27b}{B\+Y\+T\+E\+\_\+\+M\+A\+B2}} + 1)}
+
+
+
+Motor B byte 0. 
+
+\mbox{\Hypertarget{cpu_8c_a9415ec737027909199d7106d922bde6a}\label{cpu_8c_a9415ec737027909199d7106d922bde6a}} 
+\index{cpu.c@{cpu.c}!BYTE\_MBB1@{BYTE\_MBB1}}
+\index{BYTE\_MBB1@{BYTE\_MBB1}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{BYTE\_MBB1}{BYTE\_MBB1}}
+{\footnotesize\ttfamily \#define B\+Y\+T\+E\+\_\+\+M\+B\+B1~(\mbox{\hyperlink{cpu_8c_ae2966b84d32f15e35d904895eca2df1e}{B\+Y\+T\+E\+\_\+\+M\+B\+B0}} + 1)}
+
+
+
+Motor B byte 1. 
+
+\mbox{\Hypertarget{cpu_8c_abc931373e2bb22156869a90acf1f9447}\label{cpu_8c_abc931373e2bb22156869a90acf1f9447}} 
+\index{cpu.c@{cpu.c}!BYTE\_MBB2@{BYTE\_MBB2}}
+\index{BYTE\_MBB2@{BYTE\_MBB2}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{BYTE\_MBB2}{BYTE\_MBB2}}
+{\footnotesize\ttfamily \#define B\+Y\+T\+E\+\_\+\+M\+B\+B2~(\mbox{\hyperlink{cpu_8c_a9415ec737027909199d7106d922bde6a}{B\+Y\+T\+E\+\_\+\+M\+B\+B1}} + 1)}
+
+
+
+Motor B byte 2. 
+
+\mbox{\Hypertarget{cpu_8c_a1839bf1ed2599e295d453620cc17713f}\label{cpu_8c_a1839bf1ed2599e295d453620cc17713f}} 
+\index{cpu.c@{cpu.c}!BYTE\_MCB0@{BYTE\_MCB0}}
+\index{BYTE\_MCB0@{BYTE\_MCB0}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{BYTE\_MCB0}{BYTE\_MCB0}}
+{\footnotesize\ttfamily \#define B\+Y\+T\+E\+\_\+\+M\+C\+B0~(\mbox{\hyperlink{cpu_8c_abc931373e2bb22156869a90acf1f9447}{B\+Y\+T\+E\+\_\+\+M\+B\+B2}} + 1)}
+
+
+
+Motor C byte 0. 
+
+\mbox{\Hypertarget{cpu_8c_a0359ac58ced4ef899fa5f89ddf24243d}\label{cpu_8c_a0359ac58ced4ef899fa5f89ddf24243d}} 
+\index{cpu.c@{cpu.c}!BYTE\_MCB1@{BYTE\_MCB1}}
+\index{BYTE\_MCB1@{BYTE\_MCB1}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{BYTE\_MCB1}{BYTE\_MCB1}}
+{\footnotesize\ttfamily \#define B\+Y\+T\+E\+\_\+\+M\+C\+B1~(\mbox{\hyperlink{cpu_8c_a1839bf1ed2599e295d453620cc17713f}{B\+Y\+T\+E\+\_\+\+M\+C\+B0}} + 1)}
+
+
+
+Motor C byte 1. 
+
+\mbox{\Hypertarget{cpu_8c_ae70fa95a8af78196cb19ab33a487398f}\label{cpu_8c_ae70fa95a8af78196cb19ab33a487398f}} 
+\index{cpu.c@{cpu.c}!BYTE\_MCB2@{BYTE\_MCB2}}
+\index{BYTE\_MCB2@{BYTE\_MCB2}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{BYTE\_MCB2}{BYTE\_MCB2}}
+{\footnotesize\ttfamily \#define B\+Y\+T\+E\+\_\+\+M\+C\+B2~(\mbox{\hyperlink{cpu_8c_a0359ac58ced4ef899fa5f89ddf24243d}{B\+Y\+T\+E\+\_\+\+M\+C\+B1}} + 1)}
+
+
+
+Motor C byte 2. 
+
+\mbox{\Hypertarget{cpu_8c_ac8312ed1b0844e4a7d30c020394db249}\label{cpu_8c_ac8312ed1b0844e4a7d30c020394db249}} 
+\index{cpu.c@{cpu.c}!BYTE\_MSB@{BYTE\_MSB}}
+\index{BYTE\_MSB@{BYTE\_MSB}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{BYTE\_MSB}{BYTE\_MSB}}
+{\footnotesize\ttfamily \#define B\+Y\+T\+E\+\_\+\+M\+SB~(\mbox{\hyperlink{cpu_8c_ae70fa95a8af78196cb19ab33a487398f}{B\+Y\+T\+E\+\_\+\+M\+C\+B2}} + 1)}
+
+
+
+Byte de bits mas significativos. 
+
+\mbox{\Hypertarget{cpu_8c_a2e419607abea0eda6e6b06318a9a4440}\label{cpu_8c_a2e419607abea0eda6e6b06318a9a4440}} 
+\index{cpu.c@{cpu.c}!FIN\_TRAMA\_CPU@{FIN\_TRAMA\_CPU}}
+\index{FIN\_TRAMA\_CPU@{FIN\_TRAMA\_CPU}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{FIN\_TRAMA\_CPU}{FIN\_TRAMA\_CPU}}
+{\footnotesize\ttfamily \#define F\+I\+N\+\_\+\+T\+R\+A\+M\+A\+\_\+\+C\+PU~0x90}
+
+
+
+Caracter de fin de trama. 
+
+\mbox{\Hypertarget{cpu_8c_a29fc20d15a85b206369874d8323214ff}\label{cpu_8c_a29fc20d15a85b206369874d8323214ff}} 
+\index{cpu.c@{cpu.c}!INICIO\_TRAMA\_CPU@{INICIO\_TRAMA\_CPU}}
+\index{INICIO\_TRAMA\_CPU@{INICIO\_TRAMA\_CPU}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{INICIO\_TRAMA\_CPU}{INICIO\_TRAMA\_CPU}}
+{\footnotesize\ttfamily \#define I\+N\+I\+C\+I\+O\+\_\+\+T\+R\+A\+M\+A\+\_\+\+C\+PU~0x80}
+
+
+
+Caracter de inicio de trama. 
+
+\mbox{\Hypertarget{cpu_8c_a8c8619d98fbcd630bdad43e5488c20c4}\label{cpu_8c_a8c8619d98fbcd630bdad43e5488c20c4}} 
+\index{cpu.c@{cpu.c}!LONGITUD\_BUFFER\_RX@{LONGITUD\_BUFFER\_RX}}
+\index{LONGITUD\_BUFFER\_RX@{LONGITUD\_BUFFER\_RX}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{LONGITUD\_BUFFER\_RX}{LONGITUD\_BUFFER\_RX}}
+{\footnotesize\ttfamily \#define L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+RX~64}
+
+
+
+Longitud en caracteres del buffer de tramas. 
+
+\mbox{\Hypertarget{cpu_8c_a330a693c94e4cb03f63bc8f6f53139d5}\label{cpu_8c_a330a693c94e4cb03f63bc8f6f53139d5}} 
+\index{cpu.c@{cpu.c}!LONGITUD\_TRAMA\_RX@{LONGITUD\_TRAMA\_RX}}
+\index{LONGITUD\_TRAMA\_RX@{LONGITUD\_TRAMA\_RX}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{LONGITUD\_TRAMA\_RX}{LONGITUD\_TRAMA\_RX}}
+{\footnotesize\ttfamily \#define L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+T\+R\+A\+M\+A\+\_\+\+RX~12}
+
+
+
+Longitud de las tramas recibidas. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{cpu_8c_a8031ce114e0bd5d6ee9de8421798e15a}\label{cpu_8c_a8031ce114e0bd5d6ee9de8421798e15a}} 
+\index{cpu.c@{cpu.c}!cpu\_inicializar@{cpu\_inicializar}}
+\index{cpu\_inicializar@{cpu\_inicializar}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{cpu\_inicializar()}{cpu\_inicializar()}}
+{\footnotesize\ttfamily void cpu\+\_\+inicializar (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Inicializa la interfaz de comunicacion con la C\+PU. 
+
+\mbox{\Hypertarget{cpu_8c_aae573dcefe47a3d81a150372f9de6202}\label{cpu_8c_aae573dcefe47a3d81a150372f9de6202}} 
+\index{cpu.c@{cpu.c}!cpu\_recibir@{cpu\_recibir}}
+\index{cpu\_recibir@{cpu\_recibir}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{cpu\_recibir()}{cpu\_recibir()}}
+{\footnotesize\ttfamily uint8\+\_\+t cpu\+\_\+recibir (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mensaje\mbox{[}$\,$\mbox{]},  }\item[{uint32\+\_\+t}]{longitud }\end{DoxyParamCaption})}
+
+
+
+Recibe una trama de comunicacion. Recibe una trama de comunicacion de la C\+PU y la inserta en una cola para ser procesada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mensaje} & trama recibida \\
+\hline
+{\em longitud} & cantidad de caracteres \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{cpu_8c_a18ef9d527166d22af0f07d3e943c6b9f}\label{cpu_8c_a18ef9d527166d22af0f07d3e943c6b9f}} 
+\index{cpu.c@{cpu.c}!cpu\_rx@{cpu\_rx}}
+\index{cpu\_rx@{cpu\_rx}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{cpu\_rx()}{cpu\_rx()}}
+{\footnotesize\ttfamily void cpu\+\_\+rx (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Procesa los datos recibidos de la C\+PU. 
+
+Procesa los datos recibidos de la C\+PU \mbox{\Hypertarget{cpu_8c_a48db045378dd9fd0bba57a1718f7b829}\label{cpu_8c_a48db045378dd9fd0bba57a1718f7b829}} 
+\index{cpu.c@{cpu.c}!cpu\_transmitir@{cpu\_transmitir}}
+\index{cpu\_transmitir@{cpu\_transmitir}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{cpu\_transmitir()}{cpu\_transmitir()}}
+{\footnotesize\ttfamily void cpu\+\_\+transmitir (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mensaje\mbox{[}$\,$\mbox{]},  }\item[{uint32\+\_\+t}]{longitud }\end{DoxyParamCaption})}
+
+
+
+Transmite una trama a la C\+PU. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mensaje} & Trama a enviar \\
+\hline
+{\em longitud} & Cantidad de caracteres del mensaje \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cpu_8c_a897bda261b4c458b7328117e5757930d}\label{cpu_8c_a897bda261b4c458b7328117e5757930d}} 
+\index{cpu.c@{cpu.c}!cpu\_transmitir\_basico@{cpu\_transmitir\_basico}}
+\index{cpu\_transmitir\_basico@{cpu\_transmitir\_basico}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{cpu\_transmitir\_basico()}{cpu\_transmitir\_basico()}}
+{\footnotesize\ttfamily void cpu\+\_\+transmitir\+\_\+basico (\begin{DoxyParamCaption}\item[{char}]{timer\+\_\+id\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Transmite periodicamente un mensaje basico a la C\+PU. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timer\+\_\+id} & Identificador del timer relacionado \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cpu_8c_a0a5237bf3c31d603d015a233c63d2425}\label{cpu_8c_a0a5237bf3c31d603d015a233c63d2425}} 
+\index{cpu.c@{cpu.c}!cpu\_tx\_rx@{cpu\_tx\_rx}}
+\index{cpu\_tx\_rx@{cpu\_tx\_rx}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{cpu\_tx\_rx()}{cpu\_tx\_rx()}}
+{\footnotesize\ttfamily void cpu\+\_\+tx\+\_\+rx (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Maneja la recepcion y transmision de datos con la C\+PU. 
+
+\mbox{\Hypertarget{cpu_8c_a885e407937409483f25e58a5385e0225}\label{cpu_8c_a885e407937409483f25e58a5385e0225}} 
+\index{cpu.c@{cpu.c}!trama2angulos@{trama2angulos}}
+\index{trama2angulos@{trama2angulos}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{trama2angulos()}{trama2angulos()}}
+{\footnotesize\ttfamily uint8\+\_\+t trama2angulos (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mensaje\mbox{[}$\,$\mbox{]},  }\item[{uint32\+\_\+t $\ast$}]{angulo\+\_\+a,  }\item[{uint32\+\_\+t $\ast$}]{angulo\+\_\+b,  }\item[{uint32\+\_\+t $\ast$}]{angulo\+\_\+c }\end{DoxyParamCaption})}
+
+
+
+Transforma una trama de comunicacion en angulos para los motores. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mensaje} & Trama recibida \\
+\hline
+{\em angulo\+\_\+a} & Puntero donde almacenar la posicion del motor A \\
+\hline
+{\em angulo\+\_\+b} & Puntero donde almacenar la posicion del motor B \\
+\hline
+{\em angulo\+\_\+c} & Puntero donde almacenar la posicion del motor C \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 ok, 1 error 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{cpu_8c_a5f32e360737c2104ac2c16719b0dd641}\label{cpu_8c_a5f32e360737c2104ac2c16719b0dd641}} 
+\index{cpu.c@{cpu.c}!buffer\_tx@{buffer\_tx}}
+\index{buffer\_tx@{buffer\_tx}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{buffer\_tx}{buffer\_tx}}
+{\footnotesize\ttfamily char$\ast$ buffer\+\_\+tx = \char`\"{}Hola Mundo!\textbackslash{}n\char`\"{}}
+
+
+
+Buffer para transmision de mensaje basico. 
+
+\mbox{\Hypertarget{cpu_8c_a34858d775003bb6abb02aa88a65cfd57}\label{cpu_8c_a34858d775003bb6abb02aa88a65cfd57}} 
+\index{cpu.c@{cpu.c}!cpu\_rx\_buffer@{cpu\_rx\_buffer}}
+\index{cpu\_rx\_buffer@{cpu\_rx\_buffer}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{cpu\_rx\_buffer}{cpu\_rx\_buffer}}
+{\footnotesize\ttfamily uint8\+\_\+t cpu\+\_\+rx\+\_\+buffer\mbox{[}\mbox{\hyperlink{cpu_8c_a8c8619d98fbcd630bdad43e5488c20c4}{L\+O\+N\+G\+I\+T\+U\+D\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+RX}}\mbox{]}}
+
+
+
+Buffer de recepcion de tramas. 
+
+\mbox{\Hypertarget{cpu_8c_a4dcc2f184e61426dbf34a89861a65e54}\label{cpu_8c_a4dcc2f184e61426dbf34a89861a65e54}} 
+\index{cpu.c@{cpu.c}!cpu\_rx\_ring\_buffer@{cpu\_rx\_ring\_buffer}}
+\index{cpu\_rx\_ring\_buffer@{cpu\_rx\_ring\_buffer}!cpu.c@{cpu.c}}
+\doxysubsubsection{\texorpdfstring{cpu\_rx\_ring\_buffer}{cpu\_rx\_ring\_buffer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} cpu\+\_\+rx\+\_\+ring\+\_\+buffer}
+
+
+
+Buffer circular par guardar tramas recibidas. 
+

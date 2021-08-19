@@ -1,0 +1,368 @@
+\hypertarget{timers_8h}{}\doxysection{/mnt/\+Hdd\+Linux/\+Documentos/\+Facultad/\+Tomas/6to/\+Proyecto\+\_\+final/\+Ball\+\_\+on\+\_\+plate/\+Ball\+\_\+on\+\_\+plate\+\_\+\+S\+T\+M32/\+Core/\+Inc/\+Usr/timers.h File Reference}
+\label{timers_8h}\index{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Inc/Usr/timers.h@{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Inc/Usr/timers.h}}
+
+
+Maquinaria de timers por software. Timers de 1 ms hasta 49 dias y 17 horas.  
+
+
+{\ttfamily \#include \char`\"{}stm32f1xx.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stdbool.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtimer__soft__t}{timer\+\_\+soft\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Estructura de timer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{timers_8h_ab38e80c94ceb96d10b562f6a316c0e6a}{T\+I\+M\+E\+R\+\_\+\+L\+EN}}~10
+\begin{DoxyCompactList}\small\item\em Cantidad maxima de timers. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{timers_8h_a9f07f21f73e5b7adbda07a2d3849f913}{T\+I\+M\+E\+R\+\_\+\+L\+E\+N\+\_\+\+ID}}~6
+\begin{DoxyCompactList}\small\item\em Longitud maxima del id del timer. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{timers_8h_a835a0e46d0148bcdbc8e1c399834f394}{C\+O\+U\+N\+T\+\_\+1ms}}~1
+\item 
+\#define \mbox{\hyperlink{timers_8h_a0a45a305823c5c3c571f8595318ce20a}{C\+O\+U\+N\+T\+\_\+10ms}}~10
+\item 
+\#define \mbox{\hyperlink{timers_8h_a4b495200c5dbc17a094561974b79838e}{C\+O\+U\+N\+T\+\_\+20ms}}~20
+\item 
+\#define \mbox{\hyperlink{timers_8h_ab9cf773359b218f78bd3705bd2c43d17}{C\+O\+U\+N\+T\+\_\+25ms}}~25
+\item 
+\#define \mbox{\hyperlink{timers_8h_a6d7348d3fa6361e16ec72b320aa74de9}{C\+O\+U\+N\+T\+\_\+50ms}}~50
+\item 
+\#define \mbox{\hyperlink{timers_8h_aa999c69c670bbc2e617e2f7be4dfe8f8}{C\+O\+U\+N\+T\+\_\+100ms}}~100
+\item 
+\#define \mbox{\hyperlink{timers_8h_ac62676e2a18ffa1e0fe83f9a7cf5be86}{C\+O\+U\+N\+T\+\_\+200ms}}~200
+\item 
+\#define \mbox{\hyperlink{timers_8h_a4e06ba4e4ea492f4b34872795dea7670}{C\+O\+U\+N\+T\+\_\+300ms}}~300
+\item 
+\#define \mbox{\hyperlink{timers_8h_a18a6196e4d71ea70c20ccda789f8ba0a}{C\+O\+U\+N\+T\+\_\+400ms}}~400
+\item 
+\#define \mbox{\hyperlink{timers_8h_a7aecdbf241688a5eedf7c9e9c5e4d4d5}{C\+O\+U\+N\+T\+\_\+500ms}}~500
+\item 
+\#define \mbox{\hyperlink{timers_8h_a1e4a837dd7a61af7f7f86e4e6eda7c5a}{C\+O\+U\+N\+T\+\_\+600ms}}~600
+\item 
+\#define \mbox{\hyperlink{timers_8h_a8f0368a8133d359ee6965699c2631fee}{C\+O\+U\+N\+T\+\_\+700ms}}~700
+\item 
+\#define \mbox{\hyperlink{timers_8h_a8c64e6b9903fed9fcc92b184c7c89fdb}{C\+O\+U\+N\+T\+\_\+800ms}}~800
+\item 
+\#define \mbox{\hyperlink{timers_8h_ac50978ed8874066688d46b037d5c723c}{C\+O\+U\+N\+T\+\_\+900ms}}~900
+\item 
+\#define \mbox{\hyperlink{timers_8h_a3c64b7692e2f448e57869f02dba3e2ed}{C\+O\+U\+N\+T\+\_\+1s}}~1000
+\item 
+\#define \mbox{\hyperlink{timers_8h_a70d361b19a4d7f6841c6545bc7be50a2}{C\+O\+U\+N\+T\+\_\+2s}}~2000
+\item 
+\#define \mbox{\hyperlink{timers_8h_aa25d28d273f45fc4a604c6acd75b529c}{C\+O\+U\+N\+T\+\_\+3s}}~3000
+\item 
+\#define \mbox{\hyperlink{timers_8h_a04adc26128254dcc7a0fd763e4b49495}{C\+O\+U\+N\+T\+\_\+8s}}~8000
+\item 
+\#define \mbox{\hyperlink{timers_8h_a3dd70e71b891c0986b577e0a7302c1bb}{S\+E\+C2\+T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+NT}}(x)~((x) $\ast$ \mbox{\hyperlink{timers_8h_a3c64b7692e2f448e57869f02dba3e2ed}{C\+O\+U\+N\+T\+\_\+1s}})
+\begin{DoxyCompactList}\small\item\em Convierte segundos en cuentas de timer. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{timers_8h_ad9af0f75fe9f7c2dc480ac8e5a726671}{T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+N\+T2\+S\+EC}}(x)~(float)(x) / \mbox{\hyperlink{timers_8h_a3c64b7692e2f448e57869f02dba3e2ed}{C\+O\+U\+N\+T\+\_\+1s}})
+\begin{DoxyCompactList}\small\item\em Convierte cuentas de timer en segundos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{timers_8h_a5d38c81e02aaa990719aff8a54eb092e}{timer\+\_\+get\+\_\+tick}} (void)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{timers_8h_af01cf7c028f822d0317b98572b8ef239}{timer\+\_\+agregar}} (uint32\+\_\+t ms, bool pausado, char id\mbox{[}$\,$\mbox{]}, void($\ast$accion)(char\mbox{[}$\,$\mbox{]}))
+\item 
+uint8\+\_\+t \mbox{\hyperlink{timers_8h_a01fad2396f4066d5c973c6c23a789053}{timer\+\_\+cambiar\+\_\+estado}} (char id\mbox{[}$\,$\mbox{]}, bool pausado)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{timers_8h_a942ab3d600cd3cae682350b425b792be}{timer\+\_\+borrar}} (char id\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{timers_8h_a21afd90d47d9ab910643c265ee475e3c}{timer\+\_\+borrar\+\_\+todos}} (void)
+\item 
+void \mbox{\hyperlink{timers_8h_a37dab7769aa070c48d37d0710837c892}{timer\+\_\+tarea}} (void)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{timers_8h_a78ef18e6a4172e571c554bcbfe242794}{timer\+\_\+configurar}} (uint32\+\_\+t ms, bool pausado, char id\mbox{[}$\,$\mbox{]}, void($\ast$accion)(char\mbox{[}$\,$\mbox{]}))
+\item 
+bool \mbox{\hyperlink{timers_8h_a0c06b7241521e785252bb3b3ea3ffca2}{timer\+\_\+esta\+\_\+corriendo}} (char id\mbox{[}$\,$\mbox{]})
+\item 
+uint32\+\_\+t \mbox{\hyperlink{timers_8h_a2e2da51da923dd912bf20f7d8e733d5a}{timer\+\_\+get\+\_\+cuenta}} (char id\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Maquinaria de timers por software. Timers de 1 ms hasta 49 dias y 17 horas. 
+
+\begin{DoxyAuthor}{Author}
+Tomás Bautista Ordóñez 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+01/09/2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{timers_8h_aa999c69c670bbc2e617e2f7be4dfe8f8}\label{timers_8h_aa999c69c670bbc2e617e2f7be4dfe8f8}} 
+\index{timers.h@{timers.h}!COUNT\_100ms@{COUNT\_100ms}}
+\index{COUNT\_100ms@{COUNT\_100ms}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_100ms}{COUNT\_100ms}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+100ms~100}
+
+\mbox{\Hypertarget{timers_8h_a0a45a305823c5c3c571f8595318ce20a}\label{timers_8h_a0a45a305823c5c3c571f8595318ce20a}} 
+\index{timers.h@{timers.h}!COUNT\_10ms@{COUNT\_10ms}}
+\index{COUNT\_10ms@{COUNT\_10ms}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_10ms}{COUNT\_10ms}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+10ms~10}
+
+\mbox{\Hypertarget{timers_8h_a835a0e46d0148bcdbc8e1c399834f394}\label{timers_8h_a835a0e46d0148bcdbc8e1c399834f394}} 
+\index{timers.h@{timers.h}!COUNT\_1ms@{COUNT\_1ms}}
+\index{COUNT\_1ms@{COUNT\_1ms}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_1ms}{COUNT\_1ms}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+1ms~1}
+
+\mbox{\Hypertarget{timers_8h_a3c64b7692e2f448e57869f02dba3e2ed}\label{timers_8h_a3c64b7692e2f448e57869f02dba3e2ed}} 
+\index{timers.h@{timers.h}!COUNT\_1s@{COUNT\_1s}}
+\index{COUNT\_1s@{COUNT\_1s}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_1s}{COUNT\_1s}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+1s~1000}
+
+\mbox{\Hypertarget{timers_8h_ac62676e2a18ffa1e0fe83f9a7cf5be86}\label{timers_8h_ac62676e2a18ffa1e0fe83f9a7cf5be86}} 
+\index{timers.h@{timers.h}!COUNT\_200ms@{COUNT\_200ms}}
+\index{COUNT\_200ms@{COUNT\_200ms}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_200ms}{COUNT\_200ms}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+200ms~200}
+
+\mbox{\Hypertarget{timers_8h_a4b495200c5dbc17a094561974b79838e}\label{timers_8h_a4b495200c5dbc17a094561974b79838e}} 
+\index{timers.h@{timers.h}!COUNT\_20ms@{COUNT\_20ms}}
+\index{COUNT\_20ms@{COUNT\_20ms}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_20ms}{COUNT\_20ms}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+20ms~20}
+
+\mbox{\Hypertarget{timers_8h_ab9cf773359b218f78bd3705bd2c43d17}\label{timers_8h_ab9cf773359b218f78bd3705bd2c43d17}} 
+\index{timers.h@{timers.h}!COUNT\_25ms@{COUNT\_25ms}}
+\index{COUNT\_25ms@{COUNT\_25ms}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_25ms}{COUNT\_25ms}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+25ms~25}
+
+\mbox{\Hypertarget{timers_8h_a70d361b19a4d7f6841c6545bc7be50a2}\label{timers_8h_a70d361b19a4d7f6841c6545bc7be50a2}} 
+\index{timers.h@{timers.h}!COUNT\_2s@{COUNT\_2s}}
+\index{COUNT\_2s@{COUNT\_2s}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_2s}{COUNT\_2s}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+2s~2000}
+
+\mbox{\Hypertarget{timers_8h_a4e06ba4e4ea492f4b34872795dea7670}\label{timers_8h_a4e06ba4e4ea492f4b34872795dea7670}} 
+\index{timers.h@{timers.h}!COUNT\_300ms@{COUNT\_300ms}}
+\index{COUNT\_300ms@{COUNT\_300ms}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_300ms}{COUNT\_300ms}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+300ms~300}
+
+\mbox{\Hypertarget{timers_8h_aa25d28d273f45fc4a604c6acd75b529c}\label{timers_8h_aa25d28d273f45fc4a604c6acd75b529c}} 
+\index{timers.h@{timers.h}!COUNT\_3s@{COUNT\_3s}}
+\index{COUNT\_3s@{COUNT\_3s}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_3s}{COUNT\_3s}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+3s~3000}
+
+\mbox{\Hypertarget{timers_8h_a18a6196e4d71ea70c20ccda789f8ba0a}\label{timers_8h_a18a6196e4d71ea70c20ccda789f8ba0a}} 
+\index{timers.h@{timers.h}!COUNT\_400ms@{COUNT\_400ms}}
+\index{COUNT\_400ms@{COUNT\_400ms}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_400ms}{COUNT\_400ms}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+400ms~400}
+
+\mbox{\Hypertarget{timers_8h_a7aecdbf241688a5eedf7c9e9c5e4d4d5}\label{timers_8h_a7aecdbf241688a5eedf7c9e9c5e4d4d5}} 
+\index{timers.h@{timers.h}!COUNT\_500ms@{COUNT\_500ms}}
+\index{COUNT\_500ms@{COUNT\_500ms}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_500ms}{COUNT\_500ms}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+500ms~500}
+
+\mbox{\Hypertarget{timers_8h_a6d7348d3fa6361e16ec72b320aa74de9}\label{timers_8h_a6d7348d3fa6361e16ec72b320aa74de9}} 
+\index{timers.h@{timers.h}!COUNT\_50ms@{COUNT\_50ms}}
+\index{COUNT\_50ms@{COUNT\_50ms}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_50ms}{COUNT\_50ms}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+50ms~50}
+
+\mbox{\Hypertarget{timers_8h_a1e4a837dd7a61af7f7f86e4e6eda7c5a}\label{timers_8h_a1e4a837dd7a61af7f7f86e4e6eda7c5a}} 
+\index{timers.h@{timers.h}!COUNT\_600ms@{COUNT\_600ms}}
+\index{COUNT\_600ms@{COUNT\_600ms}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_600ms}{COUNT\_600ms}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+600ms~600}
+
+\mbox{\Hypertarget{timers_8h_a8f0368a8133d359ee6965699c2631fee}\label{timers_8h_a8f0368a8133d359ee6965699c2631fee}} 
+\index{timers.h@{timers.h}!COUNT\_700ms@{COUNT\_700ms}}
+\index{COUNT\_700ms@{COUNT\_700ms}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_700ms}{COUNT\_700ms}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+700ms~700}
+
+\mbox{\Hypertarget{timers_8h_a8c64e6b9903fed9fcc92b184c7c89fdb}\label{timers_8h_a8c64e6b9903fed9fcc92b184c7c89fdb}} 
+\index{timers.h@{timers.h}!COUNT\_800ms@{COUNT\_800ms}}
+\index{COUNT\_800ms@{COUNT\_800ms}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_800ms}{COUNT\_800ms}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+800ms~800}
+
+\mbox{\Hypertarget{timers_8h_a04adc26128254dcc7a0fd763e4b49495}\label{timers_8h_a04adc26128254dcc7a0fd763e4b49495}} 
+\index{timers.h@{timers.h}!COUNT\_8s@{COUNT\_8s}}
+\index{COUNT\_8s@{COUNT\_8s}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_8s}{COUNT\_8s}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+8s~8000}
+
+\mbox{\Hypertarget{timers_8h_ac50978ed8874066688d46b037d5c723c}\label{timers_8h_ac50978ed8874066688d46b037d5c723c}} 
+\index{timers.h@{timers.h}!COUNT\_900ms@{COUNT\_900ms}}
+\index{COUNT\_900ms@{COUNT\_900ms}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{COUNT\_900ms}{COUNT\_900ms}}
+{\footnotesize\ttfamily \#define C\+O\+U\+N\+T\+\_\+900ms~900}
+
+\mbox{\Hypertarget{timers_8h_a3dd70e71b891c0986b577e0a7302c1bb}\label{timers_8h_a3dd70e71b891c0986b577e0a7302c1bb}} 
+\index{timers.h@{timers.h}!SEC2TIMER\_COUNT@{SEC2TIMER\_COUNT}}
+\index{SEC2TIMER\_COUNT@{SEC2TIMER\_COUNT}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{SEC2TIMER\_COUNT}{SEC2TIMER\_COUNT}}
+{\footnotesize\ttfamily \#define S\+E\+C2\+T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+NT(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((x) $\ast$ \mbox{\hyperlink{timers_8h_a3c64b7692e2f448e57869f02dba3e2ed}{C\+O\+U\+N\+T\+\_\+1s}})}
+
+
+
+Convierte segundos en cuentas de timer. 
+
+\mbox{\Hypertarget{timers_8h_ad9af0f75fe9f7c2dc480ac8e5a726671}\label{timers_8h_ad9af0f75fe9f7c2dc480ac8e5a726671}} 
+\index{timers.h@{timers.h}!TIMER\_COUNT2SEC@{TIMER\_COUNT2SEC}}
+\index{TIMER\_COUNT2SEC@{TIMER\_COUNT2SEC}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{TIMER\_COUNT2SEC}{TIMER\_COUNT2SEC}}
+{\footnotesize\ttfamily \#define T\+I\+M\+E\+R\+\_\+\+C\+O\+U\+N\+T2\+S\+EC(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(float)(x) / \mbox{\hyperlink{timers_8h_a3c64b7692e2f448e57869f02dba3e2ed}{C\+O\+U\+N\+T\+\_\+1s}})}
+
+
+
+Convierte cuentas de timer en segundos. 
+
+\mbox{\Hypertarget{timers_8h_ab38e80c94ceb96d10b562f6a316c0e6a}\label{timers_8h_ab38e80c94ceb96d10b562f6a316c0e6a}} 
+\index{timers.h@{timers.h}!TIMER\_LEN@{TIMER\_LEN}}
+\index{TIMER\_LEN@{TIMER\_LEN}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{TIMER\_LEN}{TIMER\_LEN}}
+{\footnotesize\ttfamily \#define T\+I\+M\+E\+R\+\_\+\+L\+EN~10}
+
+
+
+Cantidad maxima de timers. 
+
+\mbox{\Hypertarget{timers_8h_a9f07f21f73e5b7adbda07a2d3849f913}\label{timers_8h_a9f07f21f73e5b7adbda07a2d3849f913}} 
+\index{timers.h@{timers.h}!TIMER\_LEN\_ID@{TIMER\_LEN\_ID}}
+\index{TIMER\_LEN\_ID@{TIMER\_LEN\_ID}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{TIMER\_LEN\_ID}{TIMER\_LEN\_ID}}
+{\footnotesize\ttfamily \#define T\+I\+M\+E\+R\+\_\+\+L\+E\+N\+\_\+\+ID~6}
+
+
+
+Longitud maxima del id del timer. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{timers_8h_af01cf7c028f822d0317b98572b8ef239}\label{timers_8h_af01cf7c028f822d0317b98572b8ef239}} 
+\index{timers.h@{timers.h}!timer\_agregar@{timer\_agregar}}
+\index{timer\_agregar@{timer\_agregar}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{timer\_agregar()}{timer\_agregar()}}
+{\footnotesize\ttfamily uint8\+\_\+t timer\+\_\+agregar (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ms,  }\item[{bool}]{pausado,  }\item[{char}]{id\mbox{[}$\,$\mbox{]},  }\item[{void($\ast$)(char\mbox{[}$\,$\mbox{]})}]{accion }\end{DoxyParamCaption})}
+
+Agrega un timer a la lista con la configuracion espeificadada. 
+\begin{DoxyParams}{Parameters}
+{\em ms} & Cantidad de ms de timeout. \\
+\hline
+{\em pausado} & true o false. \\
+\hline
+{\em id} & Identificador del timer. \\
+\hline
+{\em accion} & Accion a ejecutar cuando expire el timer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 error, 0 ok. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timers_8h_a942ab3d600cd3cae682350b425b792be}\label{timers_8h_a942ab3d600cd3cae682350b425b792be}} 
+\index{timers.h@{timers.h}!timer\_borrar@{timer\_borrar}}
+\index{timer\_borrar@{timer\_borrar}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{timer\_borrar()}{timer\_borrar()}}
+{\footnotesize\ttfamily uint8\+\_\+t timer\+\_\+borrar (\begin{DoxyParamCaption}\item[{char}]{id\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Borra el timer. 
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador del timer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 error, 0 ok. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timers_8h_a21afd90d47d9ab910643c265ee475e3c}\label{timers_8h_a21afd90d47d9ab910643c265ee475e3c}} 
+\index{timers.h@{timers.h}!timer\_borrar\_todos@{timer\_borrar\_todos}}
+\index{timer\_borrar\_todos@{timer\_borrar\_todos}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{timer\_borrar\_todos()}{timer\_borrar\_todos()}}
+{\footnotesize\ttfamily void timer\+\_\+borrar\+\_\+todos (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Borra todos los timers. \mbox{\Hypertarget{timers_8h_a01fad2396f4066d5c973c6c23a789053}\label{timers_8h_a01fad2396f4066d5c973c6c23a789053}} 
+\index{timers.h@{timers.h}!timer\_cambiar\_estado@{timer\_cambiar\_estado}}
+\index{timer\_cambiar\_estado@{timer\_cambiar\_estado}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{timer\_cambiar\_estado()}{timer\_cambiar\_estado()}}
+{\footnotesize\ttfamily uint8\+\_\+t timer\+\_\+cambiar\+\_\+estado (\begin{DoxyParamCaption}\item[{char}]{id\mbox{[}$\,$\mbox{]},  }\item[{bool}]{pausado }\end{DoxyParamCaption})}
+
+Cambia el estado del timer (pausdo o no). 
+\begin{DoxyParams}{Parameters}
+{\em pausado} & true o false. \\
+\hline
+{\em id} & Identificador del timer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 error, 0 ok. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timers_8h_a78ef18e6a4172e571c554bcbfe242794}\label{timers_8h_a78ef18e6a4172e571c554bcbfe242794}} 
+\index{timers.h@{timers.h}!timer\_configurar@{timer\_configurar}}
+\index{timer\_configurar@{timer\_configurar}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{timer\_configurar()}{timer\_configurar()}}
+{\footnotesize\ttfamily uint8\+\_\+t timer\+\_\+configurar (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ms,  }\item[{bool}]{pausado,  }\item[{char}]{id\mbox{[}$\,$\mbox{]},  }\item[{void($\ast$)(char\mbox{[}$\,$\mbox{]})}]{accion }\end{DoxyParamCaption})}
+
+Configura o agrega un timer. 
+\begin{DoxyParams}{Parameters}
+{\em ms} & Cantidad de ms de timeout. \\
+\hline
+{\em pausado} & true o false. \\
+\hline
+{\em id} & Identificador del timer. \\
+\hline
+{\em accion} & Accion a ejecutar cuando expire el timer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 error, 0 ok. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timers_8h_a0c06b7241521e785252bb3b3ea3ffca2}\label{timers_8h_a0c06b7241521e785252bb3b3ea3ffca2}} 
+\index{timers.h@{timers.h}!timer\_esta\_corriendo@{timer\_esta\_corriendo}}
+\index{timer\_esta\_corriendo@{timer\_esta\_corriendo}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{timer\_esta\_corriendo()}{timer\_esta\_corriendo()}}
+{\footnotesize\ttfamily bool timer\+\_\+esta\+\_\+corriendo (\begin{DoxyParamCaption}\item[{char}]{id\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Checkea si el timer esta o no corriendo. 
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador del timer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true esta corriendo, false esta pausado. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timers_8h_a2e2da51da923dd912bf20f7d8e733d5a}\label{timers_8h_a2e2da51da923dd912bf20f7d8e733d5a}} 
+\index{timers.h@{timers.h}!timer\_get\_cuenta@{timer\_get\_cuenta}}
+\index{timer\_get\_cuenta@{timer\_get\_cuenta}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{timer\_get\_cuenta()}{timer\_get\_cuenta()}}
+{\footnotesize\ttfamily uint32\+\_\+t timer\+\_\+get\+\_\+cuenta (\begin{DoxyParamCaption}\item[{char}]{id\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Retorna la cuenta restante del timer. 
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador del timer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cuenta restante. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timers_8h_a5d38c81e02aaa990719aff8a54eb092e}\label{timers_8h_a5d38c81e02aaa990719aff8a54eb092e}} 
+\index{timers.h@{timers.h}!timer\_get\_tick@{timer\_get\_tick}}
+\index{timer\_get\_tick@{timer\_get\_tick}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{timer\_get\_tick()}{timer\_get\_tick()}}
+{\footnotesize\ttfamily uint32\+\_\+t timer\+\_\+get\+\_\+tick (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Retorna el valor del tick actual \begin{DoxyReturn}{Returns}
+tick actual. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{timers_8h_a37dab7769aa070c48d37d0710837c892}\label{timers_8h_a37dab7769aa070c48d37d0710837c892}} 
+\index{timers.h@{timers.h}!timer\_tarea@{timer\_tarea}}
+\index{timer\_tarea@{timer\_tarea}!timers.h@{timers.h}}
+\doxysubsubsection{\texorpdfstring{timer\_tarea()}{timer\_tarea()}}
+{\footnotesize\ttfamily void timer\+\_\+tarea (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Configura y transmite la configuracion del canal y los latiguillos del mismo. 

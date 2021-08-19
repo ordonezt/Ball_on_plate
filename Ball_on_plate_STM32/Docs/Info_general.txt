@@ -29,7 +29,7 @@ Archivos:
  
  Funciones (Tanto en la declaracion como en la cabecera):
  /**
- * ¿Que hace esta funcion?
+ * @brief ¿Que hace esta funcion?
  * @param parametro_1 Que es este parametro?
  * @param parametro_2 Que es este parametro?
  * @return Cuales son los retornos de la funcion?.

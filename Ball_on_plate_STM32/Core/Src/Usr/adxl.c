@@ -1,14 +1,12 @@
-/*
- * adxl345.c
- *
- *  Created on: 21 jul. 2021
- *      Author: ord
- */
-
 /**
+ * @file adxl.c
+ * @brief En este archivo se encuentran las funciones de manejo del acelerometro.
  * IMPORTANTE No zarparse con la velocidad de SPI, el maximo segun la hoja de datos es 4MHz, pero ya si superas
  * 1,6MHz tenes que empezar a poner delays entre datos de la trama los cuales son un quilombo y no es practico.
  * O sea, no pongas una velocidad mayor de 1,6MHz si no queres sufrir como sufri yo.
+ *
+ * @author Tomás Bautista Ordóñez
+ * @date 21/07/2021
  */
 
 #include "main.h"
@@ -18,10 +16,18 @@
 #include <string.h>
 #include <math.h>
 
+///Manejador de SPI
 extern SPI_HandleTypeDef hspi1;
 
+///Acelerometro
 adxl_t adxl;
 
+/**
+ * @brief Escribe un registro del acelerometro.
+ *
+ * @param registro Registro a escribir.
+ * @param valor Valor que se quiere escribir.
+ */
 void adxl_escribir_registro(uint8_t registro, uint8_t valor)
 {
 	uint8_t datos[2];
@@ -34,6 +40,12 @@ void adxl_escribir_registro(uint8_t registro, uint8_t valor)
 	HAL_GPIO_WritePin(ADXL_CS, GPIO_PIN_SET);
 }
 
+/**
+ * @brief Lee un registro del acelerometro.
+ *
+ * @param registro Registro a leer.
+ * @return Valor del registro leido.
+ */
 uint8_t adxl_leer_registro(uint8_t registro)
 {
 	uint8_t valor = 0;
@@ -48,6 +60,10 @@ uint8_t adxl_leer_registro(uint8_t registro)
 	return valor;
 }
 
+/**
+ * @brief Dispara una lectura de los 3 ejes de forma no bloqueante.
+ *
+ */
 void adxl_recibir_trama(void)
 {
 	uint8_t registro = REG_DATAX0;
@@ -58,9 +74,14 @@ void adxl_recibir_trama(void)
 	HAL_GPIO_WritePin(ADXL_CS, GPIO_PIN_RESET);
 	HAL_SPI_Transmit(&hspi1, &registro, 1, ADXL_SPI_TIMEOUT);
 	HAL_SPI_Receive_IT(&hspi1, adxl.buffer_rx, 2 * CANTIDAD_EJES);
-//	HAL_GPIO_WritePin(ADXL_CS, GPIO_PIN_SET);
+//	HAL_GPIO_WritePin(ADXL_CS, GPIO_PIN_SET); //Mantenemos CS activo hasta que termine la lectura
 }
 
+/**
+ * @brief Timer periodico que dispara el calculo de rotaciones.
+ *
+ * @param timer_id Identificador del timer.
+ */
 void adxl_alarma_calculo(char timer_id[])
 {
 	adxl.calculo_pendiente = true;
@@ -68,12 +89,22 @@ void adxl_alarma_calculo(char timer_id[])
 	timer_configurar(PERIODO_CALCULO_ANGULO, false, timer_id, adxl_alarma_calculo);
 }
 
+/**
+ * @brief Transforma las cuentas en gravedad
+ *
+ * @param cuentas Cuentas de aceleracion a transformar
+ * @return Gravedad
+ */
 float cuentas2g(int16_t cuentas)
 {
 	//Configure el dipositivo en +-2g, entonces tenemos 256LSB/g segun la hoja de datos
 	return (float)cuentas / LSB_POR_G;
 }
 
+/**
+ * @brief Inicializa el acelerometro
+ *
+ */
 void adxl_inicializar()
 {
 	uint8_t id;
@@ -112,6 +143,11 @@ void adxl_inicializar()
 //	int_enable = adxl_leer_registro(REG_INT_ENABLE);
 }
 
+/**
+ * @brief Transmite a la cpu las rotaciones actuales.
+ *
+ * Para mas detalle ver "protocolo_comunicacion.ods".
+ */
 void adxl_transmitir(void)
 {
 	uint8_t trama[10] = {0x80,'A',0,0,0,0,0,0,0,0x90};
@@ -132,6 +168,10 @@ void adxl_transmitir(void)
 	cpu_transmitir(trama, 10);
 }
 
+/**
+ * @brief Calcula y envia a la cpu las rotaciones cuando corresponde.
+ *
+ */
 void adxl_tarea(void)
 {
 	if(adxl.calculo_pendiente == true)
@@ -151,6 +191,10 @@ void adxl_tarea(void)
 	}
 }
 
+/**
+ * @brief Maneja la interrupcion por dato listo del acelerometro. Dispara una lectura de trama.
+ *
+ */
 void adxl_interrupcion_callback(void)
 {
 	if(adxl.inicializado == true)
@@ -173,6 +217,7 @@ void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
 
 	for(eje = EJE_X; eje < CANTIDAD_EJES; eje++)
 	{
+		//Los datos vienen en 2 bytes separados, los combino en un int16_t. Los agrego a un vector para filtrar.
 		adxl.ejes[eje].buffer[adxl.ejes[eje].indice++] = (adxl.buffer_rx[eje * 2 + 1] << 8) | adxl.buffer_rx[eje * 2];
 		adxl.ejes[eje].indice %= CANTIDAD_PROMEDIOS_ACELERACION;
 	}

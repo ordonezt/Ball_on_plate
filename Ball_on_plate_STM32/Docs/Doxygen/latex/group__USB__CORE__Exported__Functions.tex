@@ -1,0 +1,127 @@
+\hypertarget{group__USB__CORE__Exported__Functions}{}\doxysection{U\+S\+B\+\_\+\+C\+O\+R\+E\+\_\+\+Exported\+\_\+\+Functions}
+\label{group__USB__CORE__Exported__Functions}\index{USB\_CORE\_Exported\_Functions@{USB\_CORE\_Exported\_Functions}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USB__CORE__Exported__Functions_ga41e2c9c5138449916310eb508a500752}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Register\+Interface}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, \mbox{\hyperlink{group__usbd__cdc_gabf661e5bb96ce4c5c8c1e241945dfe39}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Itf\+Type\+Def}} $\ast$fops)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Register\+Interface. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USB__CORE__Exported__Functions_gaae40b75b0ccc21281f4aa1e2fbdc0d4f}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Set\+Tx\+Buffer}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t $\ast$pbuff, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Set\+Tx\+Buffer. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USB__CORE__Exported__Functions_gaa8539af2ff78ce9a464def5de05726c3}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Set\+Rx\+Buffer}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t $\ast$pbuff)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Set\+Rx\+Buffer. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USB__CORE__Exported__Functions_ga55dff87863e1c76fd1139016da75903c}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Receive\+Packet}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Receive\+Packet prepare O\+UT Endpoint for reception. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__USB__CORE__Exported__Functions_gac6132b25e4ac00c4d918d3d73a3be5c7}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Transmit\+Packet}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Transmit\+Packet Transmit packet on IN endpoint. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__USB__CORE__Exported__Functions_ga55dff87863e1c76fd1139016da75903c}\label{group__USB__CORE__Exported__Functions_ga55dff87863e1c76fd1139016da75903c}} 
+\index{USB\_CORE\_Exported\_Functions@{USB\_CORE\_Exported\_Functions}!USBD\_CDC\_ReceivePacket@{USBD\_CDC\_ReceivePacket}}
+\index{USBD\_CDC\_ReceivePacket@{USBD\_CDC\_ReceivePacket}!USB\_CORE\_Exported\_Functions@{USB\_CORE\_Exported\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_CDC\_ReceivePacket()}{USBD\_CDC\_ReceivePacket()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Receive\+Packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Receive\+Packet prepare O\+UT Endpoint for reception. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USB__CORE__Exported__Functions_ga41e2c9c5138449916310eb508a500752}\label{group__USB__CORE__Exported__Functions_ga41e2c9c5138449916310eb508a500752}} 
+\index{USB\_CORE\_Exported\_Functions@{USB\_CORE\_Exported\_Functions}!USBD\_CDC\_RegisterInterface@{USBD\_CDC\_RegisterInterface}}
+\index{USBD\_CDC\_RegisterInterface@{USBD\_CDC\_RegisterInterface}!USB\_CORE\_Exported\_Functions@{USB\_CORE\_Exported\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_CDC\_RegisterInterface()}{USBD\_CDC\_RegisterInterface()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Register\+Interface (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev,  }\item[{\mbox{\hyperlink{group__usbd__cdc_gabf661e5bb96ce4c5c8c1e241945dfe39}{U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Itf\+Type\+Def}} $\ast$}]{fops }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Register\+Interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+{\em fops} & CD Interface callback \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USB__CORE__Exported__Functions_gaa8539af2ff78ce9a464def5de05726c3}\label{group__USB__CORE__Exported__Functions_gaa8539af2ff78ce9a464def5de05726c3}} 
+\index{USB\_CORE\_Exported\_Functions@{USB\_CORE\_Exported\_Functions}!USBD\_CDC\_SetRxBuffer@{USBD\_CDC\_SetRxBuffer}}
+\index{USBD\_CDC\_SetRxBuffer@{USBD\_CDC\_SetRxBuffer}!USB\_CORE\_Exported\_Functions@{USB\_CORE\_Exported\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_CDC\_SetRxBuffer()}{USBD\_CDC\_SetRxBuffer()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Set\+Rx\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev,  }\item[{uint8\+\_\+t $\ast$}]{pbuff }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Set\+Rx\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+{\em pbuff} & Rx Buffer \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USB__CORE__Exported__Functions_gaae40b75b0ccc21281f4aa1e2fbdc0d4f}\label{group__USB__CORE__Exported__Functions_gaae40b75b0ccc21281f4aa1e2fbdc0d4f}} 
+\index{USB\_CORE\_Exported\_Functions@{USB\_CORE\_Exported\_Functions}!USBD\_CDC\_SetTxBuffer@{USBD\_CDC\_SetTxBuffer}}
+\index{USBD\_CDC\_SetTxBuffer@{USBD\_CDC\_SetTxBuffer}!USB\_CORE\_Exported\_Functions@{USB\_CORE\_Exported\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_CDC\_SetTxBuffer()}{USBD\_CDC\_SetTxBuffer()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Set\+Tx\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev,  }\item[{uint8\+\_\+t $\ast$}]{pbuff,  }\item[{uint16\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Set\+Tx\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+{\em pbuff} & Tx Buffer \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USB__CORE__Exported__Functions_gac6132b25e4ac00c4d918d3d73a3be5c7}\label{group__USB__CORE__Exported__Functions_gac6132b25e4ac00c4d918d3d73a3be5c7}} 
+\index{USB\_CORE\_Exported\_Functions@{USB\_CORE\_Exported\_Functions}!USBD\_CDC\_TransmitPacket@{USBD\_CDC\_TransmitPacket}}
+\index{USBD\_CDC\_TransmitPacket@{USBD\_CDC\_TransmitPacket}!USB\_CORE\_Exported\_Functions@{USB\_CORE\_Exported\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_CDC\_TransmitPacket()}{USBD\_CDC\_TransmitPacket()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Transmit\+Packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+C\+D\+C\+\_\+\+Transmit\+Packet Transmit packet on IN endpoint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}

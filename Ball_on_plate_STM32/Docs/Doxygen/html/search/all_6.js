@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['fin_5ftrama_5fcpu_123',['FIN_TRAMA_CPU',['../cpu_8c.html#a2e419607abea0eda6e6b06318a9a4440',1,'cpu.c']]],
+  ['flag_5finicializado_124',['flag_inicializado',['../servos_8c.html#a6626056c74ff99804bc1fd42fbb94ae6',1,'servos.c']]],
+  ['fs_5f0_5f10hz_125',['FS_0_10Hz',['../adxl_8h.html#a8a52d8d670a0e4a5a23fa618618a132faa79ae77fb87a67ada99fdfd9fc3da942',1,'adxl.h']]],
+  ['fs_5f0_5f20hz_126',['FS_0_20Hz',['../adxl_8h.html#a8a52d8d670a0e4a5a23fa618618a132fa3aa8b5a3340a75e0b81fe135e6057cc8',1,'adxl.h']]],
+  ['fs_5f0_5f39hz_127',['FS_0_39Hz',['../adxl_8h.html#a8a52d8d670a0e4a5a23fa618618a132fa2ac65a22ce8021560630e42efe213215',1,'adxl.h']]],
+  ['fs_5f0_5f78hz_128',['FS_0_78Hz',['../adxl_8h.html#a8a52d8d670a0e4a5a23fa618618a132fa6d0baa21cee5d116c58a9bb8f359a0f4',1,'adxl.h']]],
+  ['fs_5f100hz_129',['FS_100Hz',['../adxl_8h.html#a8a52d8d670a0e4a5a23fa618618a132fa69fbd967d0999c7dbd727e8c007c05a1',1,'adxl.h']]],
+  ['fs_5f12_5f5hz_130',['FS_12_5Hz',['../adxl_8h.html#a8a52d8d670a0e4a5a23fa618618a132facea73b1ae3cdee7c7226cefc895da71f',1,'adxl.h']]],
+  ['fs_5f1600hz_131',['FS_1600Hz',['../adxl_8h.html#a8a52d8d670a0e4a5a23fa618618a132fa888ffe46da5eddbb8be850d48343d4cc',1,'adxl.h']]],
+  ['fs_5f1_5f56hz_132',['FS_1_56Hz',['../adxl_8h.html#a8a52d8d670a0e4a5a23fa618618a132faf4ca4f1bc67321c5727a32883ba55ebe',1,'adxl.h']]],
+  ['fs_5f200hz_133',['FS_200Hz',['../adxl_8h.html#a8a52d8d670a0e4a5a23fa618618a132fae20ec14f78194c4d9b5708124972e19d',1,'adxl.h']]],
+  ['fs_5f25hz_134',['FS_25Hz',['../adxl_8h.html#a8a52d8d670a0e4a5a23fa618618a132fa3b8aa522d11ab62f41c33b51b384ddcf',1,'adxl.h']]],
+  ['fs_5f3200hz_135',['FS_3200Hz',['../adxl_8h.html#a8a52d8d670a0e4a5a23fa618618a132fa15bd9c029d77cfc309c937ec2005fcf6',1,'adxl.h']]],
+  ['fs_5f3_5f13hz_136',['FS_3_13Hz',['../adxl_8h.html#a8a52d8d670a0e4a5a23fa618618a132fa438d42aa5be83f0fd5c3a8f0700ac8af',1,'adxl.h']]],
+  ['fs_5f400hz_137',['FS_400Hz',['../adxl_8h.html#a8a52d8d670a0e4a5a23fa618618a132fa8b3ccd80c4a8021effd0972161e48e04',1,'adxl.h']]],
+  ['fs_5f50hz_138',['FS_50Hz',['../adxl_8h.html#a8a52d8d670a0e4a5a23fa618618a132fadf913d3afac71af237dcc00dec18b092',1,'adxl.h']]],
+  ['fs_5f6_5f25hz_139',['FS_6_25Hz',['../adxl_8h.html#a8a52d8d670a0e4a5a23fa618618a132fa1d17bd19653a87ab31f2d47cf76f9bbf',1,'adxl.h']]],
+  ['fs_5f800hz_140',['FS_800Hz',['../adxl_8h.html#a8a52d8d670a0e4a5a23fa618618a132fafdc80f8fb13f050c199f164cf53d08ea',1,'adxl.h']]]
+];

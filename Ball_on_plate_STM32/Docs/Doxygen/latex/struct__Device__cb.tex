@@ -1,0 +1,129 @@
+\hypertarget{struct__Device__cb}{}\doxysection{\+\_\+\+Device\+\_\+cb Struct Reference}
+\label{struct__Device__cb}\index{\_Device\_cb@{\_Device\_cb}}
+
+
+{\ttfamily \#include $<$usbd\+\_\+def.\+h$>$}
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t($\ast$ \mbox{\hyperlink{struct__Device__cb_a912aa4e59cf96fbe7f59466964eb7983}{Init}} )(struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t cfgidx)
+\item 
+uint8\+\_\+t($\ast$ \mbox{\hyperlink{struct__Device__cb_abbf5b7be021892ef4a9496c992784846}{De\+Init}} )(struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t cfgidx)
+\item 
+uint8\+\_\+t($\ast$ \mbox{\hyperlink{struct__Device__cb_ac00816aca512746958da249f55cccfd9}{Setup}} )(struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_ga22931555b38fe36c9cd1d40a20c94180}{U\+S\+B\+D\+\_\+\+Setup\+Req\+Typedef}} $\ast$req)
+\item 
+uint8\+\_\+t($\ast$ \mbox{\hyperlink{struct__Device__cb_ae255c5e7a01c487c937726970d55ba7f}{E\+P0\+\_\+\+Tx\+Sent}} )(struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\item 
+uint8\+\_\+t($\ast$ \mbox{\hyperlink{struct__Device__cb_a0af3fa3bae60f9a22cfa9a94987c13ee}{E\+P0\+\_\+\+Rx\+Ready}} )(struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\item 
+uint8\+\_\+t($\ast$ \mbox{\hyperlink{struct__Device__cb_a738aeb6f356681ffed4a0c9b71927603}{Data\+In}} )(struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t epnum)
+\item 
+uint8\+\_\+t($\ast$ \mbox{\hyperlink{struct__Device__cb_ad68db7e355ba6e706d75a27ca3a9fd7c}{Data\+Out}} )(struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t epnum)
+\item 
+uint8\+\_\+t($\ast$ \mbox{\hyperlink{struct__Device__cb_af998e22bf5a2cdac490aca09c17ee044}{S\+OF}} )(struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\item 
+uint8\+\_\+t($\ast$ \mbox{\hyperlink{struct__Device__cb_a002c2c9bc37cdfdd0da247056ce27ec4}{Iso\+I\+N\+Incomplete}} )(struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t epnum)
+\item 
+uint8\+\_\+t($\ast$ \mbox{\hyperlink{struct__Device__cb_aaec2b235257c30fd46e9b983e7854e2b}{Iso\+O\+U\+T\+Incomplete}} )(struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t epnum)
+\item 
+uint8\+\_\+t $\ast$($\ast$ \mbox{\hyperlink{struct__Device__cb_a6fb283b69a6b91bd1ce5e81cb10efac3}{Get\+H\+S\+Config\+Descriptor}} )(uint16\+\_\+t $\ast$length)
+\item 
+uint8\+\_\+t $\ast$($\ast$ \mbox{\hyperlink{struct__Device__cb_a802e82a9ed8ccef7c676affdeadb8c33}{Get\+F\+S\+Config\+Descriptor}} )(uint16\+\_\+t $\ast$length)
+\item 
+uint8\+\_\+t $\ast$($\ast$ \mbox{\hyperlink{struct__Device__cb_a097be7b62516a64c908e723a0e5692b1}{Get\+Other\+Speed\+Config\+Descriptor}} )(uint16\+\_\+t $\ast$length)
+\item 
+uint8\+\_\+t $\ast$($\ast$ \mbox{\hyperlink{struct__Device__cb_ac7202d1183bb7c12ef2b340cdb65cf41}{Get\+Device\+Qualifier\+Descriptor}} )(uint16\+\_\+t $\ast$length)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{struct__Device__cb_a738aeb6f356681ffed4a0c9b71927603}\label{struct__Device__cb_a738aeb6f356681ffed4a0c9b71927603}} 
+\index{\_Device\_cb@{\_Device\_cb}!DataIn@{DataIn}}
+\index{DataIn@{DataIn}!\_Device\_cb@{\_Device\_cb}}
+\doxysubsubsection{\texorpdfstring{DataIn}{DataIn}}
+{\footnotesize\ttfamily uint8\+\_\+t($\ast$ \+\_\+\+Device\+\_\+cb\+::\+Data\+In) (struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t epnum)}
+
+\mbox{\Hypertarget{struct__Device__cb_ad68db7e355ba6e706d75a27ca3a9fd7c}\label{struct__Device__cb_ad68db7e355ba6e706d75a27ca3a9fd7c}} 
+\index{\_Device\_cb@{\_Device\_cb}!DataOut@{DataOut}}
+\index{DataOut@{DataOut}!\_Device\_cb@{\_Device\_cb}}
+\doxysubsubsection{\texorpdfstring{DataOut}{DataOut}}
+{\footnotesize\ttfamily uint8\+\_\+t($\ast$ \+\_\+\+Device\+\_\+cb\+::\+Data\+Out) (struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t epnum)}
+
+\mbox{\Hypertarget{struct__Device__cb_abbf5b7be021892ef4a9496c992784846}\label{struct__Device__cb_abbf5b7be021892ef4a9496c992784846}} 
+\index{\_Device\_cb@{\_Device\_cb}!DeInit@{DeInit}}
+\index{DeInit@{DeInit}!\_Device\_cb@{\_Device\_cb}}
+\doxysubsubsection{\texorpdfstring{DeInit}{DeInit}}
+{\footnotesize\ttfamily uint8\+\_\+t($\ast$ \+\_\+\+Device\+\_\+cb\+::\+De\+Init) (struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t cfgidx)}
+
+\mbox{\Hypertarget{struct__Device__cb_a0af3fa3bae60f9a22cfa9a94987c13ee}\label{struct__Device__cb_a0af3fa3bae60f9a22cfa9a94987c13ee}} 
+\index{\_Device\_cb@{\_Device\_cb}!EP0\_RxReady@{EP0\_RxReady}}
+\index{EP0\_RxReady@{EP0\_RxReady}!\_Device\_cb@{\_Device\_cb}}
+\doxysubsubsection{\texorpdfstring{EP0\_RxReady}{EP0\_RxReady}}
+{\footnotesize\ttfamily uint8\+\_\+t($\ast$ \+\_\+\+Device\+\_\+cb\+::\+E\+P0\+\_\+\+Rx\+Ready) (struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)}
+
+\mbox{\Hypertarget{struct__Device__cb_ae255c5e7a01c487c937726970d55ba7f}\label{struct__Device__cb_ae255c5e7a01c487c937726970d55ba7f}} 
+\index{\_Device\_cb@{\_Device\_cb}!EP0\_TxSent@{EP0\_TxSent}}
+\index{EP0\_TxSent@{EP0\_TxSent}!\_Device\_cb@{\_Device\_cb}}
+\doxysubsubsection{\texorpdfstring{EP0\_TxSent}{EP0\_TxSent}}
+{\footnotesize\ttfamily uint8\+\_\+t($\ast$ \+\_\+\+Device\+\_\+cb\+::\+E\+P0\+\_\+\+Tx\+Sent) (struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)}
+
+\mbox{\Hypertarget{struct__Device__cb_ac7202d1183bb7c12ef2b340cdb65cf41}\label{struct__Device__cb_ac7202d1183bb7c12ef2b340cdb65cf41}} 
+\index{\_Device\_cb@{\_Device\_cb}!GetDeviceQualifierDescriptor@{GetDeviceQualifierDescriptor}}
+\index{GetDeviceQualifierDescriptor@{GetDeviceQualifierDescriptor}!\_Device\_cb@{\_Device\_cb}}
+\doxysubsubsection{\texorpdfstring{GetDeviceQualifierDescriptor}{GetDeviceQualifierDescriptor}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$($\ast$ \+\_\+\+Device\+\_\+cb\+::\+Get\+Device\+Qualifier\+Descriptor) (uint16\+\_\+t $\ast$length)}
+
+\mbox{\Hypertarget{struct__Device__cb_a802e82a9ed8ccef7c676affdeadb8c33}\label{struct__Device__cb_a802e82a9ed8ccef7c676affdeadb8c33}} 
+\index{\_Device\_cb@{\_Device\_cb}!GetFSConfigDescriptor@{GetFSConfigDescriptor}}
+\index{GetFSConfigDescriptor@{GetFSConfigDescriptor}!\_Device\_cb@{\_Device\_cb}}
+\doxysubsubsection{\texorpdfstring{GetFSConfigDescriptor}{GetFSConfigDescriptor}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$($\ast$ \+\_\+\+Device\+\_\+cb\+::\+Get\+F\+S\+Config\+Descriptor) (uint16\+\_\+t $\ast$length)}
+
+\mbox{\Hypertarget{struct__Device__cb_a6fb283b69a6b91bd1ce5e81cb10efac3}\label{struct__Device__cb_a6fb283b69a6b91bd1ce5e81cb10efac3}} 
+\index{\_Device\_cb@{\_Device\_cb}!GetHSConfigDescriptor@{GetHSConfigDescriptor}}
+\index{GetHSConfigDescriptor@{GetHSConfigDescriptor}!\_Device\_cb@{\_Device\_cb}}
+\doxysubsubsection{\texorpdfstring{GetHSConfigDescriptor}{GetHSConfigDescriptor}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$($\ast$ \+\_\+\+Device\+\_\+cb\+::\+Get\+H\+S\+Config\+Descriptor) (uint16\+\_\+t $\ast$length)}
+
+\mbox{\Hypertarget{struct__Device__cb_a097be7b62516a64c908e723a0e5692b1}\label{struct__Device__cb_a097be7b62516a64c908e723a0e5692b1}} 
+\index{\_Device\_cb@{\_Device\_cb}!GetOtherSpeedConfigDescriptor@{GetOtherSpeedConfigDescriptor}}
+\index{GetOtherSpeedConfigDescriptor@{GetOtherSpeedConfigDescriptor}!\_Device\_cb@{\_Device\_cb}}
+\doxysubsubsection{\texorpdfstring{GetOtherSpeedConfigDescriptor}{GetOtherSpeedConfigDescriptor}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$($\ast$ \+\_\+\+Device\+\_\+cb\+::\+Get\+Other\+Speed\+Config\+Descriptor) (uint16\+\_\+t $\ast$length)}
+
+\mbox{\Hypertarget{struct__Device__cb_a912aa4e59cf96fbe7f59466964eb7983}\label{struct__Device__cb_a912aa4e59cf96fbe7f59466964eb7983}} 
+\index{\_Device\_cb@{\_Device\_cb}!Init@{Init}}
+\index{Init@{Init}!\_Device\_cb@{\_Device\_cb}}
+\doxysubsubsection{\texorpdfstring{Init}{Init}}
+{\footnotesize\ttfamily uint8\+\_\+t($\ast$ \+\_\+\+Device\+\_\+cb\+::\+Init) (struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t cfgidx)}
+
+\mbox{\Hypertarget{struct__Device__cb_a002c2c9bc37cdfdd0da247056ce27ec4}\label{struct__Device__cb_a002c2c9bc37cdfdd0da247056ce27ec4}} 
+\index{\_Device\_cb@{\_Device\_cb}!IsoINIncomplete@{IsoINIncomplete}}
+\index{IsoINIncomplete@{IsoINIncomplete}!\_Device\_cb@{\_Device\_cb}}
+\doxysubsubsection{\texorpdfstring{IsoINIncomplete}{IsoINIncomplete}}
+{\footnotesize\ttfamily uint8\+\_\+t($\ast$ \+\_\+\+Device\+\_\+cb\+::\+Iso\+I\+N\+Incomplete) (struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t epnum)}
+
+\mbox{\Hypertarget{struct__Device__cb_aaec2b235257c30fd46e9b983e7854e2b}\label{struct__Device__cb_aaec2b235257c30fd46e9b983e7854e2b}} 
+\index{\_Device\_cb@{\_Device\_cb}!IsoOUTIncomplete@{IsoOUTIncomplete}}
+\index{IsoOUTIncomplete@{IsoOUTIncomplete}!\_Device\_cb@{\_Device\_cb}}
+\doxysubsubsection{\texorpdfstring{IsoOUTIncomplete}{IsoOUTIncomplete}}
+{\footnotesize\ttfamily uint8\+\_\+t($\ast$ \+\_\+\+Device\+\_\+cb\+::\+Iso\+O\+U\+T\+Incomplete) (struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t epnum)}
+
+\mbox{\Hypertarget{struct__Device__cb_ac00816aca512746958da249f55cccfd9}\label{struct__Device__cb_ac00816aca512746958da249f55cccfd9}} 
+\index{\_Device\_cb@{\_Device\_cb}!Setup@{Setup}}
+\index{Setup@{Setup}!\_Device\_cb@{\_Device\_cb}}
+\doxysubsubsection{\texorpdfstring{Setup}{Setup}}
+{\footnotesize\ttfamily uint8\+\_\+t($\ast$ \+\_\+\+Device\+\_\+cb\+::\+Setup) (struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_ga22931555b38fe36c9cd1d40a20c94180}{U\+S\+B\+D\+\_\+\+Setup\+Req\+Typedef}} $\ast$req)}
+
+\mbox{\Hypertarget{struct__Device__cb_af998e22bf5a2cdac490aca09c17ee044}\label{struct__Device__cb_af998e22bf5a2cdac490aca09c17ee044}} 
+\index{\_Device\_cb@{\_Device\_cb}!SOF@{SOF}}
+\index{SOF@{SOF}!\_Device\_cb@{\_Device\_cb}}
+\doxysubsubsection{\texorpdfstring{SOF}{SOF}}
+{\footnotesize\ttfamily uint8\+\_\+t($\ast$ \+\_\+\+Device\+\_\+cb\+::\+S\+OF) (struct \mbox{\hyperlink{struct__USBD__HandleTypeDef}{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/\+Hdd\+Linux/\+Documentos/\+Facultad/\+Tomas/6to/\+Proyecto\+\_\+final/\+Ball\+\_\+on\+\_\+plate/\+Ball\+\_\+on\+\_\+plate\+\_\+\+S\+T\+M32/\+Middlewares/\+S\+T/\+S\+T\+M32\+\_\+\+U\+S\+B\+\_\+\+Device\+\_\+\+Library/\+Core/\+Inc/\mbox{\hyperlink{usbd__def_8h}{usbd\+\_\+def.\+h}}\end{DoxyCompactItemize}

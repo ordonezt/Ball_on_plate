@@ -9,23 +9,37 @@
 #include "servos.h"
 #include "my_ring_buffer.h"
 
+///Cantidad de motores del sistema
 #define CANTIDAD_SERVOS				3
+
+///Cantidad de movimientos que se acumulan en la cola
 #define LONGITUD_BUFFER_ANGULOS		4
+
+///Controlador del timer que usan los motores
 extern TIM_HandleTypeDef htim2;
 
+///Motores
 servo_t servos[CANTIDAD_SERVOS];
 
+///Ring buffer para los movimientos de cada motor
 RINGBUFF_T 	servo_ring_buffer[CANTIDAD_SERVOS];
+
+///Buffer de movimientos para cada motor
 uint32_t 	servo_angulos_buffer[LONGITUD_BUFFER_ANGULOS][CANTIDAD_SERVOS];
+
+///Flag para saber si el motor ya fue inicializado, hay que reemlazarlo por la version del branch servos [ToDo Borrar]
 uint8_t flag_inicializado[3];
+
 /**
- * Inicializa los servos y los enciende a 0 grados.
+ * @brief Inicializa los servos y los deja en reposo.
  */
 void servos_inicializar(void)
 {
+	//Inicializamos el buffer de movimientos de cada motor
 	for(uint8_t i = 0; i < CANTIDAD_SERVOS; i++)
 		RingBuffer_Init(&servo_ring_buffer[i], servo_angulos_buffer[i], sizeof(servo_angulos_buffer[i][0]), LONGITUD_BUFFER_ANGULOS);
 
+	//Inicializamos los parametros de bajo nivel de cada motor (Puerto, pin, canal de PWM)
 	servos[SERVO_A].handler = &htim2;
 	servos[SERVO_A].puerto_gpio = SERVO_A_GPIO_Port;
 	servos[SERVO_A].pin_gpio = SERVO_A_Pin;
@@ -44,6 +58,7 @@ void servos_inicializar(void)
 	servos[SERVO_C].canal = TIM_CHANNEL_3;
 	servos[SERVO_C].numero = SERVO_C;
 
+//	//Llevamos todos los motores a  0
 //	for(uint8_t i = 0; i < CANTIDAD_SERVOS; i++)
 //	{
 //		servos_set_posicion(&servos[i], 0);
@@ -52,7 +67,7 @@ void servos_inicializar(void)
 }
 
 /**
- * Transforma miligrados en cuentas de PWM
+ * @brief Transforma miligrados en cuentas de PWM
  * @param miligrados Angulo a transformar
  * @return cuentas de PWM correspondientes a ese angulo
  */
@@ -84,7 +99,7 @@ uint32_t servos_miligrados2cuentas(uint32_t miligrados)
 }
 
 /**
- * Transforma cuentas de PWM en miligrados
+ * @brief Transforma cuentas de PWM en miligrados
  * @param cuentas Cuentas de PWM
  * @return Angulo en miligrados correspondientes a esa cantidad de cuentas
  */
@@ -94,14 +109,16 @@ uint32_t servos_cuentas2miligrados(uint32_t cuentas)
 }
 
 /**
- * Escribe en el perisferico PWM el ancho de pulso requerido
+ * @brief Escribe en el perisferico PWM el ancho de pulso requerido
  * @param servo Estructura al servo que se quiere mover
  * @param cuentas a escribir
  */
 void servos_set_ancho_de_pulso(servo_t servo, uint32_t cuentas)
 {
+	//Seteo el ancho de pulso
 	__HAL_TIM_SET_COMPARE(servo.handler, servo.canal, cuentas);
 
+	//Si el motor estaba apagado lo enciendo
 	if(flag_inicializado[servo.numero] == 0)//ToDo hacerlo mas prolijito
 	{
 		flag_inicializado[servo.numero] = 1;
@@ -110,7 +127,7 @@ void servos_set_ancho_de_pulso(servo_t servo, uint32_t cuentas)
 }
 
 /**
- * Mueve el servo a la posicion especificada
+ * @brief Mueve el servo a la posicion especificada
  * @param servo Puntero al servo a modificar.
  * @param miligrados Angulo final al que se quiere llegar
  */
@@ -124,7 +141,7 @@ void servos_set_posicion(servo_t *servo, uint32_t miligrados)
 }
 
 /**
- * Tarea periodica que controla el movimiento de los servos
+ * @brief Tarea periodica que controla el movimiento de los servos
  */
 void servos_tarea(void)
 {
@@ -132,13 +149,14 @@ void servos_tarea(void)
 
 	for(uint8_t i = 0; i < CANTIDAD_SERVOS; i++)
 	{
+		//Si hay un nuevo movimiento lo uso
 		if(RingBuffer_Pop(&servo_ring_buffer[i], &angulo))
 			servos_set_posicion(&servos[i], angulo);
 	}
 }
 
 /**
- * Agrega un angulo a la lista de movimientos de un motor
+ * @brief Agrega un angulo a la lista de movimientos de un motor
  * @param servo Motor que se quiere mover
  * @param miligrados Angulo al que se quiere posicionar el motor
  * @return 0 Ok, 1 error

@@ -10,40 +10,57 @@
 
 #include "stm32f1xx.h"
 
+/**
+ * @brief Enumeracion de los motores
+ *
+ */
 typedef enum{
-	SERVO_A,
-	SERVO_B,
-	SERVO_C
+	SERVO_A,/**< SERVO_A */
+	SERVO_B,/**< SERVO_B */
+	SERVO_C /**< SERVO_C */
 }servo_num_t;
 
+///Cuenta maxima del timer, se configura en el .ioc
 #define CUENTA_MAXIMA					60000
 
+///Ancho de pulso maximo de los motores MG996R (Valor empirico)
 #define LIMITE_SUPERIOR_CUENTAS			7800.0
+///Ancho de pulso minimo de los motores MG996R (Valor empirico)
 #define LIMITE_INFERIOR_CUENTAS 		1100.0
 
+///Angulo maximo del motor
 #define LIMITE_SUPERIOR_MILIGRADOS		200000.0
+///Angulo minimo del motor
 #define LIMITE_INFERIOR_MILIGRADOS		0.0
 
+///Ancho de pulso maximo de seguridad
 #define LIMITE_SUPERIOR_SEGURO_CUENTAS	7500
+///Ancho de pulso minimo de seguridad
 #define LIMITE_INFERIOR_SEGURO_CUENTAS	1400
 
+///Pendiente de la transferencia miligrados/cuentas
 #define M_SERVOS						((LIMITE_SUPERIOR_MILIGRADOS - LIMITE_INFERIOR_MILIGRADOS) / (LIMITE_SUPERIOR_CUENTAS - LIMITE_INFERIOR_CUENTAS))
+///Ordenada al origen de la transferencia miligrados/cuentas
 #define B_SERVOS						LIMITE_INFERIOR_SEGURO_CUENTAS
 
+///Angulo maximo seguro de los motores
 #define MILIGRADOS_MAXIMO				((LIMITE_SUPERIOR_SEGURO_CUENTAS - LIMITE_INFERIOR_SEGURO_CUENTAS) * M_SERVOS)
 
+/**
+ * @brief Estructura de estado del motor
+ *
+ */
 typedef struct{
-	GPIO_TypeDef * puerto_gpio;
-	uint16_t pin_gpio;
-	uint32_t canal;
-	TIM_HandleTypeDef *handler;
-	servo_num_t numero;
-	uint32_t miligrados;
-
+	GPIO_TypeDef * puerto_gpio; /**< Puerto */
+	uint16_t pin_gpio;			/**< Pin */
+	uint32_t canal;				/**< Canal del timer */
+	TIM_HandleTypeDef *handler;	/**< Manejador de timer */
+	servo_num_t numero;			/**< Numero de motor */
+	uint32_t miligrados;		/**< Angulo actual */
 }servo_t;
 
 /**
- * Inicializa los servos y los enciende a 0 grados.
+ * Inicializa los servos y los deja en reposo.
  */
 void servos_inicializar(void);
 
