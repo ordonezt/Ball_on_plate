@@ -1,0 +1,185 @@
+\hypertarget{struct__USBD__HandleTypeDef}{}\doxysection{\+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def Struct Reference}
+\label{struct__USBD__HandleTypeDef}\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+
+
+{\ttfamily \#include $<$usbd\+\_\+def.\+h$>$}
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct__USBD__HandleTypeDef_a5156272c7e67c05e71c7f896400736fc}{id}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{struct__USBD__HandleTypeDef_a6ca03ac14a91825f90cfbcf60e7b137b}{dev\+\_\+config}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{struct__USBD__HandleTypeDef_a106d00710a2670cb78eb7c60d5ee7148}{dev\+\_\+default\+\_\+config}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{struct__USBD__HandleTypeDef_a15beabef5122d0052a174f8199aba0fb}{dev\+\_\+config\+\_\+status}}
+\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaa62cd3d2fb69a537ae7a5a94bdd6ae93}{U\+S\+B\+D\+\_\+\+Speed\+Type\+Def}} \mbox{\hyperlink{struct__USBD__HandleTypeDef_ab040c3b6da2606cb0271eeb0e69bf380}{dev\+\_\+speed}}
+\item 
+\mbox{\hyperlink{structUSBD__EndpointTypeDef}{U\+S\+B\+D\+\_\+\+Endpoint\+Type\+Def}} \mbox{\hyperlink{struct__USBD__HandleTypeDef_a349168e0c5b8446a99acfe17a4baeb4a}{ep\+\_\+in}} \mbox{[}16\mbox{]}
+\item 
+\mbox{\hyperlink{structUSBD__EndpointTypeDef}{U\+S\+B\+D\+\_\+\+Endpoint\+Type\+Def}} \mbox{\hyperlink{struct__USBD__HandleTypeDef_a44d0772ecdbc82857e4838d82cd41cbd}{ep\+\_\+out}} \mbox{[}16\mbox{]}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{struct__USBD__HandleTypeDef_a613cd6cd788fc7e1192af174f5b52038}{ep0\+\_\+state}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{struct__USBD__HandleTypeDef_ad0232e00e7b26d4fd44703e7aa1967e8}{ep0\+\_\+data\+\_\+len}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct__USBD__HandleTypeDef_ab353692b2c17b45da559adbd2fb82ee2}{dev\+\_\+state}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct__USBD__HandleTypeDef_ada8cf946bea80eddd4e02d625cd12ec3}{dev\+\_\+old\+\_\+state}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct__USBD__HandleTypeDef_af3d7a614a6c303c650c170be0db9e4b9}{dev\+\_\+address}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct__USBD__HandleTypeDef_aab8828b36430a92401a77d7d99afbc16}{dev\+\_\+connection\+\_\+status}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct__USBD__HandleTypeDef_a88ced0f8fd9995ddc0deca1dc6c6eeaf}{dev\+\_\+test\+\_\+mode}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{struct__USBD__HandleTypeDef_a57d4048d7f8c526945dd0aecd1ec963e}{dev\+\_\+remote\+\_\+wakeup}}
+\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_ga22931555b38fe36c9cd1d40a20c94180}{U\+S\+B\+D\+\_\+\+Setup\+Req\+Typedef}} \mbox{\hyperlink{struct__USBD__HandleTypeDef_acadd0265b9179eb16d524f65dfd1c2d2}{request}}
+\item 
+\mbox{\hyperlink{structUSBD__DescriptorsTypeDef}{U\+S\+B\+D\+\_\+\+Descriptors\+Type\+Def}} $\ast$ \mbox{\hyperlink{struct__USBD__HandleTypeDef_a6ea838b67470602aac3d753d5aa480ff}{p\+Desc}}
+\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_ga2b6d250622c95103c31c8196e749a564}{U\+S\+B\+D\+\_\+\+Class\+Type\+Def}} $\ast$ \mbox{\hyperlink{struct__USBD__HandleTypeDef_a0c83fe605d308d5724b8d3ba89e4cb7e}{p\+Class}}
+\item 
+void $\ast$ \mbox{\hyperlink{struct__USBD__HandleTypeDef_acb39dec6f552fcb28268351a90cbc709}{p\+Class\+Data}}
+\item 
+void $\ast$ \mbox{\hyperlink{struct__USBD__HandleTypeDef_a539cfbdf2f77898186bd41e104d21695}{p\+User\+Data}}
+\item 
+void $\ast$ \mbox{\hyperlink{struct__USBD__HandleTypeDef_a9b47e60cc69d401f31b657c87d043b0d}{p\+Data}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_af3d7a614a6c303c650c170be0db9e4b9}\label{struct__USBD__HandleTypeDef_af3d7a614a6c303c650c170be0db9e4b9}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!dev\_address@{dev\_address}}
+\index{dev\_address@{dev\_address}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{dev\_address}{dev\_address}}
+{\footnotesize\ttfamily uint8\+\_\+t \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::dev\+\_\+address}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_a6ca03ac14a91825f90cfbcf60e7b137b}\label{struct__USBD__HandleTypeDef_a6ca03ac14a91825f90cfbcf60e7b137b}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!dev\_config@{dev\_config}}
+\index{dev\_config@{dev\_config}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{dev\_config}{dev\_config}}
+{\footnotesize\ttfamily uint32\+\_\+t \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::dev\+\_\+config}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_a15beabef5122d0052a174f8199aba0fb}\label{struct__USBD__HandleTypeDef_a15beabef5122d0052a174f8199aba0fb}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!dev\_config\_status@{dev\_config\_status}}
+\index{dev\_config\_status@{dev\_config\_status}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{dev\_config\_status}{dev\_config\_status}}
+{\footnotesize\ttfamily uint32\+\_\+t \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::dev\+\_\+config\+\_\+status}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_aab8828b36430a92401a77d7d99afbc16}\label{struct__USBD__HandleTypeDef_aab8828b36430a92401a77d7d99afbc16}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!dev\_connection\_status@{dev\_connection\_status}}
+\index{dev\_connection\_status@{dev\_connection\_status}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{dev\_connection\_status}{dev\_connection\_status}}
+{\footnotesize\ttfamily uint8\+\_\+t \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::dev\+\_\+connection\+\_\+status}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_a106d00710a2670cb78eb7c60d5ee7148}\label{struct__USBD__HandleTypeDef_a106d00710a2670cb78eb7c60d5ee7148}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!dev\_default\_config@{dev\_default\_config}}
+\index{dev\_default\_config@{dev\_default\_config}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{dev\_default\_config}{dev\_default\_config}}
+{\footnotesize\ttfamily uint32\+\_\+t \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::dev\+\_\+default\+\_\+config}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_ada8cf946bea80eddd4e02d625cd12ec3}\label{struct__USBD__HandleTypeDef_ada8cf946bea80eddd4e02d625cd12ec3}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!dev\_old\_state@{dev\_old\_state}}
+\index{dev\_old\_state@{dev\_old\_state}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{dev\_old\_state}{dev\_old\_state}}
+{\footnotesize\ttfamily uint8\+\_\+t \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::dev\+\_\+old\+\_\+state}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_a57d4048d7f8c526945dd0aecd1ec963e}\label{struct__USBD__HandleTypeDef_a57d4048d7f8c526945dd0aecd1ec963e}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!dev\_remote\_wakeup@{dev\_remote\_wakeup}}
+\index{dev\_remote\_wakeup@{dev\_remote\_wakeup}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{dev\_remote\_wakeup}{dev\_remote\_wakeup}}
+{\footnotesize\ttfamily uint32\+\_\+t \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::dev\+\_\+remote\+\_\+wakeup}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_ab040c3b6da2606cb0271eeb0e69bf380}\label{struct__USBD__HandleTypeDef_ab040c3b6da2606cb0271eeb0e69bf380}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!dev\_speed@{dev\_speed}}
+\index{dev\_speed@{dev\_speed}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{dev\_speed}{dev\_speed}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaa62cd3d2fb69a537ae7a5a94bdd6ae93}{U\+S\+B\+D\+\_\+\+Speed\+Type\+Def}} \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::dev\+\_\+speed}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_ab353692b2c17b45da559adbd2fb82ee2}\label{struct__USBD__HandleTypeDef_ab353692b2c17b45da559adbd2fb82ee2}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!dev\_state@{dev\_state}}
+\index{dev\_state@{dev\_state}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{dev\_state}{dev\_state}}
+{\footnotesize\ttfamily uint8\+\_\+t \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::dev\+\_\+state}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_a88ced0f8fd9995ddc0deca1dc6c6eeaf}\label{struct__USBD__HandleTypeDef_a88ced0f8fd9995ddc0deca1dc6c6eeaf}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!dev\_test\_mode@{dev\_test\_mode}}
+\index{dev\_test\_mode@{dev\_test\_mode}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{dev\_test\_mode}{dev\_test\_mode}}
+{\footnotesize\ttfamily uint8\+\_\+t \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::dev\+\_\+test\+\_\+mode}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_ad0232e00e7b26d4fd44703e7aa1967e8}\label{struct__USBD__HandleTypeDef_ad0232e00e7b26d4fd44703e7aa1967e8}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!ep0\_data\_len@{ep0\_data\_len}}
+\index{ep0\_data\_len@{ep0\_data\_len}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{ep0\_data\_len}{ep0\_data\_len}}
+{\footnotesize\ttfamily uint32\+\_\+t \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::ep0\+\_\+data\+\_\+len}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_a613cd6cd788fc7e1192af174f5b52038}\label{struct__USBD__HandleTypeDef_a613cd6cd788fc7e1192af174f5b52038}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!ep0\_state@{ep0\_state}}
+\index{ep0\_state@{ep0\_state}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{ep0\_state}{ep0\_state}}
+{\footnotesize\ttfamily uint32\+\_\+t \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::ep0\+\_\+state}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_a349168e0c5b8446a99acfe17a4baeb4a}\label{struct__USBD__HandleTypeDef_a349168e0c5b8446a99acfe17a4baeb4a}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!ep\_in@{ep\_in}}
+\index{ep\_in@{ep\_in}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{ep\_in}{ep\_in}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structUSBD__EndpointTypeDef}{U\+S\+B\+D\+\_\+\+Endpoint\+Type\+Def}} \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::ep\+\_\+in\mbox{[}16\mbox{]}}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_a44d0772ecdbc82857e4838d82cd41cbd}\label{struct__USBD__HandleTypeDef_a44d0772ecdbc82857e4838d82cd41cbd}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!ep\_out@{ep\_out}}
+\index{ep\_out@{ep\_out}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{ep\_out}{ep\_out}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structUSBD__EndpointTypeDef}{U\+S\+B\+D\+\_\+\+Endpoint\+Type\+Def}} \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::ep\+\_\+out\mbox{[}16\mbox{]}}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_a5156272c7e67c05e71c7f896400736fc}\label{struct__USBD__HandleTypeDef_a5156272c7e67c05e71c7f896400736fc}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!id@{id}}
+\index{id@{id}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily uint8\+\_\+t \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::id}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_a0c83fe605d308d5724b8d3ba89e4cb7e}\label{struct__USBD__HandleTypeDef_a0c83fe605d308d5724b8d3ba89e4cb7e}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!pClass@{pClass}}
+\index{pClass@{pClass}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{pClass}{pClass}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_ga2b6d250622c95103c31c8196e749a564}{U\+S\+B\+D\+\_\+\+Class\+Type\+Def}}$\ast$ \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::p\+Class}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_acb39dec6f552fcb28268351a90cbc709}\label{struct__USBD__HandleTypeDef_acb39dec6f552fcb28268351a90cbc709}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!pClassData@{pClassData}}
+\index{pClassData@{pClassData}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{pClassData}{pClassData}}
+{\footnotesize\ttfamily void$\ast$ \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::p\+Class\+Data}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_a9b47e60cc69d401f31b657c87d043b0d}\label{struct__USBD__HandleTypeDef_a9b47e60cc69d401f31b657c87d043b0d}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!pData@{pData}}
+\index{pData@{pData}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{pData}{pData}}
+{\footnotesize\ttfamily void$\ast$ \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::p\+Data}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_a6ea838b67470602aac3d753d5aa480ff}\label{struct__USBD__HandleTypeDef_a6ea838b67470602aac3d753d5aa480ff}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!pDesc@{pDesc}}
+\index{pDesc@{pDesc}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{pDesc}{pDesc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structUSBD__DescriptorsTypeDef}{U\+S\+B\+D\+\_\+\+Descriptors\+Type\+Def}}$\ast$ \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::p\+Desc}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_a539cfbdf2f77898186bd41e104d21695}\label{struct__USBD__HandleTypeDef_a539cfbdf2f77898186bd41e104d21695}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!pUserData@{pUserData}}
+\index{pUserData@{pUserData}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{pUserData}{pUserData}}
+{\footnotesize\ttfamily void$\ast$ \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::p\+User\+Data}
+
+\mbox{\Hypertarget{struct__USBD__HandleTypeDef_acadd0265b9179eb16d524f65dfd1c2d2}\label{struct__USBD__HandleTypeDef_acadd0265b9179eb16d524f65dfd1c2d2}} 
+\index{\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}!request@{request}}
+\index{request@{request}!\_USBD\_HandleTypeDef@{\_USBD\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{request}{request}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_ga22931555b38fe36c9cd1d40a20c94180}{U\+S\+B\+D\+\_\+\+Setup\+Req\+Typedef}} \+\_\+\+U\+S\+B\+D\+\_\+\+Handle\+Type\+Def\+::request}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/\+Hdd\+Linux/\+Documentos/\+Facultad/\+Tomas/6to/\+Proyecto\+\_\+final/\+Ball\+\_\+on\+\_\+plate/\+Ball\+\_\+on\+\_\+plate\+\_\+\+S\+T\+M32/\+Middlewares/\+S\+T/\+S\+T\+M32\+\_\+\+U\+S\+B\+\_\+\+Device\+\_\+\+Library/\+Core/\+Inc/\mbox{\hyperlink{usbd__def_8h}{usbd\+\_\+def.\+h}}\end{DoxyCompactItemize}

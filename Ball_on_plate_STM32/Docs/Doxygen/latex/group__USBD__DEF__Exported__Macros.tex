@@ -1,0 +1,65 @@
+\hypertarget{group__USBD__DEF__Exported__Macros}{}\doxysection{U\+S\+B\+D\+\_\+\+D\+E\+F\+\_\+\+Exported\+\_\+\+Macros}
+\label{group__USBD__DEF__Exported__Macros}\index{USBD\_DEF\_Exported\_Macros@{USBD\_DEF\_Exported\_Macros}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__USBD__DEF__Exported__Macros_ga6353cdd236e585cb110e3fbb9bcb05e8}{S\+W\+A\+P\+B\+Y\+TE}}(addr)
+\item 
+\#define \mbox{\hyperlink{group__USBD__DEF__Exported__Macros_ga373c90214222e94d07424e7a8d41b92b}{L\+O\+B\+Y\+TE}}(x)~((uint8\+\_\+t)((x) \& 0x00\+F\+FU))
+\item 
+\#define \mbox{\hyperlink{group__USBD__DEF__Exported__Macros_gaa1ba73e45dd29eeb526a52d9a3336f35}{H\+I\+B\+Y\+TE}}(x)~((uint8\+\_\+t)(((x) \& 0x\+F\+F00U) $>$$>$ 8U))
+\item 
+\#define \mbox{\hyperlink{group__USBD__DEF__Exported__Macros_ga3acffbd305ee72dcd4593c0d8af64a4f}{M\+IN}}(a,  b)~(((a) $<$ (b)) ? (a) \+: (b))
+\item 
+\#define \mbox{\hyperlink{group__USBD__DEF__Exported__Macros_gafa99ec4acc4ecb2dc3c2d05da15d0e3f}{M\+AX}}(a,  b)~(((a) $>$ (b)) ? (a) \+: (b))
+\item 
+\#define \mbox{\hyperlink{group__USBD__DEF__Exported__Macros_gaaa12b03c58e2eb296bd7aa915ee540f3}{\+\_\+\+\_\+\+A\+L\+I\+G\+N\+\_\+\+E\+ND}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group__USBD__DEF__Exported__Macros_gaaa12b03c58e2eb296bd7aa915ee540f3}\label{group__USBD__DEF__Exported__Macros_gaaa12b03c58e2eb296bd7aa915ee540f3}} 
+\index{USBD\_DEF\_Exported\_Macros@{USBD\_DEF\_Exported\_Macros}!\_\_ALIGN\_END@{\_\_ALIGN\_END}}
+\index{\_\_ALIGN\_END@{\_\_ALIGN\_END}!USBD\_DEF\_Exported\_Macros@{USBD\_DEF\_Exported\_Macros}}
+\doxysubsubsection{\texorpdfstring{\_\_ALIGN\_END}{\_\_ALIGN\_END}}
+{\footnotesize\ttfamily \#define \+\_\+\+\_\+\+A\+L\+I\+G\+N\+\_\+\+E\+ND}
+
+\mbox{\Hypertarget{group__USBD__DEF__Exported__Macros_gaa1ba73e45dd29eeb526a52d9a3336f35}\label{group__USBD__DEF__Exported__Macros_gaa1ba73e45dd29eeb526a52d9a3336f35}} 
+\index{USBD\_DEF\_Exported\_Macros@{USBD\_DEF\_Exported\_Macros}!HIBYTE@{HIBYTE}}
+\index{HIBYTE@{HIBYTE}!USBD\_DEF\_Exported\_Macros@{USBD\_DEF\_Exported\_Macros}}
+\doxysubsubsection{\texorpdfstring{HIBYTE}{HIBYTE}}
+{\footnotesize\ttfamily \#define H\+I\+B\+Y\+TE(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((uint8\+\_\+t)(((x) \& 0x\+F\+F00U) $>$$>$ 8U))}
+
+\mbox{\Hypertarget{group__USBD__DEF__Exported__Macros_ga373c90214222e94d07424e7a8d41b92b}\label{group__USBD__DEF__Exported__Macros_ga373c90214222e94d07424e7a8d41b92b}} 
+\index{USBD\_DEF\_Exported\_Macros@{USBD\_DEF\_Exported\_Macros}!LOBYTE@{LOBYTE}}
+\index{LOBYTE@{LOBYTE}!USBD\_DEF\_Exported\_Macros@{USBD\_DEF\_Exported\_Macros}}
+\doxysubsubsection{\texorpdfstring{LOBYTE}{LOBYTE}}
+{\footnotesize\ttfamily \#define L\+O\+B\+Y\+TE(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((uint8\+\_\+t)((x) \& 0x00\+F\+FU))}
+
+\mbox{\Hypertarget{group__USBD__DEF__Exported__Macros_gafa99ec4acc4ecb2dc3c2d05da15d0e3f}\label{group__USBD__DEF__Exported__Macros_gafa99ec4acc4ecb2dc3c2d05da15d0e3f}} 
+\index{USBD\_DEF\_Exported\_Macros@{USBD\_DEF\_Exported\_Macros}!MAX@{MAX}}
+\index{MAX@{MAX}!USBD\_DEF\_Exported\_Macros@{USBD\_DEF\_Exported\_Macros}}
+\doxysubsubsection{\texorpdfstring{MAX}{MAX}}
+{\footnotesize\ttfamily \#define M\+AX(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})~(((a) $>$ (b)) ? (a) \+: (b))}
+
+\mbox{\Hypertarget{group__USBD__DEF__Exported__Macros_ga3acffbd305ee72dcd4593c0d8af64a4f}\label{group__USBD__DEF__Exported__Macros_ga3acffbd305ee72dcd4593c0d8af64a4f}} 
+\index{USBD\_DEF\_Exported\_Macros@{USBD\_DEF\_Exported\_Macros}!MIN@{MIN}}
+\index{MIN@{MIN}!USBD\_DEF\_Exported\_Macros@{USBD\_DEF\_Exported\_Macros}}
+\doxysubsubsection{\texorpdfstring{MIN}{MIN}}
+{\footnotesize\ttfamily \#define M\+IN(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})~(((a) $<$ (b)) ? (a) \+: (b))}
+
+\mbox{\Hypertarget{group__USBD__DEF__Exported__Macros_ga6353cdd236e585cb110e3fbb9bcb05e8}\label{group__USBD__DEF__Exported__Macros_ga6353cdd236e585cb110e3fbb9bcb05e8}} 
+\index{USBD\_DEF\_Exported\_Macros@{USBD\_DEF\_Exported\_Macros}!SWAPBYTE@{SWAPBYTE}}
+\index{SWAPBYTE@{SWAPBYTE}!USBD\_DEF\_Exported\_Macros@{USBD\_DEF\_Exported\_Macros}}
+\doxysubsubsection{\texorpdfstring{SWAPBYTE}{SWAPBYTE}}
+{\footnotesize\ttfamily \#define S\+W\+A\+P\+B\+Y\+TE(\begin{DoxyParamCaption}\item[{}]{addr }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(((uint16\_t)(*((uint8\_t *)(addr)))) + \(\backslash\)}
+\DoxyCodeLine{                               (((uint16\_t)(*(((uint8\_t *)(addr)) + 1U))) << 8U))}
+
+\end{DoxyCode}

@@ -1,0 +1,301 @@
+\hypertarget{group__Ring__Buffer}{}\doxysection{C\+H\+IP\+: Simple ring buffer implementation}
+\label{group__Ring__Buffer}\index{CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}}
+\begin{DoxyCompactList}\small\item\em Ring buffer structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__Ring__Buffer_gab0e914e769172c3291a9cc36962bc4de}{R\+B\+\_\+\+V\+H\+E\+AD}}(rb)~($\ast$(volatile uint32\+\_\+t $\ast$) \&(rb)-\/$>$head)
+\item 
+\#define \mbox{\hyperlink{group__Ring__Buffer_ga9f7c4d3e3029e8318582a147a5c37674}{R\+B\+\_\+\+V\+T\+A\+IL}}(rb)~($\ast$(volatile uint32\+\_\+t $\ast$) \&(rb)-\/$>$tail)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group__Ring__Buffer_gaaf3bb51f2228ea1bea603e19c7eba5bb}{Ring\+Buffer\+\_\+\+Init}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff, void $\ast$buffer, int item\+Size, int count)
+\begin{DoxyCompactList}\small\item\em Initialize ring buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} void \mbox{\hyperlink{group__Ring__Buffer_ga5f66a5dd980ef03877cf8e0c96ad4ebb}{Ring\+Buffer\+\_\+\+Flush}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff)
+\begin{DoxyCompactList}\small\item\em Resets the ring buffer to empty. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} int \mbox{\hyperlink{group__Ring__Buffer_ga2fc4b40b03afb19c8ea942da3cf3faf1}{Ring\+Buffer\+\_\+\+Get\+Size}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff)
+\begin{DoxyCompactList}\small\item\em Return size the ring buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} int \mbox{\hyperlink{group__Ring__Buffer_ga7b69777c35694637acaf39e6bfcc1822}{Ring\+Buffer\+\_\+\+Get\+Count}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff)
+\begin{DoxyCompactList}\small\item\em Return number of items in the ring buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} int \mbox{\hyperlink{group__Ring__Buffer_ga75424687def8979742338366d39c8559}{Ring\+Buffer\+\_\+\+Get\+Free}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff)
+\begin{DoxyCompactList}\small\item\em Return number of free items in the ring buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} int \mbox{\hyperlink{group__Ring__Buffer_ga760da012435262add1d8d7aa79e873a0}{Ring\+Buffer\+\_\+\+Is\+Full}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff)
+\begin{DoxyCompactList}\small\item\em Return number of items in the ring buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} int \mbox{\hyperlink{group__Ring__Buffer_ga6f03e04a69262864bde4f35fc6f3dfb5}{Ring\+Buffer\+\_\+\+Is\+Empty}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff)
+\begin{DoxyCompactList}\small\item\em Return empty status of ring buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Ring__Buffer_gaafdee54f2525b2c7a983d1a631b42226}{Ring\+Buffer\+\_\+\+Insert}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff, const void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Insert a single item into ring buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Ring__Buffer_gafeafb521d4e03052ab2c893fd0e388d5}{Ring\+Buffer\+\_\+\+Insert\+Mult}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff, const void $\ast$data, int num)
+\begin{DoxyCompactList}\small\item\em Insert an array of items into ring buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Ring__Buffer_gaf3ce7f43677c2b4c6eedb3cc4962b80d}{Ring\+Buffer\+\_\+\+Pop}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Pop an item from the ring buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Ring__Buffer_gae0ef7bb96d1fe84ae1441b7c214b1e56}{Ring\+Buffer\+\_\+\+Pop\+Mult}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff, void $\ast$data, int num)
+\begin{DoxyCompactList}\small\item\em Pop an array of items from the ring buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Ring__Buffer_gaaf44eb32815f84e7c04f07d6736c3f85}{Ring\+Buffer\+\_\+\+Pop\+\_\+no\+\_\+invasivo}} (\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$Ring\+Buff, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Pop an item from the ring buffer but without incrementing the count. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group__Ring__Buffer_gab0e914e769172c3291a9cc36962bc4de}\label{group__Ring__Buffer_gab0e914e769172c3291a9cc36962bc4de}} 
+\index{CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}!RB\_VHEAD@{RB\_VHEAD}}
+\index{RB\_VHEAD@{RB\_VHEAD}!CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}}
+\doxysubsubsection{\texorpdfstring{RB\_VHEAD}{RB\_VHEAD}}
+{\footnotesize\ttfamily \#define R\+B\+\_\+\+V\+H\+E\+AD(\begin{DoxyParamCaption}\item[{}]{rb }\end{DoxyParamCaption})~($\ast$(volatile uint32\+\_\+t $\ast$) \&(rb)-\/$>$head)}
+
+volatile typecasted head index \mbox{\Hypertarget{group__Ring__Buffer_ga9f7c4d3e3029e8318582a147a5c37674}\label{group__Ring__Buffer_ga9f7c4d3e3029e8318582a147a5c37674}} 
+\index{CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}!RB\_VTAIL@{RB\_VTAIL}}
+\index{RB\_VTAIL@{RB\_VTAIL}!CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}}
+\doxysubsubsection{\texorpdfstring{RB\_VTAIL}{RB\_VTAIL}}
+{\footnotesize\ttfamily \#define R\+B\+\_\+\+V\+T\+A\+IL(\begin{DoxyParamCaption}\item[{}]{rb }\end{DoxyParamCaption})~($\ast$(volatile uint32\+\_\+t $\ast$) \&(rb)-\/$>$tail)}
+
+volatile typecasted tail index 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__Ring__Buffer_ga5f66a5dd980ef03877cf8e0c96ad4ebb}\label{group__Ring__Buffer_ga5f66a5dd980ef03877cf8e0c96ad4ebb}} 
+\index{CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}!RingBuffer\_Flush@{RingBuffer\_Flush}}
+\index{RingBuffer\_Flush@{RingBuffer\_Flush}!CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}}
+\doxysubsubsection{\texorpdfstring{RingBuffer\_Flush()}{RingBuffer\_Flush()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} void Ring\+Buffer\+\_\+\+Flush (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$}]{Ring\+Buff }\end{DoxyParamCaption})}
+
+
+
+Resets the ring buffer to empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ring\+Buff} & \+: Pointer to ring buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Ring__Buffer_ga7b69777c35694637acaf39e6bfcc1822}\label{group__Ring__Buffer_ga7b69777c35694637acaf39e6bfcc1822}} 
+\index{CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}!RingBuffer\_GetCount@{RingBuffer\_GetCount}}
+\index{RingBuffer\_GetCount@{RingBuffer\_GetCount}!CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}}
+\doxysubsubsection{\texorpdfstring{RingBuffer\_GetCount()}{RingBuffer\_GetCount()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} int Ring\+Buffer\+\_\+\+Get\+Count (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$}]{Ring\+Buff }\end{DoxyParamCaption})}
+
+
+
+Return number of items in the ring buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ring\+Buff} & \+: Pointer to ring buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of items in the ring buffer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Ring__Buffer_ga75424687def8979742338366d39c8559}\label{group__Ring__Buffer_ga75424687def8979742338366d39c8559}} 
+\index{CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}!RingBuffer\_GetFree@{RingBuffer\_GetFree}}
+\index{RingBuffer\_GetFree@{RingBuffer\_GetFree}!CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}}
+\doxysubsubsection{\texorpdfstring{RingBuffer\_GetFree()}{RingBuffer\_GetFree()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} int Ring\+Buffer\+\_\+\+Get\+Free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$}]{Ring\+Buff }\end{DoxyParamCaption})}
+
+
+
+Return number of free items in the ring buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ring\+Buff} & \+: Pointer to ring buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of free items in the ring buffer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Ring__Buffer_ga2fc4b40b03afb19c8ea942da3cf3faf1}\label{group__Ring__Buffer_ga2fc4b40b03afb19c8ea942da3cf3faf1}} 
+\index{CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}!RingBuffer\_GetSize@{RingBuffer\_GetSize}}
+\index{RingBuffer\_GetSize@{RingBuffer\_GetSize}!CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}}
+\doxysubsubsection{\texorpdfstring{RingBuffer\_GetSize()}{RingBuffer\_GetSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} int Ring\+Buffer\+\_\+\+Get\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$}]{Ring\+Buff }\end{DoxyParamCaption})}
+
+
+
+Return size the ring buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ring\+Buff} & \+: Pointer to ring buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Size of the ring buffer in bytes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Ring__Buffer_gaaf3bb51f2228ea1bea603e19c7eba5bb}\label{group__Ring__Buffer_gaaf3bb51f2228ea1bea603e19c7eba5bb}} 
+\index{CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}!RingBuffer\_Init@{RingBuffer\_Init}}
+\index{RingBuffer\_Init@{RingBuffer\_Init}!CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}}
+\doxysubsubsection{\texorpdfstring{RingBuffer\_Init()}{RingBuffer\_Init()}}
+{\footnotesize\ttfamily int Ring\+Buffer\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$}]{Ring\+Buff,  }\item[{void $\ast$}]{buffer,  }\item[{int}]{item\+Size,  }\item[{int}]{count }\end{DoxyParamCaption})}
+
+
+
+Initialize ring buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ring\+Buff} & \+: Pointer to ring buffer to initialize \\
+\hline
+{\em buffer} & \+: Pointer to buffer to associate with Ring\+Buff \\
+\hline
+{\em item\+Size} & \+: Size of each buffer item size \\
+\hline
+{\em count} & \+: Size of ring buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Memory pointed by {\itshape buffer} must have correct alignment of {\itshape item\+Size}, and {\itshape count} must be a power of 2 and must at least be 2 or greater. 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Ring__Buffer_gaafdee54f2525b2c7a983d1a631b42226}\label{group__Ring__Buffer_gaafdee54f2525b2c7a983d1a631b42226}} 
+\index{CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}!RingBuffer\_Insert@{RingBuffer\_Insert}}
+\index{RingBuffer\_Insert@{RingBuffer\_Insert}!CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}}
+\doxysubsubsection{\texorpdfstring{RingBuffer\_Insert()}{RingBuffer\_Insert()}}
+{\footnotesize\ttfamily int Ring\+Buffer\+\_\+\+Insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$}]{Ring\+Buff,  }\item[{const void $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Insert a single item into ring buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ring\+Buff} & \+: Pointer to ring buffer \\
+\hline
+{\em data} & \+: pointer to item \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 when successfully inserted, 0 on error (Buffer not initialized using \mbox{\hyperlink{group__Ring__Buffer_gaaf3bb51f2228ea1bea603e19c7eba5bb}{Ring\+Buffer\+\_\+\+Init()}} or attempted to insert when buffer is full) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Ring__Buffer_gafeafb521d4e03052ab2c893fd0e388d5}\label{group__Ring__Buffer_gafeafb521d4e03052ab2c893fd0e388d5}} 
+\index{CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}!RingBuffer\_InsertMult@{RingBuffer\_InsertMult}}
+\index{RingBuffer\_InsertMult@{RingBuffer\_InsertMult}!CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}}
+\doxysubsubsection{\texorpdfstring{RingBuffer\_InsertMult()}{RingBuffer\_InsertMult()}}
+{\footnotesize\ttfamily int Ring\+Buffer\+\_\+\+Insert\+Mult (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$}]{Ring\+Buff,  }\item[{const void $\ast$}]{data,  }\item[{int}]{num }\end{DoxyParamCaption})}
+
+
+
+Insert an array of items into ring buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ring\+Buff} & \+: Pointer to ring buffer \\
+\hline
+{\em data} & \+: Pointer to first element of the item array \\
+\hline
+{\em num} & \+: Number of items in the array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of items successfully inserted, 0 on error (Buffer not initialized using \mbox{\hyperlink{group__Ring__Buffer_gaaf3bb51f2228ea1bea603e19c7eba5bb}{Ring\+Buffer\+\_\+\+Init()}} or attempted to insert when buffer is full) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Ring__Buffer_ga6f03e04a69262864bde4f35fc6f3dfb5}\label{group__Ring__Buffer_ga6f03e04a69262864bde4f35fc6f3dfb5}} 
+\index{CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}!RingBuffer\_IsEmpty@{RingBuffer\_IsEmpty}}
+\index{RingBuffer\_IsEmpty@{RingBuffer\_IsEmpty}!CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}}
+\doxysubsubsection{\texorpdfstring{RingBuffer\_IsEmpty()}{RingBuffer\_IsEmpty()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} int Ring\+Buffer\+\_\+\+Is\+Empty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$}]{Ring\+Buff }\end{DoxyParamCaption})}
+
+
+
+Return empty status of ring buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ring\+Buff} & \+: Pointer to ring buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the ring buffer is empty, otherwise 0 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Ring__Buffer_ga760da012435262add1d8d7aa79e873a0}\label{group__Ring__Buffer_ga760da012435262add1d8d7aa79e873a0}} 
+\index{CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}!RingBuffer\_IsFull@{RingBuffer\_IsFull}}
+\index{RingBuffer\_IsFull@{RingBuffer\_IsFull}!CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}}
+\doxysubsubsection{\texorpdfstring{RingBuffer\_IsFull()}{RingBuffer\_IsFull()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{my__ring__buffer_8h_a10b2d890d871e1489bb02b7e70d9bdfb}{S\+T\+A\+T\+IC}} \mbox{\hyperlink{my__ring__buffer_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\+N\+L\+I\+NE}} int Ring\+Buffer\+\_\+\+Is\+Full (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$}]{Ring\+Buff }\end{DoxyParamCaption})}
+
+
+
+Return number of items in the ring buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ring\+Buff} & \+: Pointer to ring buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the ring buffer is full, otherwise 0 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Ring__Buffer_gaf3ce7f43677c2b4c6eedb3cc4962b80d}\label{group__Ring__Buffer_gaf3ce7f43677c2b4c6eedb3cc4962b80d}} 
+\index{CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}!RingBuffer\_Pop@{RingBuffer\_Pop}}
+\index{RingBuffer\_Pop@{RingBuffer\_Pop}!CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}}
+\doxysubsubsection{\texorpdfstring{RingBuffer\_Pop()}{RingBuffer\_Pop()}}
+{\footnotesize\ttfamily int Ring\+Buffer\+\_\+\+Pop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$}]{Ring\+Buff,  }\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Pop an item from the ring buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ring\+Buff} & \+: Pointer to ring buffer \\
+\hline
+{\em data} & \+: Pointer to memory where popped item be stored \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 when item popped successfuly onto {\itshape data}, 0 When error (Buffer not initialized using \mbox{\hyperlink{group__Ring__Buffer_gaaf3bb51f2228ea1bea603e19c7eba5bb}{Ring\+Buffer\+\_\+\+Init()}} or attempted to pop item when the buffer is empty) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Ring__Buffer_gaaf44eb32815f84e7c04f07d6736c3f85}\label{group__Ring__Buffer_gaaf44eb32815f84e7c04f07d6736c3f85}} 
+\index{CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}!RingBuffer\_Pop\_no\_invasivo@{RingBuffer\_Pop\_no\_invasivo}}
+\index{RingBuffer\_Pop\_no\_invasivo@{RingBuffer\_Pop\_no\_invasivo}!CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}}
+\doxysubsubsection{\texorpdfstring{RingBuffer\_Pop\_no\_invasivo()}{RingBuffer\_Pop\_no\_invasivo()}}
+{\footnotesize\ttfamily int Ring\+Buffer\+\_\+\+Pop\+\_\+no\+\_\+invasivo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$}]{Ring\+Buff,  }\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Pop an item from the ring buffer but without incrementing the count. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ring\+Buff} & \+: Pointer to ring buffer \\
+\hline
+{\em data} & \+: Pointer to memory where popped item be stored \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 when item popped successfuly onto {\itshape data}, 0 When error (Buffer not initialized using \mbox{\hyperlink{group__Ring__Buffer_gaaf3bb51f2228ea1bea603e19c7eba5bb}{Ring\+Buffer\+\_\+\+Init()}} or attempted to pop item when the buffer is empty) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Ring__Buffer_gae0ef7bb96d1fe84ae1441b7c214b1e56}\label{group__Ring__Buffer_gae0ef7bb96d1fe84ae1441b7c214b1e56}} 
+\index{CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}!RingBuffer\_PopMult@{RingBuffer\_PopMult}}
+\index{RingBuffer\_PopMult@{RingBuffer\_PopMult}!CHIP: Simple ring buffer implementation@{CHIP: Simple ring buffer implementation}}
+\doxysubsubsection{\texorpdfstring{RingBuffer\_PopMult()}{RingBuffer\_PopMult()}}
+{\footnotesize\ttfamily int Ring\+Buffer\+\_\+\+Pop\+Mult (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structRINGBUFF__T}{R\+I\+N\+G\+B\+U\+F\+F\+\_\+T}} $\ast$}]{Ring\+Buff,  }\item[{void $\ast$}]{data,  }\item[{int}]{num }\end{DoxyParamCaption})}
+
+
+
+Pop an array of items from the ring buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ring\+Buff} & \+: Pointer to ring buffer \\
+\hline
+{\em data} & \+: Pointer to memory where popped items be stored \\
+\hline
+{\em num} & \+: Max number of items array {\itshape data} can hold \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of items popped onto {\itshape data}, 0 on error (Buffer not initialized using \mbox{\hyperlink{group__Ring__Buffer_gaaf3bb51f2228ea1bea603e19c7eba5bb}{Ring\+Buffer\+\_\+\+Init()}} or attempted to pop when the buffer is empty) 
+\end{DoxyReturn}

@@ -1,18 +1,11 @@
-/* USER CODE BEGIN Header */
 /**
-* @file   timers.h
+* @file timers.h
+* @brief  Maquinaria de timers por software.
+* Timers de 1 ms hasta 49 dias y 17 horas.
 *
-* @version 0.0.2
-*
-* @date   Septiembre 2020
-*
-* @author Tom�s Bautista Ord��ez
-*
-* @brief  SC1902
-*
-* Este archivo contiene las cabeceras de la maquinaria de timers
+* @author Tomás Bautista Ordóñez
+* @date 01/09/2020
 */
-/* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef TIMERS_H
@@ -22,9 +15,9 @@
 #include "stdbool.h"
 #include "string.h"
 
-//Cantidad maxima de timers
+///Cantidad maxima de timers
 #define 	TIMER_LEN 		10
-//Longitud maxima del id del timer
+///Longitud maxima del id del timer
 #define 	TIMER_LEN_ID 	6
 
 //Cuentas en ticks
@@ -47,17 +40,21 @@
 #define 	COUNT_3s		3000
 #define 	COUNT_8s		8000
 
-//Convierte segundos en cuentas de timer
+///Convierte segundos en cuentas de timer
 #define 	SEC2TIMER_COUNT(x)		((x) * COUNT_1s)
-//Convierte cuentas de timer en segundos
+///Convierte cuentas de timer en segundos
 #define 	TIMER_COUNT2SEC(x)		(float)(x) / COUNT_1s)
 
-//Estructura que contiene todos los campos de un timer
+
+/**
+ * @brief Estructura de timer
+ *
+ */
 typedef struct{
-	uint32_t cuenta;		//Tiempo restante en ticks
-	bool pausado;			//Estado
-	char id[TIMER_LEN_ID];	//Identificador
-	void (*accion) (char[]);//Accion que realiza al completarse
+	uint32_t cuenta;		/**< Tiempo restante en ticks */
+	bool pausado;			/**< Estado de ejecucion */
+	char id[TIMER_LEN_ID];	/**< Identificador */
+	void (*accion) (char[]);/**< Accion que realiza al completarse */
 }timer_soft_t;
 
 /**

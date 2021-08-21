@@ -1,19 +1,15 @@
 /**
-* @file   timers.c
+* @file timers.c
+* @brief  Maquinaria de timers por software.
+* Timers de 1 ms hasta 49 dias y 17 horas.
 *
-* @version 0.0.1
-*
-* @date   Septiembre 2020
-*
-* @author Tom�s Bautista Ord��ez
-*
-* @brief  SC1902
-*
-* Este archivo contiene la maquinaria de timers por software
+* @author Tomás Bautista Ordóñez
+* @date 01/09/2020
 */
 
 #include "timers.h"
 
+///Buffer de timers
 timer_soft_t buffer_timers[TIMER_LEN];
 
 /**

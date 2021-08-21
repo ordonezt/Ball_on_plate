@@ -1,0 +1,91 @@
+\hypertarget{cpu_8h}{}\doxysection{/mnt/\+Hdd\+Linux/\+Documentos/\+Facultad/\+Tomas/6to/\+Proyecto\+\_\+final/\+Ball\+\_\+on\+\_\+plate/\+Ball\+\_\+on\+\_\+plate\+\_\+\+S\+T\+M32/\+Core/\+Inc/\+Usr/cpu.h File Reference}
+\label{cpu_8h}\index{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Inc/Usr/cpu.h@{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Inc/Usr/cpu.h}}
+{\ttfamily \#include \char`\"{}stm32f1xx.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{cpu_8h_a897bda261b4c458b7328117e5757930d}{cpu\+\_\+transmitir\+\_\+basico}} (char timer\+\_\+id\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Transmite periodicamente un mensaje basico a la C\+PU. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cpu_8h_a48db045378dd9fd0bba57a1718f7b829}{cpu\+\_\+transmitir}} (uint8\+\_\+t mensaje\mbox{[}$\,$\mbox{]}, uint32\+\_\+t longitud)
+\begin{DoxyCompactList}\small\item\em Transmite una trama a la C\+PU. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{cpu_8h_aae573dcefe47a3d81a150372f9de6202}{cpu\+\_\+recibir}} (uint8\+\_\+t mensaje\mbox{[}$\,$\mbox{]}, uint32\+\_\+t longitud)
+\begin{DoxyCompactList}\small\item\em Recibe una trama de comunicacion. Recibe una trama de comunicacion de la C\+PU y la inserta en una cola para ser procesada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cpu_8h_a18ef9d527166d22af0f07d3e943c6b9f}{cpu\+\_\+rx}} (void)
+\begin{DoxyCompactList}\small\item\em Procesa los datos recibidos de la C\+PU. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cpu_8h_a8031ce114e0bd5d6ee9de8421798e15a}{cpu\+\_\+inicializar}} (void)
+\begin{DoxyCompactList}\small\item\em Inicializa la interfaz de comunicacion con la C\+PU. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{cpu_8h_a8031ce114e0bd5d6ee9de8421798e15a}\label{cpu_8h_a8031ce114e0bd5d6ee9de8421798e15a}} 
+\index{cpu.h@{cpu.h}!cpu\_inicializar@{cpu\_inicializar}}
+\index{cpu\_inicializar@{cpu\_inicializar}!cpu.h@{cpu.h}}
+\doxysubsubsection{\texorpdfstring{cpu\_inicializar()}{cpu\_inicializar()}}
+{\footnotesize\ttfamily void cpu\+\_\+inicializar (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Inicializa la interfaz de comunicacion con la C\+PU. 
+
+\mbox{\Hypertarget{cpu_8h_aae573dcefe47a3d81a150372f9de6202}\label{cpu_8h_aae573dcefe47a3d81a150372f9de6202}} 
+\index{cpu.h@{cpu.h}!cpu\_recibir@{cpu\_recibir}}
+\index{cpu\_recibir@{cpu\_recibir}!cpu.h@{cpu.h}}
+\doxysubsubsection{\texorpdfstring{cpu\_recibir()}{cpu\_recibir()}}
+{\footnotesize\ttfamily uint8\+\_\+t cpu\+\_\+recibir (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mensaje\mbox{[}$\,$\mbox{]},  }\item[{uint32\+\_\+t}]{longitud }\end{DoxyParamCaption})}
+
+
+
+Recibe una trama de comunicacion. Recibe una trama de comunicacion de la C\+PU y la inserta en una cola para ser procesada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mensaje} & trama recibida \\
+\hline
+{\em longitud} & cantidad de caracteres \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{cpu_8h_a18ef9d527166d22af0f07d3e943c6b9f}\label{cpu_8h_a18ef9d527166d22af0f07d3e943c6b9f}} 
+\index{cpu.h@{cpu.h}!cpu\_rx@{cpu\_rx}}
+\index{cpu\_rx@{cpu\_rx}!cpu.h@{cpu.h}}
+\doxysubsubsection{\texorpdfstring{cpu\_rx()}{cpu\_rx()}}
+{\footnotesize\ttfamily void cpu\+\_\+rx (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Procesa los datos recibidos de la C\+PU. 
+
+Procesa los datos recibidos de la C\+PU \mbox{\Hypertarget{cpu_8h_a48db045378dd9fd0bba57a1718f7b829}\label{cpu_8h_a48db045378dd9fd0bba57a1718f7b829}} 
+\index{cpu.h@{cpu.h}!cpu\_transmitir@{cpu\_transmitir}}
+\index{cpu\_transmitir@{cpu\_transmitir}!cpu.h@{cpu.h}}
+\doxysubsubsection{\texorpdfstring{cpu\_transmitir()}{cpu\_transmitir()}}
+{\footnotesize\ttfamily void cpu\+\_\+transmitir (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mensaje\mbox{[}$\,$\mbox{]},  }\item[{uint32\+\_\+t}]{longitud }\end{DoxyParamCaption})}
+
+
+
+Transmite una trama a la C\+PU. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mensaje} & Trama a enviar \\
+\hline
+{\em longitud} & Cantidad de caracteres del mensaje \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cpu_8h_a897bda261b4c458b7328117e5757930d}\label{cpu_8h_a897bda261b4c458b7328117e5757930d}} 
+\index{cpu.h@{cpu.h}!cpu\_transmitir\_basico@{cpu\_transmitir\_basico}}
+\index{cpu\_transmitir\_basico@{cpu\_transmitir\_basico}!cpu.h@{cpu.h}}
+\doxysubsubsection{\texorpdfstring{cpu\_transmitir\_basico()}{cpu\_transmitir\_basico()}}
+{\footnotesize\ttfamily void cpu\+\_\+transmitir\+\_\+basico (\begin{DoxyParamCaption}\item[{char}]{timer\+\_\+id\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Transmite periodicamente un mensaje basico a la C\+PU. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timer\+\_\+id} & Identificador del timer relacionado \\
+\hline
+\end{DoxyParams}

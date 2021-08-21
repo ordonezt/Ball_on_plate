@@ -1,0 +1,129 @@
+\hypertarget{stm32f1xx__hal__msp_8c}{}\doxysection{/mnt/\+Hdd\+Linux/\+Documentos/\+Facultad/\+Tomas/6to/\+Proyecto\+\_\+final/\+Ball\+\_\+on\+\_\+plate/\+Ball\+\_\+on\+\_\+plate\+\_\+\+S\+T\+M32/\+Core/\+Src/stm32f1xx\+\_\+hal\+\_\+msp.c File Reference}
+\label{stm32f1xx__hal__msp_8c}\index{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Src/stm32f1xx\_hal\_msp.c@{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Src/stm32f1xx\_hal\_msp.c}}
+
+
+This file provides code for the M\+SP Initialization and de-\/\+Initialization codes.  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{stm32f1xx__hal__msp_8c_ae70bce6c39d0b570a7523b86738cec4b}{H\+A\+L\+\_\+\+T\+I\+M\+\_\+\+Msp\+Post\+Init}} (T\+I\+M\+\_\+\+Handle\+Type\+Def $\ast$htim)
+\item 
+void \mbox{\hyperlink{stm32f1xx__hal__msp_8c_ae4fb8e66865c87d0ebab74a726a6891f}{H\+A\+L\+\_\+\+Msp\+Init}} (void)
+\item 
+void \mbox{\hyperlink{stm32f1xx__hal__msp_8c_a17f583be14b22caffa6c4e56dcd035ef}{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Msp\+Init}} (S\+P\+I\+\_\+\+Handle\+Type\+Def $\ast$hspi)
+\begin{DoxyCompactList}\small\item\em S\+PI M\+SP Initialization This function configures the hardware resources used in this example. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32f1xx__hal__msp_8c_abadc4d4974af1afd943e8d13589068e1}{H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Msp\+De\+Init}} (S\+P\+I\+\_\+\+Handle\+Type\+Def $\ast$hspi)
+\begin{DoxyCompactList}\small\item\em S\+PI M\+SP De-\/\+Initialization This function freeze the hardware resources used in this example. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32f1xx__hal__msp_8c_abb25ade2f7e3f7aae167bd52270c2b86}{H\+A\+L\+\_\+\+T\+I\+M\+\_\+\+Base\+\_\+\+Msp\+Init}} (T\+I\+M\+\_\+\+Handle\+Type\+Def $\ast$htim\+\_\+base)
+\begin{DoxyCompactList}\small\item\em T\+I\+M\+\_\+\+Base M\+SP Initialization This function configures the hardware resources used in this example. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32f1xx__hal__msp_8c_a555b8a2d3c7a07341f8cb1255318fa2b}{H\+A\+L\+\_\+\+T\+I\+M\+\_\+\+Base\+\_\+\+Msp\+De\+Init}} (T\+I\+M\+\_\+\+Handle\+Type\+Def $\ast$htim\+\_\+base)
+\begin{DoxyCompactList}\small\item\em T\+I\+M\+\_\+\+Base M\+SP De-\/\+Initialization This function freeze the hardware resources used in this example. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file provides code for the M\+SP Initialization and de-\/\+Initialization codes. 
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2021 S\+T\+Microelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under B\+SD 3-\/Clause license, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: opensource.\+org/licenses/\+B\+S\+D-\/3-\/\+Clause 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{stm32f1xx__hal__msp_8c_ae4fb8e66865c87d0ebab74a726a6891f}\label{stm32f1xx__hal__msp_8c_ae4fb8e66865c87d0ebab74a726a6891f}} 
+\index{stm32f1xx\_hal\_msp.c@{stm32f1xx\_hal\_msp.c}!HAL\_MspInit@{HAL\_MspInit}}
+\index{HAL\_MspInit@{HAL\_MspInit}!stm32f1xx\_hal\_msp.c@{stm32f1xx\_hal\_msp.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_MspInit()}{HAL\_MspInit()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+Msp\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Initializes the Global M\+SP. N\+O\+J\+T\+AG\+: J\+T\+A\+G-\/\+DP Disabled and S\+W-\/\+DP Enabled\mbox{\Hypertarget{stm32f1xx__hal__msp_8c_abadc4d4974af1afd943e8d13589068e1}\label{stm32f1xx__hal__msp_8c_abadc4d4974af1afd943e8d13589068e1}} 
+\index{stm32f1xx\_hal\_msp.c@{stm32f1xx\_hal\_msp.c}!HAL\_SPI\_MspDeInit@{HAL\_SPI\_MspDeInit}}
+\index{HAL\_SPI\_MspDeInit@{HAL\_SPI\_MspDeInit}!stm32f1xx\_hal\_msp.c@{stm32f1xx\_hal\_msp.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_SPI\_MspDeInit()}{HAL\_SPI\_MspDeInit()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Msp\+De\+Init (\begin{DoxyParamCaption}\item[{S\+P\+I\+\_\+\+Handle\+Type\+Def $\ast$}]{hspi }\end{DoxyParamCaption})}
+
+
+
+S\+PI M\+SP De-\/\+Initialization This function freeze the hardware resources used in this example. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hspi} & S\+PI handle pointer \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+S\+P\+I1 G\+P\+IO Configuration P\+A5 -\/-\/-\/---$>$ S\+P\+I1\+\_\+\+S\+CK P\+A6 -\/-\/-\/---$>$ S\+P\+I1\+\_\+\+M\+I\+SO P\+A7 -\/-\/-\/---$>$ S\+P\+I1\+\_\+\+M\+O\+SI\mbox{\Hypertarget{stm32f1xx__hal__msp_8c_a17f583be14b22caffa6c4e56dcd035ef}\label{stm32f1xx__hal__msp_8c_a17f583be14b22caffa6c4e56dcd035ef}} 
+\index{stm32f1xx\_hal\_msp.c@{stm32f1xx\_hal\_msp.c}!HAL\_SPI\_MspInit@{HAL\_SPI\_MspInit}}
+\index{HAL\_SPI\_MspInit@{HAL\_SPI\_MspInit}!stm32f1xx\_hal\_msp.c@{stm32f1xx\_hal\_msp.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_SPI\_MspInit()}{HAL\_SPI\_MspInit()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+S\+P\+I\+\_\+\+Msp\+Init (\begin{DoxyParamCaption}\item[{S\+P\+I\+\_\+\+Handle\+Type\+Def $\ast$}]{hspi }\end{DoxyParamCaption})}
+
+
+
+S\+PI M\+SP Initialization This function configures the hardware resources used in this example. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hspi} & S\+PI handle pointer \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+S\+P\+I1 G\+P\+IO Configuration P\+A5 -\/-\/-\/---$>$ S\+P\+I1\+\_\+\+S\+CK P\+A6 -\/-\/-\/---$>$ S\+P\+I1\+\_\+\+M\+I\+SO P\+A7 -\/-\/-\/---$>$ S\+P\+I1\+\_\+\+M\+O\+SI\mbox{\Hypertarget{stm32f1xx__hal__msp_8c_a555b8a2d3c7a07341f8cb1255318fa2b}\label{stm32f1xx__hal__msp_8c_a555b8a2d3c7a07341f8cb1255318fa2b}} 
+\index{stm32f1xx\_hal\_msp.c@{stm32f1xx\_hal\_msp.c}!HAL\_TIM\_Base\_MspDeInit@{HAL\_TIM\_Base\_MspDeInit}}
+\index{HAL\_TIM\_Base\_MspDeInit@{HAL\_TIM\_Base\_MspDeInit}!stm32f1xx\_hal\_msp.c@{stm32f1xx\_hal\_msp.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_TIM\_Base\_MspDeInit()}{HAL\_TIM\_Base\_MspDeInit()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+T\+I\+M\+\_\+\+Base\+\_\+\+Msp\+De\+Init (\begin{DoxyParamCaption}\item[{T\+I\+M\+\_\+\+Handle\+Type\+Def $\ast$}]{htim\+\_\+base }\end{DoxyParamCaption})}
+
+
+
+T\+I\+M\+\_\+\+Base M\+SP De-\/\+Initialization This function freeze the hardware resources used in this example. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em htim\+\_\+base} & T\+I\+M\+\_\+\+Base handle pointer \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{stm32f1xx__hal__msp_8c_abb25ade2f7e3f7aae167bd52270c2b86}\label{stm32f1xx__hal__msp_8c_abb25ade2f7e3f7aae167bd52270c2b86}} 
+\index{stm32f1xx\_hal\_msp.c@{stm32f1xx\_hal\_msp.c}!HAL\_TIM\_Base\_MspInit@{HAL\_TIM\_Base\_MspInit}}
+\index{HAL\_TIM\_Base\_MspInit@{HAL\_TIM\_Base\_MspInit}!stm32f1xx\_hal\_msp.c@{stm32f1xx\_hal\_msp.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_TIM\_Base\_MspInit()}{HAL\_TIM\_Base\_MspInit()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+T\+I\+M\+\_\+\+Base\+\_\+\+Msp\+Init (\begin{DoxyParamCaption}\item[{T\+I\+M\+\_\+\+Handle\+Type\+Def $\ast$}]{htim\+\_\+base }\end{DoxyParamCaption})}
+
+
+
+T\+I\+M\+\_\+\+Base M\+SP Initialization This function configures the hardware resources used in this example. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em htim\+\_\+base} & T\+I\+M\+\_\+\+Base handle pointer \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{stm32f1xx__hal__msp_8c_ae70bce6c39d0b570a7523b86738cec4b}\label{stm32f1xx__hal__msp_8c_ae70bce6c39d0b570a7523b86738cec4b}} 
+\index{stm32f1xx\_hal\_msp.c@{stm32f1xx\_hal\_msp.c}!HAL\_TIM\_MspPostInit@{HAL\_TIM\_MspPostInit}}
+\index{HAL\_TIM\_MspPostInit@{HAL\_TIM\_MspPostInit}!stm32f1xx\_hal\_msp.c@{stm32f1xx\_hal\_msp.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_TIM\_MspPostInit()}{HAL\_TIM\_MspPostInit()}}
+{\footnotesize\ttfamily void H\+A\+L\+\_\+\+T\+I\+M\+\_\+\+Msp\+Post\+Init (\begin{DoxyParamCaption}\item[{T\+I\+M\+\_\+\+Handle\+Type\+Def $\ast$}]{htim }\end{DoxyParamCaption})}
+
+T\+I\+M2 G\+P\+IO Configuration P\+A0-\/\+W\+K\+UP -\/-\/-\/---$>$ T\+I\+M2\+\_\+\+C\+H1 P\+A1 -\/-\/-\/---$>$ T\+I\+M2\+\_\+\+C\+H2 P\+A2 -\/-\/-\/---$>$ T\+I\+M2\+\_\+\+C\+H3 P\+A3 -\/-\/-\/---$>$ T\+I\+M2\+\_\+\+C\+H4

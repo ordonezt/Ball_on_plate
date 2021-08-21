@@ -1,0 +1,508 @@
+\hypertarget{adxl_8h}{}\doxysection{/mnt/\+Hdd\+Linux/\+Documentos/\+Facultad/\+Tomas/6to/\+Proyecto\+\_\+final/\+Ball\+\_\+on\+\_\+plate/\+Ball\+\_\+on\+\_\+plate\+\_\+\+S\+T\+M32/\+Core/\+Inc/\+Usr/adxl.h File Reference}
+\label{adxl_8h}\index{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Inc/Usr/adxl.h@{/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Proyecto\_final/Ball\_on\_plate/Ball\_on\_plate\_STM32/Core/Inc/Usr/adxl.h}}
+
+
+En este archivo se encuentran las cabeceras de las funciones de manejo del acelerometro.  
+
+
+{\ttfamily \#include \char`\"{}timers.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structadxl__eje__t}{adxl\+\_\+eje\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Variable de estado de un eje de aceleracion. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structadxl__t}{adxl\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Variable de estado del acelerometro. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{adxl_8h_ac663cfaba248d4f2de1d26e35ea91816}{R\+E\+G\+\_\+\+D\+E\+V\+ID}}~0x00
+\item 
+\#define \mbox{\hyperlink{adxl_8h_adcd22e5a1662097d68b0b060aa7e1e59}{R\+E\+G\+\_\+\+T\+H\+R\+E\+S\+H\+\_\+\+T\+AP}}~0x1D
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a378abf9d8e2f72e8112bd5f19f96b540}{R\+E\+G\+\_\+\+O\+F\+SX}}~0x1E
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a96a05d5ff1c239518d970a6486cf33d0}{R\+E\+G\+\_\+\+O\+F\+SY}}~0x1F
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a765c50dc68a9cbbe456491b6f82d54bb}{R\+E\+G\+\_\+\+O\+F\+SZ}}~0x20
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a65030b179798e0d50c38cd7ae993b827}{R\+E\+G\+\_\+\+D\+UR}}~0x21
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a5e1b43e32cba9919699ee04f64ea04c4}{R\+E\+G\+\_\+\+Latent}}~0x22
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a56aa7b561ba86aeca0147cccb4c00abb}{R\+E\+G\+\_\+\+Window}}~0x23
+\item 
+\#define \mbox{\hyperlink{adxl_8h_ae16429caefb1a972141bdb5c21c65fdc}{R\+E\+G\+\_\+\+T\+H\+R\+E\+S\+H\+\_\+\+A\+CT}}~0x24
+\item 
+\#define \mbox{\hyperlink{adxl_8h_af444be30148337a4cc788b93ce9b60ed}{R\+E\+G\+\_\+\+T\+H\+R\+E\+S\+H\+\_\+\+I\+N\+A\+CT}}~0x25
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a70cc2c8a0111c47573e2ff4b00879037}{R\+E\+G\+\_\+\+T\+I\+M\+E\+\_\+\+I\+N\+A\+CT}}~0x26
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a511fa8b7ed78055acf9bb3cd2e6f6305}{R\+E\+G\+\_\+\+A\+C\+T\+\_\+\+I\+N\+A\+C\+T\+\_\+\+C\+TL}}~0x27
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a36b5b067f5d64b9b6cda380ce122d477}{R\+E\+G\+\_\+\+T\+H\+R\+E\+S\+H\+\_\+\+FF}}~0x28
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a686e9665f1c2b4f21434c56822c06175}{R\+E\+G\+\_\+\+T\+I\+M\+E\+\_\+\+FF}}~0x29
+\item 
+\#define \mbox{\hyperlink{adxl_8h_acf760b74f21610f6630bec12bb043b24}{R\+E\+G\+\_\+\+T\+A\+P\+\_\+\+A\+X\+ES}}~0x2A
+\item 
+\#define \mbox{\hyperlink{adxl_8h_aff6740551e81b68d27ddd942cad8179f}{R\+E\+G\+\_\+\+A\+C\+T\+\_\+\+T\+A\+P\+\_\+\+S\+T\+A\+T\+US}}~0x2B
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a919db24ae1c67b6def9906044482ef33}{R\+E\+G\+\_\+\+B\+W\+\_\+\+R\+A\+TE}}~0x2C
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a8047464a0afd5bd85de3a1b2a3ef3629}{R\+E\+G\+\_\+\+P\+O\+W\+E\+R\+\_\+\+C\+TL}}~0x2D
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a4c5c1b52ef4d960cba4eca99d406947a}{R\+E\+G\+\_\+\+I\+N\+T\+\_\+\+E\+N\+A\+B\+LE}}~0x2E
+\item 
+\#define \mbox{\hyperlink{adxl_8h_abeeaa564b682db7247a5b07954d60345}{R\+E\+G\+\_\+\+I\+N\+T\+\_\+\+M\+AP}}~0x2F
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a796b386fcc745d30f9ccbdd324d1184c}{R\+E\+G\+\_\+\+I\+N\+T\+\_\+\+S\+O\+U\+R\+CE}}~0x30
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a5dea9785d4756aaf2db57e2029f03099}{R\+E\+G\+\_\+\+D\+A\+T\+A\+\_\+\+F\+O\+R\+M\+AT}}~0x31
+\item 
+\#define \mbox{\hyperlink{adxl_8h_abccaa2b7c5a9531c54322cf35cecd25b}{R\+E\+G\+\_\+\+D\+A\+T\+A\+X0}}~0x32
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a8fb1b0b452ecf69b1faa4558345b0030}{R\+E\+G\+\_\+\+D\+A\+T\+A\+X1}}~0x33
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a02724f772a5958df0e81260b1b74646e}{R\+E\+G\+\_\+\+D\+A\+T\+A\+Y0}}~0x34
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a238051cd9fe05695cb153412aaa41a1b}{R\+E\+G\+\_\+\+D\+A\+T\+A\+Y1}}~0x35
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a7c39f373f8694ff565e5214640b5b869}{R\+E\+G\+\_\+\+D\+A\+T\+A\+Z0}}~0x36
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a19989b642453850e65ebf03f876f5a21}{R\+E\+G\+\_\+\+D\+A\+T\+A\+Z1}}~0x37
+\item 
+\#define \mbox{\hyperlink{adxl_8h_ae6d51c6f2d44797086712fd7cb7847ea}{R\+E\+G\+\_\+\+F\+I\+F\+O\+\_\+\+C\+TL}}~0x38
+\item 
+\#define \mbox{\hyperlink{adxl_8h_ae0b56ed9b13751d43bec1748d6bbf503}{R\+E\+G\+\_\+\+F\+I\+F\+O\+\_\+\+S\+T\+A\+T\+US}}~0x39
+\item 
+\#define \mbox{\hyperlink{adxl_8h_a703a86a072bf7b77b1553b54b08a0e4b}{A\+D\+X\+L\+\_\+\+S\+P\+I\+\_\+\+T\+I\+M\+E\+O\+UT}}~2
+\begin{DoxyCompactList}\small\item\em ms de timeout de comunicacion con el acelerometro \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{adxl_8h_aa2e2aa6b4c224b71e9fbb2db2c6ad003}{C\+A\+N\+T\+I\+D\+A\+D\+\_\+\+P\+R\+O\+M\+E\+D\+I\+O\+S\+\_\+\+A\+C\+E\+L\+E\+R\+A\+C\+I\+ON}}~10
+\begin{DoxyCompactList}\small\item\em Cantidad de promedios sobre la señal cruda. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{adxl_8h_a1b1437b0bc7595478199a40b6c7bf1b5}{C\+A\+N\+T\+I\+D\+A\+D\+\_\+\+E\+J\+ES}}~3
+\begin{DoxyCompactList}\small\item\em Cantidad de ejes del acelerometro. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{adxl_8h_ad8d8b10fcb8307bac8226971c1bdf0bb}{P\+E\+R\+I\+O\+D\+O\+\_\+\+C\+A\+L\+C\+U\+L\+O\+\_\+\+A\+N\+G\+U\+LO}}~\mbox{\hyperlink{timers_8h_aa999c69c670bbc2e617e2f7be4dfe8f8}{C\+O\+U\+N\+T\+\_\+100ms}}
+\begin{DoxyCompactList}\small\item\em Velocidad de calculo y transmision de rotaciones. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{adxl_8h_aaf94dd73052550ace90f666b2a5c6ab7}{L\+S\+B\+\_\+\+P\+O\+R\+\_\+G}}~256
+\begin{DoxyCompactList}\small\item\em Escala de aceleraciones. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{adxl_8h_aa6702fc6d0da2bbf2414cd888abab259}{ejes\+\_\+t}} \{ \mbox{\hyperlink{adxl_8h_aa6702fc6d0da2bbf2414cd888abab259a55faa456f5a33e505947241659ad9064}{E\+J\+E\+\_\+X}}, 
+\mbox{\hyperlink{adxl_8h_aa6702fc6d0da2bbf2414cd888abab259a02320d6e7cbfb4ed11e4f26b12c2011e}{E\+J\+E\+\_\+Y}}, 
+\mbox{\hyperlink{adxl_8h_aa6702fc6d0da2bbf2414cd888abab259ac27f7668b1f974a9cdddd6ab8810c7a9}{E\+J\+E\+\_\+Z}}
+ \}
+\begin{DoxyCompactList}\small\item\em Nombre de cada eje. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132f}{adxl\+\_\+frec\+\_\+muestreo\+\_\+t}} \{ \newline
+\mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132faa79ae77fb87a67ada99fdfd9fc3da942}{F\+S\+\_\+0\+\_\+10\+Hz}}, 
+\mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa3aa8b5a3340a75e0b81fe135e6057cc8}{F\+S\+\_\+0\+\_\+20\+Hz}}, 
+\mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa2ac65a22ce8021560630e42efe213215}{F\+S\+\_\+0\+\_\+39\+Hz}}, 
+\mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa6d0baa21cee5d116c58a9bb8f359a0f4}{F\+S\+\_\+0\+\_\+78\+Hz}}, 
+\newline
+\mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132faf4ca4f1bc67321c5727a32883ba55ebe}{F\+S\+\_\+1\+\_\+56\+Hz}}, 
+\mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa438d42aa5be83f0fd5c3a8f0700ac8af}{F\+S\+\_\+3\+\_\+13\+Hz}}, 
+\mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa1d17bd19653a87ab31f2d47cf76f9bbf}{F\+S\+\_\+6\+\_\+25\+Hz}}, 
+\mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132facea73b1ae3cdee7c7226cefc895da71f}{F\+S\+\_\+12\+\_\+5\+Hz}}, 
+\newline
+\mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa3b8aa522d11ab62f41c33b51b384ddcf}{F\+S\+\_\+25\+Hz}}, 
+\mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fadf913d3afac71af237dcc00dec18b092}{F\+S\+\_\+50\+Hz}}, 
+\mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa69fbd967d0999c7dbd727e8c007c05a1}{F\+S\+\_\+100\+Hz}}, 
+\mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fae20ec14f78194c4d9b5708124972e19d}{F\+S\+\_\+200\+Hz}}, 
+\newline
+\mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa8b3ccd80c4a8021effd0972161e48e04}{F\+S\+\_\+400\+Hz}}, 
+\mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fafdc80f8fb13f050c199f164cf53d08ea}{F\+S\+\_\+800\+Hz}}, 
+\mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa888ffe46da5eddbb8be850d48343d4cc}{F\+S\+\_\+1600\+Hz}}, 
+\mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa15bd9c029d77cfc309c937ec2005fcf6}{F\+S\+\_\+3200\+Hz}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeracion de las distintas frecuencias de muestreo permitidas por el acelerometro. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{adxl_8h_ae0f390656dffb1fd833778f3a41dc28c}{adxl\+\_\+inicializar}} ()
+\begin{DoxyCompactList}\small\item\em Inicializa el acelerometro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adxl_8h_a63b7540b6369a5e1ed7e2bc0117ecaa8}{adxl\+\_\+interrupcion\+\_\+callback}} (void)
+\begin{DoxyCompactList}\small\item\em Maneja la interrupcion por dato listo del acelerometro. Dispara una lectura de trama. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{adxl_8h_aa19e60fe9245b43f1d44a6fb3e4d5219}{adxl\+\_\+tarea}} (void)
+\begin{DoxyCompactList}\small\item\em Calcula y envia a la cpu las rotaciones cuando corresponde. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+En este archivo se encuentran las cabeceras de las funciones de manejo del acelerometro. 
+
+\begin{DoxyAuthor}{Author}
+Tomás Bautista Ordóñez 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+21/07/2021 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{adxl_8h_a703a86a072bf7b77b1553b54b08a0e4b}\label{adxl_8h_a703a86a072bf7b77b1553b54b08a0e4b}} 
+\index{adxl.h@{adxl.h}!ADXL\_SPI\_TIMEOUT@{ADXL\_SPI\_TIMEOUT}}
+\index{ADXL\_SPI\_TIMEOUT@{ADXL\_SPI\_TIMEOUT}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{ADXL\_SPI\_TIMEOUT}{ADXL\_SPI\_TIMEOUT}}
+{\footnotesize\ttfamily \#define A\+D\+X\+L\+\_\+\+S\+P\+I\+\_\+\+T\+I\+M\+E\+O\+UT~2}
+
+
+
+ms de timeout de comunicacion con el acelerometro 
+
+\mbox{\Hypertarget{adxl_8h_a1b1437b0bc7595478199a40b6c7bf1b5}\label{adxl_8h_a1b1437b0bc7595478199a40b6c7bf1b5}} 
+\index{adxl.h@{adxl.h}!CANTIDAD\_EJES@{CANTIDAD\_EJES}}
+\index{CANTIDAD\_EJES@{CANTIDAD\_EJES}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{CANTIDAD\_EJES}{CANTIDAD\_EJES}}
+{\footnotesize\ttfamily \#define C\+A\+N\+T\+I\+D\+A\+D\+\_\+\+E\+J\+ES~3}
+
+
+
+Cantidad de ejes del acelerometro. 
+
+\mbox{\Hypertarget{adxl_8h_aa2e2aa6b4c224b71e9fbb2db2c6ad003}\label{adxl_8h_aa2e2aa6b4c224b71e9fbb2db2c6ad003}} 
+\index{adxl.h@{adxl.h}!CANTIDAD\_PROMEDIOS\_ACELERACION@{CANTIDAD\_PROMEDIOS\_ACELERACION}}
+\index{CANTIDAD\_PROMEDIOS\_ACELERACION@{CANTIDAD\_PROMEDIOS\_ACELERACION}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{CANTIDAD\_PROMEDIOS\_ACELERACION}{CANTIDAD\_PROMEDIOS\_ACELERACION}}
+{\footnotesize\ttfamily \#define C\+A\+N\+T\+I\+D\+A\+D\+\_\+\+P\+R\+O\+M\+E\+D\+I\+O\+S\+\_\+\+A\+C\+E\+L\+E\+R\+A\+C\+I\+ON~10}
+
+
+
+Cantidad de promedios sobre la señal cruda. 
+
+\mbox{\Hypertarget{adxl_8h_aaf94dd73052550ace90f666b2a5c6ab7}\label{adxl_8h_aaf94dd73052550ace90f666b2a5c6ab7}} 
+\index{adxl.h@{adxl.h}!LSB\_POR\_G@{LSB\_POR\_G}}
+\index{LSB\_POR\_G@{LSB\_POR\_G}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{LSB\_POR\_G}{LSB\_POR\_G}}
+{\footnotesize\ttfamily \#define L\+S\+B\+\_\+\+P\+O\+R\+\_\+G~256}
+
+
+
+Escala de aceleraciones. 
+
+\mbox{\Hypertarget{adxl_8h_ad8d8b10fcb8307bac8226971c1bdf0bb}\label{adxl_8h_ad8d8b10fcb8307bac8226971c1bdf0bb}} 
+\index{adxl.h@{adxl.h}!PERIODO\_CALCULO\_ANGULO@{PERIODO\_CALCULO\_ANGULO}}
+\index{PERIODO\_CALCULO\_ANGULO@{PERIODO\_CALCULO\_ANGULO}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{PERIODO\_CALCULO\_ANGULO}{PERIODO\_CALCULO\_ANGULO}}
+{\footnotesize\ttfamily \#define P\+E\+R\+I\+O\+D\+O\+\_\+\+C\+A\+L\+C\+U\+L\+O\+\_\+\+A\+N\+G\+U\+LO~\mbox{\hyperlink{timers_8h_aa999c69c670bbc2e617e2f7be4dfe8f8}{C\+O\+U\+N\+T\+\_\+100ms}}}
+
+
+
+Velocidad de calculo y transmision de rotaciones. 
+
+\mbox{\Hypertarget{adxl_8h_a511fa8b7ed78055acf9bb3cd2e6f6305}\label{adxl_8h_a511fa8b7ed78055acf9bb3cd2e6f6305}} 
+\index{adxl.h@{adxl.h}!REG\_ACT\_INACT\_CTL@{REG\_ACT\_INACT\_CTL}}
+\index{REG\_ACT\_INACT\_CTL@{REG\_ACT\_INACT\_CTL}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_ACT\_INACT\_CTL}{REG\_ACT\_INACT\_CTL}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+A\+C\+T\+\_\+\+I\+N\+A\+C\+T\+\_\+\+C\+TL~0x27}
+
+\mbox{\Hypertarget{adxl_8h_aff6740551e81b68d27ddd942cad8179f}\label{adxl_8h_aff6740551e81b68d27ddd942cad8179f}} 
+\index{adxl.h@{adxl.h}!REG\_ACT\_TAP\_STATUS@{REG\_ACT\_TAP\_STATUS}}
+\index{REG\_ACT\_TAP\_STATUS@{REG\_ACT\_TAP\_STATUS}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_ACT\_TAP\_STATUS}{REG\_ACT\_TAP\_STATUS}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+A\+C\+T\+\_\+\+T\+A\+P\+\_\+\+S\+T\+A\+T\+US~0x2B}
+
+\mbox{\Hypertarget{adxl_8h_a919db24ae1c67b6def9906044482ef33}\label{adxl_8h_a919db24ae1c67b6def9906044482ef33}} 
+\index{adxl.h@{adxl.h}!REG\_BW\_RATE@{REG\_BW\_RATE}}
+\index{REG\_BW\_RATE@{REG\_BW\_RATE}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_BW\_RATE}{REG\_BW\_RATE}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+B\+W\+\_\+\+R\+A\+TE~0x2C}
+
+\mbox{\Hypertarget{adxl_8h_a5dea9785d4756aaf2db57e2029f03099}\label{adxl_8h_a5dea9785d4756aaf2db57e2029f03099}} 
+\index{adxl.h@{adxl.h}!REG\_DATA\_FORMAT@{REG\_DATA\_FORMAT}}
+\index{REG\_DATA\_FORMAT@{REG\_DATA\_FORMAT}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_DATA\_FORMAT}{REG\_DATA\_FORMAT}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+D\+A\+T\+A\+\_\+\+F\+O\+R\+M\+AT~0x31}
+
+\mbox{\Hypertarget{adxl_8h_abccaa2b7c5a9531c54322cf35cecd25b}\label{adxl_8h_abccaa2b7c5a9531c54322cf35cecd25b}} 
+\index{adxl.h@{adxl.h}!REG\_DATAX0@{REG\_DATAX0}}
+\index{REG\_DATAX0@{REG\_DATAX0}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_DATAX0}{REG\_DATAX0}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+D\+A\+T\+A\+X0~0x32}
+
+\mbox{\Hypertarget{adxl_8h_a8fb1b0b452ecf69b1faa4558345b0030}\label{adxl_8h_a8fb1b0b452ecf69b1faa4558345b0030}} 
+\index{adxl.h@{adxl.h}!REG\_DATAX1@{REG\_DATAX1}}
+\index{REG\_DATAX1@{REG\_DATAX1}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_DATAX1}{REG\_DATAX1}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+D\+A\+T\+A\+X1~0x33}
+
+\mbox{\Hypertarget{adxl_8h_a02724f772a5958df0e81260b1b74646e}\label{adxl_8h_a02724f772a5958df0e81260b1b74646e}} 
+\index{adxl.h@{adxl.h}!REG\_DATAY0@{REG\_DATAY0}}
+\index{REG\_DATAY0@{REG\_DATAY0}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_DATAY0}{REG\_DATAY0}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+D\+A\+T\+A\+Y0~0x34}
+
+\mbox{\Hypertarget{adxl_8h_a238051cd9fe05695cb153412aaa41a1b}\label{adxl_8h_a238051cd9fe05695cb153412aaa41a1b}} 
+\index{adxl.h@{adxl.h}!REG\_DATAY1@{REG\_DATAY1}}
+\index{REG\_DATAY1@{REG\_DATAY1}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_DATAY1}{REG\_DATAY1}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+D\+A\+T\+A\+Y1~0x35}
+
+\mbox{\Hypertarget{adxl_8h_a7c39f373f8694ff565e5214640b5b869}\label{adxl_8h_a7c39f373f8694ff565e5214640b5b869}} 
+\index{adxl.h@{adxl.h}!REG\_DATAZ0@{REG\_DATAZ0}}
+\index{REG\_DATAZ0@{REG\_DATAZ0}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_DATAZ0}{REG\_DATAZ0}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+D\+A\+T\+A\+Z0~0x36}
+
+\mbox{\Hypertarget{adxl_8h_a19989b642453850e65ebf03f876f5a21}\label{adxl_8h_a19989b642453850e65ebf03f876f5a21}} 
+\index{adxl.h@{adxl.h}!REG\_DATAZ1@{REG\_DATAZ1}}
+\index{REG\_DATAZ1@{REG\_DATAZ1}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_DATAZ1}{REG\_DATAZ1}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+D\+A\+T\+A\+Z1~0x37}
+
+\mbox{\Hypertarget{adxl_8h_ac663cfaba248d4f2de1d26e35ea91816}\label{adxl_8h_ac663cfaba248d4f2de1d26e35ea91816}} 
+\index{adxl.h@{adxl.h}!REG\_DEVID@{REG\_DEVID}}
+\index{REG\_DEVID@{REG\_DEVID}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_DEVID}{REG\_DEVID}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+D\+E\+V\+ID~0x00}
+
+\mbox{\Hypertarget{adxl_8h_a65030b179798e0d50c38cd7ae993b827}\label{adxl_8h_a65030b179798e0d50c38cd7ae993b827}} 
+\index{adxl.h@{adxl.h}!REG\_DUR@{REG\_DUR}}
+\index{REG\_DUR@{REG\_DUR}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_DUR}{REG\_DUR}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+D\+UR~0x21}
+
+\mbox{\Hypertarget{adxl_8h_ae6d51c6f2d44797086712fd7cb7847ea}\label{adxl_8h_ae6d51c6f2d44797086712fd7cb7847ea}} 
+\index{adxl.h@{adxl.h}!REG\_FIFO\_CTL@{REG\_FIFO\_CTL}}
+\index{REG\_FIFO\_CTL@{REG\_FIFO\_CTL}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_FIFO\_CTL}{REG\_FIFO\_CTL}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+F\+I\+F\+O\+\_\+\+C\+TL~0x38}
+
+\mbox{\Hypertarget{adxl_8h_ae0b56ed9b13751d43bec1748d6bbf503}\label{adxl_8h_ae0b56ed9b13751d43bec1748d6bbf503}} 
+\index{adxl.h@{adxl.h}!REG\_FIFO\_STATUS@{REG\_FIFO\_STATUS}}
+\index{REG\_FIFO\_STATUS@{REG\_FIFO\_STATUS}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_FIFO\_STATUS}{REG\_FIFO\_STATUS}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+F\+I\+F\+O\+\_\+\+S\+T\+A\+T\+US~0x39}
+
+\mbox{\Hypertarget{adxl_8h_a4c5c1b52ef4d960cba4eca99d406947a}\label{adxl_8h_a4c5c1b52ef4d960cba4eca99d406947a}} 
+\index{adxl.h@{adxl.h}!REG\_INT\_ENABLE@{REG\_INT\_ENABLE}}
+\index{REG\_INT\_ENABLE@{REG\_INT\_ENABLE}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_INT\_ENABLE}{REG\_INT\_ENABLE}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+I\+N\+T\+\_\+\+E\+N\+A\+B\+LE~0x2E}
+
+\mbox{\Hypertarget{adxl_8h_abeeaa564b682db7247a5b07954d60345}\label{adxl_8h_abeeaa564b682db7247a5b07954d60345}} 
+\index{adxl.h@{adxl.h}!REG\_INT\_MAP@{REG\_INT\_MAP}}
+\index{REG\_INT\_MAP@{REG\_INT\_MAP}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_INT\_MAP}{REG\_INT\_MAP}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+I\+N\+T\+\_\+\+M\+AP~0x2F}
+
+\mbox{\Hypertarget{adxl_8h_a796b386fcc745d30f9ccbdd324d1184c}\label{adxl_8h_a796b386fcc745d30f9ccbdd324d1184c}} 
+\index{adxl.h@{adxl.h}!REG\_INT\_SOURCE@{REG\_INT\_SOURCE}}
+\index{REG\_INT\_SOURCE@{REG\_INT\_SOURCE}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_INT\_SOURCE}{REG\_INT\_SOURCE}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+I\+N\+T\+\_\+\+S\+O\+U\+R\+CE~0x30}
+
+\mbox{\Hypertarget{adxl_8h_a5e1b43e32cba9919699ee04f64ea04c4}\label{adxl_8h_a5e1b43e32cba9919699ee04f64ea04c4}} 
+\index{adxl.h@{adxl.h}!REG\_Latent@{REG\_Latent}}
+\index{REG\_Latent@{REG\_Latent}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_Latent}{REG\_Latent}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+Latent~0x22}
+
+\mbox{\Hypertarget{adxl_8h_a378abf9d8e2f72e8112bd5f19f96b540}\label{adxl_8h_a378abf9d8e2f72e8112bd5f19f96b540}} 
+\index{adxl.h@{adxl.h}!REG\_OFSX@{REG\_OFSX}}
+\index{REG\_OFSX@{REG\_OFSX}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_OFSX}{REG\_OFSX}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+O\+F\+SX~0x1E}
+
+\mbox{\Hypertarget{adxl_8h_a96a05d5ff1c239518d970a6486cf33d0}\label{adxl_8h_a96a05d5ff1c239518d970a6486cf33d0}} 
+\index{adxl.h@{adxl.h}!REG\_OFSY@{REG\_OFSY}}
+\index{REG\_OFSY@{REG\_OFSY}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_OFSY}{REG\_OFSY}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+O\+F\+SY~0x1F}
+
+\mbox{\Hypertarget{adxl_8h_a765c50dc68a9cbbe456491b6f82d54bb}\label{adxl_8h_a765c50dc68a9cbbe456491b6f82d54bb}} 
+\index{adxl.h@{adxl.h}!REG\_OFSZ@{REG\_OFSZ}}
+\index{REG\_OFSZ@{REG\_OFSZ}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_OFSZ}{REG\_OFSZ}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+O\+F\+SZ~0x20}
+
+\mbox{\Hypertarget{adxl_8h_a8047464a0afd5bd85de3a1b2a3ef3629}\label{adxl_8h_a8047464a0afd5bd85de3a1b2a3ef3629}} 
+\index{adxl.h@{adxl.h}!REG\_POWER\_CTL@{REG\_POWER\_CTL}}
+\index{REG\_POWER\_CTL@{REG\_POWER\_CTL}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_POWER\_CTL}{REG\_POWER\_CTL}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+P\+O\+W\+E\+R\+\_\+\+C\+TL~0x2D}
+
+\mbox{\Hypertarget{adxl_8h_acf760b74f21610f6630bec12bb043b24}\label{adxl_8h_acf760b74f21610f6630bec12bb043b24}} 
+\index{adxl.h@{adxl.h}!REG\_TAP\_AXES@{REG\_TAP\_AXES}}
+\index{REG\_TAP\_AXES@{REG\_TAP\_AXES}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_TAP\_AXES}{REG\_TAP\_AXES}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+T\+A\+P\+\_\+\+A\+X\+ES~0x2A}
+
+\mbox{\Hypertarget{adxl_8h_ae16429caefb1a972141bdb5c21c65fdc}\label{adxl_8h_ae16429caefb1a972141bdb5c21c65fdc}} 
+\index{adxl.h@{adxl.h}!REG\_THRESH\_ACT@{REG\_THRESH\_ACT}}
+\index{REG\_THRESH\_ACT@{REG\_THRESH\_ACT}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_THRESH\_ACT}{REG\_THRESH\_ACT}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+T\+H\+R\+E\+S\+H\+\_\+\+A\+CT~0x24}
+
+\mbox{\Hypertarget{adxl_8h_a36b5b067f5d64b9b6cda380ce122d477}\label{adxl_8h_a36b5b067f5d64b9b6cda380ce122d477}} 
+\index{adxl.h@{adxl.h}!REG\_THRESH\_FF@{REG\_THRESH\_FF}}
+\index{REG\_THRESH\_FF@{REG\_THRESH\_FF}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_THRESH\_FF}{REG\_THRESH\_FF}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+T\+H\+R\+E\+S\+H\+\_\+\+FF~0x28}
+
+\mbox{\Hypertarget{adxl_8h_af444be30148337a4cc788b93ce9b60ed}\label{adxl_8h_af444be30148337a4cc788b93ce9b60ed}} 
+\index{adxl.h@{adxl.h}!REG\_THRESH\_INACT@{REG\_THRESH\_INACT}}
+\index{REG\_THRESH\_INACT@{REG\_THRESH\_INACT}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_THRESH\_INACT}{REG\_THRESH\_INACT}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+T\+H\+R\+E\+S\+H\+\_\+\+I\+N\+A\+CT~0x25}
+
+\mbox{\Hypertarget{adxl_8h_adcd22e5a1662097d68b0b060aa7e1e59}\label{adxl_8h_adcd22e5a1662097d68b0b060aa7e1e59}} 
+\index{adxl.h@{adxl.h}!REG\_THRESH\_TAP@{REG\_THRESH\_TAP}}
+\index{REG\_THRESH\_TAP@{REG\_THRESH\_TAP}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_THRESH\_TAP}{REG\_THRESH\_TAP}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+T\+H\+R\+E\+S\+H\+\_\+\+T\+AP~0x1D}
+
+\mbox{\Hypertarget{adxl_8h_a686e9665f1c2b4f21434c56822c06175}\label{adxl_8h_a686e9665f1c2b4f21434c56822c06175}} 
+\index{adxl.h@{adxl.h}!REG\_TIME\_FF@{REG\_TIME\_FF}}
+\index{REG\_TIME\_FF@{REG\_TIME\_FF}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_TIME\_FF}{REG\_TIME\_FF}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+T\+I\+M\+E\+\_\+\+FF~0x29}
+
+\mbox{\Hypertarget{adxl_8h_a70cc2c8a0111c47573e2ff4b00879037}\label{adxl_8h_a70cc2c8a0111c47573e2ff4b00879037}} 
+\index{adxl.h@{adxl.h}!REG\_TIME\_INACT@{REG\_TIME\_INACT}}
+\index{REG\_TIME\_INACT@{REG\_TIME\_INACT}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_TIME\_INACT}{REG\_TIME\_INACT}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+T\+I\+M\+E\+\_\+\+I\+N\+A\+CT~0x26}
+
+\mbox{\Hypertarget{adxl_8h_a56aa7b561ba86aeca0147cccb4c00abb}\label{adxl_8h_a56aa7b561ba86aeca0147cccb4c00abb}} 
+\index{adxl.h@{adxl.h}!REG\_Window@{REG\_Window}}
+\index{REG\_Window@{REG\_Window}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{REG\_Window}{REG\_Window}}
+{\footnotesize\ttfamily \#define R\+E\+G\+\_\+\+Window~0x23}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132f}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132f}} 
+\index{adxl.h@{adxl.h}!adxl\_frec\_muestreo\_t@{adxl\_frec\_muestreo\_t}}
+\index{adxl\_frec\_muestreo\_t@{adxl\_frec\_muestreo\_t}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{adxl\_frec\_muestreo\_t}{adxl\_frec\_muestreo\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132f}{adxl\+\_\+frec\+\_\+muestreo\+\_\+t}}}
+
+
+
+Enumeracion de las distintas frecuencias de muestreo permitidas por el acelerometro. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FS\_0\_10Hz@{FS\_0\_10Hz}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!FS\_0\_10Hz@{FS\_0\_10Hz}}}\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132faa79ae77fb87a67ada99fdfd9fc3da942}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132faa79ae77fb87a67ada99fdfd9fc3da942}} 
+F\+S\+\_\+0\+\_\+10\+Hz&F\+S\+\_\+0\+\_\+10\+Hz \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FS\_0\_20Hz@{FS\_0\_20Hz}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!FS\_0\_20Hz@{FS\_0\_20Hz}}}\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa3aa8b5a3340a75e0b81fe135e6057cc8}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa3aa8b5a3340a75e0b81fe135e6057cc8}} 
+F\+S\+\_\+0\+\_\+20\+Hz&F\+S\+\_\+0\+\_\+20\+Hz \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FS\_0\_39Hz@{FS\_0\_39Hz}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!FS\_0\_39Hz@{FS\_0\_39Hz}}}\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa2ac65a22ce8021560630e42efe213215}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa2ac65a22ce8021560630e42efe213215}} 
+F\+S\+\_\+0\+\_\+39\+Hz&F\+S\+\_\+0\+\_\+39\+Hz \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FS\_0\_78Hz@{FS\_0\_78Hz}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!FS\_0\_78Hz@{FS\_0\_78Hz}}}\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa6d0baa21cee5d116c58a9bb8f359a0f4}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa6d0baa21cee5d116c58a9bb8f359a0f4}} 
+F\+S\+\_\+0\+\_\+78\+Hz&F\+S\+\_\+0\+\_\+78\+Hz \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FS\_1\_56Hz@{FS\_1\_56Hz}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!FS\_1\_56Hz@{FS\_1\_56Hz}}}\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132faf4ca4f1bc67321c5727a32883ba55ebe}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132faf4ca4f1bc67321c5727a32883ba55ebe}} 
+F\+S\+\_\+1\+\_\+56\+Hz&F\+S\+\_\+1\+\_\+56\+Hz \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FS\_3\_13Hz@{FS\_3\_13Hz}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!FS\_3\_13Hz@{FS\_3\_13Hz}}}\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa438d42aa5be83f0fd5c3a8f0700ac8af}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa438d42aa5be83f0fd5c3a8f0700ac8af}} 
+F\+S\+\_\+3\+\_\+13\+Hz&F\+S\+\_\+3\+\_\+13\+Hz \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FS\_6\_25Hz@{FS\_6\_25Hz}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!FS\_6\_25Hz@{FS\_6\_25Hz}}}\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa1d17bd19653a87ab31f2d47cf76f9bbf}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa1d17bd19653a87ab31f2d47cf76f9bbf}} 
+F\+S\+\_\+6\+\_\+25\+Hz&F\+S\+\_\+6\+\_\+25\+Hz \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FS\_12\_5Hz@{FS\_12\_5Hz}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!FS\_12\_5Hz@{FS\_12\_5Hz}}}\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132facea73b1ae3cdee7c7226cefc895da71f}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132facea73b1ae3cdee7c7226cefc895da71f}} 
+F\+S\+\_\+12\+\_\+5\+Hz&F\+S\+\_\+12\+\_\+5\+Hz \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FS\_25Hz@{FS\_25Hz}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!FS\_25Hz@{FS\_25Hz}}}\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa3b8aa522d11ab62f41c33b51b384ddcf}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa3b8aa522d11ab62f41c33b51b384ddcf}} 
+F\+S\+\_\+25\+Hz&F\+S\+\_\+25\+Hz \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FS\_50Hz@{FS\_50Hz}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!FS\_50Hz@{FS\_50Hz}}}\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fadf913d3afac71af237dcc00dec18b092}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fadf913d3afac71af237dcc00dec18b092}} 
+F\+S\+\_\+50\+Hz&F\+S\+\_\+50\+Hz \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FS\_100Hz@{FS\_100Hz}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!FS\_100Hz@{FS\_100Hz}}}\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa69fbd967d0999c7dbd727e8c007c05a1}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa69fbd967d0999c7dbd727e8c007c05a1}} 
+F\+S\+\_\+100\+Hz&F\+S\+\_\+100\+Hz \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FS\_200Hz@{FS\_200Hz}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!FS\_200Hz@{FS\_200Hz}}}\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fae20ec14f78194c4d9b5708124972e19d}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fae20ec14f78194c4d9b5708124972e19d}} 
+F\+S\+\_\+200\+Hz&F\+S\+\_\+200\+Hz \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FS\_400Hz@{FS\_400Hz}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!FS\_400Hz@{FS\_400Hz}}}\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa8b3ccd80c4a8021effd0972161e48e04}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa8b3ccd80c4a8021effd0972161e48e04}} 
+F\+S\+\_\+400\+Hz&F\+S\+\_\+400\+Hz \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FS\_800Hz@{FS\_800Hz}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!FS\_800Hz@{FS\_800Hz}}}\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fafdc80f8fb13f050c199f164cf53d08ea}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fafdc80f8fb13f050c199f164cf53d08ea}} 
+F\+S\+\_\+800\+Hz&F\+S\+\_\+800\+Hz \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FS\_1600Hz@{FS\_1600Hz}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!FS\_1600Hz@{FS\_1600Hz}}}\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa888ffe46da5eddbb8be850d48343d4cc}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa888ffe46da5eddbb8be850d48343d4cc}} 
+F\+S\+\_\+1600\+Hz&F\+S\+\_\+1600\+Hz \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FS\_3200Hz@{FS\_3200Hz}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!FS\_3200Hz@{FS\_3200Hz}}}\mbox{\Hypertarget{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa15bd9c029d77cfc309c937ec2005fcf6}\label{adxl_8h_a8a52d8d670a0e4a5a23fa618618a132fa15bd9c029d77cfc309c937ec2005fcf6}} 
+F\+S\+\_\+3200\+Hz&F\+S\+\_\+3200\+Hz \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{adxl_8h_aa6702fc6d0da2bbf2414cd888abab259}\label{adxl_8h_aa6702fc6d0da2bbf2414cd888abab259}} 
+\index{adxl.h@{adxl.h}!ejes\_t@{ejes\_t}}
+\index{ejes\_t@{ejes\_t}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{ejes\_t}{ejes\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{adxl_8h_aa6702fc6d0da2bbf2414cd888abab259}{ejes\+\_\+t}}}
+
+
+
+Nombre de cada eje. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EJE\_X@{EJE\_X}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!EJE\_X@{EJE\_X}}}\mbox{\Hypertarget{adxl_8h_aa6702fc6d0da2bbf2414cd888abab259a55faa456f5a33e505947241659ad9064}\label{adxl_8h_aa6702fc6d0da2bbf2414cd888abab259a55faa456f5a33e505947241659ad9064}} 
+E\+J\+E\+\_\+X&E\+J\+E\+\_\+X \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EJE\_Y@{EJE\_Y}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!EJE\_Y@{EJE\_Y}}}\mbox{\Hypertarget{adxl_8h_aa6702fc6d0da2bbf2414cd888abab259a02320d6e7cbfb4ed11e4f26b12c2011e}\label{adxl_8h_aa6702fc6d0da2bbf2414cd888abab259a02320d6e7cbfb4ed11e4f26b12c2011e}} 
+E\+J\+E\+\_\+Y&E\+J\+E\+\_\+Y \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EJE\_Z@{EJE\_Z}!adxl.h@{adxl.h}}\index{adxl.h@{adxl.h}!EJE\_Z@{EJE\_Z}}}\mbox{\Hypertarget{adxl_8h_aa6702fc6d0da2bbf2414cd888abab259ac27f7668b1f974a9cdddd6ab8810c7a9}\label{adxl_8h_aa6702fc6d0da2bbf2414cd888abab259ac27f7668b1f974a9cdddd6ab8810c7a9}} 
+E\+J\+E\+\_\+Z&E\+J\+E\+\_\+Z \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{adxl_8h_ae0f390656dffb1fd833778f3a41dc28c}\label{adxl_8h_ae0f390656dffb1fd833778f3a41dc28c}} 
+\index{adxl.h@{adxl.h}!adxl\_inicializar@{adxl\_inicializar}}
+\index{adxl\_inicializar@{adxl\_inicializar}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{adxl\_inicializar()}{adxl\_inicializar()}}
+{\footnotesize\ttfamily void adxl\+\_\+inicializar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Inicializa el acelerometro. 
+
+\mbox{\Hypertarget{adxl_8h_a63b7540b6369a5e1ed7e2bc0117ecaa8}\label{adxl_8h_a63b7540b6369a5e1ed7e2bc0117ecaa8}} 
+\index{adxl.h@{adxl.h}!adxl\_interrupcion\_callback@{adxl\_interrupcion\_callback}}
+\index{adxl\_interrupcion\_callback@{adxl\_interrupcion\_callback}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{adxl\_interrupcion\_callback()}{adxl\_interrupcion\_callback()}}
+{\footnotesize\ttfamily void adxl\+\_\+interrupcion\+\_\+callback (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Maneja la interrupcion por dato listo del acelerometro. Dispara una lectura de trama. 
+
+\mbox{\Hypertarget{adxl_8h_aa19e60fe9245b43f1d44a6fb3e4d5219}\label{adxl_8h_aa19e60fe9245b43f1d44a6fb3e4d5219}} 
+\index{adxl.h@{adxl.h}!adxl\_tarea@{adxl\_tarea}}
+\index{adxl\_tarea@{adxl\_tarea}!adxl.h@{adxl.h}}
+\doxysubsubsection{\texorpdfstring{adxl\_tarea()}{adxl\_tarea()}}
+{\footnotesize\ttfamily void adxl\+\_\+tarea (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Calcula y envia a la cpu las rotaciones cuando corresponde. 
+

@@ -1,13 +1,11 @@
-/*
- * my_ring_buffer.c
- *
- *  Created on: 25 ago. 2020
- *      Author: tomas
- */
-
-/********************************************************************************************
+/**
+ * @file my_ring_buffer.c
+ * @brief Libreria para buffers circulares genericos.
  * IMPORTANTE: Los buffers deben tener un largo potencia de 2 para que la libreria funcione
- *******************************************************************************************/
+ *
+ * @author Tomás Bautista Ordóñez
+ * @date 25/08/2020
+ */
 
 #include <string.h>
 #include "my_ring_buffer.h"
@@ -16,7 +14,15 @@
  * Private types/enumerations/variables
  ****************************************************************************/
 
+/**
+ * @brief Retorna el indice de la cabeza
+ *
+ */
 #define RB_INDH(rb)  ((rb)->head & ((rb)->count - 1))
+/**
+ * @brief Retorna el indice de la cola
+ *
+ */
 #define RB_INDT(rb)  ((rb)->tail & ((rb)->count - 1))
 
 /*****************************************************************************

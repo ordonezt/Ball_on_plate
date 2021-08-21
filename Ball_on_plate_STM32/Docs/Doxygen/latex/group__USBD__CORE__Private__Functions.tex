@@ -1,0 +1,465 @@
+\hypertarget{group__USBD__CORE__Private__Functions}{}\doxysection{U\+S\+B\+D\+\_\+\+C\+O\+R\+E\+\_\+\+Private\+\_\+\+Functions}
+\label{group__USBD__CORE__Private__Functions}\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_gad35f19488381872e83fa7b23d96589e7}{U\+S\+B\+D\+\_\+\+Init}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, \mbox{\hyperlink{structUSBD__DescriptorsTypeDef}{U\+S\+B\+D\+\_\+\+Descriptors\+Type\+Def}} $\ast$pdesc, uint8\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+Init Initializes the device stack and load the class driver. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_ga9d0ee86f2309eef71d3233080752dea2}{U\+S\+B\+D\+\_\+\+De\+Init}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+De\+Init Re-\/\+Initialize th device library. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_ga392f73829f6127b9f42f03dd1401a1ef}{U\+S\+B\+D\+\_\+\+Register\+Class}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_ga2b6d250622c95103c31c8196e749a564}{U\+S\+B\+D\+\_\+\+Class\+Type\+Def}} $\ast$pclass)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+Register\+Class Link class driver to Device Core. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_ga47396105b10467da14d07d21b60cc5f9}{U\+S\+B\+D\+\_\+\+Start}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+Start Start the U\+SB Device Core. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_ga589cc62baf6dcff5612ec1f51422d28e}{U\+S\+B\+D\+\_\+\+Stop}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+Stop Stop the U\+SB Device Core. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_ga35f08f4623530af369ab0c326a814512}{U\+S\+B\+D\+\_\+\+Run\+Test\+Mode}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+Run\+Test\+Mode Launch test mode process. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_ga0b525aaf2f49fd59eadfb62ceaf4c65c}{U\+S\+B\+D\+\_\+\+Set\+Class\+Config}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t cfgidx)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+Set\+Class\+Config Configure device and start the interface. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_ga0a67d4cc64a52a0562f601e7d8467bd1}{U\+S\+B\+D\+\_\+\+Clr\+Class\+Config}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t cfgidx)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+Clr\+Class\+Config Clear current configuration. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_gabdcdfefaffa1651c77a38d08eb3a82ce}{U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Setup\+Stage}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t $\ast$psetup)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+Setup\+Stage Handle the setup stage. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_ga1ab0439714328647692719a2b1c9e689}{U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Data\+Out\+Stage}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t epnum, uint8\+\_\+t $\ast$pdata)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+Data\+Out\+Stage Handle data O\+UT stage. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_ga09597f0a303e0148d9f291477f7c4439}{U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Data\+In\+Stage}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t epnum, uint8\+\_\+t $\ast$pdata)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+Data\+In\+Stage Handle data in stage. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_ga9cd02ae070a18ea3395346c56639412b}{U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Reset}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Reset Handle Reset event. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_gaaf2f9695af26bad9d0f66746fcca3243}{U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Set\+Speed}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaa62cd3d2fb69a537ae7a5a94bdd6ae93}{U\+S\+B\+D\+\_\+\+Speed\+Type\+Def}} speed)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Reset Handle Reset event. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_ga907b2335773fcc0856e4ab6972c04020}{U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Suspend}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+Suspend Handle Suspend event. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_gacfd270cf295f13943dd6a591b366246c}{U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Resume}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+Resume Handle Resume event. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_gacf5d847096b6b8d9b1880dab9cd1726d}{U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+S\+OF}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+S\+OF Handle S\+OF event. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_ga8f70c097aa7377ec6841d2581bccfa7e}{U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Iso\+I\+N\+Incomplete}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t epnum)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+Iso\+I\+N\+Incomplete Handle iso in incomplete event. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_ga1b6905ac966d81f6a2ce165e57dacd80}{U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Iso\+O\+U\+T\+Incomplete}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev, uint8\+\_\+t epnum)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+Iso\+O\+U\+T\+Incomplete Handle iso out incomplete event. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_gaaf76b06413044241868c6828ec7fc51c}{U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Dev\+Connected}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+Dev\+Connected Handle device connection event. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{group__USBD__CORE__Private__Functions_ga07b5fe60c6f1cf9f485e0191a605b9a1}{U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Dev\+Disconnected}} (\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$pdev)
+\begin{DoxyCompactList}\small\item\em U\+S\+B\+D\+\_\+\+Dev\+Disconnected Handle device disconnection event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_ga0a67d4cc64a52a0562f601e7d8467bd1}\label{group__USBD__CORE__Private__Functions_ga0a67d4cc64a52a0562f601e7d8467bd1}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_ClrClassConfig@{USBD\_ClrClassConfig}}
+\index{USBD\_ClrClassConfig@{USBD\_ClrClassConfig}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_ClrClassConfig()}{USBD\_ClrClassConfig()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+Clr\+Class\+Config (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev,  }\item[{uint8\+\_\+t}]{cfgidx }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+Clr\+Class\+Config Clear current configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+{\em cfgidx} & configuration index \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & U\+S\+B\+D\+\_\+\+Status\+Type\+Def \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_ga9d0ee86f2309eef71d3233080752dea2}\label{group__USBD__CORE__Private__Functions_ga9d0ee86f2309eef71d3233080752dea2}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_DeInit@{USBD\_DeInit}}
+\index{USBD\_DeInit@{USBD\_DeInit}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_DeInit()}{USBD\_DeInit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+De\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+De\+Init Re-\/\+Initialize th device library. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_gad35f19488381872e83fa7b23d96589e7}\label{group__USBD__CORE__Private__Functions_gad35f19488381872e83fa7b23d96589e7}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_Init@{USBD\_Init}}
+\index{USBD\_Init@{USBD\_Init}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_Init()}{USBD\_Init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev,  }\item[{\mbox{\hyperlink{structUSBD__DescriptorsTypeDef}{U\+S\+B\+D\+\_\+\+Descriptors\+Type\+Def}} $\ast$}]{pdesc,  }\item[{uint8\+\_\+t}]{id }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+Init Initializes the device stack and load the class driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+{\em pdesc} & Descriptor structure address \\
+\hline
+{\em id} & Low level core index \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_ga09597f0a303e0148d9f291477f7c4439}\label{group__USBD__CORE__Private__Functions_ga09597f0a303e0148d9f291477f7c4439}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_LL\_DataInStage@{USBD\_LL\_DataInStage}}
+\index{USBD\_LL\_DataInStage@{USBD\_LL\_DataInStage}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_LL\_DataInStage()}{USBD\_LL\_DataInStage()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Data\+In\+Stage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev,  }\item[{uint8\+\_\+t}]{epnum,  }\item[{uint8\+\_\+t $\ast$}]{pdata }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+Data\+In\+Stage Handle data in stage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+{\em epnum} & endpoint index \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_ga1ab0439714328647692719a2b1c9e689}\label{group__USBD__CORE__Private__Functions_ga1ab0439714328647692719a2b1c9e689}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_LL\_DataOutStage@{USBD\_LL\_DataOutStage}}
+\index{USBD\_LL\_DataOutStage@{USBD\_LL\_DataOutStage}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_LL\_DataOutStage()}{USBD\_LL\_DataOutStage()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Data\+Out\+Stage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev,  }\item[{uint8\+\_\+t}]{epnum,  }\item[{uint8\+\_\+t $\ast$}]{pdata }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+Data\+Out\+Stage Handle data O\+UT stage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+{\em epnum} & endpoint index \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_gaaf76b06413044241868c6828ec7fc51c}\label{group__USBD__CORE__Private__Functions_gaaf76b06413044241868c6828ec7fc51c}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_LL\_DevConnected@{USBD\_LL\_DevConnected}}
+\index{USBD\_LL\_DevConnected@{USBD\_LL\_DevConnected}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_LL\_DevConnected()}{USBD\_LL\_DevConnected()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Dev\+Connected (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+Dev\+Connected Handle device connection event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_ga07b5fe60c6f1cf9f485e0191a605b9a1}\label{group__USBD__CORE__Private__Functions_ga07b5fe60c6f1cf9f485e0191a605b9a1}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_LL\_DevDisconnected@{USBD\_LL\_DevDisconnected}}
+\index{USBD\_LL\_DevDisconnected@{USBD\_LL\_DevDisconnected}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_LL\_DevDisconnected()}{USBD\_LL\_DevDisconnected()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Dev\+Disconnected (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+Dev\+Disconnected Handle device disconnection event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_ga8f70c097aa7377ec6841d2581bccfa7e}\label{group__USBD__CORE__Private__Functions_ga8f70c097aa7377ec6841d2581bccfa7e}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_LL\_IsoINIncomplete@{USBD\_LL\_IsoINIncomplete}}
+\index{USBD\_LL\_IsoINIncomplete@{USBD\_LL\_IsoINIncomplete}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_LL\_IsoINIncomplete()}{USBD\_LL\_IsoINIncomplete()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Iso\+I\+N\+Incomplete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev,  }\item[{uint8\+\_\+t}]{epnum }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+Iso\+I\+N\+Incomplete Handle iso in incomplete event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_ga1b6905ac966d81f6a2ce165e57dacd80}\label{group__USBD__CORE__Private__Functions_ga1b6905ac966d81f6a2ce165e57dacd80}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_LL\_IsoOUTIncomplete@{USBD\_LL\_IsoOUTIncomplete}}
+\index{USBD\_LL\_IsoOUTIncomplete@{USBD\_LL\_IsoOUTIncomplete}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_LL\_IsoOUTIncomplete()}{USBD\_LL\_IsoOUTIncomplete()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Iso\+O\+U\+T\+Incomplete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev,  }\item[{uint8\+\_\+t}]{epnum }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+Iso\+O\+U\+T\+Incomplete Handle iso out incomplete event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_ga9cd02ae070a18ea3395346c56639412b}\label{group__USBD__CORE__Private__Functions_ga9cd02ae070a18ea3395346c56639412b}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_LL\_Reset@{USBD\_LL\_Reset}}
+\index{USBD\_LL\_Reset@{USBD\_LL\_Reset}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_LL\_Reset()}{USBD\_LL\_Reset()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Reset Handle Reset event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_gacfd270cf295f13943dd6a591b366246c}\label{group__USBD__CORE__Private__Functions_gacfd270cf295f13943dd6a591b366246c}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_LL\_Resume@{USBD\_LL\_Resume}}
+\index{USBD\_LL\_Resume@{USBD\_LL\_Resume}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_LL\_Resume()}{USBD\_LL\_Resume()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Resume (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+Resume Handle Resume event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_gaaf2f9695af26bad9d0f66746fcca3243}\label{group__USBD__CORE__Private__Functions_gaaf2f9695af26bad9d0f66746fcca3243}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_LL\_SetSpeed@{USBD\_LL\_SetSpeed}}
+\index{USBD\_LL\_SetSpeed@{USBD\_LL\_SetSpeed}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_LL\_SetSpeed()}{USBD\_LL\_SetSpeed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Set\+Speed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev,  }\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaa62cd3d2fb69a537ae7a5a94bdd6ae93}{U\+S\+B\+D\+\_\+\+Speed\+Type\+Def}}}]{speed }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Reset Handle Reset event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_gabdcdfefaffa1651c77a38d08eb3a82ce}\label{group__USBD__CORE__Private__Functions_gabdcdfefaffa1651c77a38d08eb3a82ce}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_LL\_SetupStage@{USBD\_LL\_SetupStage}}
+\index{USBD\_LL\_SetupStage@{USBD\_LL\_SetupStage}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_LL\_SetupStage()}{USBD\_LL\_SetupStage()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Setup\+Stage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev,  }\item[{uint8\+\_\+t $\ast$}]{psetup }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+Setup\+Stage Handle the setup stage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_gacf5d847096b6b8d9b1880dab9cd1726d}\label{group__USBD__CORE__Private__Functions_gacf5d847096b6b8d9b1880dab9cd1726d}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_LL\_SOF@{USBD\_LL\_SOF}}
+\index{USBD\_LL\_SOF@{USBD\_LL\_SOF}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_LL\_SOF()}{USBD\_LL\_SOF()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+S\+OF (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+S\+OF Handle S\+OF event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_ga907b2335773fcc0856e4ab6972c04020}\label{group__USBD__CORE__Private__Functions_ga907b2335773fcc0856e4ab6972c04020}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_LL\_Suspend@{USBD\_LL\_Suspend}}
+\index{USBD\_LL\_Suspend@{USBD\_LL\_Suspend}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_LL\_Suspend()}{USBD\_LL\_Suspend()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+L\+L\+\_\+\+Suspend (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+Suspend Handle Suspend event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_ga392f73829f6127b9f42f03dd1401a1ef}\label{group__USBD__CORE__Private__Functions_ga392f73829f6127b9f42f03dd1401a1ef}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_RegisterClass@{USBD\_RegisterClass}}
+\index{USBD\_RegisterClass@{USBD\_RegisterClass}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_RegisterClass()}{USBD\_RegisterClass()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+Register\+Class (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev,  }\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_ga2b6d250622c95103c31c8196e749a564}{U\+S\+B\+D\+\_\+\+Class\+Type\+Def}} $\ast$}]{pclass }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+Register\+Class Link class driver to Device Core. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Device} & \+: Device Handle \\
+\hline
+{\em pclass} & Class handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BD} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_ga35f08f4623530af369ab0c326a814512}\label{group__USBD__CORE__Private__Functions_ga35f08f4623530af369ab0c326a814512}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_RunTestMode@{USBD\_RunTestMode}}
+\index{USBD\_RunTestMode@{USBD\_RunTestMode}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_RunTestMode()}{USBD\_RunTestMode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+Run\+Test\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+Run\+Test\+Mode Launch test mode process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_ga0b525aaf2f49fd59eadfb62ceaf4c65c}\label{group__USBD__CORE__Private__Functions_ga0b525aaf2f49fd59eadfb62ceaf4c65c}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_SetClassConfig@{USBD\_SetClassConfig}}
+\index{USBD\_SetClassConfig@{USBD\_SetClassConfig}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_SetClassConfig()}{USBD\_SetClassConfig()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+Set\+Class\+Config (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev,  }\item[{uint8\+\_\+t}]{cfgidx }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+Set\+Class\+Config Configure device and start the interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & device instance \\
+\hline
+{\em cfgidx} & configuration index \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em status} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_ga47396105b10467da14d07d21b60cc5f9}\label{group__USBD__CORE__Private__Functions_ga47396105b10467da14d07d21b60cc5f9}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_Start@{USBD\_Start}}
+\index{USBD\_Start@{USBD\_Start}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_Start()}{USBD\_Start()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+Start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+Start Start the U\+SB Device Core. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & Device Handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BD} & Status \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group__USBD__CORE__Private__Functions_ga589cc62baf6dcff5612ec1f51422d28e}\label{group__USBD__CORE__Private__Functions_ga589cc62baf6dcff5612ec1f51422d28e}} 
+\index{USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}!USBD\_Stop@{USBD\_Stop}}
+\index{USBD\_Stop@{USBD\_Stop}!USBD\_CORE\_Private\_Functions@{USBD\_CORE\_Private\_Functions}}
+\doxysubsubsection{\texorpdfstring{USBD\_Stop()}{USBD\_Stop()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaebc658c200e50399361e7901f0a57e95}{U\+S\+B\+D\+\_\+\+Status\+Type\+Def}} U\+S\+B\+D\+\_\+\+Stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__USBD__DEF__Exported__TypesDefinitions_gaf013bf72417512c075e93c1e580e95f1}{U\+S\+B\+D\+\_\+\+Handle\+Type\+Def}} $\ast$}]{pdev }\end{DoxyParamCaption})}
+
+
+
+U\+S\+B\+D\+\_\+\+Stop Stop the U\+SB Device Core. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & Device Handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em U\+S\+BD} & Status \\
+\hline
+\end{DoxyRetVals}

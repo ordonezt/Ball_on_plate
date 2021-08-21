@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['cantidad_5fejes_619',['CANTIDAD_EJES',['../adxl_8h.html#a1b1437b0bc7595478199a40b6c7bf1b5',1,'adxl.h']]],
+  ['cantidad_5fpromedios_5faceleracion_620',['CANTIDAD_PROMEDIOS_ACELERACION',['../adxl_8h.html#aa2e2aa6b4c224b71e9fbb2db2c6ad003',1,'adxl.h']]],
+  ['cantidad_5fservos_621',['CANTIDAD_SERVOS',['../servos_8c.html#a873f4150ea7aaac5a9bfab3568b23fdc',1,'servos.c']]],
+  ['count_5f100ms_622',['COUNT_100ms',['../timers_8h.html#aa999c69c670bbc2e617e2f7be4dfe8f8',1,'timers.h']]],
+  ['count_5f10ms_623',['COUNT_10ms',['../timers_8h.html#a0a45a305823c5c3c571f8595318ce20a',1,'timers.h']]],
+  ['count_5f1ms_624',['COUNT_1ms',['../timers_8h.html#a835a0e46d0148bcdbc8e1c399834f394',1,'timers.h']]],
+  ['count_5f1s_625',['COUNT_1s',['../timers_8h.html#a3c64b7692e2f448e57869f02dba3e2ed',1,'timers.h']]],
+  ['count_5f200ms_626',['COUNT_200ms',['../timers_8h.html#ac62676e2a18ffa1e0fe83f9a7cf5be86',1,'timers.h']]],
+  ['count_5f20ms_627',['COUNT_20ms',['../timers_8h.html#a4b495200c5dbc17a094561974b79838e',1,'timers.h']]],
+  ['count_5f25ms_628',['COUNT_25ms',['../timers_8h.html#ab9cf773359b218f78bd3705bd2c43d17',1,'timers.h']]],
+  ['count_5f2s_629',['COUNT_2s',['../timers_8h.html#a70d361b19a4d7f6841c6545bc7be50a2',1,'timers.h']]],
+  ['count_5f300ms_630',['COUNT_300ms',['../timers_8h.html#a4e06ba4e4ea492f4b34872795dea7670',1,'timers.h']]],
+  ['count_5f3s_631',['COUNT_3s',['../timers_8h.html#aa25d28d273f45fc4a604c6acd75b529c',1,'timers.h']]],
+  ['count_5f400ms_632',['COUNT_400ms',['../timers_8h.html#a18a6196e4d71ea70c20ccda789f8ba0a',1,'timers.h']]],
+  ['count_5f500ms_633',['COUNT_500ms',['../timers_8h.html#a7aecdbf241688a5eedf7c9e9c5e4d4d5',1,'timers.h']]],
+  ['count_5f50ms_634',['COUNT_50ms',['../timers_8h.html#a6d7348d3fa6361e16ec72b320aa74de9',1,'timers.h']]],
+  ['count_5f600ms_635',['COUNT_600ms',['../timers_8h.html#a1e4a837dd7a61af7f7f86e4e6eda7c5a',1,'timers.h']]],
+  ['count_5f700ms_636',['COUNT_700ms',['../timers_8h.html#a8f0368a8133d359ee6965699c2631fee',1,'timers.h']]],
+  ['count_5f800ms_637',['COUNT_800ms',['../timers_8h.html#a8c64e6b9903fed9fcc92b184c7c89fdb',1,'timers.h']]],
+  ['count_5f8s_638',['COUNT_8s',['../timers_8h.html#a04adc26128254dcc7a0fd763e4b49495',1,'timers.h']]],
+  ['count_5f900ms_639',['COUNT_900ms',['../timers_8h.html#ac50978ed8874066688d46b037d5c723c',1,'timers.h']]],
+  ['cuenta_5fmaxima_640',['CUENTA_MAXIMA',['../servos_8h.html#aff873af15f7000a9f245d1735ae437f0',1,'servos.h']]]
+];
