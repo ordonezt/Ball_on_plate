@@ -25,9 +25,9 @@ class controller_t:
         self.prev_pos_y=ball_pos.pos_y
     
         print('angle_x={0}\n'.format(angle_x))
-        print('angle_x={0}\n'.format(angle_y))
-        print("Envio de comando a la plataforma comentado!!")
-        #send_command_to_platform("/dev/ttyACM0",angle_x,angle_y,10)
+        print('angle_y={0}\n'.format(angle_y))
+        #print("Envio de comando a la plataforma comentado!!")
+        send_command_to_platform("/dev/ttyACM0",angle_x,angle_y,10)
         return
 
     def controller_1d(self,pos,prev_pos):

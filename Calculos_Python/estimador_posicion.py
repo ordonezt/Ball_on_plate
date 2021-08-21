@@ -222,7 +222,7 @@ def adjust_settings(cap,image_settings):
 
 def calibracion ():
     image_settings={}
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(2)
     #setea resolucion
     cap.set(3, 640)
     cap.set(4, 480)
@@ -248,7 +248,7 @@ def calibracion ():
     save_image_settings(image_settings)
 
 def estimar_posicion(image_settings):
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(2)
     #setea resolucion
     cap.set(3, 640)
     cap.set(4, 480)
@@ -316,12 +316,13 @@ def estimar_posicion(image_settings):
             if len(approx)>40:
                 #cv2.drawContours(img,[cnt],-1, (0, 255, 0), 3)
                 cv2.circle(img, (int(x+h/2), int(y+w/2)), 10, (255, 0, 0),-1)
+                cv2.circle(img, (int(centro_x),int(centro_y)), 10, (0,255, 0),-1)
                 coordenadas=np.array([x+h/2-centro_x,y+w/2-centro_y])
                 #Aca obtengo las coordenadas
                 print("Las coordenadas son")
                 print(coordenadas)
-                ball_pos.pos_x=coordenadas[0]
-                ball_pos.pos_y=coordenadas[1]
+                ball_pos.pos_x=coordenadas[1]
+                ball_pos.pos_y=coordenadas[0]
                 platform_controller.control(ball_pos)
                 
         if cv2.waitKey(1) & 0xFF == ord('e'):

@@ -1,6 +1,6 @@
 import numpy as np
 import cmath
-import pyperclip
+#import pyperclip
 import geogebra
 import limb
 import movement_assignment
