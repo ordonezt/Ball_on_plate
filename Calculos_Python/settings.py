@@ -20,3 +20,6 @@ def init():
     pos_x=0
     pos_y=0
     ball_pos=ball_t()
+
+
+

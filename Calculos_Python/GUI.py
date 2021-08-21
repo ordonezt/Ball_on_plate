@@ -1,7 +1,10 @@
 from tkinter import *
 import settings
+import threading
+import estimador_posicion
+import main
 
-def update_parameters(Kd_slider,Ki_slider,Kp_slider,Kd_text,Ki_text,Kp_text,posy_slider,posx_slider,posx_text,posy_text):
+def update_parameters(Kd_slider,Ki_slider,Kp_slider,Kd_text,Ki_text,Kp_text):
     settings.Kd=float(Kd_slider.get())
     Kd_text.set("Kd="+str(settings.Kd))
 
@@ -11,13 +14,15 @@ def update_parameters(Kd_slider,Ki_slider,Kp_slider,Kd_text,Ki_text,Kp_text,posy
     settings.Kp=float(Kp_slider.get())
     Kp_text.set("Kp="+str(settings.Kp))
     
-    print("slider:")
-    print(posy_slider.get())
-    settings.pos_y=float(posy_slider.get())
-    posy_text.set("Kp="+str(settings.pos_y))
-
-    settings.pos_x=float(posx_slider.get())
-    posx_text.set("Kp="+str(settings.pos_x))
+def comenzar_calibracion():
+    thread=threading.Thread(target=estimador_posicion.calibracion)
+    thread.start()
+    return
+def comenzar_control():
+    image_settings=estimador_posicion.load_image_settings()
+    t2=threading.Thread(target=lambda: estimador_posicion.estimar_posicion(image_settings))
+    t2.start()
+    return
 
 def start_GUI():
     root= Tk()
@@ -42,22 +47,18 @@ def start_GUI():
     Ki_label.pack()
     Ki_slider=Scale(root, from_=0, to=0.1,orient = HORIZONTAL,label="Ki",resolution=0.01)
     Ki_slider.pack(anchor='w')
-    #x pos setting
-    posx_text=StringVar()
-    posx_label=Label(root,textvariable=posx_text)
-    posx_label.pack()
-    posx_slider=Scale(root, from_=-250, to=250,orient = HORIZONTAL,label="posx",resolution=1)
-    posx_slider.pack(anchor='w')  
-    #y pos setting
-    posy_text=StringVar()
-    posy_label=Label(root,textvariable=posy_text)
-    posy_label.pack()
-    posy_slider=Scale(root, from_=-250, to=250,orient = HORIZONTAL,label="posy",resolution=1)
-    posy_slider.pack(anchor='w')      
+  
 
     #boton de confirmación de parametros
-    confirm_button= Button(root,text="confirmar parametros",command=lambda: update_parameters(Kd_slider,Ki_slider,Kp_slider,Kd_text,Ki_text,Kp_text,posy_slider,posx_slider,posx_text,posy_text))
+    confirm_button= Button(root,text="confirmar parametros",command=lambda: update_parameters(Kd_slider,Ki_slider,Kp_slider,Kd_text,Ki_text,Kp_text))
     confirm_button.pack()
+
+    #boton para inicio de calibracion
+    cal_button= Button(root,text="Calibracion",command=comenzar_calibracion)
+    cal_button.pack(anchor='w')
+    #boton para comenzar
+    cal_button= Button(root,text="Comenzar",command=comenzar_control)
+    cal_button.pack(anchor='w')
     #arranco la GUI
     root.mainloop()
 

@@ -3,6 +3,10 @@ import numpy as np
 from pyzbar.pyzbar import decode
 import os
 import settings
+import json
+import controller
+import time
+
 def empty(a):
     pass
 
@@ -138,23 +142,7 @@ def obtener_centro_en_pixeles(cap):
     #fuera del while, llego aca cuando se apreta w
     return centro_x,centro_y
 
-
-
-def estimar_posicion():
-    cap = cv2.VideoCapture(0)
-    #setea resolucion
-    cap.set(3, 640)
-    cap.set(4, 480)
-    cap.set(10, 100)
-
-    #la funcion es un while true, hasta que se apreta Q
-    distancia_pixeles=calibrar_distancia_en_pixeles(cap)
-
-    #la funcion es un while true, hasta que se apreta W
-    centro_x,centro_y=obtener_centro_en_pixeles(cap)
-
-    #En este punto ya terminamos con la calibracion
-
+def adjust_settings(cap,image_settings):
     cv2.namedWindow("Ventana")
     cv2.resizeWindow("Ventana", 500, 200)
 
@@ -222,6 +210,100 @@ def estimar_posicion():
         #podemos probar otros algoritmos de deteccion de contornos
         contornos, _= cv2.findContours(canny, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
+        cv2.imshow("Camara", img)
+        cv2.imshow("Canny", canny)
+        cv2.imshow("Imagen Recortada", imagen_recortada)
+
+        if cv2.waitKey(1) & 0xFF == ord('e'):
+            cv2.destroyAllWindows()
+            break
+    return x_min,x_max,y_min,y_max,u_1,u_2,u_gris,u_area
+
+
+def calibracion ():
+    image_settings={}
+    cap = cv2.VideoCapture(0)
+    #setea resolucion
+    cap.set(3, 640)
+    cap.set(4, 480)
+    cap.set(10, 100)
+
+    #la funcion es un while true, hasta que se apreta Q
+    image_settings["distancia_pixeles"]=calibrar_distancia_en_pixeles(cap)
+
+    #la funcion es un while true, hasta que se apreta W
+    image_settings["centro_x"],image_settings["centro_y"]=obtener_centro_en_pixeles(cap)
+    
+    #En este punto ya terminamos con la calibracion
+
+    x_min,x_max,y_min,y_max,u_1,u_2,u_gris,u_area=adjust_settings(cap,image_settings)  
+    image_settings["x_min"]=x_min
+    image_settings["x_max"]=x_max
+    image_settings["y_min"]=y_min
+    image_settings["y_max"]=y_max
+    image_settings["u_1"]=u_1
+    image_settings["u_2"]=u_2
+    image_settings["u_gris"]=u_gris
+    image_settings["u_area"]=u_area
+    save_image_settings(image_settings)
+
+def estimar_posicion(image_settings):
+    cap = cv2.VideoCapture(0)
+    #setea resolucion
+    cap.set(3, 640)
+    cap.set(4, 480)
+    cap.set(10, 100)
+    #inicializo las posiciones en None para detectar cuando no se encuentra la
+    pos_x=None
+    pos_y=None
+    distancia_pixeles=image_settings["distancia_pixeles"]
+    centro_x=image_settings["centro_x"]
+    centro_y=image_settings["centro_y"]
+
+    x_min=image_settings["x_min"]
+    x_max=image_settings["x_max"]
+    y_min=image_settings["y_min"]
+    y_max=image_settings["y_max"]
+    u_1=image_settings["u_1"]
+    u_2=image_settings["u_2"]
+    u_gris=image_settings["u_gris"]
+    u_area=image_settings["u_area"]
+    ball_pos=settings.ball_t()
+    platform_controller=controller.controller_t()
+    while (True):
+        success, img = cap.read()
+        start_time=time.time()
+        #creo mascara llena de 0 para recortar imagen
+        mask = np.zeros(img.shape[:2], dtype="uint8")
+        #creo rectangulo para utilizar como mascara
+        #esta mascara esta parametrizada con los slider para poder dejar afuera obstalucos
+        cv2.rectangle(mask, (x_min, y_min), (x_max, y_max), 255, -1)
+        #enmascaramos la imagen de video
+        masked = cv2.bitwise_and(img, img, mask=mask)
+        imagen_recortada=masked
+        #invierto color a escala de grises
+        invert=cv2.cvtColor(masked, cv2.COLOR_BGR2GRAY)
+
+        # Lo que hace es normalizar la imagen en brillo para aprovechar todo el rango dinamico
+        #no esta en uso, no aportaba mejoras significativas
+        #aplico histograma
+        #equ = cv2.equalizeHist(invert)
+        #cv2.imshow('Ecualizadas', equ)
+        #invert=equ
+
+        #agrego mascara para detectar los blancos
+        _,binarizada=cv2.threshold(invert,u_gris,255,cv2.THRESH_BINARY)
+        #detecto contornos
+        canny=cv2.Canny(binarizada, u_1, u_2)
+        #dilato los contornos
+        canny=cv2.dilate(canny,None,iterations=1)
+        #supresion de sombras
+        #_,sombra=cv2.threshold(canny,254,255,cv2.THRESH_BINARY)
+
+        #obtengo los contornos
+        #podemos probar otros algoritmos de deteccion de contornos
+        contornos, _= cv2.findContours(canny, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+
         #detecto circulos en los contornos
         #La idea de este for es detectar los contornos y aproximarlos con poli lineas
         #figuras simples van a tener muchas poli lineas entonces si tiene mas de 40 
@@ -237,18 +319,38 @@ def estimar_posicion():
                 coordenadas=np.array([x+h/2-centro_x,y+w/2-centro_y])
                 #Aca obtengo las coordenadas
                 print("Las coordenadas son")
-                settings.ball_pos.pos_x=coordenadas[0]
-                settings.ball_pos.pos_y=coordenadas[1]
                 print(coordenadas)
-
+                ball_pos.pos_x=coordenadas[0]
+                ball_pos.pos_y=coordenadas[1]
+                platform_controller.control(ball_pos)
+                
+        if cv2.waitKey(1) & 0xFF == ord('e'):
+            cv2.destroyAllWindows()
+            break
         cv2.imshow("Camara", img)
         cv2.imshow("Canny", canny)
         cv2.imshow("Imagen Recortada", imagen_recortada)
+        
+        print(f"execution time:{(time.time()-start_time)*1000} mSeg")
+    return 
 
-        if cv2.waitKey(1) & 0xFF == ord('e'):
-            break
+
+
+
+
+def save_image_settings(settings):
+    with open('./image_settings.json', "w") as file:
+        data=json.dumps(settings)
+        file.write(data)
+    return
+
+def load_image_settings():
+    with open('./image_settings.json', "r") as file:
+        data=file.read()
+        return json.loads(data)
 
 
 if __name__ == '__main__':
     settings.init()
     estimar_posicion()
+
