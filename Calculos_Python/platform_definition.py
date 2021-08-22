@@ -183,10 +183,12 @@ class platform:
                                     #pasan a llamarse P1,P2 y P3 respectivamente
                     
         limb_i=limb.limb(self.l1,self.l2) #defino el objeto que representa cada brazo de la plataforma
+        limb_2=limb.limb(self.l1,12.5) #defino el objeto que representa cada brazo de la plataforma
+        
         #Calculo los angulos necesarios en cada motor dado un error máximo en cm de la posición del punto P1,2,3
         #Y un número máximo de iteraciones posibles para llegar al resultado
         self.ang1=limb_i.calculate_motor_angle(P1,self.max_limb_error,self.max_limb_try_count)
-        self.ang2=limb_i.calculate_motor_angle(P2,self.max_limb_error,self.max_limb_try_count)
+        self.ang2=limb_2.calculate_motor_angle(P2,self.max_limb_error,self.max_limb_try_count)
         self.ang3=limb_i.calculate_motor_angle(P3,self.max_limb_error,self.max_limb_try_count)
         #Chekeo que el ángulo en las juntas universales no supere el máximo que permiten
         for joint in ["C1","C2","C3"]:

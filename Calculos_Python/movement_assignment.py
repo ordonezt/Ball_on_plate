@@ -7,7 +7,7 @@ def assign_movement(r_x,r_y):
     "y devuelve la junta a actuar, el movimiento y el ángulo"
         
     #obtengo el gradiente del plano que pasa por (0,0,0)
-    #y cumple con los ángulos r_x y r_y
+    #y cumple con los ángulos r_x y r_y0
     grad_plane=np.array([np.tan(r_x),np.tan(r_y)]) 
     ball_dir=-grad_plane #La dirección en la cual se desplaza la pelota es la del -grad(plano)
                          #Este es el caso ideal sin las restricciones de la plataforma   
@@ -15,6 +15,7 @@ def assign_movement(r_x,r_y):
     ##Convertimos ball_dir a coordenadas polares y nos quedamos con el ángulo para compararlo con las direcciones
     ##posibles
     angle=cmath.polar(ball_dir[0]+1j*ball_dir[1])[1]*(180/np.pi)
+    print(f"angle={angle}")
     ##Dividimos los 360 grados en las direcciones posible y asignamos el movimiento
     sentido=1 #uso esta variable para invertir el sentido del vector dado que trabajo con cuadrantes 1 y 2
     if angle<0:
@@ -68,13 +69,14 @@ def calculate_angle(ball_dir,roll_vector,joint,movement):
     #Cambio el sistema de referencia al de la junta que debe actuarse
     if joint=="C1":
         roll_vector=basis.base_change_cannon_to_m1(roll_vector)
+        print(f"roll_vector: {roll_vector}")
     if joint=="C2":
         roll_vector=basis.base_change_cannon_to_m2(roll_vector)
     if joint=="C3":
         roll_vector=basis.base_change_cannon_to_m3(roll_vector)
-    if movement=="roll" and roll_vector[0]<0:
+    if movement=="roll" and roll_vector[0]>0:
         #Si el movimiento es de roll y la dirección del roll en el marco de referencia del motor/junta
-        # indicado es en la dirección de las x's negativas, entonces el ángulo debe ser negativo
+        # indicado es en la dirección de las x's positivas, entonces el ángulo debe ser negativo
         angle=angle*(-1)
 
     if movement=="pitch" and roll_vector[1]<0:

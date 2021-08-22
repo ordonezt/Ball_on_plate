@@ -25,9 +25,9 @@ args = parser.parse_args()
 
 ser = serial.Serial(args.port,baudrate = 9600,timeout=1)
 
-args.ang_motor_1+=90
-args.ang_motor_2+=90
-args.ang_motor_3+=90
+args.ang_motor_1+=80
+args.ang_motor_2+=88
+args.ang_motor_3+=86
 
 trama = angulos2protocolo(args.ang_motor_1*1000,args.ang_motor_2*1000,args.ang_motor_3*1000)
 

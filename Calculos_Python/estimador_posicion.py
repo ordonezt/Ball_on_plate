@@ -6,7 +6,8 @@ import settings
 import json
 import controller
 import time
-
+import copy
+import pandas as pd
 def empty(a):
     pass
 
@@ -232,8 +233,10 @@ def calibracion ():
     image_settings["distancia_pixeles"]=calibrar_distancia_en_pixeles(cap)
 
     #la funcion es un while true, hasta que se apreta W
-    image_settings["centro_x"],image_settings["centro_y"]=obtener_centro_en_pixeles(cap)
-    
+    #image_settings["centro_x"],image_settings["centro_y"]=obtener_centro_en_pixeles(cap)
+    image_settings["centro_x"]=326
+    image_settings["centro_y"]=205
+
     #En este punto ya terminamos con la calibracion
 
     x_min,x_max,y_min,y_max,u_1,u_2,u_gris,u_area=adjust_settings(cap,image_settings)  
@@ -248,6 +251,8 @@ def calibracion ():
     save_image_settings(image_settings)
 
 def estimar_posicion(image_settings):
+    log={"pos_x":[],"pos_y":[],"exec_time":[],"angle_x":[],"angle_y":[]}
+
     cap = cv2.VideoCapture(2)
     #setea resolucion
     cap.set(3, 640)
@@ -256,6 +261,8 @@ def estimar_posicion(image_settings):
     #inicializo las posiciones en None para detectar cuando no se encuentra la
     pos_x=None
     pos_y=None
+    angle_x=0
+    angle_y=0
     distancia_pixeles=image_settings["distancia_pixeles"]
     centro_x=image_settings["centro_x"]
     centro_y=image_settings["centro_y"]
@@ -321,22 +328,36 @@ def estimar_posicion(image_settings):
                 #Aca obtengo las coordenadas
                 print("Las coordenadas son")
                 print(coordenadas)
-                ball_pos.pos_x=coordenadas[1]
-                ball_pos.pos_y=coordenadas[0]
-                platform_controller.control(ball_pos)
+                print(np.array([x+h/2,y+w/2]))
+                ball_pos.pos_x=coordenadas[0]
+                ball_pos.pos_y=-coordenadas[1]
+                angle_x,angle_y=platform_controller.control(ball_pos)
                 
-        if cv2.waitKey(1) & 0xFF == ord('e'):
-            cv2.destroyAllWindows()
-            break
         cv2.imshow("Camara", img)
         cv2.imshow("Canny", canny)
         cv2.imshow("Imagen Recortada", imagen_recortada)
-        
+        log["pos_x"].append(copy.deepcopy(ball_pos.pos_x))
+        log["pos_y"].append(copy.deepcopy(ball_pos.pos_y))
+        log["angle_x"].append(copy.deepcopy(angle_x))
+        log["angle_y"].append(copy.deepcopy(angle_y))
+        log["exec_time"].append((time.time()-start_time)*1000)
         print(f"execution time:{(time.time()-start_time)*1000} mSeg")
+        if cv2.waitKey(1) & 0xFF == ord('e'):
+            cv2.destroyAllWindows()
+            df=pd.DataFrame.from_dict(log)
+            df.to_excel("logs.xlsx")
+            break
     return 
 
 
-
+def test():
+    platform_controller=controller.controller_t()
+    ball_pos=settings.ball_t()
+    while (True):
+        ball_pos.pos_x=-float(input("x="))
+        ball_pos.pos_y=-float(input("y="))
+        platform_controller.control(ball_pos)
+    return 
 
 
 def save_image_settings(settings):
@@ -354,4 +375,5 @@ def load_image_settings():
 if __name__ == '__main__':
     settings.init()
     estimar_posicion()
+
 

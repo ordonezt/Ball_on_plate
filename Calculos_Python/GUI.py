@@ -2,6 +2,7 @@ from tkinter import *
 import settings
 import threading
 import estimador_posicion
+from serial_com import send_command_to_platform
 import main
 
 def update_parameters(Kd_slider,Ki_slider,Kp_slider,Kd_text,Ki_text,Kp_text):
@@ -21,7 +22,12 @@ def comenzar_calibracion():
 def comenzar_control():
     image_settings=estimador_posicion.load_image_settings()
     t2=threading.Thread(target=lambda: estimador_posicion.estimar_posicion(image_settings))
+    #t2=threading.Thread(target= estimador_posicion.test)
     t2.start()
+    return
+
+def reset_platform():
+    send_command_to_platform("/dev/ttyACM0",0,0,13)
     return
 
 def start_GUI():
@@ -58,6 +64,9 @@ def start_GUI():
     cal_button.pack(anchor='w')
     #boton para comenzar
     cal_button= Button(root,text="Comenzar",command=comenzar_control)
+    cal_button.pack(anchor='w')
+    #boton para resetear la plataforma
+    cal_button= Button(root,text="Resetear plataforma",command=reset_platform)
     cal_button.pack(anchor='w')
     #arranco la GUI
     root.mainloop()
