@@ -1,22 +1,14 @@
+from serial_com import send_command_to_platform
+import time
 import numpy as np
-import cv2 as cv
-cap = cv.VideoCapture(0)
-if not cap.isOpened():
-    print("Cannot open camera")
-    exit()
-while True:
-    # Capture frame-by-frame
-    ret, frame = cap.read()
-    # if frame is read correctly ret is True
-    if not ret:
-        print("Can't receive frame (stream end?). Exiting ...")
-        break
-    # Our operations on the frame come here
-    gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-    # Display the resulting frame
-    cv.imshow('frame', gray)
-    if cv.waitKey(1) == ord('q'):
-        break
-# When everything done, release the capture
-cap.release()
-cv.destroyAllWindows()
+inc=2*np.pi/180
+h=14
+i=0
+pause=0.02
+
+while (True):
+    angle_y=20*np.sin(i*inc)
+    angle_x=20*np.cos(i*inc)
+    send_command_to_platform("/dev/ttyACM0",angle_x,angle_y,h)
+    time.sleep(pause)
+    i=i+1

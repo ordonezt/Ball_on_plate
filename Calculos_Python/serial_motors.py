@@ -2,7 +2,7 @@ import argparse
 from serial_frame import angulos2protocolo
 import platform_definition
 import serial
-
+import time
 
 # este comando setea los angulos de cada motor en grados
 
@@ -30,10 +30,14 @@ args.ang_motor_2+=88
 args.ang_motor_3+=86
 
 trama = angulos2protocolo(args.ang_motor_1*1000,args.ang_motor_2*1000,args.ang_motor_3*1000)
-
-
 ser.write(bytes(trama))
-
+# while(True):
+#     time.sleep(1/2.5)
+#     trama = angulos2protocolo(args.ang_motor_1*1000,args.ang_motor_2*1000,args.ang_motor_3*1000)
+#     ser.write(bytes(trama))
+#     time.sleep(1/2.5)
+#     trama = angulos2protocolo(80000,88000,86000)
+#     ser.write(bytes(trama))
 
 	
 
