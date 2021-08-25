@@ -40,16 +40,22 @@ def send_command_to_platform(port,x_ang,y_ang,altura):
     C2=dist*np.array([-np.cos(np.pi*30/180),np.sin(np.pi*30/180),0])
     C3=dist*np.array([np.cos(np.pi*30/180),np.sin(np.pi*30/180),0])
     #making the rotation of the joints
+
+    
     x_ang=x_ang*np.pi/180
     y_ang=y_ang*np.pi/180
+    print(x_ang)
+    print(y_ang)
 
 
-
-    C1r=rotate_vector(x_ang,y_ang,C1)
-    C2r=rotate_vector(x_ang,y_ang,C2)
-    C3r=rotate_vector(x_ang,y_ang,C3)
+    C1r=rotate_vector(y_ang,x_ang,C1)
+    C2r=rotate_vector(y_ang,x_ang,C2)
+    C3r=rotate_vector(y_ang,x_ang,C3)
     #calculo el angulo de los motores
     print(C1r)
+    print(C2r)
+    print(C3r)
+    
     P1=basis.base_change_cannon_to_m1(C1r)+np.array([0,10,altura])
     P2=basis.base_change_cannon_to_m2(C2r)+np.array([0,10,altura])
     P3=basis.base_change_cannon_to_m3(C3r)+np.array([0,10,altura])
@@ -57,18 +63,19 @@ def send_command_to_platform(port,x_ang,y_ang,altura):
     limb_1=limb.limb(l1=6,l2=13)
     limb_2=limb.limb(l1=6,l2=12.5)
     limb_3=limb.limb(l1=6,l2=13)
-    
-    ang1=limb_1.calculate_motor_angle(P1,0.01,30)
-    ang2=limb_2.calculate_motor_angle(P2,0.01,30)
-    ang3=limb_3.calculate_motor_angle(P3,0.01,30)
-
-
-    print(f'motor 1:{ang1*180/np.pi}')
-    print(f'motor 2:{ang2*180/np.pi}')
-    print(f'motor 3:{ang3*180/np.pi}')
-    ang_motor_1= int( (ang1*180/np.pi +80) *1000   ) # Multiplico por mil porque el frame es en milesimas de grado
-    ang_motor_2= int( (ang2*180/np.pi +86) *1000   )
-    ang_motor_3= int( (ang3*180/np.pi +86) *1000   )
-    ser = serial.Serial(port,baudrate = 9600,timeout=1)
-    trama = angulos2protocolo(ang_motor_1,ang_motor_2,ang_motor_3)
-    ser.write(bytes(trama))
+    try:
+        ang1=limb_1.calculate_motor_angle(P1,0.01,30)
+        ang2=limb_2.calculate_motor_angle(P2,0.01,30)
+        ang3=limb_3.calculate_motor_angle(P3,0.01,30)
+    except:
+        pass
+    else:
+        print(f'motor 1:{ang1*180/np.pi}')
+        print(f'motor 2:{ang2*180/np.pi}')
+        print(f'motor 3:{ang3*180/np.pi}')
+        ang_motor_1= int( (ang1*180/np.pi +80) *1000   ) # Multiplico por mil porque el frame es en milesimas de grado
+        ang_motor_2= int( (ang2*180/np.pi +86) *1000   )
+        ang_motor_3= int( (ang3*180/np.pi +86) *1000   )
+        ser = serial.Serial(port,baudrate = 9600,timeout=1)
+        trama = angulos2protocolo(ang_motor_1,ang_motor_2,ang_motor_3)
+        ser.write(bytes(trama))

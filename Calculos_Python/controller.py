@@ -41,7 +41,10 @@ class controller_t:
         #parte proporcional
         Propocional=pos * Kp
         #parte derivativa
-        Derivativa=(pos-prev_pos) * Kd /self.T
+        print(f"pos={pos}")
+        print(f"prev_pos={prev_pos}")
+        
+        Derivativa=-(-pos-prev_pos) * Kd /self.T
 
         control_angle=self.Integral+Propocional+Derivativa
 

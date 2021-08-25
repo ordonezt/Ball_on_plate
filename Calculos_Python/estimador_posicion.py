@@ -329,7 +329,8 @@ def estimar_posicion(image_settings):
                 print("Las coordenadas son")
                 print(coordenadas)
                 print(np.array([x+h/2,y+w/2]))
-                ball_pos.pos_x=coordenadas[0]
+                
+                ball_pos.pos_x=-coordenadas[0]
                 ball_pos.pos_y=-coordenadas[1]
                 angle_x,angle_y=platform_controller.control(ball_pos)
                 

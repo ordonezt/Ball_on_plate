@@ -39,19 +39,19 @@ def start_GUI():
     Kd_text=StringVar()
     Kd_label=Label(root,textvariable=Kd_text)
     Kd_label.pack()
-    Kd_slider=Scale(root, from_=0, to=0.1,orient = HORIZONTAL,label="Kd",resolution=0.001)
+    Kd_slider=Scale(root, from_=0, to=0.03,orient = HORIZONTAL,label="Kd",resolution=0.0001)
     Kd_slider.pack(anchor='w')
     #Kp setting
     Kp_text=StringVar()
     Kp_label=Label(root,textvariable=Kp_text)
     Kp_label.pack()
-    Kp_slider=Scale(root, from_=0, to=0.2,orient = HORIZONTAL,label="Kp",resolution=0.001)
+    Kp_slider=Scale(root, from_=0, to=0.1,orient = HORIZONTAL,label="Kp",resolution=0.001)
     Kp_slider.pack(anchor='w')
     #Ki setting
     Ki_text=StringVar()
     Ki_label=Label(root,textvariable=Ki_text)
     Ki_label.pack()
-    Ki_slider=Scale(root, from_=0, to=0.1,orient = HORIZONTAL,label="Ki",resolution=0.001)
+    Ki_slider=Scale(root, from_=0, to=0.1,orient = HORIZONTAL,label="Ki",resolution=0.01)
     Ki_slider.pack(anchor='w')
   
 
