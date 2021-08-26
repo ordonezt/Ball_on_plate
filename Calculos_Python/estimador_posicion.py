@@ -8,8 +8,18 @@ import controller
 import time
 import copy
 import pandas as pd
+
+centro_x =0
+centro_y =0
+
 def empty(a):
     pass
+
+def set_center(event,x,y,flags,param):
+    global centro_x
+    global centro_y
+    if (event == cv2.EVENT_LBUTTONDBLCLK): 
+        centro_x,centro_y = x,y
 
 
 # Esta funcion lo que hace es buscar las coordenadas de los dos CRQs
@@ -252,8 +262,11 @@ def calibracion ():
 
 def estimar_posicion(image_settings):
     log={"pos_x":[],"pos_y":[],"exec_time":[],"angle_x":[],"angle_y":[]}
-
+    global centro_x
+    global centro_y
     cap = cv2.VideoCapture(2)
+    cv2.namedWindow('Camara')
+    
     #setea resolucion
     cap.set(3, 640)
     cap.set(4, 480)
@@ -277,6 +290,7 @@ def estimar_posicion(image_settings):
     u_area=image_settings["u_area"]
     ball_pos=settings.ball_t()
     platform_controller=controller.controller_t()
+    cv2.setMouseCallback('Camara',set_center)
     while (True):
         success, img = cap.read()
         start_time=time.time()
@@ -330,7 +344,7 @@ def estimar_posicion(image_settings):
                 print(coordenadas)
                 print(np.array([x+h/2,y+w/2]))
                 
-                ball_pos.pos_x=-coordenadas[0]
+                ball_pos.pos_x=coordenadas[0]
                 ball_pos.pos_y=-coordenadas[1]
                 angle_x,angle_y=platform_controller.control(ball_pos)
                 
