@@ -133,4 +133,11 @@ void adxl_interrupcion_callback(void);
  */
 void adxl_tarea(void);
 
+/**
+ * @brief Transmite a la cpu las rotaciones actuales.
+ *
+ * Para mas detalle ver "protocolo_comunicacion.ods".
+ */
+void adxl_transmitir(void);
+
 #endif /* INC_USR_ADXL_H_ */

@@ -11,9 +11,10 @@
 #include "my_ring_buffer.h"
 #include "timers.h"
 #include "servos.h"
+#include "adxl.h"
 
 ///Longitud de las tramas recibidas
-#define LONGITUD_TRAMA_RX		12
+#define LONGITUD_TRAMA_RX		13
 ///Longitud en caracteres del buffer de tramas
 #define LONGITUD_BUFFER_RX 		64		//Tiene que ser potencia de dos si o si, entran 5 tramas y pico
 
@@ -23,7 +24,7 @@
 #define FIN_TRAMA_CPU			0x90
 
 ///Motor A byte 0
-#define BYTE_MAB0 				0
+#define BYTE_MAB0 				1
 ///Motor A byte 1
 #define BYTE_MAB1				(BYTE_MAB0 + 1)
 ///Motor A byte 2
@@ -46,6 +47,9 @@
 ///Byte de bits mas significativos
 #define BYTE_MSB				(BYTE_MCB2 + 1)
 
+#define TIPO_MENSAJE(x)			((x)[0])
+
+uint8_t trama_error[] = {0x80, 'E','R','R','O','R', 0x90,'\0'};
 
 ///Buffer circular par guardar tramas recibidas
 RINGBUFF_T cpu_rx_ring_buffer;
@@ -152,11 +156,22 @@ void cpu_rx(void)
 			if(dato == FIN_TRAMA_CPU)
 			{
 				//Validar mensaje
-				if(trama2angulos(mensaje, &angulo_a, &angulo_b, &angulo_c) == 0)
+				switch(TIPO_MENSAJE(mensaje))
 				{
-					servos_agregar_angulo(SERVO_A, angulo_a);
-					servos_agregar_angulo(SERVO_B, angulo_b);
-					servos_agregar_angulo(SERVO_C, angulo_c);
+				case 'M':
+					if(trama2angulos(mensaje, &angulo_a, &angulo_b, &angulo_c) == 0)
+					{
+						servos_agregar_angulo(SERVO_A, angulo_a);
+						servos_agregar_angulo(SERVO_B, angulo_b);
+						servos_agregar_angulo(SERVO_C, angulo_c);
+					}
+					break;
+				case 'A':
+					adxl_transmitir();
+					break;
+				default:
+					cpu_transmitir(trama_error, strlen((char*)trama_error));
+					break;
 				}
 
 				estado = 0;
@@ -166,10 +181,16 @@ void cpu_rx(void)
 				mensaje[indice++] = dato;
 			}
 			else
+			{
 				estado = 0;
+				cpu_transmitir(trama_error, strlen((char*)trama_error));
+			}
 
 			if(indice >= (LONGITUD_TRAMA_RX - 1))
+			{
 				estado = 0;
+				cpu_transmitir(trama_error, strlen((char*)trama_error));
+			}
 			break;
 		default:
 			estado = 0;
