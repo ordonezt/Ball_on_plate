@@ -48,7 +48,7 @@ def angulos2protocolo(angulo_a, angulo_b, angulo_c):
             ((byte1_a & 0x80) >> (7 - 1)) | \
             ((byte0_a & 0x80) >> (7 - 0))
     
-    trama.append(ord('A'))
+    trama.append(ord('M'))
 
     trama.append(byte0_a & 0x7F)
     trama.append(byte1_a & 0x7F)
