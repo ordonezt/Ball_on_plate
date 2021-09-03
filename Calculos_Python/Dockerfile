@@ -5,6 +5,9 @@ RUN apt-get update \
     && pip install pyzbar \
     && pip install pyperclip \
     && pip install pyserial \
-    && pip install tk
+    && pip install tk \
+    && pip install pandas \
+    && pip install -U scikit-fuzzy
 
 ADD *.py ./
+ADD image_settings.json .
