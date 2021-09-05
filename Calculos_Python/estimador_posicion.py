@@ -223,7 +223,7 @@ def adjust_settings(cap,image_settings):
 
 def calibracion ():
     image_settings={}
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(2)
     #setea resolucion
     cap.set(3, 640)
     cap.set(4, 480)
@@ -253,7 +253,7 @@ def calibracion ():
 def estimar_posicion(image_settings):
     log={"pos_x":[],"pos_y":[],"exec_time":[],"angle_x":[],"angle_y":[]}
 
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(2)
     #setea resolucion
     cap.set(3, 640)
     cap.set(4, 480)
@@ -276,7 +276,7 @@ def estimar_posicion(image_settings):
     u_gris=image_settings["u_gris"]
     u_area=image_settings["u_area"]
     ball_pos=settings.ball_t()
-    platform_controller=controller.controller_t(tipo='fuzzy2', ancho_plataforma=x_max-x_min)
+    platform_controller=controller.controller_t(tipo='pid', ancho_plataforma=300)#x_max-x_min)
     while (True):
         success, img = cap.read()
         start_time=time.time()
