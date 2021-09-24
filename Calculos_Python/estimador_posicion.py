@@ -276,7 +276,7 @@ def estimar_posicion(image_settings):
     u_gris=image_settings["u_gris"]
     u_area=image_settings["u_area"]
     ball_pos=settings.ball_t()
-    platform_controller=controller.controller_t(tipo='pid', ancho_plataforma=300)#x_max-x_min)
+    platform_controller=controller.controller_t(tipo='fuzzy2', ancho_plataforma=abs(y_max-y_min))#ancho_plataforma=300)
     while (True):
         success, img = cap.read()
         start_time=time.time()
