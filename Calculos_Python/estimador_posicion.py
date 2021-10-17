@@ -277,7 +277,10 @@ def estimar_posicion(image_settings):
     u_area=image_settings["u_area"]
     ball_pos=settings.ball_t()
     platform_controller=controller.controller_t()
-    while (True):
+    while (setting.control_state!="Stoped"):
+        while(setting.control_state=="Paused"): #Si pausan el control, hago un poll de la variable de estado cada medio segundo para salir
+            sleep(0.5)
+
         success, img = cap.read()
         start_time=time.time()
         #creo mascara llena de 0 para recortar imagen
@@ -337,6 +340,7 @@ def estimar_posicion(image_settings):
         cv2.imshow("Camara", img)
         cv2.imshow("Canny", canny)
         cv2.imshow("Imagen Recortada", imagen_recortada)
+        #Guardo información en un diccionario
         log["pos_x"].append(copy.deepcopy(ball_pos.pos_x))
         log["pos_y"].append(copy.deepcopy(ball_pos.pos_y))
         log["angle_x"].append(copy.deepcopy(angle_x))
@@ -346,8 +350,12 @@ def estimar_posicion(image_settings):
         if cv2.waitKey(1) & 0xFF == ord('e'):
             cv2.destroyAllWindows()
             df=pd.DataFrame.from_dict(log)
-            df.to_excel("logs.xlsx")
+            df.to_excel("logs.xlsx") #Genero excel con la información guardada
             break
+    #Si el control debe detenerse:
+    cv2.destroyAllWindows()
+    df=pd.DataFrame.from_dict(log)
+    df.to_excel("logs.xlsx") #Genero excel con la información guardada
     return 
 
 
