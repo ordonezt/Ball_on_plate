@@ -1,9 +1,13 @@
 from tkinter import *
 import settings
 import threading
+from time import sleep
 import estimador_posicion
 from serial_com import send_command_to_platform
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 import main
+import numpy as np
 
 def update_parameters(Kd_slider,Ki_slider,Kp_slider,Kd_text,Ki_text,Kp_text):
     settings.Kd=float(Kd_slider.get())
@@ -28,8 +32,7 @@ def update_slider(value,slider):
         settings.VDE_K1=float(value)
     if(slider=="VDE_K2"):
         settings.VDE_K2=float(value)
-    if(slider=="VDE_K3"):
-        settings.VDE_K3=float(value)
+
     print(slider+":"+value)
 
 def comenzar_calibracion():
@@ -44,6 +47,12 @@ def comenzar_pausar_control(start_button_text,controller_drop,stop_controller_bu
         settings.control_state="Running" #Variable global que permite al controlador comenzar
         start_button_text.set("Pausar")
         image_settings=estimador_posicion.load_image_settings()
+        if(settings.plotting_enabled==True):
+            t1=threading.Thread(target=live_plotting)
+            t1.start()
+        print("Thread de testo arracando!")
+        t2=threading.Thread(target=test_data_gen)
+        t2.start()
         #t2=threading.Thread(target=lambda: estimador_posicion.estimar_posicion(image_settings))
         #t2.start()
         controller_drop["state"]="disabled" #Deshabilito el dropdown
@@ -74,7 +83,7 @@ def configurar_controlador(root,conf_controller_button,controller_drop):
     controller_drop["state"]="disabled"
     conf_controller_window= Toplevel(root)
     conf_controller_window.title("Configuración controlador "+settings.controller)
-    conf_controller_window.geometry('300x300')
+    conf_controller_window.geometry('300x200')
 
     #uso una funcion para que habilite el volver a configurar el controlador después de cerrado
     conf_controller_window.protocol("WM_DELETE_WINDOW", lambda:conf_param_closing(conf_controller_window,conf_controller_button,controller_drop))
@@ -86,6 +95,32 @@ def configurar_controlador(root,conf_controller_button,controller_drop):
     elif(settings.controller=="Fuzzy"):
         configurar_fuzzy(conf_controller_window)
     return
+
+def test_data_gen():
+    t=0
+    time=[]
+    while (True):
+        sleep(33/1000)
+        t=t+33/1000
+        settings.log["pos_x"].append(np.sin(2*np.pi*t) *np.exp(-t/10))
+        settings.log["pos_x"].append(-np.sin(2*np.pi*t)*np.exp(-t/10))
+        settings.log["time"].append(t)
+
+#######################################
+#####Funciones de ploteo live #########
+#######################################
+
+def plot_variables(i):
+    plt.cla()
+    plt.plot(settings.log["time"][-50:],settings.log["pos_x"][-50:],label='x axis')
+    plt.plot(settings.log["time"][-50:][-50:],settings.log["pos_x"][-50:],label='y axis')
+    plt.legend(loc='upper left')
+    plt.tight_layout()  
+
+def live_plotting():
+    ani=FuncAnimation(plt.gcf(), plot_variables, interval=1)
+    plt.tight_layout()
+    plt.show()
 
     
 def configurar_PID(window):
@@ -113,18 +148,14 @@ def configurar_VDE(window):
     settings.VDE_K3=0
     
     #VDE K1 setting
-    K1_slider=Scale(window,label="VDE K1", from_=0, to=0.03,orient = HORIZONTAL,resolution=0.0001,command= lambda value:update_slider(value,slider="VDE K1"))
+    K1_slider=Scale(window,label="VDE K1 (Realimentación de posición)", from_=0, to=0.03,orient = HORIZONTAL,resolution=0.0001,command= lambda value:update_slider(value,slider="VDE K1"))
     K1_slider.pack(fill=X)
     
     
     #VDE K2 setting
-    K2_slider=Scale(window,label="VDE K2", from_=0, to=0.1,orient = HORIZONTAL,resolution=0.001,command= lambda value :update_slider(value, slider="VDE K2"))
+    K2_slider=Scale(window,label="VDE K2 (Realimentación de velocidad)", from_=0, to=0.1,orient = HORIZONTAL,resolution=0.001,command= lambda value :update_slider(value, slider="VDE K2"))
     K2_slider.pack(fill=X)
-    
-    
-    #VDE K3 setting
-    K3_slider=Scale(window,label="VDE K3", from_=0, to=0.1,orient = HORIZONTAL,resolution=0.01,command= lambda value :update_slider(value, slider="VDE K3"))
-    K3_slider.pack(fill=X)
+
 
 
 
@@ -147,6 +178,14 @@ def conf_param_closing(window,conf_controller_button,controller_drop):
 
 def controller_update(controller_drop_text):
     settings.controller=controller_drop_text
+
+def update_graph_checkbox(graphs_enabled):
+    if (graphs_enabled==1):
+        settings.plotting_enabled=True
+    else:
+        settings.plotting_enabled=True
+    return
+
 
 def start_GUI():
     root= Tk()
@@ -195,7 +234,8 @@ def start_GUI():
     excel_checkbox=Checkbutton(data_frame,text="Generar excel")
     excel_checkbox.pack(anchor="w")
     #graphs checkbox
-    graphs_checkbox=Checkbutton(data_frame,text="Generar graficos")
+    graphs_enabled=IntVar()
+    graphs_checkbox=Checkbutton(data_frame,text="Generar graficos",variable=graphs_enabled,command=lambda:update_graph_checkbox(graphs_enabled.get()))
     graphs_checkbox.pack(anchor="w")
     #arranco la GUI
     root.mainloop()

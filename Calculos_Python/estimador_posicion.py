@@ -251,7 +251,7 @@ def calibracion ():
     save_image_settings(image_settings)
 
 def estimar_posicion(image_settings):
-    log={"pos_x":[],"pos_y":[],"exec_time":[],"angle_x":[],"angle_y":[]}
+    
 
     cap = cv2.VideoCapture(2)
     #setea resolucion
@@ -341,20 +341,20 @@ def estimar_posicion(image_settings):
         cv2.imshow("Canny", canny)
         cv2.imshow("Imagen Recortada", imagen_recortada)
         #Guardo información en un diccionario
-        log["pos_x"].append(copy.deepcopy(ball_pos.pos_x))
-        log["pos_y"].append(copy.deepcopy(ball_pos.pos_y))
-        log["angle_x"].append(copy.deepcopy(angle_x))
-        log["angle_y"].append(copy.deepcopy(angle_y))
-        log["exec_time"].append((time.time()-start_time)*1000)
+        settings.log["pos_x"].append(copy.deepcopy(ball_pos.pos_x))
+        settings.log["pos_y"].append(copy.deepcopy(ball_pos.pos_y))
+        settings.log["angle_x"].append(copy.deepcopy(angle_x))
+        settings.log["angle_y"].append(copy.deepcopy(angle_y))
+        settings.log["exec_time"].append((time.time()-start_time)*1000)
         print(f"execution time:{(time.time()-start_time)*1000} mSeg")
         if cv2.waitKey(1) & 0xFF == ord('e'):
             cv2.destroyAllWindows()
-            df=pd.DataFrame.from_dict(log)
+            df=pd.DataFrame.from_dict(settings.log)
             df.to_excel("logs.xlsx") #Genero excel con la información guardada
             break
     #Si el control debe detenerse:
     cv2.destroyAllWindows()
-    df=pd.DataFrame.from_dict(log)
+    df=pd.DataFrame.from_dict(settings.log)
     df.to_excel("logs.xlsx") #Genero excel con la información guardada
     return 
 
