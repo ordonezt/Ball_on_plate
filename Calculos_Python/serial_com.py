@@ -73,9 +73,9 @@ def send_command_to_platform(port,x_ang,y_ang,altura):
         print(f'motor 1:{ang1*180/np.pi}')
         print(f'motor 2:{ang2*180/np.pi}')
         print(f'motor 3:{ang3*180/np.pi}')
-        ang_motor_1= int( (ang1*180/np.pi +80) *1000   ) # Multiplico por mil porque el frame es en milesimas de grado
-        ang_motor_2= int( (ang2*180/np.pi +86) *1000   )
-        ang_motor_3= int( (ang3*180/np.pi +86) *1000   )
+        ang_motor_1= int( (ang1*180/np.pi +78) *1000   ) # Multiplico por mil porque el frame es en milesimas de grado
+        ang_motor_2= int( (ang2*180/np.pi +93) *1000   )
+        ang_motor_3= int( (ang3*180/np.pi +90) *1000   )
         ser = serial.Serial(port,baudrate = 9600,timeout=1)
         trama = angulos2protocolo(ang_motor_1,ang_motor_2,ang_motor_3)
         ser.write(bytes(trama))

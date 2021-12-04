@@ -1,14 +1,40 @@
-from serial_com import send_command_to_platform
-import time
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+import threading
 import numpy as np
-inc=2*np.pi/180
-h=14
-i=0
-pause=0.02
+from time import sleep
+time=[]
+x_samples=[]
+y_samples=[]
 
-while (True):
-    angle_y=20*np.sin(i*inc)
-    angle_x=20*np.cos(i*inc)
-    send_command_to_platform("/dev/ttyACM0",angle_x,angle_y,h)
-    time.sleep(pause)
-    i=i+1
+
+def plot_variables(i):
+    plt.cla()
+    plt.plot(time[-50:],x_samples[-50:],label='x axis')
+    plt.plot(time[-50:],y_samples[-50:],label='y axis')
+    plt.legend(loc='upper left')
+    sleep(30/1000)
+    plt.tight_layout()  
+
+def live_plotting():
+    ani=FuncAnimation(plt.gcf(), plot_variables, interval=1)
+    plt.tight_layout()
+    plt.show()
+    print("Died!!")
+
+def generar_datos():
+    t=0
+    while (True):
+        sleep(33/1000)
+        t=t+33/1000
+        x_samples.append(np.sin(2*np.pi*t) *np.exp(-t/10))
+        y_samples.append(-np.sin(2*np.pi*t)*np.exp(-t/10))
+        time.append(t)
+
+
+
+t1=threading.Thread(target=generar_datos)
+t1.start()
+
+t2=threading.Thread(target=live_plotting)
+t2.start()
