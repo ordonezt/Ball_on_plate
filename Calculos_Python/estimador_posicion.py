@@ -40,13 +40,12 @@ def estimar_posicion(image_settings):
     u_gris=image_settings["u_gris"]
     u_area=image_settings["u_area"]
     ball_pos=settings.ball_t()
-    platform_controller=controller.controller_t()
 
+    platform_controller=controller.controller_t(tipo='fuzzy2', ancho_plataforma=abs(y_max-y_min))#ancho_plataforma=300)
     settings.log={"pos_x":[],"pos_y":[],"angle_x":[],"angle_y":[]}
     while (settings.control_state!="Stoped"):
         while(settings.control_state=="Paused"): #Si pausan el control, hago un poll de la variable de estado cada medio segundo para salir
             time.sleep(0.5)
-
         success, img = cap.read()
         start_time=time.time()
         #creo mascara llena de 0 para recortar imagen
@@ -133,7 +132,7 @@ def estimar_posicion(image_settings):
 
 
 def test():
-    platform_controller=controller.controller_t()
+    platform_controller=controller.controller_t(tipo='fuzzy2', ancho_plataforma=30)
     ball_pos=settings.ball_t()
     while (True):
         ball_pos.pos_x=-float(input("x="))
