@@ -20,7 +20,7 @@ def init():
     global pos_x
     global control_state
     global controller
-
+    global selected_camera
     global plotting_enabled
     global excel_enabled
 
@@ -43,6 +43,8 @@ def init():
     pos_y=0
     control_state="Running"
     ball_pos=ball_t()
+
+    selected_camera=0
 
 def save_image_settings(settings):
     with open('./image_settings.json', "w") as file:

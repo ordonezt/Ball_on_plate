@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-from pyzbar.pyzbar import decode
 import os
 import settings
 import json
@@ -17,7 +16,7 @@ def empty(a):
 def estimar_posicion(image_settings):
     
 
-    cap = cv2.VideoCapture(2)
+    cap = cv2.VideoCapture(settings.selected_camera)
     #setea resolucion
     cap.set(3, 640)
     cap.set(4, 480)

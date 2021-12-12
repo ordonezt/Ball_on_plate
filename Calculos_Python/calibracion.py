@@ -146,7 +146,8 @@ def calibracion_centro_escala(cap):
 
 def calibracion ():
     image_settings={}
-    cap = cv2.VideoCapture(2)
+    cap = cv2.VideoCapture(settings.selected_camera)
+    print(settings.selected_camera)
     #setea resolucion
     cap.set(3, 640)
     cap.set(4, 480)

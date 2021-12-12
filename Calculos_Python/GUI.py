@@ -6,7 +6,6 @@ import estimador_posicion
 from serial_com import send_command_to_platform
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
-import main
 import numpy as np
 import calibracion
 import os
@@ -108,21 +107,6 @@ def test_data_gen():
         settings.log["pos_x"].append(-np.sin(2*np.pi*t)*np.exp(-t/10))
         settings.log["time"].append(t)
 
-#######################################
-#####Funciones de ploteo live #########
-#######################################
-
-def plot_variables(i):
-    plt.cla()
-    plt.plot(settings.log["time"][-50:],settings.log["pos_x"][-50:],label='x axis')
-    plt.plot(settings.log["time"][-50:][-50:],settings.log["pos_x"][-50:],label='y axis')
-    plt.legend(loc='upper left')
-    plt.tight_layout()  
-
-def live_plotting():
-    ani=FuncAnimation(plt.gcf(), plot_variables, interval=1)
-    plt.tight_layout()
-    plt.show()
 
     
 def configurar_PID(window):
@@ -131,17 +115,17 @@ def configurar_PID(window):
     settings.Kp=0
     
     #Kd setting
-    Kd_slider=Scale(window,label="Kd", from_=0, to=50,orient = HORIZONTAL,resolution=0.1,command= lambda value :update_slider(value,slider="Kd"))
+    Kd_slider=Scale(window,label="Kd [°m/seg]", from_=0, to=50,orient = HORIZONTAL,resolution=0.1,command= lambda value :update_slider(value,slider="Kd"))
     Kd_slider.pack(fill=X)
     
     
     #Kp setting
-    Kp_slider=Scale(window,label="Kp", from_=0, to=150,orient = HORIZONTAL,resolution=1,command= lambda value :update_slider(value,slider="Kp"))
+    Kp_slider=Scale(window,label="Kp [°/m]", from_=0, to=150,orient = HORIZONTAL,resolution=1,command= lambda value :update_slider(value,slider="Kp"))
     Kp_slider.pack(fill=X)
     
     
     #Ki setting
-    Ki_slider=Scale(window,label="Ki", from_=0, to=150,orient = HORIZONTAL,resolution=1,command= lambda value :update_slider(value,slider="Ki"))
+    Ki_slider=Scale(window,label="Ki [°/ m seg]", from_=0, to=150,orient = HORIZONTAL,resolution=1,command= lambda value :update_slider(value,slider="Ki"))
     Ki_slider.pack(fill=X)
 
 def configurar_VDE(window):
@@ -196,12 +180,16 @@ def update_excel_checkbox(excel_enabled):
         settings.excel_enabled=False
     return
 
+def select_camera(selected_camera):
+    settings.selected_camera=selected_camera
+    print("selected_camera="+str(selected_camera))
+
 def start_GUI():
     root= Tk()
     
     root.title("Ball & plate system")
-    root.geometry('350x250')
-
+    root.geometry('375x225')
+    root.resizable(False, False)
 
 
     ###################################################
@@ -242,11 +230,20 @@ def start_GUI():
     #excel checkbox
     excel_enabled=IntVar()
     excel_checkbox=Checkbutton(data_frame,text="Generar excel",variable=excel_enabled,command=lambda:update_excel_checkbox(excel_enabled.get()))
-    excel_checkbox.pack(anchor="w")
+    #excel_checkbox.pack(anchor="w")
+    excel_checkbox.grid(row=0,column=0,sticky="W")
     #graphs checkbox
     graphs_enabled=IntVar()
     graphs_checkbox=Checkbutton(data_frame,text="Generar graficos",variable=graphs_enabled,command=lambda:update_graph_checkbox(graphs_enabled.get()))
-    graphs_checkbox.pack(anchor="w")
+   # graphs_checkbox.pack(anchor="w")
+    graphs_checkbox.grid(row=1,column=0,sticky="W")
+    #seleccion de camara
+    sel_camera_label=Label(data_frame, text="Selcción de cámara")
+    #sel_camera_label.pack()
+    sel_camera_label.grid(row=3,column=0,sticky="W")
+    spin_camera=Spinbox(data_frame,from_=0,to=10,width=2,command=lambda:select_camera(spin_camera.get()))
+    #spin_camera.pack(anchor="w")
+    spin_camera.grid(row=3,column=1,sticky="W")
     #arranco la GUI
     root.mainloop()
 
