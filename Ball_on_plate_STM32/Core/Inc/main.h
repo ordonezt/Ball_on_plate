@@ -81,6 +81,8 @@ void Error_Handler(void);
 #define ADXL_INT_Pin GPIO_PIN_1
 #define ADXL_INT_GPIO_Port GPIOB
 #define ADXL_INT_EXTI_IRQn EXTI1_IRQn
+#define USB_EN_Pin GPIO_PIN_10
+#define USB_EN_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 #define LED_PIN 	LED_ESTADO_GPIO_Port, LED_ESTADO_Pin
 #define ADXL_CS 	ADXL_CS_GPIO_Port, ADXL_CS_Pin
