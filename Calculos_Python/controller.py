@@ -13,7 +13,6 @@ import skfuzzy.control as fzctrl
 class controller_t:
     def __init__(self, tipo, ancho_plataforma=None):
         self.tipo = tipo
-        #if tipo == 'pid':
         self.prev_pos_x=0 #variable auxiliar para el control derivativo
         self.prev_pos_y=0 #variable auxiliar para el control derivativo
 
@@ -56,11 +55,11 @@ class controller_t:
             self.sistema = fzctrl.ControlSystem([regla0, regla1, regla2, regla3, regla4])
             self.simulacion = fzctrl.ControlSystemSimulation(self.sistema)
 
-        elif tipo == 'fuzzy2':
+        elif tipo == 'Fuzzy':
             
             #Entrada
             error = fzctrl.Antecedent(np.linspace(-ancho_plataforma / 2, ancho_plataforma / 2, 5), 'error')
-            rango_delta = DELTA_MAXIMO = 20#0.5 * ancho_plataforma
+            rango_delta = DELTA_MAXIMO = 20*0.0008#0.5 * ancho_plataforma
             delta = fzctrl.Antecedent(np.linspace(-DELTA_MAXIMO, DELTA_MAXIMO, 5), 'delta')
             ANGULO_MAXIMO = 15 #Sacar de algun lado, por ahora hardcodeado
             #Salida
@@ -216,7 +215,7 @@ class controller_t:
         return angle_x,angle_x
 
     def controller_1d(self,pos,prev_pos):
-        if self.tipo == 'pid':
+        if self.tipo == 'PID':
             #estos valores se actualizan desde la GUI
             Ki=settings.Ki
             Kp=settings.Kp
@@ -240,7 +239,7 @@ class controller_t:
             self.simulacion.compute()
             control_angle = self.simulacion.output['angulo']
         
-        elif self.tipo == 'fuzzy2':
+        elif self.tipo == 'Fuzzy':
             delta = pos - prev_pos
             
             print('Delta: {}'.format(delta))

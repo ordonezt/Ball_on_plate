@@ -34,6 +34,13 @@ def send_command_to_platform(port,x_ang,y_ang,altura):
 
     if(y_ang<-20):
         y_ang=-20
+
+    x_ang=x_ang-2.5
+    y_ang=y_ang-2.5
+    
+    print("x_ang="+str(x_ang))
+    print("y_ang="+str(y_ang))
+    
     #positions of the ball joins when they are unactuated
     dist=6
     C1=dist*np.array([0,-1,0])
@@ -70,9 +77,6 @@ def send_command_to_platform(port,x_ang,y_ang,altura):
     except:
         pass
     else:
-        print(f'motor 1:{ang1*180/np.pi}')
-        print(f'motor 2:{ang2*180/np.pi}')
-        print(f'motor 3:{ang3*180/np.pi}')
         ang_motor_1= int( (ang1*180/np.pi +78) *1000   ) # Multiplico por mil porque el frame es en milesimas de grado
         ang_motor_2= int( (ang2*180/np.pi +93) *1000   )
         ang_motor_3= int( (ang3*180/np.pi +90) *1000   )

@@ -115,12 +115,12 @@ def configurar_PID(window):
     settings.Kp=0
     
     #Kd setting
-    Kd_slider=Scale(window,label="Kd [°m/seg]", from_=0, to=50,orient = HORIZONTAL,resolution=0.1,command= lambda value :update_slider(value,slider="Kd"))
+    Kd_slider=Scale(window,label="Kd [°m/seg]", from_=0, to=150,orient = HORIZONTAL,resolution=0.5,command= lambda value :update_slider(value,slider="Kd"))
     Kd_slider.pack(fill=X)
     
     
     #Kp setting
-    Kp_slider=Scale(window,label="Kp [°/m]", from_=0, to=150,orient = HORIZONTAL,resolution=1,command= lambda value :update_slider(value,slider="Kp"))
+    Kp_slider=Scale(window,label="Kp [°/m]", from_=0, to=150,orient = HORIZONTAL,resolution=0.5,command= lambda value :update_slider(value,slider="Kp"))
     Kp_slider.pack(fill=X)
     
     

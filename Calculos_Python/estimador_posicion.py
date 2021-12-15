@@ -27,7 +27,7 @@ def estimar_posicion(image_settings):
     angle_x=0
     angle_y=0
     Escala_x=image_settings["Escala_x"]
-    Escala_y=image_settings["Escala_x"]
+    Escala_y=image_settings["Escala_y"]
     centro_x=image_settings["centro_x"]
     centro_y=image_settings["centro_y"]
 
@@ -41,7 +41,8 @@ def estimar_posicion(image_settings):
     u_area=image_settings["u_area"]
     ball_pos=settings.ball_t()
 
-    platform_controller=controller.controller_t(tipo='fuzzy2', ancho_plataforma=abs(y_max-y_min))#ancho_plataforma=300)
+    platform_controller=controller.controller_t(tipo=settings.controller, ancho_plataforma=abs(y_max-y_min)*Escala_y )#ancho_plataforma=300)
+    print("Utilizando controlador "+settings.controller)
     settings.log={"pos_x":[],"pos_y":[],"angle_x":[],"angle_y":[]}
     while (settings.control_state!="Stoped"):
         while(settings.control_state=="Paused"): #Si pausan el control, hago un poll de la variable de estado cada medio segundo para salir
@@ -132,7 +133,7 @@ def estimar_posicion(image_settings):
 
 
 def test():
-    platform_controller=controller.controller_t(tipo='fuzzy2', ancho_plataforma=30)
+    platform_controller=controller.controller_t(tipo='Fuzzy', ancho_plataforma=30)
     ball_pos=settings.ball_t()
     while (True):
         ball_pos.pos_x=-float(input("x="))
