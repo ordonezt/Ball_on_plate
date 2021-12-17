@@ -59,7 +59,7 @@ class controller_t:
             
             #Entrada
             error = fzctrl.Antecedent(np.linspace(-ancho_plataforma / 2, ancho_plataforma / 2, 5), 'error')
-            rango_delta = DELTA_MAXIMO = 20*0.0008#0.5 * ancho_plataforma
+            rango_delta = DELTA_MAXIMO = 20*settings.Escala_y #0.5 * ancho_plataforma
             delta = fzctrl.Antecedent(np.linspace(-DELTA_MAXIMO, DELTA_MAXIMO, 5), 'delta')
             ANGULO_MAXIMO = 15 #Sacar de algun lado, por ahora hardcodeado
             #Salida

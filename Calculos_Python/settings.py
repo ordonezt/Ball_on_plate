@@ -24,6 +24,8 @@ def init():
     global plotting_enabled
     global excel_enabled
 
+    global Escala_y
+    global Escala_x
     global log
     controller="PID"
     #setting controlador lineal
@@ -33,6 +35,9 @@ def init():
     #settings controlador VDE
     VDE_K1=0
     VDE_K2=0
+
+    Escala_y=0
+    Escala_x=0
 
     #Variable global que habilita el ploteo en tiempo real
     plotting_enabled=False
@@ -44,7 +49,7 @@ def init():
     control_state="Running"
     ball_pos=ball_t()
 
-    selected_camera=0
+    selected_camera=2
 
 def save_image_settings(settings):
     with open('./image_settings.json', "w") as file:

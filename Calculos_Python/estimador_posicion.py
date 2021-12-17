@@ -31,6 +31,10 @@ def estimar_posicion(image_settings):
     centro_x=image_settings["centro_x"]
     centro_y=image_settings["centro_y"]
 
+    settings.Escala_x=image_settings["Escala_x"]
+    settings.Escala_y=image_settings["Escala_y"]
+    
+
     x_min=image_settings["x_min"]
     x_max=image_settings["x_max"]
     y_min=image_settings["y_min"]
