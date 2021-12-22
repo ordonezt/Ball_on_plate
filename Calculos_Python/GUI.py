@@ -204,7 +204,8 @@ def start_GUI():
     #Dropdown list para elegir el controlador
     controller_drop_text=StringVar()
     controller_drop_text.set("PID")
-    controller_drop=OptionMenu(controller_frame,controller_drop_text,"PID","Fuzzy","Variables de Estado",command=controller_update)
+    controller_drop=OptionMenu(controller_frame,controller_drop_text,"PID","Fuzzy",command=controller_update)
+    #controller_drop=OptionMenu(controller_frame,controller_drop_text,"PID","Fuzzy","Variables de Estado",command=controller_update)
     controller_drop.pack(fill=X)
     #boton para configurar controlador
     conf_controller_button= Button(controller_frame,text="Configurar controlador",command= lambda: configurar_controlador(root,conf_controller_button,controller_drop))
