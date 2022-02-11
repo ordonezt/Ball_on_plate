@@ -49,7 +49,7 @@ def init():
     control_state="Running"
     ball_pos=ball_t()
 
-    selected_camera=2
+    selected_camera=0
 
 def save_image_settings(settings):
     with open('./image_settings.json', "w") as file:

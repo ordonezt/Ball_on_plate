@@ -58,16 +58,16 @@ class controller_t:
         elif tipo == 'Fuzzy':
             
             #Entrada
-            error = fzctrl.Antecedent(np.linspace(-ancho_plataforma / 2, ancho_plataforma / 2, 5), 'error')
+            error = fzctrl.Antecedent(np.linspace(-ancho_plataforma / 2, ancho_plataforma / 2, 7), 'error')
             rango_delta = DELTA_MAXIMO = 20*settings.Escala_y #0.5 * ancho_plataforma
-            delta = fzctrl.Antecedent(np.linspace(-DELTA_MAXIMO, DELTA_MAXIMO, 5), 'delta')
-            ANGULO_MAXIMO = 15 #Sacar de algun lado, por ahora hardcodeado
+            delta = fzctrl.Antecedent(np.linspace(-DELTA_MAXIMO, DELTA_MAXIMO, 7), 'delta')
+            ANGULO_MAXIMO = 10 #Sacar de algun lado, por ahora hardcodeado
             #Salida
-            angulo = fzctrl.Consequent(np.linspace(-ANGULO_MAXIMO, ANGULO_MAXIMO, 5), 'angulo')
+            angulo = fzctrl.Consequent(np.linspace(-ANGULO_MAXIMO, ANGULO_MAXIMO, 7), 'angulo')
 
             #Creo las funciones de membresia ("categoria" de cada variable)
             #Por simplicidad las genero de forma automatica pero se puede jugar con la forma y ancho de banda de cada categoria.
-            nombres = ['ng', 'np', 'ce', 'pp', 'pg'] #Negativo grande, negativo pequeño, cero, positivo pequeño y positivo grande.
+            nombres = ['ng', 'nm', 'np', 'ce', 'pp', 'pm', 'pg'] #Negativo grande, negativo pequeño, cero, positivo pequeño y positivo grande.
             
             error.automf(names=nombres)
             # error['ng'] = fuzz.trimf(error.universe, [-ancho_plataforma/2, -ancho_plataforma/2, -(2/3) * (ancho_plataforma/2)])
@@ -155,43 +155,204 @@ class controller_t:
             #                                  (error['np'] & delta['ng'])),
             #                      consequent=angulo['pg'], label='Regla pg')
 
-            #Version 7
+            # #Version 7
+            # #Escribo las reglas
+            # regla0 = fzctrl.Rule(antecedent=((error['pg'] & (delta['pp'] | delta['pg'])) |
+            #                                  (error['pp'] & delta['pg']) |
+            #                                  (error['ce'] & delta['pg'])),
+            #                      consequent=angulo['ng'], label='Regla ng')
+
+
+            # regla1 = fzctrl.Rule(antecedent=((error['pg'] & delta['ce'])                 | 
+            #                                  (error['pp'] & (delta['pp'] | delta['ce'])) |
+            #                                  (error['ce'] & delta['pp']) |
+            #                                  (error['ng'] & delta['pg'])),
+            #                     consequent=angulo['np'], label='Regla np')
+
+
+            # regla2 = fzctrl.Rule(antecedent=((error['ng'] & delta['pp'])                  |
+            #                                  (error['np'] & (delta['pp'] | delta['pg']))  |
+            #                                  (error['ce'] & (delta['ce']))                |
+            #                                  (error['pp'] & (delta['ng'] | delta['np']))  |
+            #                                  (error['pg'] & delta['np'])),
+            #                     consequent=angulo['ce'], label='Regla ce')
+
+
+            # regla3 = fzctrl.Rule(antecedent=((error['ng'] & delta['ce']) | 
+            #                                  (error['np'] & (delta['np'] | delta['ce'])) | 
+            #                                  (error['ce'] & delta['np']) |
+            #                                  (error['pg'] & delta['ng'])),
+            #                      consequent=angulo['pp'], label='Regla pp')
+
+
+            # regla4 = fzctrl.Rule(antecedent=((error['ng'] & (delta['np'] | delta['ng'])) | 
+            #                                  (error['np'] & delta['ng']) |
+            #                                  (error['ce'] & delta['ng'])),
+            #                      consequent=angulo['pg'], label='Regla pg')
+
+
+
+        
+            # #Version 8
+            # #Escribo las reglas
+            # regla0 = fzctrl.Rule(antecedent=((error['pg'] & (delta['pp'] | delta['pg'])) |
+            #                                  (error['pp'] & delta['pg']) |
+            #                                  (error['ce'] & delta['pg'])),
+            #                      consequent=angulo['ng'], label='Regla ng')
+
+
+            # regla1 = fzctrl.Rule(antecedent=((error['pg'] & delta['ce'])                 | 
+            #                                  (error['pp'] & (delta['pp'] | delta['ce'])) |
+            #                                  (error['ce'] & delta['pp']) ),#|
+            #                                  #(error['ng'] & delta['pg'])),
+            #                     consequent=angulo['np'], label='Regla np')
+
+
+            # regla2 = fzctrl.Rule(antecedent=((error['ng'] & delta['pp'])                  |
+            #                                  (error['np'] & (delta['pp'] | delta['pg']))  |
+            #                                  (error['ce'] & (delta['ce']))                |
+            #                                  (error['pp'] & (delta['ng'] | delta['np']))  |
+            #                                  (error['pg'] & delta['np'])),
+            #                     consequent=angulo['ce'], label='Regla ce')
+
+
+            # regla3 = fzctrl.Rule(antecedent=((error['ng'] & delta['ce']) | 
+            #                                  (error['np'] & (delta['np'] | delta['ce'])) | 
+            #                                  (error['ce'] & delta['np']) ),#|
+            #                                  #(error['pg'] & delta['ng'])),
+            #                      consequent=angulo['pp'], label='Regla pp')
+
+            # regla4 = fzctrl.Rule(antecedent=((error['ng'] & (delta['np'] | delta['ng'])) | 
+            #                                  (error['np'] & delta['ng']) |
+            #                                  (error['ce'] & delta['ng'])),
+            #                      consequent=angulo['pg'], label='Regla pg')
+
+
+            # #Version 9
+            # #Escribo las reglas
+            # regla0 = fzctrl.Rule(antecedent=((error['ng'] | error['np']) & delta['pg']),
+            #                      consequent=angulo['ng'], label='Regla ng')
+
+
+            # regla1 = fzctrl.Rule(antecedent=((error['ng'] & (delta['ce'] | delta['pp'])) | 
+            #                                  (error['np'] & (delta['ce'] | delta['pp'])) |
+            #                                  (error['ce'] & (delta['pp'] | delta['pg'])) |
+            #                                  (error['pp'] & delta['np']) |
+            #                                  (error['pg'] & delta['pg'])),
+            #                     consequent=angulo['np'], label='Regla np')
+
+
+            # regla2 = fzctrl.Rule(antecedent=((error['ng'] & delta['np']) | 
+            #                                  (error['np'] & delta['np']) |
+            #                                  (error['ce'] & delta['ce']) |
+            #                                  (error['pp'] & delta['pp']) |
+            #                                  (error['pg'] & delta['pp'])),
+            #                     consequent=angulo['ce'], label='Regla ce')
+
+
+            # regla3 = fzctrl.Rule(antecedent=((error['ng'] & delta['pp']) | 
+            #                                  (error['np'] & delta['pp']) | 
+            #                                  (error['ce'] & (delta['ng'] | delta['np'])) |
+            #                                  (error['pp'] & (delta['np'] | delta['ce'])) |
+            #                                  (error['pg'] & (delta['np'] | delta['ce']))),
+            #                      consequent=angulo['pp'], label='Regla pp')
+
+            # regla4 = fzctrl.Rule(antecedent=((error['pp'] | error['pg']) & delta['pg']),
+            #                      consequent=angulo['pg'], label='Regla pg')
+
+
+            # #Version 10
+            # #Escribo las reglas
+            # regla0 = fzctrl.Rule(antecedent=((error['ng'] | error['np']) & delta['pg']),
+            #                      consequent=angulo['ng'], label='Regla ng')
+
+
+            # regla1 = fzctrl.Rule(antecedent=((error['ng'] & (delta['ce'] | delta['pp'])) | 
+            #                                  (error['np'] & (delta['ce'] | delta['pp'])) |
+            #                                  (error['ce'] & (delta['pp'] | delta['pg'])) |
+            #                                  (error['pp'] & delta['np']) |
+            #                                  (error['pg'] & delta['pg'])),
+            #                     consequent=angulo['np'], label='Regla np')
+
+
+            # regla2 = fzctrl.Rule(antecedent=((error['ng'] & delta['np']) | 
+            #                                  (error['np'] & delta['np']) |
+            #                                  (error['ce'] & delta['ce']) |
+            #                                  (error['pp'] & delta['pp']) |
+            #                                  (error['pg'] & delta['pp'])),
+            #                     consequent=angulo['ce'], label='Regla ce')
+
+
+            # regla3 = fzctrl.Rule(antecedent=((error['ng'] & delta['pp']) | 
+            #                                  (error['np'] & delta['pp']) | 
+            #                                  (error['ce'] & (delta['ng'] | delta['np'])) |
+            #                                  (error['pp'] & (delta['np'] | delta['ce'])) |
+            #                                  (error['pg'] & (delta['np'] | delta['ce']))),
+            #                      consequent=angulo['pp'], label='Regla pp')
+
+            # regla4 = fzctrl.Rule(antecedent=((error['pp'] | error['pg']) & delta['pg']),
+            #                      consequent=angulo['pg'], label='Regla pg')
+
+            #Version 11
             #Escribo las reglas
-            regla0 = fzctrl.Rule(antecedent=((error['pg'] & (delta['pp'] | delta['pg'])) |
-                                             (error['pp'] & delta['pg']) |
-                                             (error['ce'] & delta['pg'])),
-                                 consequent=angulo['ng'], label='Regla ng')
+            regla0 = fzctrl.Rule(antecedent=((error['ng'] & (delta['ng'] | delta['nm'] | delta['np'] | delta['ce']))    |
+                                             (error['nm'] & (delta['ng'] | delta['nm'] | delta['np']))                  |
+                                             (error['np'] & (delta['ng'] | delta['nm']))                                |
+                                             (error['ce'] & (delta['ng']))),
+                                 consequent=angulo['pg'], label='Regla ng')
 
 
-            regla1 = fzctrl.Rule(antecedent=((error['pg'] & delta['ce'])                 | 
-                                             (error['pp'] & (delta['pp'] | delta['ce'])) |
-                                             (error['ce'] & delta['pp']) |
-                                             (error['ng'] & delta['pg'])),
-                                consequent=angulo['np'], label='Regla np')
+            regla1 = fzctrl.Rule(antecedent=((error['pp'] & delta['ng'])    |
+                                             (error['ce'] & delta['nm'])    |
+                                             (error['np'] & delta['np'])    |
+                                             (error['nm'] & delta['ce'])    |
+                                             (error['ng'] & delta['pp'])),
+                                 consequent=angulo['pm'], label='Regla nm')
 
 
-            regla2 = fzctrl.Rule(antecedent=((error['ng'] & delta['pp'])                  |
-                                             (error['np'] & (delta['pp'] | delta['pg']))  |
-                                             (error['ce'] & (delta['ce']))                |
-                                             (error['pp'] & (delta['ng'] | delta['np']))  |
-                                             (error['pg'] & delta['np'])),
+            regla2 = fzctrl.Rule(antecedent=((error['pm'] & delta['ng'])    |
+                                             (error['pp'] & delta['nm'])    |
+                                             (error['ce'] & delta['np'])    |
+                                             (error['np'] & delta['ce'])    |
+                                             (error['nm'] & delta['pp'])    |
+                                             (error['ng'] & delta['pm'])),
+                                 consequent=angulo['pp'], label='Regla np')
+
+
+            regla3 = fzctrl.Rule(antecedent=((error['ng'] & delta['pg']) | 
+                                             (error['nm'] & delta['pm']) |
+                                             (error['np'] & delta['pp']) |
+                                             (error['ce'] & delta['ce']) |
+                                             (error['pp'] & delta['np']) |
+                                             (error['pm'] & delta['nm']) |
+                                             (error['pg'] & delta['ng'])),
                                 consequent=angulo['ce'], label='Regla ce')
 
 
-            regla3 = fzctrl.Rule(antecedent=((error['ng'] & delta['ce']) | 
-                                             (error['np'] & (delta['np'] | delta['ce'])) | 
-                                             (error['ce'] & delta['np']) |
-                                             (error['pg'] & delta['ng'])),
-                                 consequent=angulo['pp'], label='Regla pp')
+            regla4 = fzctrl.Rule(antecedent=((error['pg'] & delta['nm'])    |
+                                             (error['pm'] & delta['np'])    |
+                                             (error['pp'] & delta['ce'])    |
+                                             (error['ce'] & delta['pp'])    |
+                                             (error['np'] & delta['pm'])    |
+                                             (error['nm'] & delta['pg'])),
+                                 consequent=angulo['np'], label='Regla pp')
+            
 
+            regla5 = fzctrl.Rule(antecedent=((error['pg'] & delta['np'])    |
+                                             (error['pm'] & delta['ce'])    |
+                                             (error['pp'] & delta['pp'])    |
+                                             (error['ce'] & delta['pm'])    |
+                                             (error['np'] & delta['pg'])),
+                                 consequent=angulo['nm'], label='Regla pm')
 
-            regla4 = fzctrl.Rule(antecedent=((error['ng'] & (delta['np'] | delta['ng'])) | 
-                                             (error['np'] & delta['ng']) |
-                                             (error['ce'] & delta['ng'])),
-                                 consequent=angulo['pg'], label='Regla pg')
+            regla6 = fzctrl.Rule(antecedent=((error['pg'] & (delta['pg'] | delta['pm'] | delta['pp'] | delta['ce']))    |
+                                             (error['pm'] & (delta['pg'] | delta['pm'] | delta['pp']))                  |
+                                             (error['pp'] & (delta['pg'] | delta['pm']))                                |
+                                             (error['ce'] & (delta['pg']))),
+                                 consequent=angulo['ng'], label='Regla pg')
 
             #Creo el sistema y arranco la simulacion
-            self.sistema = fzctrl.ControlSystem([regla0, regla1, regla2, regla3, regla4])
+            self.sistema = fzctrl.ControlSystem([regla0, regla1, regla2, regla3, regla4, regla5, regla6])
             self.simulacion = fzctrl.ControlSystemSimulation(self.sistema)
 
     def control(self,ball_pos):
