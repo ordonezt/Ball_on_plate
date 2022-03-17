@@ -26,6 +26,8 @@ def estimar_posicion(image_settings):
     pos_y=None
     angle_x=0
     angle_y=0
+    salidas_controlador = {"angle_x": 0, "angle_y":0, "vel_x":0, "vel_y":0}
+    fps = 0
     Escala_x=image_settings["Escala_x"]
     Escala_y=image_settings["Escala_y"]
     centro_x=image_settings["centro_x"]
@@ -45,9 +47,9 @@ def estimar_posicion(image_settings):
     u_area=image_settings["u_area"]
     ball_pos=settings.ball_t()
 
-    platform_controller=controller.controller_t(tipo=settings.controller, ancho_plataforma=abs(y_max-y_min)*Escala_y )#ancho_plataforma=300)
+    platform_controller=controller.controller_t(tipo=settings.controller, ancho_plataforma_x=abs(x_max-x_min)*Escala_x, ancho_plataforma_y=abs(y_max-y_min)*Escala_y )#ancho_plataforma=300)
     print("Utilizando controlador "+settings.controller)
-    settings.log={"pos_x":[],"pos_y":[],"angle_x":[],"angle_y":[]}
+    settings.log={"pos_x":[],"pos_y":[],"angle_x":[],"angle_y":[], "vel_x":[], "vel_y":[], "fps":[]}
     while (settings.control_state!="Stoped"):
         while(settings.control_state=="Paused"): #Si pausan el control, hago un poll de la variable de estado cada medio segundo para salir
             time.sleep(0.5)
@@ -105,7 +107,19 @@ def estimar_posicion(image_settings):
                 
                 ball_pos.pos_x=-coordenadas[0] *Escala_x
                 ball_pos.pos_y=-coordenadas[1] *Escala_y
-                angle_x,angle_y=platform_controller.control(ball_pos)
+                # angle_x,angle_y=platform_controller.control(ball_pos)
+                tiempo_actual = time.time()
+                try:
+                    periodo = tiempo_actual - tiempo_anterior
+                    fps = 1 / periodo
+                except:
+                    fps = 0
+                    pass
+                tiempo_anterior = tiempo_actual
+                
+
+                salidas_controlador=platform_controller.control(ball_pos)
+                
                 
         cv2.imshow("Camara", img)
         cv2.imshow("Canny", canny)
@@ -114,8 +128,22 @@ def estimar_posicion(image_settings):
 
         settings.log["pos_x"].append(copy.deepcopy(ball_pos.pos_x))
         settings.log["pos_y"].append(copy.deepcopy(ball_pos.pos_y))
-        settings.log["angle_x"].append(copy.deepcopy(angle_x))
-        settings.log["angle_y"].append(copy.deepcopy(angle_y))
+        # settings.log["angle_x"].append(copy.deepcopy(angle_x))
+        # settings.log["angle_y"].append(copy.deepcopy(angle_y))
+        if "angle_x" in salidas_controlador:
+            angle_x = salidas_controlador["angle_x"]
+            settings.log["angle_x"].append(copy.deepcopy(angle_x))
+        if "angle_y" in salidas_controlador:
+            angle_y = salidas_controlador["angle_y"]
+            settings.log["angle_y"].append(copy.deepcopy(angle_y))
+        if "vel_x" in salidas_controlador:
+            vel_x = salidas_controlador["vel_x"]
+            settings.log["vel_x"].append(copy.deepcopy(vel_x))
+        if "vel_y" in salidas_controlador:
+            vel_y = salidas_controlador["vel_y"]
+            settings.log["vel_y"].append(copy.deepcopy(vel_y))
+
+        settings.log["fps"].append(copy.deepcopy(fps))
         
         if cv2.waitKey(1) & 0xFF == ord('e'):
             cv2.destroyAllWindows()
